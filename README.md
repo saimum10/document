@@ -9,11 +9,16 @@
 
 
 - [Bangladesh cyber law](https://saimum10.github.io/document/bangladesh_cyber_law.html)
-- [Critical Thinking](https://saimum10.github.io/document/critical_thinking_genius_mindset.html)
-
-- [Mental Health](https://saimum10.github.io/document/mental_health_guide.html)
 - [Prodauctivity](https://saimum10.github.io/document/productivity_bangla.html)
+- [Study techniques](https://saimum10.github.io/document/study_techniques_bangla.html)
+
+
+- [Critical Thinking](https://saimum10.github.io/document/critical_thinking_genius_mindset.html)
+- [Public speaking](https://saimum10.github.io/document/public_speaking_guide.html)
+- [Mental Health](https://saimum10.github.io/document/mental_health_guide.html)
 - [Reverse psychology](https://saimum10.github.io/document/reverse_psychology.html)
+
+
 - [Github security](https://saimum10.github.io/document/git_github_security_bangla.html)
 
 
