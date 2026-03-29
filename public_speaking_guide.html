@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Public Speaking — সম্পূর্ণ বাংলা গাইড</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #1a1a2e;
+    --accent: #e63946;
+    --blue: #2563eb;
+    --green: #059669;
+    --orange: #ea580c;
+    --purple: #7c3aed;
+    --teal: #0d9488;
+    --gold: #d97706;
+    --text: #1a1a2e;
+    --bg: #f8f9ff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Hind Siliguri', 'Noto Sans Bengali', sans-serif; background: var(--bg); color: var(--text); font-size: 14.5px; line-height: 2; }
+
+  /* COVER */
+  .cover {
+    background: linear-gradient(135deg, #1e1b4b 0%, #1d4ed8 50%, #0f172a 100%);
+    color: white; min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    padding: 60px 40px; position: relative; overflow: hidden;
+  }
+  .cover::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 20%, rgba(99,102,241,0.15) 0%, transparent 50%); }
+  .cover::after { content: ''; position: absolute; bottom: -80px; right: -80px; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(37,99,235,0.15) 0%, transparent 70%); }
+  .cover-badge { background: rgba(99,102,241,0.2); border: 1px solid rgba(129,140,248,0.5); padding: 6px 20px; border-radius: 20px; font-size: 12px; color: #a5b4fc; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; position: relative; }
+  .cover-icon { font-size: 90px; margin-bottom: 15px; position: relative; }
+  .cover h1 { font-size: 44px; font-weight: 700; color: #fff; line-height: 1.2; position: relative; }
+  .cover h1 span { color: #93c5fd; text-shadow: 0 0 30px rgba(37,99,235,0.6); }
+  .cover h2 { font-size: 18px; font-weight: 400; opacity: 0.7; margin: 12px 0 20px; position: relative; }
+  .cover .divider { width: 100px; height: 3px; background: linear-gradient(90deg, #6366f1, #3b82f6); margin: 20px auto; border-radius: 2px; }
+  .cover .desc { font-size: 15px; opacity: 0.65; max-width: 650px; line-height: 2; position: relative; }
+  .cover-quote { background: rgba(255,255,255,0.07); border-left: 3px solid #93c5fd; padding: 14px 20px; border-radius: 0 10px 10px 0; margin: 20px auto; max-width: 560px; text-align: left; font-style: italic; font-size: 14px; color: rgba(255,255,255,0.85); position: relative; }
+  .cover-quote .author { color: #93c5fd; font-size: 12px; margin-top: 5px; font-style: normal; font-weight: 600; }
+  .cover-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; justify-content: center; position: relative; }
+  .cover-tag { background: rgba(37,99,235,0.2); border: 1px solid rgba(147,197,253,0.3); padding: 5px 14px; border-radius: 15px; font-size: 12px; color: #bfdbfe; }
+
+  /* TOC */
+  .toc { background: white; padding: 50px 60px; }
+  .toc-header { font-size: 28px; color: var(--primary); border-bottom: 4px solid var(--blue); padding-bottom: 15px; margin-bottom: 35px; }
+  .toc-main { display: flex; justify-content: space-between; padding: 10px 0; font-weight: 700; font-size: 15px; color: var(--primary); border-bottom: 1px solid #eee; margin-top: 12px; }
+  .toc-main .num { color: var(--blue); margin-right: 10px; font-family: 'Courier New', monospace; }
+  .toc-sub { padding: 4px 0 4px 30px; color: #666; font-size: 13px; border-bottom: 1px dotted #f0f0f0; }
+
+  /* CHAPTERS */
+  .chapter { background: white; margin: 0; page-break-before: always; }
+  .chapter-header { padding: 40px 55px; position: relative; overflow: hidden; }
+  .ch1 .chapter-header { background: linear-gradient(135deg, #1e1b4b, #3730a3); }
+  .ch2 .chapter-header { background: linear-gradient(135deg, #1e3a5f, #1d4ed8); }
+  .ch3 .chapter-header { background: linear-gradient(135deg, #14532d, #166534); }
+  .ch4 .chapter-header { background: linear-gradient(135deg, #7c2d12, #9a3412); }
+  .ch5 .chapter-header { background: linear-gradient(135deg, #1a0d26, #4c1d95); }
+  .ch6 .chapter-header { background: linear-gradient(135deg, #134e4a, #0f766e); }
+  .ch7 .chapter-header { background: linear-gradient(135deg, #1c1917, #292524); }
+  .ch8 .chapter-header { background: linear-gradient(135deg, #0c4a6e, #075985); }
+  .ch9 .chapter-header { background: linear-gradient(135deg, #1e1b4b, #312e81); }
+  .chapter-header::after { content: ''; position: absolute; top: -40px; right: -40px; width: 180px; height: 180px; border-radius: 50%; background: rgba(255,255,255,0.04); }
+  .chapter-label { font-size: 11px; letter-spacing: 4px; color: #93c5fd; text-transform: uppercase; margin-bottom: 8px; font-family: 'Courier New', monospace; }
+  .chapter-title { font-size: 28px; color: white; font-weight: 700; }
+  .chapter-desc { font-size: 13.5px; color: rgba(255,255,255,0.55); margin-top: 8px; }
+  .chapter-body { padding: 40px 55px; }
+
+  h2.sec { font-size: 21px; color: var(--primary); margin: 35px 0 15px; padding-left: 16px; border-left: 5px solid var(--blue); }
+  h3.sub { font-size: 17px; color: #1e3a5f; margin: 25px 0 12px; padding-bottom: 6px; border-bottom: 2px dashed #e0e0e0; }
+  p { margin-bottom: 14px; text-align: justify; }
+
+  /* QUOTE */
+  .quote-box { background: linear-gradient(135deg, #eff6ff, #dbeafe); border-left: 5px solid #3b82f6; padding: 18px 22px; border-radius: 0 12px 12px 0; margin: 20px 0; }
+  .quote-text { font-size: 16px; font-style: italic; color: #1e3a8a; line-height: 2; font-weight: 500; }
+  .quote-author { margin-top: 8px; color: #1d4ed8; font-weight: 700; font-size: 13px; }
+
+  /* BOXES */
+  .box { padding: 16px 20px; border-radius: 10px; margin: 18px 0; border-left: 5px solid; }
+  .info { background: #eff6ff; border-color: #3b82f6; color: #1e3a5f; }
+  .warn { background: #fff7ed; border-color: #ea580c; color: #7c2d12; }
+  .danger { background: #fef2f2; border-color: #e63946; color: #7f1d1d; }
+  .success { background: #f0fdf4; border-color: #059669; color: #14532d; }
+  .purple-box { background: #faf5ff; border-color: #7c3aed; color: #3b0764; }
+  .teal-box { background: #f0fdfa; border-color: #0d9488; color: #134e4a; }
+  .box-t { font-weight: 700; margin-bottom: 8px; font-size: 14px; }
+
+  /* TABLES */
+  table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 13.5px; }
+  thead tr { background: #1e1b4b; color: white; }
+  th { padding: 11px 14px; text-align: left; font-weight: 600; }
+  td { padding: 10px 14px; border-bottom: 1px solid #eee; }
+  tr:nth-child(even) { background: #f8f9ff; }
+  tr:hover { background: #eff6ff; }
+
+  /* BADGE */
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 11.5px; font-weight: 600; margin: 2px; }
+  .badge-g { background: #d1fae5; color: #065f46; }
+  .badge-r { background: #fee2e2; color: #7f1d1d; }
+  .badge-y { background: #fef3c7; color: #78350f; }
+  .badge-b { background: #dbeafe; color: #1e3a8a; }
+  .badge-p { background: #ede9fe; color: #4c1d95; }
+  .badge-t { background: #ccfbf1; color: #134e4a; }
+
+  /* GRID */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 18px 0; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin: 16px 0; }
+  .card { background: #f8f9ff; border: 1px solid #e0e7ff; border-radius: 10px; padding: 16px; }
+  .card h4 { color: var(--primary); margin-bottom: 10px; font-size: 14px; border-bottom: 2px solid var(--blue); padding-bottom: 5px; }
+  .card.red-card { background: #fef2f2; border-color: #fca5a5; }
+  .card.red-card h4 { color: #7f1d1d; border-color: #e63946; }
+  .card.green-card { background: #f0fdf4; border-color: #6ee7b7; }
+  .card.green-card h4 { color: #14532d; border-color: #059669; }
+  .card.orange-card { background: #fff7ed; border-color: #fed7aa; }
+  .card.orange-card h4 { color: #7c2d12; border-color: #ea580c; }
+  .card.purple-card { background: #faf5ff; border-color: #c4b5fd; }
+  .card.purple-card h4 { color: #4c1d95; border-color: #7c3aed; }
+  .card.teal-card { background: #f0fdfa; border-color: #99f6e4; }
+  .card.teal-card h4 { color: #134e4a; border-color: #0d9488; }
+
+  /* SITUATION BOX */
+  .situation { background: #f8f9ff; border: 2px solid #e0e7ff; border-radius: 12px; padding: 20px 24px; margin: 20px 0; }
+  .s-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #3b82f6; font-weight: 700; margin-bottom: 8px; }
+  .s-title { font-size: 17px; font-weight: 700; color: #1a1a2e; margin-bottom: 12px; }
+  .s-wrong { background: #fef2f2; border-left: 4px solid #ef4444; padding: 10px 14px; border-radius: 0 8px 8px 0; margin: 10px 0; font-size: 13.5px; }
+  .s-right { background: #f0fdf4; border-left: 4px solid #059669; padding: 10px 14px; border-radius: 0 8px 8px 0; margin: 10px 0; font-size: 13.5px; }
+  .s-label2 { font-weight: 700; font-size: 12px; display: block; margin-bottom: 4px; }
+  .s-wrong .s-label2 { color: #ef4444; }
+  .s-right .s-label2 { color: #059669; }
+
+  /* STEP BOX */
+  .step-box { display: flex; gap: 16px; align-items: flex-start; margin: 16px 0; padding: 16px 20px; background: #f8f9ff; border-radius: 10px; border: 1px solid #e0e7ff; }
+  .step-num { min-width: 42px; height: 42px; border-radius: 50%; background: #1d4ed8; color: white; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; flex-shrink: 0; }
+  .step-content h4 { font-size: 15px; color: #1a1a2e; margin-bottom: 6px; font-weight: 700; }
+  .step-content p { font-size: 13.5px; color: #555; margin: 0; }
+
+  /* TECHNIQUE CARD */
+  .technique { background: linear-gradient(135deg, #1e1b4b, #1d4ed8); color: white; border-radius: 12px; padding: 20px 24px; margin: 16px 0; }
+  .technique-name { font-size: 17px; font-weight: 700; color: #93c5fd; margin-bottom: 8px; }
+  .technique-def { font-size: 13.5px; color: rgba(255,255,255,0.75); margin-bottom: 10px; }
+  .technique-tip { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); padding: 10px 14px; border-radius: 8px; font-size: 13px; color: #bfdbfe; }
+
+  /* NERVOUSNESS METER */
+  .meter-box { background: #1e1b4b; border-radius: 12px; padding: 20px 24px; margin: 18px 0; color: white; }
+  .meter-title { color: #93c5fd; font-weight: 700; margin-bottom: 14px; font-size: 15px; }
+  .meter-item { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .meter-label { min-width: 180px; font-size: 13px; color: rgba(255,255,255,0.8); }
+  .meter-bar { flex: 1; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
+  .meter-fill { height: 100%; border-radius: 4px; }
+  .m-green { background: #10b981; }
+  .m-yellow { background: #f59e0b; }
+  .m-red { background: #ef4444; }
+
+  .hl { background: linear-gradient(135deg, #eff6ff, #dbeafe); border: 1px solid #3b82f6; padding: 14px 18px; border-radius: 8px; margin: 16px 0; }
+  .chapter-summary { background: linear-gradient(135deg, #1e1b4b, #1d4ed8); color: white; border-radius: 12px; padding: 24px 28px; margin-top: 40px; }
+  .chapter-summary h3 { color: #93c5fd; margin-bottom: 14px; font-size: 17px; }
+  .chapter-summary li { color: rgba(255,255,255,0.85); margin-bottom: 6px; }
+
+  ul, ol { margin: 10px 0 10px 24px; line-height: 2.1; }
+  li { margin-bottom: 4px; }
+
+  /* DARK MODE */
+  body.light-mode { --bg: #f8f9ff; --text: #1a1a2e; }
+  body.dark-mode { --bg: #0a0f1a; --text: #e2e8f0; }
+  body { background: var(--bg); color: var(--text); transition: background 0.3s, color 0.3s; }
+  body.dark-mode .toc { background: #111827; color: var(--text); }
+  body.dark-mode .chapter { background: #111827; }
+  body.dark-mode .chapter-body { background: #111827; }
+  body.dark-mode h2.sec { color: #93c5fd; }
+  body.dark-mode h3.sub { color: #93c5fd; border-color: #2d3748; }
+  body.dark-mode p { color: var(--text); }
+  body.dark-mode .toc-main { color: #e2e8f0; border-color: #2d3748; }
+  body.dark-mode .toc-header { color: #e2e8f0; }
+  body.dark-mode .toc-sub { color: #94a3b8; }
+  body.dark-mode table { color: var(--text); }
+  body.dark-mode td { border-color: #2d3748; color: var(--text); }
+  body.dark-mode tr:nth-child(even) { background: #0f172a; }
+  body.dark-mode tr:hover { background: #1e3a5f; }
+  body.dark-mode thead tr { background: #1e3a5f; }
+  body.dark-mode .card { background: #0f172a; border-color: #1e3a5f; color: var(--text); }
+  body.dark-mode .card h4 { color: #93c5fd; }
+  body.dark-mode .card.red-card { background: #2a0a0a; border-color: #ef4444; }
+  body.dark-mode .card.red-card h4 { color: #fca5a5; }
+  body.dark-mode .card.green-card { background: #0a2a15; border-color: #059669; }
+  body.dark-mode .card.green-card h4 { color: #6ee7b7; }
+  body.dark-mode .card.orange-card { background: #2a1500; border-color: #ea580c; }
+  body.dark-mode .card.orange-card h4 { color: #fdba74; }
+  body.dark-mode .card.purple-card { background: #1a0a2a; border-color: #7c3aed; }
+  body.dark-mode .card.purple-card h4 { color: #d8b4fe; }
+  body.dark-mode .card.teal-card { background: #003333; border-color: #0d9488; }
+  body.dark-mode .card.teal-card h4 { color: #67e8f9; }
+  body.dark-mode .info { background: #0c2340; color: #93c5fd; }
+  body.dark-mode .warn { background: #2a1500; color: #fdba74; }
+  body.dark-mode .danger { background: #2a0a0a; color: #fca5a5; }
+  body.dark-mode .success { background: #0a2a15; color: #6ee7b7; }
+  body.dark-mode .purple-box { background: #1a0a2a; color: #d8b4fe; }
+  body.dark-mode .teal-box { background: #003333; color: #67e8f9; }
+  body.dark-mode .hl { background: #0c2340; border-color: #3b82f6; color: #93c5fd; }
+  body.dark-mode .quote-box { background: #0c2340; }
+  body.dark-mode .quote-text { color: #93c5fd; }
+  body.dark-mode .situation { background: #0f172a; border-color: #1e3a5f; }
+  body.dark-mode .s-title { color: #e2e8f0; }
+  body.dark-mode .s-wrong { background: #2a0a0a; }
+  body.dark-mode .s-right { background: #0a2a15; }
+  body.dark-mode .step-box { background: #0f172a; border-color: #1e3a5f; }
+  body.dark-mode .step-content h4 { color: #e2e8f0; }
+  body.dark-mode .step-content p { color: #94a3b8; }
+
+  /* BILINGUAL */
+  .en-text { display: none; } .bn-text { display: inline; }
+  body.lang-en .bn-text { display: none; } body.lang-en .en-text { display: inline; }
+  .en-block { display: none; } .bn-block { display: block; }
+  body.lang-en .bn-block { display: none; } body.lang-en .en-block { display: block; }
+
+  .top-controls { position: fixed; top: 18px; right: 18px; display: flex; gap: 8px; z-index: 9999; }
+  .ctrl-btn { border: none; padding: 9px 16px; border-radius: 8px; font-size: 13px; font-family: inherit; cursor: pointer; transition: all 0.3s; font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+  .lang-btn { background: #0077b6; color: white; }
+  .theme-btn { background: #2dc653; color: #0d1b2a; }
+  .print-btn { background: #1d4ed8; color: white; }
+  .ctrl-btn:hover { transform: translateY(-2px); opacity: 0.9; }
+
+  @media print { .top-controls { display: none; } body { background: white; } .cover, .chapter-header, thead tr { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+  @media (max-width: 768px) { .grid2, .grid3 { grid-template-columns: 1fr; } .chapter-body { padding: 24px 20px; } .toc { padding: 30px 24px; } }
+</style>
+</head>
+<body class="light-mode">
+
+<div class="top-controls">
+  <button class="print-btn ctrl-btn" onclick="window.print()">🖨️ PDF</button>
+  <button class="theme-btn ctrl-btn" onclick="toggleTheme()" id="themeBtn">🌙 Dark Mode</button>
+  <button class="lang-btn ctrl-btn" onclick="toggleLang()" id="langBtn">🇬🇧 English</button>
+</div>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-badge">Public Speaking — সম্পূর্ণ গাইড</div>
+  <div class="cover-icon">🎤</div>
+  <h1>Public <span>Speaking</span></h1>
+  <h2><span class="bn-text">হাজার মানুষের সামনে কথা বলো — আত্মবিশ্বাসের সাথে</span><span class="en-text">Speak in Front of Thousands — With Confidence</span></h2>
+  <div class="divider"></div>
+  <p class="desc" style="position:relative;"><span class="bn-text">Nervous হওয়া থেকে মাথা ফাঁকা হয়ে যাওয়া, অপরিচিতের সাথে কথা শুরু করা থেকে দীর্ঘ সময় কথা বলা — Public Speaking-এর সব সমস্যার সম্পূর্ণ সমাধান।</span><span class="en-text">From nervousness to mind going blank, from starting conversations with strangers to speaking for long periods — complete solutions to all Public Speaking challenges.</span></p>
+  <div class="cover-quote">
+    <span class="bn-text">"মানুষের সবচেয়ে বড় ভয় হলো Public Speaking। মৃত্যু দ্বিতীয়। মানে অধিকাংশ মানুষ নিজের অন্ত্যেষ্টিক্রিয়ায় শুয়ে থাকার চেয়ে eulogy দিতে বেশি ভয় পায়।"</span>
+    <span class="en-text">"According to most studies, people's number one fear is public speaking. Number two is death. This means to the average person, if you go to a funeral, you're better off in the casket than doing the eulogy."</span>
+    <div class="author">— Jerry Seinfeld</div>
+  </div>
+  <div class="cover-tags">
+    <span class="cover-tag">😰 Nervousness Cure</span>
+    <span class="cover-tag">🧠 Mind Goes Blank</span>
+    <span class="cover-tag">👥 Crowd Speaking</span>
+    <span class="cover-tag">🤝 Strangers</span>
+    <span class="cover-tag">🚀 How to Start</span>
+    <span class="cover-tag">⏱️ Long Speaking</span>
+    <span class="cover-tag">🎯 Body Language</span>
+    <span class="cover-tag">💪 Confidence</span>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <div class="toc-header">📋 <span class="bn-text">বিষয়সূচি</span><span class="en-text">Table of Contents</span></div>
+  <div class="toc-chapter"><div class="toc-main"><span><span class="num">০১</span> <span class="bn-text">Public Speaking-এর ভয় — কেন হয় ও কীভাবে কাটাবে</span><span class="en-text">Fear of Public Speaking — Why it Happens & How to Overcome</span></span></div><div class="toc-sub"><span class="bn-text">Nervousness-এর science, Fight-or-Flight, ভয়কে শক্তিতে পরিণত করো</span></div></div>
+  <div class="toc-chapter"><div class="toc-main"><span><span class="num">০২</span> <span class="bn-text">মাথা ফাঁকা হয়ে গেলে কী করবে</span><span class="en-text">What to Do When Your Mind Goes Blank</span></span></div><div class="toc-sub"><span class="bn-text">Blank mind-এর কারণ, Emergency techniques, Prevention strategies</span></div></div>
+  <div class="toc-chapter"><div class="toc-main"><span><span class="num">০৩</span> <span class="bn-text">কথা কীভাবে শুরু করবে — Opening Techniques</span><span class="en-text">How to Start Speaking — Opening Techniques</span></span></div><div class="toc-sub"><span class="bn-text">First 30 seconds, Powerful openers, Audience hook করো</span></div></div>
+  <div class="toc-chapter"><div class="toc-main"><span><span class="num">০৪</span> <span class="bn-text">অনেক মানুষের সামনে কথা বলা</span><span class="en-text">Speaking in Front of a Large Crowd</span></span></div><div class="toc-sub"><span class="bn-text">Stage presence, Eye contact, Voice control, Crowd engagement</span></div></div>
+  <div class="toc-chapter"><div class="toc-main"><span><span class="num">০৫</span> <span class="bn-text">অপরিচিত মানুষের সাথে কথা বলা</span><span class="en-text">Talking to Strangers</span></span></div><div class="toc-sub"><span class="bn-text">প্রথম কথা শুরু করার technique, Conversation চালিয়ে যাওয়া, Small talk</span></div></div>
+  <div class="toc-chapter"><div class="toc-main"><span><span class="num">০৬</span> <span class="bn-text">দীর্ঘ সময় কথা বলার কৌশল</span><span class="en-text">Techniques for Speaking for a Long Time</span></span></div><div class="toc-sub"><span class="bn-text">Structure, Storytelling, Pauses, Audience engagement, Filler words এড়ানো</span></div></div>
+  <div class="toc-chapter"><div class="toc-main"><span><span class="num">০৭</span> <span class="bn-text">Body Language ও Voice — Non-verbal Communication</span><span class="en-text">Body Language & Voice</span></span></div><div class="toc-sub"><span class="bn-text">Posture, Gestures, Eye contact, Tone, Pace, Power poses</span></div></div>
+  <div class="toc-chapter"><div class="toc-main"><span><span class="num">০৮</span> <span class="bn-text">Preparation ও Practice</span><span class="en-text">Preparation & Practice</span></span></div><div class="toc-sub"><span class="bn-text">Speech structure তৈরি, Practice techniques, Feedback নেওয়া</span></div></div>
+  <div class="toc-chapter"><div class="toc-main"><span><span class="num">০৯</span> <span class="bn-text">৩০ দিনের Public Speaking Challenge</span><span class="en-text">30-Day Public Speaking Challenge</span></span></div><div class="toc-sub"><span class="bn-text">Beginner থেকে Confident Speaker হওয়ার step-by-step plan</span></div></div>
+</div>
+
+<!-- CH1: FEAR -->
+<div class="chapter ch1">
+  <div class="chapter-header">
+    <div class="chapter-label">CHAPTER 01</div>
+    <div class="chapter-title">😰 <span class="bn-text">Public Speaking-এর ভয় — কেন হয় ও কীভাবে কাটাবে</span><span class="en-text">Fear of Public Speaking — Why it Happens & How to Beat It</span></div>
+    <div class="chapter-desc"><span class="bn-text">ভয়ের পেছনের science জানলে ভয় অনেকটাই কমে যায়</span><span class="en-text">Understanding the science behind fear reduces it significantly</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">🧠 <span class="bn-text">ভয় কেন হয় — Science</span><span class="en-text">Why Fear Happens — The Science</span></h2>
+    <p><span class="bn-text">Public Speaking-এর ভয়কে Glossophobia বলে। এটা পৃথিবীর সবচেয়ে common phobia — ৭৫% মানুষ এটায় ভোগে। এর কারণ হলো আমাদের <strong>Fight-or-Flight response</strong> — হাজার বছর আগে যখন মানুষ গুহায় থাকত, "দলের সামনে দাঁড়ানো" মানে ছিল বিপদ বা judgment। সেই প্রতিক্রিয়া আজও আছে।</span><span class="en-text">Fear of public speaking is called Glossophobia. It's the world's most common phobia — 75% of people suffer from it. The cause is our <strong>Fight-or-Flight response</strong> — thousands of years ago, "standing before the group" meant danger or judgment. That response still exists today.</span></p>
+
+    <div class="grid2">
+      <div class="card red-card">
+        <h4>😨 <span class="bn-text">ভয়ের সময় শরীরে কী হয়</span><span class="en-text">What Happens in Your Body When Afraid</span></h4>
+        <ul>
+          <li><span class="bn-text">Adrenaline release হয় — হার্ট দ্রুত চলে</span><span class="en-text">Adrenaline releases — heart beats fast</span></li>
+          <li><span class="bn-text">গলা শুকিয়ে যায়, কণ্ঠস্বর কাঁপে</span><span class="en-text">Throat dries, voice shakes</span></li>
+          <li><span class="bn-text">হাত-পা ঠান্ডা হয়, ঘাম হয়</span><span class="en-text">Hands and feet get cold, sweating</span></li>
+          <li><span class="bn-text">মাথা ফাঁকা হয়ে যায়</span><span class="en-text">Mind goes blank</span></li>
+          <li><span class="bn-text">পেট অস্থির লাগে</span><span class="en-text">Stomach feels unsettled</span></li>
+        </ul>
+      </div>
+      <div class="card green-card">
+        <h4>💡 <span class="bn-text">আসলে যা হচ্ছে</span><span class="en-text">What's Actually Happening</span></h4>
+        <p><span class="bn-text">এই সব symptoms আসলে <strong>excitement-এর মতোই</strong>। Adrenaline মানে তোমার শরীর তৈরি হচ্ছে — perform করার জন্য। Olympic athletes, rock stars — সবাই এটা feel করে। পার্থক্য হলো তারা এটাকে ভয় না বলে <strong>excitement</strong> বলে।</span><span class="en-text">All these symptoms are <strong>identical to excitement</strong>. Adrenaline means your body is preparing — to perform. Olympic athletes, rock stars — everyone feels this. The difference is they call it <strong>excitement</strong>, not fear.</span></p>
+      </div>
+    </div>
+
+    <div class="box info">
+      <div class="box-t">🔬 <span class="bn-text">Harvard-এর Research</span><span class="en-text">Harvard Research</span></div>
+      <span class="bn-text">Harvard Business School-এর গবেষণায় দেখা গেছে — যারা nervousness-কে "আমি nervous" না বলে <strong>"আমি excited"</strong> বলে, তারা significantly ভালো perform করে। শুধু একটা word বদলানো — কিন্তু brain-এ বিশাল পার্থক্য।</span>
+      <span class="en-text">Harvard Business School research found — people who say <strong>"I'm excited"</strong> instead of "I'm nervous" perform significantly better. Just one word change — but a massive difference in the brain.</span>
+    </div>
+
+    <h2 class="sec">🎯 <span class="bn-text">Nervousness কমানোর সবচেয়ে Effective Techniques</span><span class="en-text">Most Effective Techniques to Reduce Nervousness</span></h2>
+
+    <div class="step-box">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>🫁 Box Breathing — ৪-৪-৪-৪</h4>
+        <p><span class="bn-text">কথা বলার আগে: ৪ সেকেন্ড শ্বাস নাও → ৪ সেকেন্ড ধরে রাখো → ৪ সেকেন্ড ছাড়ো → ৪ সেকেন্ড বিরতি। ৩-৪ বার করো। Navy SEALs এই technique ব্যবহার করে। Nervous system সাথে সাথে calm হয়।</span><span class="en-text">Before speaking: Inhale 4 sec → Hold 4 sec → Exhale 4 sec → Pause 4 sec. Repeat 3-4 times. Navy SEALs use this technique. The nervous system calms immediately.</span></p>
+      </div>
+    </div>
+
+    <div class="step-box">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>💪 Power Pose — ২ মিনিট</h4>
+        <p><span class="bn-text">কথা বলার ২ মিনিট আগে bathroom-এ গিয়ে "Wonder Woman pose" নাও — দুই হাত কোমরে, মাথা উঁচু, পা ফাঁকা করে দাঁড়াও। Amy Cuddy-র Harvard research অনুযায়ী এতে Testosterone বাড়ে ও Cortisol (stress hormone) কমে।</span><span class="en-text">2 minutes before speaking, go to the bathroom and take the "Wonder Woman pose" — hands on hips, head up, feet apart. Amy Cuddy's Harvard research shows this increases Testosterone and decreases Cortisol (stress hormone).</span></p>
+      </div>
+    </div>
+
+    <div class="step-box">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>🔄 Reframe করো — "আমি Excited"</h4>
+        <p><span class="bn-text">মনে মনে বলো: "আমি nervous নই, আমি excited।" এটা শুনতে ছোট মনে হলেও brain এটা সত্যি বলে ধরে নেয়। বারবার করলে আস্তে আস্তে সত্যিই সেভাবেই feel করবে।</span><span class="en-text">Tell yourself: "I'm not nervous, I'm excited." This may seem small but the brain takes it as true. Repeat it and you'll actually start feeling that way.</span></p>
+      </div>
+    </div>
+
+    <div class="step-box">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4>👥 Focus Shift — নিজে থেকে Audience-এ</h4>
+        <p><span class="bn-text">"আমাকে কেমন দেখাচ্ছে?" — এই চিন্তা বাদ দাও। বরং ভাবো: "আমি এই মানুষগুলোকে কী দিতে পারি? এই কথাটা তাদের কীভাবে সাহায্য করবে?" Focus shift হলে ভয় অনেক কমে যায়।</span><span class="en-text">"How do I look?" — stop this thought. Instead think: "What can I give these people? How will my words help them?" When focus shifts, fear reduces significantly.</span></p>
+      </div>
+    </div>
+
+    <div class="step-box">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <h4>🎭 "They Want You to Succeed"</h4>
+        <p><span class="bn-text">Audience তোমাকে fail করতে দেখতে চায় না। তারা তোমার success চায় — কারণ তোমার failure মানে তাদের সময় নষ্ট হওয়া। তারা তোমার supporter, judge নয়। এটা মনে রাখলে confidence আসে।</span><span class="en-text">The audience doesn't want to see you fail. They want your success — because your failure wastes their time. They're your supporters, not judges. Remembering this builds confidence.</span></p>
+      </div>
+    </div>
+
+    <h2 class="sec">📊 <span class="bn-text">Nervousness Level — কোথায় তুমি?</span><span class="en-text">Nervousness Level — Where Are You?</span></h2>
+    <div class="meter-box">
+      <div class="meter-title">🎤 Public Speaking Anxiety Scale</div>
+      <div class="meter-item"><div class="meter-label">😊 Slight nervousness</div><div class="meter-bar"><div class="meter-fill m-green" style="width:95%"></div></div><span style="font-size:12px;color:#6ee7b7;margin-left:8px;">Normal & Helpful</span></div>
+      <div class="meter-item"><div class="meter-label">😰 Moderate anxiety</div><div class="meter-bar"><div class="meter-fill m-yellow" style="width:65%"></div></div><span style="font-size:12px;color:#fcd34d;margin-left:8px;">Practice দরকার</span></div>
+      <div class="meter-item"><div class="meter-label">😱 Severe anxiety</div><div class="meter-bar"><div class="meter-fill m-red" style="width:35%"></div></div><span style="font-size:12px;color:#fca5a5;margin-left:8px;">Techniques + Exposure</span></div>
+    </div>
+
+    <div class="box success">
+      <div class="box-t">✅ <span class="bn-text">সবচেয়ে গুরুত্বপূর্ণ সত্য</span><span class="en-text">Most Important Truth</span></div>
+      <span class="bn-text"><strong>Nervousness কখনো সম্পূর্ণ যায় না — এবং যাওয়া উচিতও নয়।</strong> কিছুটা nervousness performance ভালো করে। লক্ষ্য হলো nervousness-কে নিয়ন্ত্রণ করা, সম্পূর্ণ দূর করা নয়। বিশ্বের সেরা speakers-রাও কথা বলার আগে nervous feel করেন।</span>
+      <span class="en-text"><strong>Nervousness never completely goes away — and it shouldn't.</strong> Some nervousness improves performance. The goal is to control nervousness, not eliminate it. Even the world's best speakers feel nervous before speaking.</span>
+    </div>
+  </div>
+</div>
+
+<!-- CH2: MIND GOES BLANK -->
+<div class="chapter ch2">
+  <div class="chapter-header">
+    <div class="chapter-label">CHAPTER 02</div>
+    <div class="chapter-title">🧊 <span class="bn-text">মাথা ফাঁকা হয়ে গেলে কী করবে</span><span class="en-text">What to Do When Your Mind Goes Blank</span></div>
+    <div class="chapter-desc"><span class="bn-text">সবচেয়ে বড় ভয়ের মুহূর্তটি handle করার exact techniques</span><span class="en-text">Exact techniques to handle the most terrifying moment</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">🔬 <span class="bn-text">মাথা কেন ফাঁকা হয়?</span><span class="en-text">Why Does the Mind Go Blank?</span></h2>
+    <p><span class="bn-text">যখন anxiety বেশি হয়, brain-এর Prefrontal Cortex (যেখানে memory ও rational thinking থাকে) temporarily shutdown হয়ে যায়। Adrenaline surge এতটাই বেশি হয় যে working memory কাজ করা বন্ধ করে দেয়। এটা সবার সাথে হয় — এতে তুমি stupid নও।</span><span class="en-text">When anxiety spikes, the brain's Prefrontal Cortex (where memory and rational thinking live) temporarily shuts down. The adrenaline surge is so intense that working memory stops functioning. This happens to everyone — it doesn't mean you're stupid.</span></p>
+
+    <h2 class="sec">🚨 <span class="bn-text">Emergency Recovery — মাথা ফাঁকা হলে এখনই করো</span><span class="en-text">Emergency Recovery — Do This Immediately</span></h2>
+
+    <div class="situation">
+      <div class="s-label">Emergency Technique 1</div>
+      <div class="s-title">⏸️ <span class="bn-text">Pause করো — দৌড়ানোর চেষ্টা করো না</span><span class="en-text">Pause — Don't Try to Rush</span></div>
+      <div class="s-wrong"><span class="s-label2">❌ ভুল কাজ:</span><span class="bn-text">"উমম... আহহ... মানে... আসলে..." বলতে থাকো — এতে worse হয়।</span></div>
+      <div class="s-right"><span class="s-label2">✅ সঠিক কাজ:</span><span class="bn-text">চুপ করে যাও। ১-২ সেকেন্ড। একটু পানি খাও (যদি থাকে)। Audience-এর দিকে তাকাও। একটা deep breath নাও। তুমি যতক্ষণ মনে করছ pause ততটা long মনে হচ্ছে না audience-এর কাছে।</span><span class="en-text">Go quiet. 1-2 seconds. Take a sip of water (if available). Look at the audience. Take a deep breath. The pause doesn't feel as long to the audience as it does to you.</span></div>
+    </div>
+
+    <div class="situation">
+      <div class="s-label">Emergency Technique 2</div>
+      <div class="s-title">🔄 <span class="bn-text">Bridge Phrases ব্যবহার করো</span><span class="en-text">Use Bridge Phrases</span></div>
+      <div class="s-right"><span class="s-label2">✅ এই phrases গুলো মুখস্থ রাখো:</span>
+        <ul>
+          <li><span class="bn-text">"এই বিষয়টা একটু ভিন্নভাবে দেখি..."</span><span class="en-text">"Let me look at this from a different angle..."</span></li>
+          <li><span class="bn-text">"আমি একটু আগের কথায় ফিরে যাই..."</span><span class="en-text">"Let me go back to what I said earlier..."</span></li>
+          <li><span class="bn-text">"এখানে একটা গুরুত্বপূর্ণ প্রশ্ন আসে..."</span><span class="en-text">"An important question arises here..."</span></li>
+          <li><span class="bn-text">"তোমাদের কাছে একটা প্রশ্ন করি..."</span><span class="en-text">"Let me ask you all a question..."</span></li>
+          <li><span class="bn-text">"এটাকে একটা example দিয়ে বুঝাই..."</span><span class="en-text">"Let me explain this with an example..."</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="situation">
+      <div class="s-label">Emergency Technique 3</div>
+      <div class="s-title">❓ <span class="bn-text">Audience-কে প্রশ্ন করো</span><span class="en-text">Ask the Audience a Question</span></div>
+      <div class="s-right"><span class="s-label2">✅ কার্যকর কারণ:</span><span class="bn-text">Audience প্রশ্নের জবাব দিতে ব্যস্ত থাকে — তুমি তখন নিজের কথা গুছিয়ে নেওয়ার সময় পাও। "এই বিষয়ে আপনাদের কী মনে হয়?" বা "এরকম situation কেউ face করেছেন?" — এই ধরনের প্রশ্ন সবসময় কাজে লাগে।</span><span class="en-text">The audience is busy answering — giving you time to gather your thoughts. "What do you all think about this?" or "Has anyone faced this kind of situation?" — these types of questions always work.</span></div>
+    </div>
+
+    <h2 class="sec">🛡️ <span class="bn-text">Prevention — মাথা ফাঁকা যাতে না হয়</span><span class="en-text">Prevention — So Mind Doesn't Go Blank</span></h2>
+    <table>
+      <thead><tr><th><span class="bn-text">Strategy</span></th><th><span class="bn-text">কীভাবে করব</span><span class="en-text">How to Do It</span></th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge badge-b">Anchor Points</span></td><td><span class="bn-text">পুরো speech মুখস্থ না করে ৫-৭টি key anchor point মনে রাখো। এই points মনে থাকলে সব মনে পড়বে।</span><span class="en-text">Don't memorize the whole speech — remember 5-7 key anchor points. If these are remembered, everything else follows.</span></td></tr>
+        <tr><td><span class="badge badge-g">Story-based</span></td><td><span class="bn-text">Story format-এ বলো — story মনে রাখা সহজ। শুরু, মধ্য, শেষ মনে থাকলে মাথা ফাঁকা হওয়ার chance কম।</span><span class="en-text">Use story format — stories are easier to remember. If you remember beginning, middle, end — less chance of blanking.</span></td></tr>
+        <tr><td><span class="badge badge-y">Notes Card</span></td><td><span class="bn-text">হাতে একটা ছোট card রাখো — সব লেখা না, শুধু key words। Emergency-তে দেখলে কেউ মনে করবে না তুমি সব ভুলে গেছ।</span><span class="en-text">Keep a small card in hand — not everything written, just key words. If you glance at it in emergency, no one thinks you forgot everything.</span></td></tr>
+        <tr><td><span class="badge badge-p">Over-prepare</span></td><td><span class="bn-text">যতটুকু বলবে তার ৩ গুণ জানো। বেশি জানলে ভয় কম হয়।</span><span class="en-text">Know 3x more than you'll say. The more you know, the less fear you have.</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="box info">
+      <div class="box-t">💡 <span class="bn-text">Professional Trick</span></div>
+      <span class="bn-text">সেরা speakers-রা ভুলে যাওয়ার পরে তা বোঝা না দিয়ে smoothly transition করেন। Audience কখনো জানতে পারে না কোথায় তুমি ভুলে গেছ। কারণ তারা তোমার মাথায় নেই — তারা তোমার কথা শুনছে।</span>
+      <span class="en-text">The best speakers transition smoothly after forgetting without letting it show. The audience never knows where you blanked. Because they're not in your head — they're listening to your words.</span>
+    </div>
+  </div>
+</div>
+
+<!-- CH3: HOW TO START -->
+<div class="chapter ch3">
+  <div class="chapter-header">
+    <div class="chapter-label">CHAPTER 03</div>
+    <div class="chapter-title">🚀 <span class="bn-text">কথা কীভাবে শুরু করবে — Opening Techniques</span><span class="en-text">How to Start Speaking — Opening Techniques</span></div>
+    <div class="chapter-desc"><span class="bn-text">প্রথম ৩০ সেকেন্ড সবকিছু decide করে — সঠিকভাবে শুরু করো</span><span class="en-text">The first 30 seconds decides everything — start the right way</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <div class="box warn">
+      <div class="box-t">⚠️ <span class="bn-text">সবচেয়ে বড় ভুল Opening</span><span class="en-text">Biggest Opening Mistakes</span></div>
+      <ul>
+        <li><span class="bn-text">❌ "আমি আসলে Public Speaking-এ ভালো না..." (নিজেকে ছোট করো না)</span><span class="en-text">❌ "I'm actually not good at public speaking..." (Don't belittle yourself)</span></li>
+        <li><span class="bn-text">❌ "আজকে আমি X বিষয়ে বলব..." (boring, predictable)</span><span class="en-text">❌ "Today I will talk about X..." (boring, predictable)</span></li>
+        <li><span class="bn-text">❌ "Sorry, আমি একটু nervous..." (weakness দেখাও না)</span><span class="en-text">❌ "Sorry, I'm a bit nervous..." (Don't show weakness)</span></li>
+        <li><span class="bn-text">❌ "একটু কি সবাই শুনতে পাচ্ছেন?" (কথা দিয়ে শুরু করো, test দিয়ে নয়)</span></li>
+      </ul>
+    </div>
+
+    <h2 class="sec">🎯 <span class="bn-text">৬টি Powerful Opening — যেকোনো Situation-এ</span><span class="en-text">6 Powerful Openings — For Any Situation</span></h2>
+
+    <div class="technique">
+      <div class="technique-name">1. 🤔 Thought-provoking Question দিয়ে শুরু</div>
+      <div class="technique-def"><span class="bn-text">একটি powerful প্রশ্ন দিয়ে শুরু করো যা audience-কে ভাবায়। সাথে সাথে তারা engaged হয়।</span><span class="en-text">Start with a powerful question that makes the audience think. They become instantly engaged.</span></div>
+      <div class="technique-tip">💬 <span class="bn-text">উদাহরণ: "আপনারা কি জানেন প্রতিদিন আমরা কতবার মিথ্যা বলি?" — এরপর topic-এ প্রবেশ করো।</span><span class="en-text">Example: "Do you know how many times we lie every day?" — then enter the topic.</span></div>
+    </div>
+
+    <div class="technique">
+      <div class="technique-name">2. 📖 Story দিয়ে শুরু</div>
+      <div class="technique-def"><span class="bn-text">একটি personal বা compelling story দিয়ে শুরু করো। মানুষ naturally story শুনতে ভালোবাসে — brain story-তে engage হয়।</span><span class="en-text">Start with a personal or compelling story. People naturally love listening to stories — the brain engages with stories.</span></div>
+      <div class="technique-tip">💬 <span class="bn-text">উদাহরণ: "৩ বছর আগে আমি একটা interview-এ এত nervous ছিলাম যে..." — তারপর lesson-এ আসো।</span><span class="en-text">Example: "3 years ago I was so nervous at an interview that..." — then move to the lesson.</span></div>
+    </div>
+
+    <div class="technique">
+      <div class="technique-name">3. 😮 Shocking Fact বা Statistic</div>
+      <div class="technique-def"><span class="bn-text">একটি অবাক করা তথ্য দিয়ে শুরু করলে audience সাথে সাথে attention দেয়।</span><span class="en-text">Starting with a surprising fact immediately captures audience attention.</span></div>
+      <div class="technique-tip">💬 <span class="bn-text">উদাহরণ: "প্রতি ১০ জন মানুষের মধ্যে ৭ জন তাদের মৃত্যুর চেয়ে Public Speaking কে বেশি ভয় পায়।"</span><span class="en-text">Example: "7 out of every 10 people fear public speaking more than death."</span></div>
+    </div>
+
+    <div class="technique">
+      <div class="technique-name">4. 🎭 Bold Statement বা Declaration</div>
+      <div class="technique-def"><span class="bn-text">একটি bold, confident statement দিয়ে শুরু করো যা হয়তো controversial বা unexpected।</span><span class="en-text">Start with a bold, confident statement that might be controversial or unexpected.</span></div>
+      <div class="technique-tip">💬 <span class="bn-text">উদাহরণ: "আপনারা যা শিখেছেন তার বেশিরভাগ ভুল।" — তারপর explain করো।</span><span class="en-text">Example: "Most of what you've learned is wrong." — then explain.</span></div>
+    </div>
+
+    <div class="technique">
+      <div class="technique-name">5. 🎬 Vivid Scene বা Scenario</div>
+      <div class="technique-def"><span class="bn-text">Audience-কে একটি specific scenario-তে নিয়ে যাও — "কল্পনা করুন..." দিয়ে শুরু করো।</span><span class="en-text">Take the audience to a specific scenario — start with "Imagine..."</span></div>
+      <div class="technique-tip">💬 <span class="bn-text">উদাহরণ: "কল্পনা করুন, আপনি সকালে উঠে দেখলেন আপনার phone-এ ১০০ missed calls..." — তারপর point-এ আসো।</span></div>
+    </div>
+
+    <div class="technique">
+      <div class="technique-name">6. 😂 Relevant Humor</div>
+      <div class="technique-def"><span class="bn-text">হালকা humor দিয়ে শুরু করলে tension কমে, audience relaxed হয় এবং তোমার সাথে connection তৈরি হয়।</span><span class="en-text">Starting with light humor reduces tension, relaxes the audience, and creates connection with you.</span></div>
+      <div class="technique-tip">💬 <span class="bn-text">সতর্কতা: Offensive বা forced humor করো না। Self-deprecating humor সবচেয়ে safe।</span><span class="en-text">Caution: Don't use offensive or forced humor. Self-deprecating humor is safest.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CH4: LARGE CROWD -->
+<div class="chapter ch4">
+  <div class="chapter-header">
+    <div class="chapter-label">CHAPTER 04</div>
+    <div class="chapter-title">👥 <span class="bn-text">অনেক মানুষের সামনে কথা বলা</span><span class="en-text">Speaking in Front of a Large Crowd</span></div>
+    <div class="chapter-desc"><span class="bn-text">Stage presence, Eye contact, Voice projection — হাজার মানুষকে কীভাবে engage রাখবে</span><span class="en-text">Stage presence, eye contact, voice projection — how to keep thousands engaged</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">🎯 <span class="bn-text">Stage-এ ওঠার আগে</span><span class="en-text">Before Getting on Stage</span></h2>
+    <table>
+      <thead><tr><th><span class="bn-text">করার সময়</span><span class="en-text">When</span></th><th><span class="bn-text">কী করবে</span><span class="en-text">What to Do</span></th><th><span class="bn-text">কেন</span><span class="en-text">Why</span></th></tr></thead>
+      <tbody>
+        <tr><td><span class="bn-text">আগের রাতে</span><span class="en-text">Night before</span></td><td><span class="bn-text">৭-৮ ঘণ্টা ঘুমাও, পানি বেশি পান করো</span><span class="en-text">Sleep 7-8 hours, drink plenty of water</span></td><td><span class="bn-text">Brain sharper থাকে, গলা ভালো থাকে</span></td></tr>
+        <tr><td><span class="bn-text">১ ঘণ্টা আগে</span><span class="en-text">1 hour before</span></td><td><span class="bn-text">Venue walk করো, mic ও setup চেক করো</span><span class="en-text">Walk the venue, check mic and setup</span></td><td><span class="bn-text">Familiarity → Comfort</span></td></tr>
+        <tr><td><span class="bn-text">৩০ মিনিট আগে</span><span class="en-text">30 min before</span></td><td><span class="bn-text">কিছু audience member-এর সাথে কথা বলো</span><span class="en-text">Talk to a few audience members</span></td><td><span class="bn-text">Familiar faces দেখলে ভয় কমে</span></td></tr>
+        <tr><td><span class="bn-text">৫ মিনিট আগে</span><span class="en-text">5 min before</span></td><td><span class="bn-text">Box breathing করো, Power pose নাও</span><span class="en-text">Do box breathing, take power pose</span></td><td><span class="bn-text">Nervous system calm হয়</span></td></tr>
+        <tr><td><span class="bn-text">Stage-এ উঠে</span><span class="en-text">On stage</span></td><td><span class="bn-text">Pause করো ২-৩ সেকেন্ড, scan করো, তারপর শুরু করো</span><span class="en-text">Pause 2-3 seconds, scan the room, then begin</span></td><td><span class="bn-text">Confidence দেখায়, attention পাও</span></td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="sec">👁️ <span class="bn-text">Eye Contact — সবচেয়ে গুরুত্বপূর্ণ skill</span><span class="en-text">Eye Contact — The Most Important Skill</span></h2>
+
+    <div class="grid2">
+      <div class="card red-card">
+        <h4>❌ <span class="bn-text">ভুল Eye Contact</span></h4>
+        <ul>
+          <li><span class="bn-text">সারাক্ষণ notes দেখা</span><span class="en-text">Looking at notes the whole time</span></li>
+          <li><span class="bn-text">Floor বা ceiling দেখা</span><span class="en-text">Looking at floor or ceiling</span></li>
+          <li><span class="bn-text">একজনকেই সারাক্ষণ দেখা</span><span class="en-text">Staring at one person continuously</span></li>
+          <li><span class="bn-text">দ্রুত চোখ সরিয়ে নেওয়া</span><span class="en-text">Quickly averting eyes</span></li>
+        </ul>
+      </div>
+      <div class="card green-card">
+        <h4>✅ <span class="bn-text">সঠিক Eye Contact</span><span class="en-text">Correct Eye Contact</span></h4>
+        <ul>
+          <li><span class="bn-text">Z-Pattern: বাম-ডান-মাঝ scan করো</span><span class="en-text">Z-Pattern: scan left-right-center</span></li>
+          <li><span class="bn-text">একজনের সাথে ৩-৫ সেকেন্ড eye contact</span><span class="en-text">3-5 seconds eye contact per person</span></li>
+          <li><span class="bn-text">পুরো room cover করো</span><span class="en-text">Cover the whole room</span></li>
+          <li><span class="bn-text">Friendly faces খোঁজো — তাদের দেখো</span><span class="en-text">Find friendly faces — look at them</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="sec">🔊 <span class="bn-text">Voice Control — কীভাবে কথা বলবে</span><span class="en-text">Voice Control — How to Speak</span></h2>
+    <table>
+      <thead><tr><th><span class="bn-text">Element</span></th><th><span class="bn-text">সমস্যা</span><span class="en-text">Problem</span></th><th><span class="bn-text">সমাধান</span><span class="en-text">Solution</span></th></tr></thead>
+      <tbody>
+        <tr><td><strong><span class="bn-text">গতি (Pace)</span><span class="en-text">Speed</span></strong></td><td><span class="bn-text">Nervous হলে দ্রুত বলা</span><span class="en-text">Speaking too fast when nervous</span></td><td><span class="bn-text">Consciously slow down — pause নাও। দ্রুত বলা দুর্বলতার sign।</span><span class="en-text">Consciously slow down — pause. Speaking fast signals weakness.</span></td></tr>
+        <tr><td><strong><span class="bn-text">Tone</span></strong></td><td><span class="bn-text">Monotone, boring</span></td><td><span class="bn-text">গুরুত্বপূর্ণ word-এ pitch বাড়াও, variation আনো।</span><span class="en-text">Raise pitch on important words, add variation.</span></td></tr>
+        <tr><td><strong><span class="bn-text">Volume</span></strong></td><td><span class="bn-text">Microphone ছাড়া কম শোনা যাওয়া</span><span class="en-text">Hard to hear without mic</span></td><td><span class="bn-text">Diaphragm থেকে কথা বলো, chest নয়। শেষ সারি পর্যন্ত শুনতে পায় কিনা ভাবো।</span><span class="en-text">Speak from your diaphragm, not chest. Think if the last row can hear you.</span></td></tr>
+        <tr><td><strong>Pause</strong></td><td><span class="bn-text">Pause নিতে ভয়</span><span class="en-text">Fear of pausing</span></td><td><span class="bn-text">Pause = Power। Important কথার পরে pause নাও — effect বাড়ে।</span><span class="en-text">Pause = Power. Pause after important statements — increases impact.</span></td></tr>
+        <tr><td><strong>Filler Words</strong></td><td><span class="bn-text">"আমমম", "মানে", "তো" সারাক্ষণ</span></td><td><span class="bn-text">Filler-এর জায়গায় চুপ থাকো — silence অনেক better।</span><span class="en-text">Stay silent instead of fillers — silence is much better.</span></td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="sec">🎭 <span class="bn-text">Audience Engagement — সবাইকে জাগিয়ে রাখো</span><span class="en-text">Audience Engagement — Keep Everyone Awake</span></h2>
+    <div class="grid3">
+      <div class="card teal-card"><h4>❓ <span class="bn-text">প্রশ্ন করো</span><span class="en-text">Ask Questions</span></h4><p><span class="bn-text">প্রতি ৫-৭ মিনিটে একটি প্রশ্ন করো। "হাত তুলুন যারা..." বা rhetorical question।</span><span class="en-text">Ask a question every 5-7 minutes. "Raise your hand if..." or rhetorical question.</span></p></div>
+      <div class="card orange-card"><h4>📖 <span class="bn-text">Story বলো</span><span class="en-text">Tell Stories</span></h4><p><span class="bn-text">Dry facts boring। Story-তে convert করো — brain automatically engage হয়।</span><span class="en-text">Dry facts are boring. Convert to stories — the brain automatically engages.</span></p></div>
+      <div class="card purple-card"><h4>🔄 <span class="bn-text">Callback করো</span><span class="en-text">Callback</span></h4><p><span class="bn-text">শুরুতে বলা কোনো কিছু পরে reference করো — "মনে আছে শুরুতে বলেছিলাম..."</span><span class="en-text">Reference something said at the start — "Remember at the beginning I said..."</span></p></div>
+    </div>
+  </div>
+</div>
+
+<!-- CH5: STRANGERS -->
+<div class="chapter ch5">
+  <div class="chapter-header">
+    <div class="chapter-label">CHAPTER 05</div>
+    <div class="chapter-title">🤝 <span class="bn-text">অপরিচিত মানুষের সাথে কথা বলা</span><span class="en-text">Talking to Strangers</span></div>
+    <div class="chapter-desc"><span class="bn-text">প্রথম কথা শুরু করা থেকে দীর্ঘ conversation চালানো — সব পদ্ধতি</span><span class="en-text">From starting the first conversation to maintaining a long one — all methods</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">😰 <span class="bn-text">অপরিচিতের সাথে কেন কথা বলতে ভয় লাগে?</span><span class="en-text">Why is It Scary to Talk to Strangers?</span></h2>
+    <p><span class="bn-text">আমরা rejection ভয় পাই। "যদি সে আমাকে ignore করে?", "যদি সে বিরক্ত হয়?" — এই চিন্তাগুলো আমাদের আটকে রাখে। কিন্তু research বলছে — <strong>বেশিরভাগ মানুষ কথা বলতে চায়, শুধু কেউ শুরু করে না।</strong></span><span class="en-text">We fear rejection. "What if they ignore me?", "What if they get annoyed?" — these thoughts hold us back. But research says — <strong>most people want to talk, no one just starts it.</strong></span></p>
+
+    <h2 class="sec">🚀 <span class="bn-text">Conversation কীভাবে শুরু করবে</span><span class="en-text">How to Start a Conversation</span></h2>
+
+    <div class="technique">
+      <div class="technique-name">🌍 FORD Method — কী নিয়ে কথা বলবে</div>
+      <div class="technique-def"><span class="bn-text">যেকোনো অপরিচিতের সাথে কথা শুরু করার সবচেয়ে সহজ framework।</span><span class="en-text">The easiest framework to start a conversation with any stranger.</span></div>
+      <div class="technique-tip">
+        <strong>F</strong> — <span class="bn-text"><strong>Family:</strong> পরিবার সম্পর্কে — "আপনি কি এলাকার বাসিন্দা?"</span><span class="en-text"><strong>Family</strong> — "Are you a local resident?"</span><br>
+        <strong>O</strong> — <span class="bn-text"><strong>Occupation:</strong> কাজ সম্পর্কে — "আপনি কী করেন?"</span><span class="en-text"><strong>Occupation</strong> — "What do you do?"</span><br>
+        <strong>R</strong> — <span class="bn-text"><strong>Recreation:</strong> শখ সম্পর্কে — "Free time-এ কী করেন?"</span><span class="en-text"><strong>Recreation</strong> — "What do you do in your free time?"</span><br>
+        <strong>D</strong> — <span class="bn-text"><strong>Dreams:</strong> স্বপ্ন সম্পর্কে — "ভবিষ্যতে কী করতে চান?"</span><span class="en-text"><strong>Dreams</strong> — "What do you want to do in the future?"</span>
+      </div>
+    </div>
+
+    <h2 class="sec">💬 <span class="bn-text">Conversation শুরু করার Exact Lines</span><span class="en-text">Exact Lines to Start a Conversation</span></h2>
+
+    <div class="situation">
+      <div class="s-label">Context: যেকোনো জায়গায়</div>
+      <div class="s-title">🏢 <span class="bn-text">Office / Event / Seminar-এ</span></div>
+      <div class="s-right"><span class="s-label2">✅ শুরু করার lines:</span>
+        <ul>
+          <li><span class="bn-text">"এই event-এ আপনি কীভাবে এলেন?" (Connection খোঁজো)</span></li>
+          <li><span class="bn-text">"আজকের speaker-এর কোন বিষয়টা আপনার সবচেয়ে ভালো লেগেছে?"</span></li>
+          <li><span class="bn-text">"আপনি কি এখানে আগেও এসেছেন?"</span></li>
+          <li><span class="bn-text">"আপনার কাজ কী?" (Simple, direct, works always)</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="situation">
+      <div class="s-label">Context: Casual</div>
+      <div class="s-title">☕ <span class="bn-text">Cafe / Shop / Queue-তে</span></div>
+      <div class="s-right"><span class="s-label2">✅ শুরু করার lines:</span>
+        <ul>
+          <li><span class="bn-text">"এখানে কি ভালো coffee পাওয়া যায়?" (Environment নিয়ে কথা)</span></li>
+          <li><span class="bn-text">"আপনার [phone/book/bag] টা কোথায় পেলেন?" (Genuine compliment)</span></li>
+          <li><span class="bn-text">"এই queue কি সবসময় এত লম্বা থাকে?" (Shared experience)</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="sec">🔄 <span class="bn-text">Conversation চালিয়ে যাওয়ার Techniques</span><span class="en-text">Techniques to Keep a Conversation Going</span></h2>
+
+    <div class="step-box">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>👂 Active Listening + Follow-up Questions</h4>
+        <p><span class="bn-text">যা বলছে মনোযোগ দিয়ে শোনো এবং তার কথার উপর ভিত্তি করে প্রশ্ন করো। "তুমি বললে X, এটা কীভাবে হলো?" — এই pattern-এ conversation unlimited চলতে পারে।</span><span class="en-text">Listen attentively and ask questions based on what they said. "You mentioned X, how did that happen?" — this pattern can keep conversation going indefinitely.</span></p>
+      </div>
+    </div>
+
+    <div class="step-box">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>🪞 Mirroring + Labeling</h4>
+        <p><span class="bn-text">তার শেষ কথাটা repeat করো — "তুমি বললে তুমি ৩ বছর ধরে এই কাজ করছ?" — সে আরও বলতে উৎসাহিত হয়। Emotion label করো — "মনে হচ্ছে বিষয়টা নিয়ে তুমি really passionate।"</span><span class="en-text">Repeat their last statement — "You said you've been doing this work for 3 years?" — they get encouraged to say more. Label emotions — "It seems like you're really passionate about this."</span></p>
+      </div>
+    </div>
+
+    <div class="step-box">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>📢 "Tell Me More" Rule</h4>
+        <p><span class="bn-text">যখন কিছু বুঝতে না পারলে বা আরও জানতে চাইলে শুধু বলো — "এটা নিয়ে আরেকটু বলো।" এই একটা line-ই conversation ৫ মিনিট বাড়িয়ে দিতে পারে।</span><span class="en-text">When you don't understand something or want to know more — just say "Tell me more about that." This one line can extend a conversation by 5 minutes.</span></p>
+      </div>
+    </div>
+
+    <h2 class="sec">🛑 <span class="bn-text">Conversation কীভাবে শেষ করবে</span><span class="en-text">How to End a Conversation</span></h2>
+    <div class="box teal-box">
+      <div class="box-t">💡 <span class="bn-text">Graceful Exit Lines</span></div>
+      <ul>
+        <li><span class="bn-text">"আপনার সাথে কথা বলে ভালো লাগলো — পরে কথা হবে।"</span><span class="en-text">"It was great talking with you — let's talk again."</span></li>
+        <li><span class="bn-text">"আমাকে একটু [অমুকের সাথে কথা বলতে হবে] — excuse করবেন।"</span></li>
+        <li><span class="bn-text">"আপনার contact নিতে পারি? আপনার কথা interesting ছিল।"</span><span class="en-text">"Can I get your contact? Our conversation was interesting."</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CH6: LONG SPEAKING -->
+<div class="chapter ch6">
+  <div class="chapter-header">
+    <div class="chapter-label">CHAPTER 06</div>
+    <div class="chapter-title">⏱️ <span class="bn-text">দীর্ঘ সময় কথা বলার কৌশল</span><span class="en-text">Techniques for Speaking for a Long Time</span></div>
+    <div class="chapter-desc"><span class="bn-text">৩০ মিনিট, ১ ঘণ্টা বা তারও বেশি — কীভাবে audience-কে engaged রাখবে</span><span class="en-text">30 minutes, 1 hour or more — how to keep the audience engaged</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">🏗️ <span class="bn-text">Speech Structure — ভিত্তি হলো সবকিছু</span><span class="en-text">Speech Structure — Foundation of Everything</span></h2>
+
+    <div class="technique">
+      <div class="technique-name">📐 The Rule of Three (তিনের নিয়ম)</div>
+      <div class="technique-def"><span class="bn-text">যেকোনো long speech-এ ৩টি main point রাখো। মানুষ ৩টি জিনিস সহজে মনে রাখতে পারে। Steve Jobs সবসময় "Today, we have 3 things to announce..." দিয়ে শুরু করতেন।</span><span class="en-text">In any long speech, have 3 main points. People can easily remember 3 things. Steve Jobs always started with "Today, we have 3 things to announce..."</span></div>
+      <div class="technique-tip">📋 Structure: <strong><span class="bn-text">Opening (১০%) → Point 1 + Story (২৫%) → Point 2 + Story (২৫%) → Point 3 + Story (২৫%) → Closing (১৫%)</span></strong></div>
+    </div>
+
+    <h2 class="sec">📖 <span class="bn-text">Storytelling — দীর্ঘ সময় কথা বলার secret</span><span class="en-text">Storytelling — The Secret to Long Speaking</span></h2>
+    <p><span class="bn-text">দীর্ঘ সময় কথা বলা কঠিন নয় — যদি তুমি data ও facts-এর বদলে <strong>stories</strong> বলো। একটা ভালো story ১০ মিনিট audience-কে আটকে রাখতে পারে।</span><span class="en-text">Speaking for a long time isn't hard — if you tell <strong>stories</strong> instead of data and facts. A good story can hold the audience for 10 minutes.</span></p>
+
+    <div class="step-box">
+      <div class="step-num">📖</div>
+      <div class="step-content">
+        <h4>Story-এর Structure — Hero's Journey (Simplified)</h4>
+        <p><span class="bn-text"><strong>1. Normal life:</strong> "একসময় আমি / আমার পরিচিত কেউ..." <br><strong>2. Challenge:</strong> "তখন হঠাৎ..." <br><strong>3. Struggle:</strong> "অনেক চেষ্টা করেও..." <br><strong>4. Solution:</strong> "তখন আমি বুঝলাম..." <br><strong>5. Lesson:</strong> "আর সেখান থেকে শিখলাম যে..."</span></p>
+      </div>
+    </div>
+
+    <h2 class="sec">⚡ <span class="bn-text">Audience-কে দীর্ঘ সময় Engaged রাখার Techniques</span><span class="en-text">Techniques to Keep Audience Engaged Long-term</span></h2>
+    <table>
+      <thead><tr><th><span class="bn-text">Technique</span></th><th><span class="bn-text">কীভাবে</span><span class="en-text">How</span></th><th><span class="bn-text">Frequency</span></th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge badge-b">Callback</span></td><td><span class="bn-text">আগে বলা কথা আবার reference করো</span><span class="en-text">Reference something said earlier</span></td><td><span class="bn-text">প্রতি ১৫ মিনিটে</span></td></tr>
+        <tr><td><span class="badge badge-g">Interaction</span></td><td><span class="bn-text">Audience-কে প্রশ্ন করো বা কিছু করতে বলো</span><span class="en-text">Ask questions or give the audience a task</span></td><td><span class="bn-text">প্রতি ৭-১০ মিনিটে</span></td></tr>
+        <tr><td><span class="badge badge-y">Pattern Break</span></td><td><span class="bn-text">হঠাৎ কিছু unexpected করো — থামো, বোর্ডে লিখো, চেয়ারে বসো</span><span class="en-text">Do something unexpected — stop, write on board, sit</span></td><td><span class="bn-text">প্রতি ১০ মিনিটে</span></td></tr>
+        <tr><td><span class="badge badge-p">Humor</span></td><td><span class="bn-text">হালকা হাসির মুহূর্ত তৈরি করো — tension release হয়</span><span class="en-text">Create light humor moments — releases tension</span></td><td><span class="bn-text">প্রতি ১০-১৫ মিনিটে</span></td></tr>
+        <tr><td><span class="badge badge-t">Preview</span></td><td><span class="bn-text">"এর পরে আমি এমন কিছু বলব যা..." — curiosity তৈরি করো</span><span class="en-text">"Next I'll share something that will..." — create curiosity</span></td><td><span class="bn-text">প্রতি section-এর শেষে</span></td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="sec">🚫 <span class="bn-text">Filler Words — যা কখনো বলবে না</span><span class="en-text">Filler Words — Never Say These</span></h2>
+    <div class="grid2">
+      <div class="card red-card">
+        <h4>❌ <span class="bn-text">এড়িয়ে চলো</span><span class="en-text">Avoid These</span></h4>
+        <ul>
+          <li><span class="bn-text">"আমমম..." "আহহ..." "এইটা..."</span></li>
+          <li><span class="bn-text">"মানে..." সারাক্ষণ</span></li>
+          <li><span class="bn-text">"তো..." প্রতিটি বাক্যে</span></li>
+          <li><span class="bn-text">"Actually..." "basically..."</span></li>
+          <li><span class="bn-text">"কিভাবে বলব..." "মনে হয়..."</span></li>
+        </ul>
+      </div>
+      <div class="card green-card">
+        <h4>✅ <span class="bn-text">বিকল্প করো</span><span class="en-text">Do This Instead</span></h4>
+        <ul>
+          <li><span class="bn-text">Filler-এর জায়গায় <strong>চুপ থাকো</strong></span><span class="en-text">Stay <strong>silent</strong> instead of fillers</span></li>
+          <li><span class="bn-text">Pause নাও — এটা professional দেখায়</span><span class="en-text">Pause — it looks professional</span></li>
+          <li><span class="bn-text">পানি খাও বা note দেখো</span><span class="en-text">Drink water or check notes</span></li>
+          <li><span class="bn-text">Audience-কে প্রশ্ন করো</span><span class="en-text">Ask the audience a question</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="sec">🎯 <span class="bn-text">Powerful Closing — শেষটা সবচেয়ে মনে থাকে</span><span class="en-text">Powerful Closing — The End is What's Remembered</span></h2>
+    <div class="box info">
+      <div class="box-t">💡 <span class="bn-text">Closing-এর নিয়ম</span><span class="en-text">Rules for Closing</span></div>
+      <ul>
+        <li><span class="bn-text"><strong>Callback:</strong> Opening-এ বলা কথায় ফিরে যাও — "শুরুতে বলেছিলাম..." — full circle effect</span></li>
+        <li><span class="bn-text"><strong>Call to Action:</strong> Audience-কে একটি specific কাজ করতে বলো</span><span class="en-text"><strong>Call to Action:</strong> Ask the audience to do one specific thing</span></li>
+        <li><span class="bn-text"><strong>Memorable Line:</strong> শেষ একটি powerful line বলো যা মনে থাকে</span></li>
+        <li><span class="bn-text"><strong>"Thank you"-তে শেষ করো না:</strong> এর বদলে powerful statement বলো, তারপর থামো।</span><span class="en-text"><strong>Don't end with "thank you":</strong> Instead say a powerful statement, then stop.</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CH7: BODY LANGUAGE -->
+<div class="chapter ch7">
+  <div class="chapter-header">
+    <div class="chapter-label">CHAPTER 07</div>
+    <div class="chapter-title">🕴️ Body Language & Voice</div>
+    <div class="chapter-desc"><span class="bn-text">৫৫% communication হয় body language দিয়ে — কথার চেয়ে বেশি গুরুত্বপূর্ণ</span><span class="en-text">55% of communication is body language — more important than words</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <div class="box purple-box">
+      <div class="box-t">📊 Mehrabian's 7-38-55 Rule</div>
+      <span class="bn-text">Albert Mehrabian-এর গবেষণা অনুযায়ী communication-এ: <strong>7% Words (কথা)</strong> + <strong>38% Tone of Voice (কণ্ঠস্বর)</strong> + <strong>55% Body Language (শরীরের ভাষা)</strong>। মানে তুমি কী বলছ তার চেয়ে বেশি গুরুত্বপূর্ণ কীভাবে বলছ এবং দেখাচ্ছ।</span>
+      <span class="en-text">According to Albert Mehrabian's research, communication is: <strong>7% Words</strong> + <strong>38% Tone of Voice</strong> + <strong>55% Body Language</strong>. Meaning how you say it and how you look matters more than what you say.</span>
+    </div>
+
+    <h2 class="sec">🦁 <span class="bn-text">Confident Body Language</span><span class="en-text">Confident Body Language</span></h2>
+    <table>
+      <thead><tr><th><span class="bn-text">Element</span></th><th>❌ <span class="bn-text">Nervous Body Language</span></th><th>✅ <span class="bn-text">Confident Body Language</span></th></tr></thead>
+      <tbody>
+        <tr><td><strong><span class="bn-text">দাঁড়ানো</span><span class="en-text">Standing</span></strong></td><td><span class="bn-text">Hunched, কাঁধ নামানো</span><span class="en-text">Hunched, shoulders down</span></td><td><span class="bn-text">সোজা, কাঁধ পেছনে, chest উঁচু</span><span class="en-text">Upright, shoulders back, chest up</span></td></tr>
+        <tr><td><strong><span class="bn-text">হাত</span><span class="en-text">Hands</span></strong></td><td><span class="bn-text">পকেটে বা পেছনে লুকানো</span><span class="en-text">Hidden in pockets or behind back</span></td><td><span class="bn-text">Visible, gesture করো কথার সাথে মিলিয়ে</span><span class="en-text">Visible, gesture in sync with words</span></td></tr>
+        <tr><td><strong>Eye Contact</strong></td><td><span class="bn-text">Floor বা ceiling দেখা, দ্রুত সরানো</span><span class="en-text">Looking at floor/ceiling, darting eyes</span></td><td><span class="bn-text">৩-৫ সেকেন্ড confident eye contact</span><span class="en-text">3-5 second confident eye contact</span></td></tr>
+        <tr><td><strong>Movement</strong></td><td><span class="bn-text">এক জায়গায় জমে থাকা বা অস্থিরভাবে নড়া</span><span class="en-text">Frozen in one spot or fidgeting</span></td><td><span class="bn-text">Purposeful movement — stage-এ হাঁটো</span><span class="en-text">Purposeful movement — walk the stage</span></td></tr>
+        <tr><td><strong>Smile</strong></td><td><span class="bn-text">Forced বা কোনো smile নেই</span><span class="en-text">Forced or no smile</span></td><td><span class="bn-text">Natural, genuine smile — শুরু ও শেষে</span><span class="en-text">Natural, genuine smile — at start and end</span></td></tr>
+        <tr><td><strong>Breathing</strong></td><td><span class="bn-text">Shallow, দ্রুত শ্বাস</span><span class="en-text">Shallow, rapid breathing</span></td><td><span class="bn-text">Deep, slow, relaxed breathing</span></td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="sec">✋ <span class="bn-text">Hand Gestures — কীভাবে ব্যবহার করবে</span><span class="en-text">Hand Gestures — How to Use Them</span></h2>
+    <div class="grid2">
+      <div class="card red-card">
+        <h4>❌ <span class="bn-text">এড়িয়ে চলো</span></h4>
+        <ul>
+          <li><span class="bn-text">Finger pointing (aggressive দেখায়)</span><span class="en-text">Finger pointing (looks aggressive)</span></li>
+          <li><span class="bn-text">Crossed arms (defensive)</span></li>
+          <li><span class="bn-text">Face/hair touching (nervous)</span></li>
+          <li><span class="bn-text">Hands in pockets (disengaged)</span></li>
+          <li><span class="bn-text">অতিরিক্ত ও random gestures</span><span class="en-text">Excessive and random gestures</span></li>
+        </ul>
+      </div>
+      <div class="card green-card">
+        <h4>✅ <span class="bn-text">ব্যবহার করো</span><span class="en-text">Use These</span></h4>
+        <ul>
+          <li><span class="bn-text">Open palms (honest, open দেখায়)</span><span class="en-text">Open palms (looks honest and open)</span></li>
+          <li><span class="bn-text">Steeple gesture (authority দেখায়)</span><span class="en-text">Steeple gesture (shows authority)</span></li>
+          <li><span class="bn-text">Count করার gesture (points-এ)</span></li>
+          <li><span class="bn-text">কথার সাথে align করা gesture</span><span class="en-text">Gestures aligned with words</span></li>
+          <li><span class="bn-text">Slow, deliberate movement</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CH8: PREPARATION -->
+<div class="chapter ch8">
+  <div class="chapter-header">
+    <div class="chapter-label">CHAPTER 08</div>
+    <div class="chapter-title">📝 <span class="bn-text">Preparation ও Practice</span><span class="en-text">Preparation & Practice</span></div>
+    <div class="chapter-desc"><span class="bn-text">"Preparation is the best cure for nervousness" — সঠিকভাবে prepare করো</span><span class="en-text">"Preparation is the best cure for nervousness" — prepare the right way</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">📋 <span class="bn-text">Speech তৈরির Step-by-Step</span><span class="en-text">Step-by-Step Speech Creation</span></h2>
+
+    <div class="step-box">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4><span class="bn-text">Audience বোঝো — সবার আগে</span><span class="en-text">Understand Your Audience — First</span></h4>
+        <p><span class="bn-text">কারা শুনবে? তাদের বয়স, পেশা, কী জানে, কী জানতে চায়? Audience বুঝলে কী বলতে হবে automatically বের হয়।</span><span class="en-text">Who will listen? Their age, profession, what they know, what they want to know? Understanding the audience automatically reveals what to say.</span></p>
+      </div>
+    </div>
+
+    <div class="step-box">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4><span class="bn-text">Core Message ঠিক করো — ১ বাক্যে</span><span class="en-text">Define Core Message — In 1 Sentence</span></h4>
+        <p><span class="bn-text">"এই speech শেষে audience কী একটি জিনিস মনে রাখবে?" — সেটা ১ বাক্যে বলো। এটাই তোমার north star। সব কিছু এই একটি message-কে support করবে।</span><span class="en-text">"What one thing will the audience remember after this speech?" — say it in 1 sentence. This is your north star. Everything will support this single message.</span></p>
+      </div>
+    </div>
+
+    <div class="step-box">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4><span class="bn-text">Outline তৈরি করো</span><span class="en-text">Create an Outline</span></h4>
+        <p><span class="bn-text">Opening → Main Point 1 (+ Story/Example) → Main Point 2 (+ Story/Example) → Main Point 3 (+ Story/Example) → Closing. Script লেখো না — outline মনে রাখো।</span></p>
+      </div>
+    </div>
+
+    <div class="step-box">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4><span class="bn-text">Out Loud Practice — সবচেয়ে গুরুত্বপূর্ণ</span><span class="en-text">Out Loud Practice — Most Important</span></h4>
+        <p><span class="bn-text">মাথায় practice যথেষ্ট নয়। আয়নার সামনে দাঁড়িয়ে, বা phone-এ record করে জোরে জোরে practice করো। তুমি নিজেকে শুনতে পাবে এবং উন্নতি করতে পারবে।</span><span class="en-text">Mental practice is not enough. Practice out loud in front of a mirror or record yourself on your phone. You'll hear yourself and be able to improve.</span></p>
+      </div>
+    </div>
+
+    <div class="step-box">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <h4><span class="bn-text">Rehearse with "Audience"</span></h4>
+        <p><span class="bn-text">বন্ধু, পরিবার, বা এমনকি stuffed animals-এর সামনে practice করো। Real audience-এর সামনে বলার feeling তৈরি করো। Toastmasters Club-এ যোগ দিতে পারো।</span><span class="en-text">Practice in front of friends, family, or even stuffed animals. Create the feeling of speaking before a real audience. You can join a Toastmasters Club.</span></p>
+      </div>
+    </div>
+
+    <h2 class="sec">📱 <span class="bn-text">Practice-এর Practical Tools</span><span class="en-text">Practical Practice Tools</span></h2>
+    <div class="grid3">
+      <div class="card teal-card"><h4>📹 <span class="bn-text">নিজেকে Record করো</span></h4><p><span class="bn-text">Phone দিয়ে video record করো। প্রথমবার দেখতে অস্বস্তিকর — কিন্তু সবচেয়ে effective feedback।</span></p></div>
+      <div class="card orange-card"><h4>🪞 <span class="bn-text">Mirror Practice</span></h4><p><span class="bn-text">আয়নার সামনে body language দেখো। তুমি কি confident দেখাচ্ছ?</span><span class="en-text">Watch your body language in the mirror. Do you look confident?</span></p></div>
+      <div class="card purple-card"><h4>⏱️ <span class="bn-text">Timer ব্যবহার করো</span></h4><p><span class="bn-text">নির্দিষ্ট time-এ শেষ করার অভ্যাস করো — real event-এ time limit থাকে।</span><span class="en-text">Practice finishing in a specific time — real events have time limits.</span></p></div>
+    </div>
+  </div>
+</div>
+
+<!-- CH9: 30 DAY CHALLENGE -->
+<div class="chapter ch9">
+  <div class="chapter-header">
+    <div class="chapter-label">CHAPTER 09</div>
+    <div class="chapter-title">🏆 <span class="bn-text">৩০ দিনের Public Speaking Challenge</span><span class="en-text">30-Day Public Speaking Challenge</span></div>
+    <div class="chapter-desc"><span class="bn-text">Beginner থেকে Confident Speaker — step-by-step transformation plan</span><span class="en-text">From Beginner to Confident Speaker — step-by-step transformation plan</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <div class="box success">
+      <div class="box-t">✅ <span class="bn-text">সবচেয়ে বড় সত্য</span><span class="en-text">The Biggest Truth</span></div>
+      <span class="bn-text">Public Speaking-এ ভালো হওয়ার <strong>একমাত্র উপায় হলো করা।</strong> কোনো বই পড়ে, কোনো course করে confident হওয়া যাবে না। ভয় কাটে শুধু exposure-এ — ধীরে ধীরে বেশি মানুষের সামনে বলার মাধ্যমে।</span>
+      <span class="en-text">The <strong>only way to get better at public speaking is to do it.</strong> No book or course will make you confident. Fear fades only through exposure — gradually speaking in front of more and more people.</span>
+    </div>
+
+    <h2 class="sec">📅 <span class="bn-text">Week by Week Plan</span></h2>
+    <table>
+      <thead><tr><th><span class="bn-text">সপ্তাহ</span><span class="en-text">Week</span></th><th><span class="bn-text">Daily Task</span></th><th><span class="bn-text">Milestone</span></th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge badge-b">Week 1</span><br><span class="bn-text">Solo Practice</span></td><td><span class="bn-text">প্রতিদিন ৫ মিনিট আয়নার সামনে যেকোনো topic-এ কথা বলো। Record করো। দেখো।</span><span class="en-text">Speak for 5 minutes daily in front of a mirror on any topic. Record it. Watch it.</span></td><td><span class="bn-text">Filler words কমানো শুরু</span></td></tr>
+        <tr><td><span class="badge badge-g">Week 2</span><br><span class="bn-text">1-1 Conversation</span></td><td><span class="bn-text">প্রতিদিন একজন অপরিচিতের সাথে কথা বলো। FORD method ব্যবহার করো।</span><span class="en-text">Talk to one stranger every day. Use the FORD method.</span></td><td><span class="bn-text">Conversation শুরু করার confidence</span></td></tr>
+        <tr><td><span class="badge badge-y">Week 3</span><br><span class="bn-text">Small Group</span></td><td><span class="bn-text">৩-৫ জনের সামনে ২ মিনিটের একটি prepared speech দাও (বন্ধু বা পরিবার)।</span><span class="en-text">Give a 2-minute prepared speech to 3-5 people (friends or family).</span></td><td><span class="bn-text">Eye contact ও voice control</span></td></tr>
+        <tr><td><span class="badge badge-p">Week 4</span><br><span class="bn-text">Larger Audience</span></td><td><span class="bn-text">Class, meeting, বা যেকোনো group-এ spontaneous কথা বলো। Toastmasters-এ যোগ দাও।</span><span class="en-text">Speak spontaneously in class, a meeting, or any group. Join Toastmasters.</span></td><td><span class="bn-text">Stage presence তৈরি</span></td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="sec">⚡ <span class="bn-text">Quick Reference — মনে রাখার সব কিছু</span><span class="en-text">Quick Reference — Everything to Remember</span></h2>
+
+    <div class="grid2">
+      <div class="card blue-card">
+        <h4>😰 <span class="bn-text">Nervous হলে</span><span class="en-text">When Nervous</span></h4>
+        <ul>
+          <li><span class="bn-text">Box breathing করো (4-4-4-4)</span></li>
+          <li><span class="bn-text">"আমি excited" বলো নিজেকে</span></li>
+          <li><span class="bn-text">Audience-এর দিকে focus করো</span></li>
+          <li><span class="bn-text">Power pose নাও ২ মিনিট</span></li>
+          <li><span class="bn-text">কিছু পানি খাও</span></li>
+        </ul>
+      </div>
+      <div class="card red-card">
+        <h4>🧊 <span class="bn-text">মাথা ফাঁকা হলে</span><span class="en-text">When Mind Goes Blank</span></h4>
+        <ul>
+          <li><span class="bn-text">চুপ করো, panic করো না</span></li>
+          <li><span class="bn-text">Bridge phrase ব্যবহার করো</span></li>
+          <li><span class="bn-text">Audience-কে প্রশ্ন করো</span></li>
+          <li><span class="bn-text">Notes card দেখো</span></li>
+          <li><span class="bn-text">Story দিয়ে time নাও</span></li>
+        </ul>
+      </div>
+      <div class="card green-card">
+        <h4>🚀 <span class="bn-text">শুরু করতে</span><span class="en-text">To Start</span></h4>
+        <ul>
+          <li><span class="bn-text">Question দিয়ে শুরু করো</span></li>
+          <li><span class="bn-text">Story দিয়ে শুরু করো</span></li>
+          <li><span class="bn-text">Shocking fact দিয়ে শুরু করো</span></li>
+          <li><span class="bn-text">"Sorry" বা "Umm" দিয়ে শুরু নয়</span></li>
+          <li><span class="bn-text">২ সেকেন্ড pause করে শুরু করো</span></li>
+        </ul>
+      </div>
+      <div class="card teal-card">
+        <h4>⏱️ <span class="bn-text">দীর্ঘ সময় বলতে</span><span class="en-text">For Long Speaking</span></h4>
+        <ul>
+          <li><span class="bn-text">৩টি main point structure রাখো</span></li>
+          <li><span class="bn-text">প্রতি ৭ মিনিটে audience interaction</span></li>
+          <li><span class="bn-text">Stories দিয়ে fill করো</span></li>
+          <li><span class="bn-text">Filler words এড়াও — pause করো</span></li>
+          <li><span class="bn-text">Powerful closing রাখো</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="chapter-summary">
+      <h3>🎤 <span class="bn-text">সবচেয়ে গুরুত্বপূর্ণ কথা</span><span class="en-text">The Most Important Message</span></h3>
+      <ul>
+        <li>😰 <span class="bn-text"><strong>Nervousness normal:</strong> সেরা speakers-রাও nervous হন — ভয় পেলেও শুরু করো</span><span class="en-text"><strong>Nervousness is normal:</strong> The best speakers get nervous too — start even when afraid</span></li>
+        <li>🧊 <span class="bn-text"><strong>Blank mind:</strong> Pause করো, bridge phrase বলো, audience-কে প্রশ্ন করো — কেউ বুঝবে না</span><span class="en-text"><strong>Blank mind:</strong> Pause, use bridge phrase, ask audience — no one will know</span></li>
+        <li>🚀 <span class="bn-text"><strong>Opening:</strong> প্রথম ৩০ সেকেন্ড strong করো — question, story, বা shocking fact দিয়ে</span></li>
+        <li>👁️ <span class="bn-text"><strong>Body Language:</strong> Straight, open, eye contact — কথার চেয়ে বেশি কাজ করে</span></li>
+        <li>📖 <span class="bn-text"><strong>Stories:</strong> Facts ভুলে যাওয়া যায়, story মনে থাকে — সব কিছু story-তে বলো</span></li>
+        <li>💪 <span class="bn-text"><strong>Practice:</strong> আয়না, record, ছোট group — প্রতিদিন একটু করে বেশি</span></li>
+      </ul>
+    </div>
+
+    <div style="text-align:center; margin-top:50px; padding:35px; background: linear-gradient(135deg, #1e1b4b, #1d4ed8); border-radius:16px; color:rgba(255,255,255,0.8);">
+      <p style="font-size:22px; color:#93c5fd; margin-bottom:12px; font-weight:700;">🎤 <span class="bn-text">মনে রেখো</span><span class="en-text">Remember</span></p>
+      <p style="font-size:15px; line-height:2; margin-bottom:20px; color:rgba(255,255,255,0.75);">
+        <span class="bn-text">"আজকের সেরা public speaker-রা একসময় তোমার মতোই nervous ছিল।<br>পার্থক্য হলো — তারা ভয় পেয়েও শুরু করেছিল।"</span>
+        <span class="en-text">"Today's best public speakers were once just as nervous as you.<br>The difference is — they started despite the fear."</span>
+      </p>
+      <p style="font-size:13px; color:rgba(255,255,255,0.4);">Public Speaking — সম্পূর্ণ বাংলা গাইড | v1.0</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const body = document.body;
+body.classList.add('light-mode');
+function toggleTheme() {
+  const btn = document.getElementById('themeBtn');
+  if (body.classList.contains('light-mode')) {
+    body.classList.replace('light-mode', 'dark-mode');
+    btn.textContent = '☀️ Light Mode'; btn.style.background = '#ffd60a'; btn.style.color = '#1a1a2e';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    body.classList.replace('dark-mode', 'light-mode');
+    btn.textContent = '🌙 Dark Mode'; btn.style.background = '#2dc653'; btn.style.color = '#0d1b2a';
+    localStorage.setItem('theme', 'light');
+  }
+}
+function toggleLang() {
+  const btn = document.getElementById('langBtn');
+  if (body.classList.contains('lang-en')) {
+    body.classList.remove('lang-en');
+    btn.textContent = '🇬🇧 English'; btn.style.background = '#0077b6';
+    localStorage.setItem('lang', 'bn');
+  } else {
+    body.classList.add('lang-en');
+    btn.textContent = '🇧🇩 বাংলা'; btn.style.background = '#e63946';
+    localStorage.setItem('lang', 'en');
+  }
+}
+window.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme');
+  const savedLang = localStorage.getItem('lang');
+  if (savedTheme === 'dark') {
+    body.classList.replace('light-mode', 'dark-mode');
+    const btn = document.getElementById('themeBtn');
+    if (btn) { btn.textContent = '☀️ Light Mode'; btn.style.background = '#ffd60a'; btn.style.color = '#1a1a2e'; }
+  }
+  if (savedLang === 'en') {
+    body.classList.add('lang-en');
+    const btn = document.getElementById('langBtn');
+    if (btn) { btn.textContent = '🇧🇩 বাংলা'; btn.style.background = '#e63946'; }
+  }
+});
+</script>
+</body>
+</html>

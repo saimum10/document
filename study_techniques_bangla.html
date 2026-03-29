@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Techniques — সম্পূর্ণ গাইড</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--primary:#0d1b2a;--accent:#5c35c9;--green:#2dc653;--yellow:#ffd60a;--blue:#0077b6;--purple:#7b2d8b;--orange:#f4831f;--teal:#0096a0;--text:#1a1a2e;--bg:#f4f5fa;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.9;}
+  .lang-en .bn-text{display:none;}.lang-en .en-text{display:inline;}.en-text{display:none;}.bn-text{display:inline;}
+  .controls{position:fixed;top:20px;right:20px;z-index:1000;display:flex;gap:8px;flex-direction:column;}
+  .ctrl-btn{padding:8px 16px;border-radius:20px;border:none;cursor:pointer;font-family:'Hind Siliguri',sans-serif;font-size:13px;font-weight:600;transition:all 0.3s;box-shadow:0 4px 15px rgba(0,0,0,0.2);}
+  #themeBtn{background:#5c35c9;color:white;}#langBtn{background:#0077b6;color:white;}#pdfBtn{background:#e63946;color:white;}
+  .dark-mode{--bg:#0f1117;--text:#e0e0e0;}
+  .dark-mode .chapter,.dark-mode .toc{background:#1a1d27;color:#e0e0e0;}
+  .dark-mode h2.sec{color:#e0e0e0;}.dark-mode h3.sub{color:#aaa;}.dark-mode p{color:#e0e0e0;}
+  .dark-mode table{color:#e0e0e0;}.dark-mode td,.dark-mode th{border-color:#333;}
+  .dark-mode thead tr{background:#252836;}.dark-mode tr:nth-child(even){background:#1e2130;}
+  .dark-mode .card{background:#252836;border-color:#333;color:#e0e0e0;}
+  .dark-mode .tip-box{background:#1a2a1a;border-color:#2dc653;color:#c0e0c0;}
+  .dark-mode .warn-box{background:#2a2010;border-color:#ffd60a;color:#e0c080;}
+  .dark-mode .info-box{background:#1a1030;border-color:#5c35c9;color:#c0a8ff;}
+  .dark-mode .chapter-summary{background:#252836;border-color:#5c35c9;color:#e0e0e0;}
+  .dark-mode .toc-main{color:#e0e0e0;border-color:#333;}.dark-mode .toc-sub{color:#aaa;}
+  .dark-mode code{background:#252836;}
+  @media print{.controls{display:none!important;}.chapter{page-break-before:always;}.cover{page-break-after:always;}.toc{page-break-after:always;}}
+
+  .cover{background:linear-gradient(135deg,#1a0a3a 0%,#2d1569 40%,#0d2040 100%);color:white;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 40px;position:relative;overflow:hidden;}
+  .cover::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 30% 50%, rgba(92,53,201,0.15) 0%, transparent 60%);}
+  .cover-icon{font-size:90px;margin-bottom:20px;}
+  .cover h1{font-size:40px;font-weight:700;color:#c8b8ff;text-shadow:0 0 30px rgba(200,184,255,0.4);}
+  .cover h2{font-size:22px;font-weight:400;opacity:0.8;margin:10px 0 20px;}
+  .cover .divider{width:120px;height:3px;background:#5c35c9;margin:20px auto;border-radius:2px;}
+  .cover .desc{font-size:15px;opacity:0.75;max-width:600px;line-height:2.1;}
+  .cover .badge{display:inline-block;background:rgba(200,184,255,0.12);border:1px solid rgba(200,184,255,0.3);padding:6px 16px;border-radius:20px;margin:5px;font-size:13px;color:#c8b8ff;}
+  .cover-quote{background:rgba(255,255,255,0.06);border-left:4px solid #5c35c9;border-radius:8px;padding:18px 24px;margin-top:28px;max-width:520px;font-style:italic;color:rgba(255,255,255,0.8);}
+
+  .toc{background:white;padding:50px 60px;}
+  .toc-header{font-size:28px;color:var(--primary);border-bottom:4px solid #5c35c9;padding-bottom:15px;margin-bottom:30px;}
+  .toc-main{display:flex;justify-content:space-between;padding:10px 0;font-weight:700;font-size:15px;color:var(--primary);border-bottom:1px solid #eee;margin-top:12px;}
+  .toc-main .num{color:#5c35c9;margin-right:10px;}
+  .toc-sub{display:flex;justify-content:space-between;padding:5px 0 5px 28px;color:#666;font-size:13px;border-bottom:1px dotted #f0f0f0;}
+
+  .chapter{background:white;margin:0;}
+  .chapter-header{padding:40px 55px;position:relative;overflow:hidden;}
+  .ch1 .chapter-header{background:linear-gradient(135deg,#1a0a3a,#2d1569);}
+  .ch2 .chapter-header{background:linear-gradient(135deg,#0d1b2a,#1b3a4b);}
+  .ch3 .chapter-header{background:linear-gradient(135deg,#0d2818,#1a4731);}
+  .ch4 .chapter-header{background:linear-gradient(135deg,#1a1000,#3d3000);}
+  .ch5 .chapter-header{background:linear-gradient(135deg,#0d2020,#0d3a3a);}
+  .ch6 .chapter-header{background:linear-gradient(135deg,#1b0000,#4a1500);}
+  .ch7 .chapter-header{background:linear-gradient(135deg,#0a1a30,#1a3060);}
+  .ch8 .chapter-header{background:linear-gradient(135deg,#1a0a26,#3a1a4a);}
+  .chapter-header::after{content:'';position:absolute;top:-30px;right:-30px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,0.03);}
+  .chapter-label{font-size:11px;letter-spacing:4px;color:#c8b8ff;text-transform:uppercase;margin-bottom:10px;}
+  .chapter-title{font-size:28px;color:white;font-weight:700;}
+  .chapter-desc{font-size:14px;color:rgba(255,255,255,0.6);margin-top:8px;}
+  .chapter-body{padding:40px 55px;}
+
+  h2.sec{font-size:21px;color:var(--primary);margin:35px 0 15px;padding-left:18px;border-left:5px solid #5c35c9;}
+  h3.sub{font-size:17px;color:#1b3a4b;margin:25px 0 12px;padding-bottom:6px;border-bottom:2px dashed #e8e8e8;}
+  p{margin-bottom:14px;text-align:justify;}
+
+  .tip-box{background:#f0f0ff;border-left:5px solid #5c35c9;padding:16px 20px;border-radius:8px;margin:18px 0;color:#2a1569;}
+  .warn-box{background:#fffbf0;border-left:5px solid #ffd60a;padding:16px 20px;border-radius:8px;margin:18px 0;color:#5a4000;}
+  .info-box{background:#f0f8ff;border-left:5px solid #0077b6;padding:16px 20px;border-radius:8px;margin:18px 0;color:#023e8a;}
+  .success-box{background:#f0fff4;border-left:5px solid #2dc653;padding:16px 20px;border-radius:8px;margin:18px 0;color:#1a4731;}
+  .danger-box{background:#fff0f0;border-left:5px solid #e63946;padding:16px 20px;border-radius:8px;margin:18px 0;color:#7a0010;}
+
+  table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13.5px;}
+  th,td{padding:10px 15px;border:1px solid #e0e4ea;text-align:left;}
+  thead tr{background:var(--primary);color:white;}
+  tr:nth-child(even){background:#f8f9fa;}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:20px 0;}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;margin:20px 0;}
+  .card{background:#f8f9fa;padding:20px;border-radius:12px;border:1px solid #e4e8f0;}
+  .card h4{margin-bottom:10px;font-size:15px;}
+
+  .badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:600;}
+  .badge-p{background:#f0e8ff;color:#3d1580;}.badge-g{background:#e8f8ed;color:#1a4731;}
+  .badge-b{background:#e8f4fd;color:#023e8a;}.badge-y{background:#fff8e6;color:#5a4000;}
+
+  .chapter-summary{background:#f8f5ff;border:2px solid #5c35c9;border-radius:12px;padding:25px 30px;margin:30px 0;}
+  .chapter-summary h3{color:#2a1569;margin-bottom:12px;}
+  .chapter-summary ul{list-style:none;}.chapter-summary li{padding:4px 0;}
+  ul li,ol li{margin:6px 0;}
+
+  /* SPECIAL */
+  .curve-box{background:linear-gradient(135deg,#1a0a3a,#2d1569);border-radius:14px;padding:28px;margin:20px 0;color:white;}
+  .forgetting-bars{display:flex;gap:12px;align-items:flex-end;height:120px;margin:20px 0;}
+  .fb-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;}
+  .fb-bar{width:100%;border-radius:6px 6px 0 0;background:linear-gradient(180deg,#5c35c9,#3a1580);}
+  .fb-label{font-size:11px;color:rgba(255,255,255,0.7);text-align:center;}
+  .fb-pct{font-size:13px;font-weight:700;color:#c8b8ff;}
+
+  .cornell-box{border:2px solid #5c35c9;border-radius:12px;overflow:hidden;margin:20px 0;}
+  .cornell-header{background:#5c35c9;color:white;padding:12px 20px;font-weight:700;font-size:15px;}
+  .cornell-body{display:grid;grid-template-columns:200px 1fr;min-height:250px;}
+  .cornell-cue{padding:16px;border-right:2px solid #5c35c9;background:#f8f5ff;}
+  .cornell-notes{padding:16px;}
+  .cornell-summary{border-top:2px solid #5c35c9;padding:14px 16px;background:#f0eaff;grid-column:1/-1;}
+  .cornell-label{font-size:11px;color:#5c35c9;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;}
+
+  .feynman-steps{display:flex;flex-direction:column;gap:4px;margin:20px 0;}
+  .fstep{display:flex;gap:15px;align-items:flex-start;padding:14px 18px;border-radius:10px;background:#f8f5ff;border-left:4px solid #5c35c9;}
+  .fstep-num{background:#5c35c9;color:white;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-size:14px;}
+  .fstep-content{flex:1;}
+  .fstep-title{font-weight:700;color:#2a1569;margin-bottom:4px;}
+
+  .srbox{background:linear-gradient(135deg,#0d2818,#1a4731);border-radius:14px;padding:24px;margin:20px 0;color:white;}
+  .sr-row{display:flex;align-items:center;gap:16px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1);}
+  .sr-row:last-child{border-bottom:none;}
+  .sr-day{background:rgba(45,198,83,0.2);border:1px solid rgba(45,198,83,0.4);padding:4px 12px;border-radius:20px;color:#2dc653;font-weight:700;font-size:13px;min-width:70px;text-align:center;}
+  .sr-text{color:rgba(255,255,255,0.85);font-size:13px;}
+
+  @media(max-width:768px){.chapter-body{padding:25px 20px;}.grid2,.grid3{grid-template-columns:1fr;}.cover h1{font-size:28px;}.toc{padding:30px 20px;}.cornell-body{grid-template-columns:1fr;}}
+</style>
+</head>
+<body class="light-mode">
+
+<div class="controls">
+  <button class="ctrl-btn" id="themeBtn" onclick="toggleTheme()">🌙 Dark Mode</button>
+  <button class="ctrl-btn" id="langBtn" onclick="toggleLang()">🇬🇧 English</button>
+  <button class="ctrl-btn" id="pdfBtn" onclick="savePDF()">📄 Save PDF</button>
+</div>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-icon">📚</div>
+  <h1><span class="bn-text">Study Techniques</span><span class="en-text">Study Techniques</span></h1>
+  <h2><span class="bn-text">বিজ্ঞানসম্মত পদ্ধতিতে পড়ো — কম সময়ে বেশি শেখো</span><span class="en-text">Study Scientifically — Learn More in Less Time</span></h2>
+  <div class="divider"></div>
+  <p class="desc"><span class="bn-text">Active Recall থেকে Spaced Repetition, Feynman Technique থেকে Mind Mapping — যে পদ্ধতিগুলো দিয়ে বিশ্বের সেরা শিক্ষার্থীরা কম সময়ে বেশি শেখে। Passive reading বন্ধ করো, Active learning শুরু করো।</span><span class="en-text">From Active Recall to Spaced Repetition, Feynman Technique to Mind Mapping — the methods the world's best students use to learn more in less time. Stop passive reading, start active learning.</span></p>
+  <div style="margin-top:20px;">
+    <span class="badge">🔁 Active Recall</span>
+    <span class="badge">📅 Spaced Repetition</span>
+    <span class="badge">🧪 Feynman Technique</span>
+    <span class="badge">📋 Cornell Notes</span>
+    <span class="badge">🗺️ Mind Mapping</span>
+    <span class="badge">🧠 Memory Palace</span>
+    <span class="badge">⚡ Interleaving</span>
+  </div>
+  <div class="cover-quote">
+    <span class="bn-text">"বেশি পড়া নয়, সঠিকভাবে পড়াই আসল শেখা।"</span>
+    <span class="en-text">"Reading more is not learning — reading correctly is."</span>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <div class="toc-header">📋 <span class="bn-text">সূচিপত্র</span><span class="en-text">Table of Contents</span></div>
+  <div><div class="toc-main"><span><span class="num">01.</span><span class="bn-text">Passive vs Active Learning — আসল পার্থক্য</span><span class="en-text">Passive vs Active Learning — The Real Difference</span></span></div><div class="toc-sub"><span><span class="bn-text">কেন traditional পড়া কাজ করে না, Learning Pyramid</span></span></div></div>
+  <div><div class="toc-main"><span><span class="num">02.</span><span class="bn-text">Forgetting Curve ও Spaced Repetition</span><span class="en-text">Forgetting Curve & Spaced Repetition</span></span></div><div class="toc-sub"><span><span class="bn-text">Ebbinghaus-এর আবিষ্কার, Anki, Optimal review schedule</span></span></div></div>
+  <div><div class="toc-main"><span><span class="num">03.</span><span class="bn-text">Active Recall — সবচেয়ে শক্তিশালী technique</span><span class="en-text">Active Recall — The Most Powerful Technique</span></span></div><div class="toc-sub"><span><span class="bn-text">Testing effect, Flashcard, Self-quiz, Blank page method</span></span></div></div>
+  <div><div class="toc-main"><span><span class="num">04.</span><span class="bn-text">Feynman Technique</span><span class="en-text">The Feynman Technique</span></span></div><div class="toc-sub"><span><span class="bn-text">শিশুকে বোঝানোর মতো করে শেখো — Nobel Prize winner-এর পদ্ধতি</span></span></div></div>
+  <div><div class="toc-main"><span><span class="num">05.</span><span class="bn-text">Note-Taking — Cornell Method</span><span class="en-text">Note-Taking — The Cornell Method</span></span></div><div class="toc-sub"><span><span class="bn-text">Cornell Notes, Mind Mapping, Sketchnoting</span></span></div></div>
+  <div><div class="toc-main"><span><span class="num">06.</span><span class="bn-text">Memory Techniques</span><span class="en-text">Memory Techniques</span></span></div><div class="toc-sub"><span><span class="bn-text">Memory Palace, Mnemonics, Chunking, Association</span></span></div></div>
+  <div><div class="toc-main"><span><span class="num">07.</span><span class="bn-text">Focus ও Study Environment</span><span class="en-text">Focus & Study Environment</span></span></div><div class="toc-sub"><span><span class="bn-text">Optimal study conditions, music, phone management</span></span></div></div>
+  <div><div class="toc-main"><span><span class="num">08.</span><span class="bn-text">Study Plan — পরীক্ষার জন্য সম্পূর্ণ Roadmap</span><span class="en-text">Study Plan — Complete Exam Roadmap</span></span></div><div class="toc-sub"><span><span class="bn-text">Weekly study schedule, exam strategy, revision plan</span></span></div></div>
+</div>
+
+<!-- CH1: PASSIVE VS ACTIVE -->
+<div class="chapter ch1">
+  <div class="chapter-header">
+    <div class="chapter-label">Chapter 01</div>
+    <div class="chapter-title">⚖️ <span class="bn-text">Passive vs Active Learning</span><span class="en-text">Passive vs Active Learning</span></div>
+    <div class="chapter-desc"><span class="bn-text">কেন সারারাত পড়েও পরীক্ষায় মনে থাকে না</span><span class="en-text">Why studying all night still leads to forgetting on the exam</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">😴 <span class="bn-text">Passive Learning — যা কাজ করে না</span><span class="en-text">Passive Learning — What Doesn't Work</span></h2>
+    <p><span class="bn-text">বেশিরভাগ শিক্ষার্থী Passive learning করে — বই পড়ে, notes দেখে, highlight করে, lecture শোনে। মনে হয় শিখছি, কিন্তু brain সত্যিকারের কোনো কাজ করছে না। এজন্য পরীক্ষায় গেলে মনে থাকে না।</span><span class="en-text">Most students study passively — they read books, review notes, highlight, listen to lectures. It feels like learning, but the brain isn't doing any real work. That's why things aren't remembered in exams.</span></p>
+
+    <div class="grid2">
+      <div class="card">
+        <h4>❌ <span class="bn-text">Passive Learning (কম effective)</span><span class="en-text">Passive Learning (Less Effective)</span></h4>
+        <ul>
+          <li><span class="bn-text">বই পড়া (re-reading)</span><span class="en-text">Re-reading books</span></li>
+          <li><span class="bn-text">Highlight করা</span><span class="en-text">Highlighting</span></li>
+          <li><span class="bn-text">Notes দেখা</span><span class="en-text">Reviewing notes</span></li>
+          <li><span class="bn-text">Lecture শোনা</span><span class="en-text">Listening to lectures</span></li>
+          <li><span class="bn-text">Video দেখা</span><span class="en-text">Watching videos</span></li>
+        </ul>
+        <div class="danger-box" style="margin-top:10px;">🧠 Retention: ১০-৩০%</div>
+      </div>
+      <div class="card">
+        <h4>✅ <span class="bn-text">Active Learning (বেশি effective)</span><span class="en-text">Active Learning (More Effective)</span></h4>
+        <ul>
+          <li><span class="bn-text">নিজেকে Quiz করা</span><span class="en-text">Self-quizzing</span></li>
+          <li><span class="bn-text">অন্যকে শেখানো</span><span class="en-text">Teaching others</span></li>
+          <li><span class="bn-text">Practice problems করা</span><span class="en-text">Doing practice problems</span></li>
+          <li><span class="bn-text">Blank page-এ লেখা</span><span class="en-text">Writing on a blank page</span></li>
+          <li><span class="bn-text">Flashcard ব্যবহার</span><span class="en-text">Using flashcards</span></li>
+        </ul>
+        <div class="success-box" style="margin-top:10px;">🧠 Retention: ৭০-৯০%</div>
+      </div>
+    </div>
+
+    <h2 class="sec">🏛️ <span class="bn-text">Learning Pyramid</span><span class="en-text">The Learning Pyramid</span></h2>
+    <table>
+      <thead><tr><th><span class="bn-text">পদ্ধতি</span><span class="en-text">Method</span></th><th><span class="bn-text">Retention Rate</span></th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td>🎤 <span class="bn-text">অন্যকে শেখানো</span><span class="en-text">Teaching others</span></td><td><strong>90%</strong></td><td><span class="badge badge-g">Active</span></td></tr>
+        <tr><td>🔨 <span class="bn-text">Practice করা</span><span class="en-text">Practice doing</span></td><td><strong>75%</strong></td><td><span class="badge badge-g">Active</span></td></tr>
+        <tr><td>💬 <span class="bn-text">Group discussion</span><span class="en-text">Group discussion</span></td><td><strong>50%</strong></td><td><span class="badge badge-g">Active</span></td></tr>
+        <tr><td>👁️ <span class="bn-text">Demonstration দেখা</span><span class="en-text">Watching demonstration</span></td><td><strong>30%</strong></td><td><span class="badge badge-y">Semi</span></td></tr>
+        <tr><td>📊 <span class="bn-text">Audio-visual (video)</span><span class="en-text">Audio-visual (video)</span></td><td><strong>20%</strong></td><td><span class="badge badge-y">Passive</span></td></tr>
+        <tr><td>🖼️ <span class="bn-text">Image দেখা</span><span class="en-text">Looking at images</span></td><td><strong>10%</strong></td><td><span class="badge badge-y">Passive</span></td></tr>
+        <tr><td>📖 <span class="bn-text">পড়া (reading)</span><span class="en-text">Reading</span></td><td><strong>10%</strong></td><td><span class="badge badge-y">Passive</span></td></tr>
+        <tr><td>👂 <span class="bn-text">শোনা (lecture)</span><span class="en-text">Listening (lecture)</span></td><td><strong>5%</strong></td><td><span class="badge badge-y">Passive</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="tip-box">💡 <strong><span class="bn-text">Key Insight:</span></strong> <span class="bn-text">পড়া শেষে বই বন্ধ করো। তারপর কাগজে লেখো — যা মনে আছে তাই। এই একটা কাজ Retention ৩-৪ গুণ বাড়িয়ে দেয়।</span><span class="en-text">After reading, close the book. Then write on paper — whatever you remember. This one action increases retention 3-4 times.</span></div>
+
+    <div class="chapter-summary">
+      <h3>✅ Chapter 1 Key Takeaways</h3>
+      <ul>
+        <li>✔ <span class="bn-text">Passive reading = ১০% retention → বেশিরভাগ সময় নষ্ট</span></li>
+        <li>✔ <span class="bn-text">Teaching others = ৯০% retention → সবচেয়ে effective</span></li>
+        <li>✔ <span class="bn-text">Highlight করা = illusion of learning, কাজ করে না</span></li>
+        <li>✔ <span class="bn-text">Active করো: Quiz, Practice, Teach, Write from memory</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CH2: FORGETTING CURVE & SPACED REPETITION -->
+<div class="chapter ch2">
+  <div class="chapter-header">
+    <div class="chapter-label">Chapter 02</div>
+    <div class="chapter-title">📅 <span class="bn-text">Forgetting Curve ও Spaced Repetition</span><span class="en-text">Forgetting Curve & Spaced Repetition</span></div>
+    <div class="chapter-desc"><span class="bn-text">কেন ভুলে যাই এবং কীভাবে মনে রাখবো চিরদিনের জন্য</span><span class="en-text">Why we forget and how to remember forever</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">📉 <span class="bn-text">Ebbinghaus Forgetting Curve</span><span class="en-text">The Ebbinghaus Forgetting Curve</span></h2>
+    <p><span class="bn-text">১৮৮৫ সালে Hermann Ebbinghaus আবিষ্কার করেন — নতুন কিছু শেখার পর যদি review না করা হয়, তাহলে মাত্র ১ ঘণ্টার মধ্যে ৫০% ভুলে যাই। ২৪ ঘণ্টায় ৭০%। ১ সপ্তাহে ৯০%।</span><span class="en-text">In 1885, Hermann Ebbinghaus discovered — if you don't review new learning, you forget 50% within 1 hour. 70% within 24 hours. 90% within 1 week.</span></p>
+
+    <div class="curve-box">
+      <h3 style="color:#c8b8ff;margin-bottom:16px;">📉 <span class="bn-text">কতটুকু মনে থাকে?</span><span class="en-text">How much do you remember?</span></h3>
+      <div class="forgetting-bars">
+        <div class="fb-item"><div class="fb-pct">100%</div><div class="fb-bar" style="height:100%;"></div><div class="fb-label"><span class="bn-text">শেখার সময়</span><span class="en-text">At learning</span></div></div>
+        <div class="fb-item"><div class="fb-pct">50%</div><div class="fb-bar" style="height:50%;"></div><div class="fb-label"><span class="bn-text">১ ঘণ্টা পর</span><span class="en-text">After 1 hour</span></div></div>
+        <div class="fb-item"><div class="fb-pct">30%</div><div class="fb-bar" style="height:30%;"></div><div class="fb-label"><span class="bn-text">২৪ ঘণ্টা পর</span><span class="en-text">After 24 hours</span></div></div>
+        <div class="fb-item"><div class="fb-pct">20%</div><div class="fb-bar" style="height:20%;background:linear-gradient(180deg,#e63946,#9b1d20);"></div><div class="fb-label"><span class="bn-text">৭ দিন পর</span><span class="en-text">After 7 days</span></div></div>
+        <div class="fb-item"><div class="fb-pct">10%</div><div class="fb-bar" style="height:10%;background:linear-gradient(180deg,#e63946,#9b1d20);"></div><div class="fb-label"><span class="bn-text">১ মাস পর</span><span class="en-text">After 1 month</span></div></div>
+      </div>
+      <p style="color:rgba(255,255,255,0.7);font-size:13px;margin-top:8px;">💡 <span class="bn-text">Review করলে curve আবার উপরে উঠে আসে এবং প্রতিবার বেশি দিন থাকে।</span><span class="en-text">Reviewing brings the curve back up, and it stays longer each time.</span></p>
+    </div>
+
+    <h2 class="sec">🔁 <span class="bn-text">Spaced Repetition — Optimal Review Schedule</span><span class="en-text">Spaced Repetition — Optimal Review Schedule</span></h2>
+    <p><span class="bn-text">Solution হলো Spaced Repetition — ভুলে যাওয়ার ঠিক আগে review করা। প্রতিবার review-এর ব্যবধান বাড়তে থাকে।</span><span class="en-text">The solution is Spaced Repetition — reviewing just before you forget. The interval between reviews increases each time.</span></p>
+
+    <div class="srbox">
+      <h3 style="color:#2dc653;margin-bottom:16px;">📅 <span class="bn-text">Optimal Review Schedule</span><span class="en-text">Optimal Review Schedule</span></h3>
+      <div class="sr-row"><div class="sr-day"><span class="bn-text">দিন ০</span><span class="en-text">Day 0</span></div><div class="sr-text"><span class="bn-text">প্রথমবার শেখো (Initial learning)</span><span class="en-text">First learning (Initial learning)</span></div></div>
+      <div class="sr-row"><div class="sr-day"><span class="bn-text">দিন ১</span><span class="en-text">Day 1</span></div><div class="sr-text"><span class="bn-text">১ম Review — ১০ মিনিট</span><span class="en-text">1st Review — 10 minutes</span></div></div>
+      <div class="sr-row"><div class="sr-day"><span class="bn-text">দিন ৩</span><span class="en-text">Day 3</span></div><div class="sr-text"><span class="bn-text">২য় Review — ৫ মিনিট</span><span class="en-text">2nd Review — 5 minutes</span></div></div>
+      <div class="sr-row"><div class="sr-day"><span class="bn-text">দিন ৭</span><span class="en-text">Day 7</span></div><div class="sr-text"><span class="bn-text">৩য় Review — ৫ মিনিট</span><span class="en-text">3rd Review — 5 minutes</span></div></div>
+      <div class="sr-row"><div class="sr-day"><span class="bn-text">দিন ১৪</span><span class="en-text">Day 14</span></div><div class="sr-text"><span class="bn-text">৪র্থ Review — ৩ মিনিট</span><span class="en-text">4th Review — 3 minutes</span></div></div>
+      <div class="sr-row"><div class="sr-day"><span class="bn-text">দিন ৩০</span><span class="en-text">Day 30</span></div><div class="sr-text"><span class="bn-text">৫ম Review — Long-term memory-তে চলে যাবে</span><span class="en-text">5th Review — Will transfer to long-term memory</span></div></div>
+    </div>
+
+    <h2 class="sec">🃏 <span class="bn-text">Anki — Spaced Repetition Software</span><span class="en-text">Anki — Spaced Repetition Software</span></h2>
+    <p><span class="bn-text">Anki হলো free, open-source flashcard app যা automatically Spaced Repetition algorithm ব্যবহার করে। Medical students, language learners, এবং competitive exam preppers সারা বিশ্বে এটা ব্যবহার করে।</span><span class="en-text">Anki is a free, open-source flashcard app that automatically uses the Spaced Repetition algorithm. Medical students, language learners, and competitive exam preppers worldwide use it.</span></p>
+    <div class="grid3">
+      <div class="card">
+        <h4>📱 <span class="bn-text">Platform</span></h4>
+        <p><span class="bn-text">Desktop (free), Android (free), iOS (paid). Sync হয় সব device-এ।</span></p>
+      </div>
+      <div class="card">
+        <h4>🃏 <span class="bn-text">কীভাবে কাজ করে</span><span class="en-text">How it works</span></h4>
+        <p><span class="bn-text">Card দেখাবে → নিজে উত্তর বলো → Again/Hard/Good/Easy চাপো → Algorithm ঠিক করে পরে কবে দেখাবে।</span></p>
+      </div>
+      <div class="card">
+        <h4>✅ <span class="bn-text">Result</span></h4>
+        <p><span class="bn-text">প্রতিদিন ১৫-২০ মিনিট → ৩-৬ মাসে হাজার হাজার facts দীর্ঘস্থায়ীভাবে মনে থাকে।</span></p>
+      </div>
+    </div>
+
+    <div class="chapter-summary">
+      <h3>✅ Chapter 2 Key Takeaways</h3>
+      <ul>
+        <li>✔ <span class="bn-text">১ ঘণ্টায় ৫০% ভুলে যাই → শেখার পরই একবার review করো</span></li>
+        <li>✔ <span class="bn-text">Spaced Repetition: ১ → ৩ → ৭ → ১৪ → ৩০ দিনে review</span></li>
+        <li>✔ <span class="bn-text">Anki app → automatic algorithm, সবচেয়ে efficient</span></li>
+        <li>✔ <span class="bn-text">রাতে শেখা সবচেয়ে effective — ঘুমের সময় memory consolidate হয়</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CH3: ACTIVE RECALL -->
+<div class="chapter ch3">
+  <div class="chapter-header">
+    <div class="chapter-label">Chapter 03</div>
+    <div class="chapter-title">🔁 <span class="bn-text">Active Recall — সবচেয়ে শক্তিশালী Technique</span><span class="en-text">Active Recall — The Most Powerful Technique</span></div>
+    <div class="chapter-desc"><span class="bn-text">Testing effect: পরীক্ষা দেওয়া = সবচেয়ে ভালো পড়া</span><span class="en-text">Testing effect: Taking tests = the best form of studying</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">🧪 <span class="bn-text">Testing Effect — Science</span><span class="en-text">The Testing Effect — Science</span></h2>
+    <p><span class="bn-text">Research দেখিয়েছে: একই সময়ে পড়লে যদি একবার পড়া + তিনবার নিজেকে test করো, অনেক বেশি মনে থাকে তুলনায় চারবার পড়লে। এটাকে বলে <strong>Testing Effect</strong> বা <strong>Retrieval Practice Effect</strong>।</span><span class="en-text">Research shows: In the same amount of time, reading once + testing yourself three times leads to far better retention than reading four times. This is called the <strong>Testing Effect</strong> or <strong>Retrieval Practice Effect</strong>.</span></p>
+
+    <div class="info-box">🧠 <strong><span class="bn-text">কেন কাজ করে:</span></strong> <span class="bn-text">Memory retrieve করার চেষ্টা করলে সেই memory শক্তিশালী হয়। Brain-এর neural pathway গুলো আরও মজবুত হয়। শুধু দেখলে এটা হয় না।</span><span class="en-text">Why it works: Trying to retrieve a memory strengthens that memory. The brain's neural pathways become stronger. Just looking at something doesn't achieve this.</span></div>
+
+    <h2 class="sec">🛠️ <span class="bn-text">Active Recall-এর পদ্ধতিগুলো</span><span class="en-text">Active Recall Methods</span></h2>
+
+    <h3 class="sub">1️⃣ <span class="bn-text">Blank Page Method</span></h3>
+    <ol>
+      <li><span class="bn-text">একটা topic পড়ো (একবার)</span><span class="en-text">Read a topic (once)</span></li>
+      <li><span class="bn-text">বই/notes বন্ধ করো</span><span class="en-text">Close your book/notes</span></li>
+      <li><span class="bn-text">একটা blank কাগজে যা মনে আছে সব লেখো</span><span class="en-text">Write everything you remember on a blank page</span></li>
+      <li><span class="bn-text">বই খুলে check করো — কী মিস হলো?</span><span class="en-text">Open the book and check — what did you miss?</span></li>
+      <li><span class="bn-text">শুধু gap গুলো পড়ো</span><span class="en-text">Read only the gaps</span></li>
+    </ol>
+
+    <h3 class="sub">2️⃣ <span class="bn-text">Self-Quiz / Practice Questions</span></h3>
+    <div class="tip-box">✅ <span class="bn-text">পড়ার পরে বই বন্ধ করে নিজেকে প্রশ্ন করো: "এই chapter-এ কী কী ছিল?" "এই concept-টা কীভাবে কাজ করে?" "এই formula কেন এই রকম?" — নিজেই প্রশ্ন বানাও।</span><span class="en-text">After reading, close the book and ask yourself: "What was in this chapter?" "How does this concept work?" "Why is this formula like this?" — Make up your own questions.</span></div>
+
+    <h3 class="sub">3️⃣ <span class="bn-text">Flashcard Method</span></h3>
+    <table>
+      <thead><tr><th><span class="bn-text">সামনে</span><span class="en-text">Front</span></th><th><span class="bn-text">পেছনে</span><span class="en-text">Back</span></th></tr></thead>
+      <tbody>
+        <tr><td><span class="bn-text">Mitosis কী?</span><span class="en-text">What is Mitosis?</span></td><td><span class="bn-text">একটি cell-এর দুটি identical daughter cell-এ বিভক্ত হওয়া</span><span class="en-text">Division of one cell into two identical daughter cells</span></td></tr>
+        <tr><td>E = mc² কী বোঝায়?</td><td>Energy = mass × speed of light²</td></tr>
+        <tr><td><span class="bn-text">Bangladesh স্বাধীন হয় কবে?</span><span class="en-text">When did Bangladesh become independent?</span></td><td>১৯৭১, ১৬ ডিসেম্বর</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub">4️⃣ <span class="bn-text">Past Paper Practice</span></h3>
+    <p><span class="bn-text">পরীক্ষার আগের বছরের প্রশ্নপত্র সময় ধরে সমাধান করা সবচেয়ে effective active recall। এতে একই সাথে retrieval practice + exam technique + time management practice হয়।</span><span class="en-text">Solving previous years' exam papers under timed conditions is the most effective active recall. It simultaneously gives retrieval practice + exam technique + time management practice.</span></p>
+
+    <div class="chapter-summary">
+      <h3>✅ Chapter 3 Key Takeaways</h3>
+      <ul>
+        <li>✔ <span class="bn-text">পড়া → বই বন্ধ → লেখো → চেক করো → Repeat</span></li>
+        <li>✔ <span class="bn-text">Testing Effect: নিজেকে quiz করা = সেরা study পদ্ধতি</span></li>
+        <li>✔ <span class="bn-text">Flashcard (Anki) দিয়ে প্রতিদিন practice করো</span></li>
+        <li>✔ <span class="bn-text">Past paper = সবচেয়ে realistic practice</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CH4: FEYNMAN TECHNIQUE -->
+<div class="chapter ch4">
+  <div class="chapter-header">
+    <div class="chapter-label">Chapter 04</div>
+    <div class="chapter-title">🧪 <span class="bn-text">Feynman Technique</span><span class="en-text">The Feynman Technique</span></div>
+    <div class="chapter-desc"><span class="bn-text">Nobel Prize winner Richard Feynman-এর শেখার পদ্ধতি</span><span class="en-text">Nobel Prize winner Richard Feynman's learning method</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">🧪 <span class="bn-text">Feynman Technique — ৪টি Step</span><span class="en-text">The Feynman Technique — 4 Steps</span></h2>
+    <p><span class="bn-text">Richard Feynman বলতেন: "If you can't explain it simply, you don't understand it well enough." তাঁর এই পদ্ধতি কোনো concept সত্যিকারের বুঝতে সাহায্য করে।</span><span class="en-text">Richard Feynman used to say: "If you can't explain it simply, you don't understand it well enough." His method helps truly understand any concept.</span></p>
+
+    <div class="feynman-steps">
+      <div class="fstep">
+        <div class="fstep-num">1</div>
+        <div class="fstep-content">
+          <div class="fstep-title"><span class="bn-text">Topic বেছে নাও ও শেখো</span><span class="en-text">Choose a Topic & Study It</span></div>
+          <p><span class="bn-text">একটা concept বেছে নাও। সেটা ভালো করে পড়ো এবং নোট নাও।</span><span class="en-text">Choose a concept. Study it carefully and take notes.</span></p>
+        </div>
+      </div>
+      <div class="fstep">
+        <div class="fstep-num">2</div>
+        <div class="fstep-content">
+          <div class="fstep-title"><span class="bn-text">একটি শিশুকে শেখাও (mentally)</span><span class="en-text">Teach It to a Child (mentally)</span></div>
+          <p><span class="bn-text">এমনভাবে explain করো যেন ১০ বছরের একটি শিশুকে বোঝাচ্ছো। Simple ভাষায়, উদাহরণ দিয়ে। Technical term এড়িয়ে চলো।</span><span class="en-text">Explain it as if you're teaching a 10-year-old. In simple language, with examples. Avoid technical terms.</span></p>
+        </div>
+      </div>
+      <div class="fstep">
+        <div class="fstep-num">3</div>
+        <div class="fstep-content">
+          <div class="fstep-title"><span class="bn-text">Gap চেনো</span><span class="en-text">Identify the Gaps</span></div>
+          <p><span class="bn-text">কোথায় আটকে গেলে? কোথায় explain করতে পারলে না? সেই জায়গাগুলোই তোমার knowledge gap। সেগুলো আবার পড়ো।</span><span class="en-text">Where did you get stuck? Where couldn't you explain? Those are your knowledge gaps. Study those again.</span></p>
+        </div>
+      </div>
+      <div class="fstep">
+        <div class="fstep-num">4</div>
+        <div class="fstep-content">
+          <div class="fstep-title"><span class="bn-text">Simplify ও Analogy ব্যবহার করো</span><span class="en-text">Simplify & Use Analogies</span></div>
+          <p><span class="bn-text">আরও simple করো। Real-life analogy বানাও। উদাহরণ: "Mitosis হলো একটা cell-এর photocopy করা।"</span><span class="en-text">Make it simpler. Create real-life analogies. Example: "Mitosis is like photocopying a cell."</span></p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="sec">💡 <span class="bn-text">Feynman Technique-এর উদাহরণ</span><span class="en-text">Feynman Technique Example</span></h2>
+    <div class="grid2">
+      <div class="card">
+        <h4>❌ <span class="bn-text">Traditional পড়া</span><span class="en-text">Traditional Study</span></h4>
+        <p><span class="bn-text">"Photosynthesis হলো এমন একটি প্রক্রিয়া যেখানে উদ্ভিদ সূর্যালোক, CO₂ ও পানি ব্যবহার করে glucose ও O₂ তৈরি করে।" — মুখস্থ করলাম, কিন্তু কি বুঝলাম?</span><span class="en-text">"Photosynthesis is a process where plants use sunlight, CO₂ and water to produce glucose and O₂." — Memorized, but did I understand?</span></p>
+      </div>
+      <div class="card">
+        <h4>✅ <span class="bn-text">Feynman Style</span></h4>
+        <p><span class="bn-text">"গাছ মূলত খাবার রান্না করে। তার রান্নাঘর হলো পাতা। সে রোদকে গ্যাস হিসেবে ব্যবহার করে, বাতাস থেকে CO₂ নেয়, মাটি থেকে পানি নেয়। রান্না হলে সুগার তৈরি হয় — এটাই তার খাবার।"</span><span class="en-text">"A plant basically cooks its own food. Its kitchen is the leaf. It uses sunlight as gas, takes CO₂ from air, water from soil. When cooking is done, sugar is made — that's its food."</span></p>
+      </div>
+    </div>
+
+    <div class="chapter-summary">
+      <h3>✅ Chapter 4 Key Takeaways</h3>
+      <ul>
+        <li>✔ <span class="bn-text">Simple করে বলতে না পারলে সত্যিকারের বোঝা হয়নি</span></li>
+        <li>✔ <span class="bn-text">শিশুকে শেখাও → Gap বের হবে → সেই gap পড়ো</span></li>
+        <li>✔ <span class="bn-text">Analogy বানাও — real-life-এর সাথে connect করো</span></li>
+        <li>✔ <span class="bn-text">Rubber duck technique: একটা object-কেও explain করতে পারো</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CH5: NOTE TAKING -->
+<div class="chapter ch5">
+  <div class="chapter-header">
+    <div class="chapter-label">Chapter 05</div>
+    <div class="chapter-title">📋 <span class="bn-text">Note-Taking — Cornell Method ও Mind Mapping</span><span class="en-text">Note-Taking — Cornell Method & Mind Mapping</span></div>
+    <div class="chapter-desc"><span class="bn-text">Notes যদি কাজে না লাগে, তাহলে সেটা শুধু সময় নষ্ট</span><span class="en-text">If notes don't help, they're just a waste of time</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">📋 <span class="bn-text">Cornell Note-Taking System</span><span class="en-text">The Cornell Note-Taking System</span></h2>
+    <p><span class="bn-text">Cornell University-তে ১৯৫০-এ Dr. Walter Pauk এই পদ্ধতি তৈরি করেন। এটা এমনভাবে designed যাতে notes নেওয়া এবং review করা একসাথে হয়।</span><span class="en-text">Dr. Walter Pauk created this method at Cornell University in the 1950s. It's designed so that note-taking and reviewing happen together.</span></p>
+
+    <div class="cornell-box">
+      <div class="cornell-header">📋 Cornell Notes — Chapter: Photosynthesis</div>
+      <div class="cornell-body">
+        <div class="cornell-cue">
+          <div class="cornell-label">Cue Column</div>
+          <p style="font-size:13px;"><strong><span class="bn-text">প্রশ্ন ও Keywords</span><span class="en-text">Questions & Keywords</span></strong></p>
+          <br>
+          <p style="font-size:12px;color:#5c35c9;">• Photosynthesis কোথায় হয়?</p>
+          <p style="font-size:12px;color:#5c35c9;">• Raw materials কী কী?</p>
+          <p style="font-size:12px;color:#5c35c9;">• Products কী?</p>
+          <p style="font-size:12px;color:#5c35c9;">• Light reaction vs Dark reaction</p>
+        </div>
+        <div class="cornell-notes">
+          <div class="cornell-label">Notes Area</div>
+          <p style="font-size:13px;"><strong><span class="bn-text">Lecture/পড়ার সময় নোট</span><span class="en-text">Notes during lecture/reading</span></strong></p>
+          <br>
+          <p style="font-size:12px;">• Chloroplast-এ হয় (পাতার green part)</p>
+          <p style="font-size:12px;">• Raw: CO₂ + H₂O + Light energy</p>
+          <p style="font-size:12px;">• Products: Glucose (C₆H₁₂O₆) + O₂</p>
+          <p style="font-size:12px;">• Light rx: ATP তৈরি হয়</p>
+          <p style="font-size:12px;">• Dark rx: Calvin cycle, CO₂ fix হয়</p>
+        </div>
+        <div class="cornell-summary">
+          <div class="cornell-label">Summary (<span class="bn-text">নিজের ভাষায়</span><span class="en-text">In your own words</span>)</div>
+          <p style="font-size:13px;"><span class="bn-text">Photosynthesis হলো গাছের খাবার তৈরির প্রক্রিয়া যেখানে সূর্যের আলো ব্যবহার করে CO₂ ও পানি থেকে glucose তৈরি হয় এবং oxygen বের হয়।</span><span class="en-text">Photosynthesis is the plant's food-making process where sunlight is used to convert CO₂ and water into glucose, releasing oxygen.</span></p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="sec">🗺️ <span class="bn-text">Mind Mapping</span><span class="en-text">Mind Mapping</span></h2>
+    <p><span class="bn-text">Mind Map হলো visual note-taking। কেন্দ্রে main topic, বাইরে branches। Brain visual ও non-linear information better process করে।</span><span class="en-text">A Mind Map is visual note-taking. Main topic at the center, branches spreading outward. The brain processes visual and non-linear information better.</span></p>
+    <div class="code" style="background:#1a0a3a;border-left-color:#5c35c9;white-space:pre-wrap;">                        [PHOTOSYNTHESIS]
+                               |
+          ┌────────────────────┼────────────────────┐
+          |                   |                    |
+      [WHERE?]           [INPUTS]             [OUTPUTS]
+     Chloroplast       CO₂ + H₂O            Glucose + O₂
+       Leaves         + Sunlight               ATP
+          |
+     ┌────┴────┐
+  [LIGHT RX]  [DARK RX]
+   Thylakoid  Stroma
+   ATP made   Calvin cycle</div>
+
+    <div class="chapter-summary">
+      <h3>✅ Chapter 5 Key Takeaways</h3>
+      <ul>
+        <li>✔ <span class="bn-text">Cornell Notes: Cue (প্রশ্ন) + Notes + Summary → ৩-in-1</span></li>
+        <li>✔ <span class="bn-text">Notes লেখার পর summary নিজের ভাষায় লেখো</span></li>
+        <li>✔ <span class="bn-text">Mind Map: Visual learning, connections বোঝা যায়</span></li>
+        <li>✔ <span class="bn-text">Notes never copy করো — নিজের ভাষায় লেখো</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CH6: MEMORY TECHNIQUES -->
+<div class="chapter ch6">
+  <div class="chapter-header">
+    <div class="chapter-label">Chapter 06</div>
+    <div class="chapter-title">🏛️ <span class="bn-text">Memory Techniques</span><span class="en-text">Memory Techniques</span></div>
+    <div class="chapter-desc"><span class="bn-text">Memory Palace, Mnemonics, Chunking — যেভাবে Memory Champions শেখে</span><span class="en-text">Memory Palace, Mnemonics, Chunking — How Memory Champions Learn</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">🏛️ <span class="bn-text">Memory Palace (Method of Loci)</span><span class="en-text">Memory Palace (Method of Loci)</span></h2>
+    <p><span class="bn-text">Ancient Greek-দের আবিষ্কার। পরিচিত একটা জায়গার (বাড়ি, স্কুল) বিভিন্ন অংশে mental image হিসেবে তথ্য রাখো। মনে করার সময় সেই জায়গায় mentally walk করো।</span><span class="en-text">An ancient Greek invention. Place information as mental images in different parts of a familiar place (home, school). When recalling, mentally walk through that place.</span></p>
+    <div class="code" style="background:#1a0020;border-left-color:#5c35c9;white-space:pre-wrap;">উদাহরণ: Solar System-এর গ্রহগুলো মনে রাখা
+Mercury → Venus → Earth → Mars → Jupiter → Saturn → Uranus → Neptune
+
+Memory Palace: নিজের বাড়ি
+🚪 দরজায়: Mercury thermometer রাখা আছে (গরম!)
+👟 জুতার rack-এ: একটা Venus de Milo মূর্তি
+🛋️ Sofa-তে: পৃথিবীর গোলক রাখা
+🖥️ TV-তে: Mars bar chocolate
+🍳 রান্নাঘরে: Jupiter-এর মতো বড় হাঁড়ি
+🛁 Bathroom-এ: Saturn-এর ring দিয়ে tub ঘেরা
+🛏️ বিছানায়: Uranus (উল্টো শুয়ে আছে)
+🪟 জানালায়: Neptune-এর মতো নীল পর্দা
+
+→ মনে করতে হলে: বাড়িতে হেঁটে যাও!</div>
+
+    <h2 class="sec">🔤 <span class="bn-text">Mnemonics — সহজ মনে রাখার কৌশল</span><span class="en-text">Mnemonics — Easy Memory Tricks</span></h2>
+    <table>
+      <thead><tr><th>Type</th><th><span class="bn-text">কীভাবে</span><span class="en-text">How</span></th><th><span class="bn-text">উদাহরণ</span><span class="en-text">Example</span></th></tr></thead>
+      <tbody>
+        <tr><td><strong>Acronym</strong></td><td><span class="bn-text">প্রথম অক্ষর দিয়ে word বানাও</span><span class="en-text">Make a word from first letters</span></td><td>ROY G BIV → Red Orange Yellow Green Blue Indigo Violet</td></tr>
+        <tr><td><strong>Acrostic</strong></td><td><span class="bn-text">প্রথম অক্ষর দিয়ে sentence বানাও</span><span class="en-text">Make a sentence from first letters</span></td><td>"My Very Educated Mother Just Served Us Nachos" → Planets</td></tr>
+        <tr><td><strong>Rhyme</strong></td><td><span class="bn-text">ছড়া বানাও</span><span class="en-text">Make a rhyme</span></td><td>"In 1492, Columbus sailed the ocean blue"</td></tr>
+        <tr><td><strong>Chunking</strong></td><td><span class="bn-text">ছোট ছোট ভাগে ভাগ করো</span><span class="en-text">Break into small chunks</span></td><td>01711234567 → 017 - 112 - 34567</td></tr>
+        <tr><td><strong>Story</strong></td><td><span class="bn-text">গল্প বানাও</span><span class="en-text">Make a story</span></td><td><span class="bn-text">Facts-এর মধ্যে একটা গল্পের সূত্র বানাও</span><span class="en-text">Create a story linking the facts</span></td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="sec">🧩 <span class="bn-text">Chunking — বড় তথ্যকে ছোট করো</span><span class="en-text">Chunking — Break Large Info into Small Pieces</span></h2>
+    <p><span class="bn-text">Brain একসাথে মাত্র ৭±২টা information chunk ধরে রাখতে পারে (Miller's Law)। বড় তথ্যকে meaningful groups-এ ভাগ করলে মনে রাখা সহজ হয়।</span><span class="en-text">The brain can hold only 7±2 chunks of information at once (Miller's Law). Breaking large information into meaningful groups makes it easier to remember.</span></p>
+
+    <div class="chapter-summary">
+      <h3>✅ Chapter 6 Key Takeaways</h3>
+      <ul>
+        <li>✔ <span class="bn-text">Memory Palace = পরিচিত জায়গায় তথ্য রাখো</span></li>
+        <li>✔ <span class="bn-text">Acronym/Acrostic = list মনে রাখার সহজ উপায়</span></li>
+        <li>✔ <span class="bn-text">Chunking = বড় তথ্য ছোট ছোট ভাগে</span></li>
+        <li>✔ <span class="bn-text">Emotion + Story = সবচেয়ে দীর্ঘস্থায়ী memory</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CH7: FOCUS & ENVIRONMENT -->
+<div class="chapter ch7">
+  <div class="chapter-header">
+    <div class="chapter-label">Chapter 07</div>
+    <div class="chapter-title">🎯 <span class="bn-text">Focus ও Study Environment</span><span class="en-text">Focus & Study Environment</span></div>
+    <div class="chapter-desc"><span class="bn-text">Optimal পরিবেশ তৈরি করলে focus নিজেই আসে</span><span class="en-text">Create the optimal environment and focus comes naturally</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">📱 <span class="bn-text">Phone ও Digital Distraction</span><span class="en-text">Phone & Digital Distraction</span></h2>
+    <div class="warn-box">⚠️ <strong><span class="bn-text">Research:</span></strong> <span class="bn-text">Phone শুধু কাছে থাকলেই (পকেটে, face-down) cognitive capacity কমে যায় — দেখা না হলেও! Phone অন্য room-এ রাখলে study quality উল্লেখযোগ্যভাবে ভালো হয়।</span><span class="en-text">Research shows: Just having your phone nearby (in your pocket, face-down) reduces cognitive capacity — even if you don't look at it! Keeping your phone in another room significantly improves study quality.</span></div>
+
+    <div class="grid2">
+      <div class="card">
+        <h4>❌ <span class="bn-text">যা করবে না</span><span class="en-text">Don't Do This</span></h4>
+        <ul>
+          <li><span class="bn-text">Phone পাশে রেখে পড়া</span><span class="en-text">Studying with phone nearby</span></li>
+          <li><span class="bn-text">Background-এ TV বা YouTube</span><span class="en-text">TV or YouTube in the background</span></li>
+          <li><span class="bn-text">Multitab browser</span><span class="en-text">Multiple browser tabs</span></li>
+          <li><span class="bn-text">Notification on রেখে পড়া</span><span class="en-text">Studying with notifications on</span></li>
+          <li><span class="bn-text">Bed-এ শুয়ে পড়া</span><span class="en-text">Studying in bed</span></li>
+          <li><span class="bn-text">Cluttered desk</span><span class="en-text">Cluttered desk</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>✅ <span class="bn-text">যা করবে</span><span class="en-text">Do This</span></h4>
+        <ul>
+          <li><span class="bn-text">Phone অন্য room-এ</span><span class="en-text">Phone in another room</span></li>
+          <li><span class="bn-text">Dedicated study spot</span><span class="en-text">Dedicated study spot</span></li>
+          <li><span class="bn-text">পানির বোতল কাছে রাখো</span><span class="en-text">Keep water bottle nearby</span></li>
+          <li><span class="bn-text">Good lighting (natural > artificial)</span></li>
+          <li><span class="bn-text">Comfortable temperature</span><span class="en-text">Comfortable temperature</span></li>
+          <li><span class="bn-text">Clean, organized desk</span><span class="en-text">Clean, organized desk</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="sec">🎵 <span class="bn-text">Music ও Background Noise</span><span class="en-text">Music & Background Noise</span></h2>
+    <table>
+      <thead><tr><th><span class="bn-text">ধরন</span><span class="en-text">Type</span></th><th><span class="bn-text">পড়ার জন্য</span><span class="en-text">For Studying</span></th><th><span class="bn-text">কারণ</span><span class="en-text">Reason</span></th></tr></thead>
+      <tbody>
+        <tr><td>🎵 <span class="bn-text">গান (lyrics সহ)</span><span class="en-text">Songs with lyrics</span></td><td><span class="badge" style="background:#fde8ea;color:#9b1d20;">❌ খারাপ</span></td><td><span class="bn-text">Brain lyrics process করে → focus নষ্ট</span><span class="en-text">Brain processes lyrics → breaks focus</span></td></tr>
+        <tr><td>🎹 <span class="bn-text">Classical music</span><span class="en-text">Classical music</span></td><td><span class="badge badge-g">✅ ভালো</span></td><td><span class="bn-text">Mozart effect — mildly beneficial</span></td></tr>
+        <tr><td>☕ <span class="bn-text">Cafe background noise</span><span class="en-text">Cafe background noise</span></td><td><span class="badge badge-g">✅ ভালো</span></td><td><span class="bn-text">~70 dB → creativity বাড়ায়</span><span class="en-text">~70 dB → boosts creativity</span></td></tr>
+        <tr><td>🌧️ <span class="bn-text">Rain/nature sounds</span><span class="en-text">Rain/nature sounds</span></td><td><span class="badge badge-g">✅ ভালো</span></td><td><span class="bn-text">White noise → concentration</span></td></tr>
+        <tr><td>🔇 <span class="bn-text">সম্পূর্ণ নীরবতা</span><span class="en-text">Complete silence</span></td><td><span class="badge badge-g">✅ সেরা</span></td><td><span class="bn-text">Most people focus best</span></td></tr>
+      </tbody>
+    </table>
+    <div class="tip-box">✅ <span class="bn-text">Cafe noise চাইলে: Coffitivity.com বা Brain.fm ব্যবহার করো।</span><span class="en-text">For cafe noise: Use Coffitivity.com or Brain.fm.</span></div>
+
+    <div class="chapter-summary">
+      <h3>✅ Chapter 7 Key Takeaways</h3>
+      <ul>
+        <li>✔ <span class="bn-text">Phone অন্য room-এ = সবচেয়ে বড় focus hack</span></li>
+        <li>✔ <span class="bn-text">Dedicated spot → brain জানবে "এখন পড়ার সময়"</span></li>
+        <li>✔ <span class="bn-text">Lyrics ছাড়া music বা nature sounds = okay</span></li>
+        <li>✔ <span class="bn-text">Bed-এ পড়ো না — brain confuse হয়</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CH8: STUDY PLAN -->
+<div class="chapter ch8">
+  <div class="chapter-header">
+    <div class="chapter-label">Chapter 08</div>
+    <div class="chapter-title">📅 <span class="bn-text">Study Plan — পরীক্ষার জন্য সম্পূর্ণ Roadmap</span><span class="en-text">Study Plan — Complete Exam Roadmap</span></div>
+    <div class="chapter-desc"><span class="bn-text">কখন কী পড়বো — সবকিছু একসাথে</span><span class="en-text">When to study what — everything together</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">📅 <span class="bn-text">Weekly Study Schedule</span><span class="en-text">Weekly Study Schedule</span></h2>
+    <table>
+      <thead><tr><th><span class="bn-text">দিন</span><span class="en-text">Day</span></th><th><span class="bn-text">সকাল</span><span class="en-text">Morning</span></th><th><span class="bn-text">বিকাল</span><span class="en-text">Afternoon</span></th><th><span class="bn-text">রাত</span><span class="en-text">Night</span></th></tr></thead>
+      <tbody>
+        <tr><td>শনিবার</td><td><span class="bn-text">কঠিন subject (Math/Physics)</span></td><td><span class="bn-text">Anki review</span></td><td><span class="bn-text">সহজ subject</span></td></tr>
+        <tr><td>রবিবার</td><td><span class="bn-text">কঠিন subject</span></td><td><span class="bn-text">Past paper</span></td><td><span class="bn-text">Weekly review</span></td></tr>
+        <tr><td>সোমবার</td><td><span class="bn-text">নতুন topic</span></td><td><span class="bn-text">Anki + Practice</span></td><td><span class="bn-text">Reading</span></td></tr>
+        <tr><td>মঙ্গলবার</td><td><span class="bn-text">কঠিন subject</span></td><td><span class="bn-text">Problem solving</span></td><td><span class="bn-text">Anki review</span></td></tr>
+        <tr><td>বুধবার</td><td><span class="bn-text">নতুন topic</span></td><td><span class="bn-text">Feynman practice</span></td><td><span class="bn-text">Light reading</span></td></tr>
+        <tr><td>বৃহস্পতিবার</td><td><span class="bn-text">কঠিন subject</span></td><td><span class="bn-text">Mock test</span></td><td><span class="bn-text">Review mistakes</span></td></tr>
+        <tr><td>শুক্রবার</td><td><span class="bn-text">Rest বা light study</span></td><td><span class="bn-text">Anki review</span></td><td><span class="bn-text">Next week plan</span></td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="sec">🎯 <span class="bn-text">Interleaving — Subject মিক্স করো</span><span class="en-text">Interleaving — Mix Your Subjects</span></h2>
+    <p><span class="bn-text"><strong>Blocked Practice (ভুল):</strong> ২ ঘণ্টা Math → ২ ঘণ্টা Physics → ২ ঘণ্টা Chemistry<br><strong>Interleaved Practice (সঠিক):</strong> ৩০ মিনিট Math → ৩০ মিনিট Physics → ৩০ মিনিট Chemistry → repeat। Brain বেশি কাজ করে কারণ প্রতিবার switch করতে হয় → deeper learning।</span><span class="en-text"><strong>Blocked Practice (Wrong):</strong> 2 hours Math → 2 hours Physics → 2 hours Chemistry.<br><strong>Interleaved Practice (Right):</strong> 30 min Math → 30 min Physics → 30 min Chemistry → repeat. The brain works harder switching → deeper learning.</span></p>
+
+    <h2 class="sec">📝 <span class="bn-text">পরীক্ষার আগের সপ্তাহ</span><span class="en-text">The Week Before the Exam</span></h2>
+    <div class="code" style="background:#1a0a3a;border-left-color:#5c35c9;white-space:pre-wrap;">৭ দিন আগে:  সব topic-এর overview করো। কোনটা weak?
+৬ দিন আগে:  Weak topics গুলো focus করো
+৫ দিন আগে:  Past paper 1 — সময় ধরে
+৪ দিন আগে:  Mistakes review, সেই topics পড়ো
+৩ দিন আগে:  Past paper 2 — সময় ধরে
+২ দিন আগে:  সব key points একবার করে দেখো (light review)
+১ দিন আগে:  শুধু Summary ও formula দেখো
+              রাতে ভালো ঘুমাও (7-8 ঘণ্টা!)
+
+পরীক্ষার দিন:
+  সকালে: হালকা review, heavy study নয়
+  Breakfast অবশ্যই করো
+  Exam hall-এ: প্রথমে সব প্রশ্ন পড়ো, সহজগুলো আগে করো</div>
+
+    <div class="chapter-summary">
+      <h3>🎯 <span class="bn-text">পুরো গাইডের Action Plan</span><span class="en-text">Complete Guide Action Plan</span></h3>
+      <ul>
+        <li>🔁 <span class="bn-text"><strong>আজই:</strong> Active Recall শুরু করো — বই বন্ধ করে লেখো</span><span class="en-text"><strong>Today:</strong> Start Active Recall — close your book and write</span></li>
+        <li>📅 <span class="bn-text"><strong>এই সপ্তাহে:</strong> Anki download করো, ৫টা flashcard বানাও</span><span class="en-text"><strong>This week:</strong> Download Anki, create 5 flashcards</span></li>
+        <li>🧪 <span class="bn-text"><strong>এই মাসে:</strong> Feynman Technique দিয়ে ১টা কঠিন topic practice করো</span><span class="en-text"><strong>This month:</strong> Practice the Feynman Technique on 1 hard topic</span></li>
+        <li>📋 <span class="bn-text"><strong>সব সময়:</strong> Cornell Notes পদ্ধতিতে notes নাও</span><span class="en-text"><strong>Always:</strong> Take Cornell-style notes</span></li>
+        <li>📱 <span class="bn-text"><strong>এখনই:</strong> Phone অন্য room-এ রাখো</span><span class="en-text"><strong>Right now:</strong> Put your phone in another room</span></li>
+        <li>🏛️ <span class="bn-text"><strong>Try করো:</strong> Memory Palace দিয়ে একটা list মনে রাখো</span><span class="en-text"><strong>Try it:</strong> Use a Memory Palace to remember one list</span></li>
+      </ul>
+    </div>
+
+    <div style="text-align:center;margin-top:45px;padding:30px;background:linear-gradient(135deg,#1a0a3a,#2d1569);border-radius:14px;">
+      <p style="font-size:20px;color:#c8b8ff;margin-bottom:12px;">📚 "Study smarter, not harder."</p>
+      <p style="color:rgba(255,255,255,0.7);font-size:13px;"><span class="bn-text">বেশি সময় দিলেই ভালো শিক্ষার্থী হওয়া যায় না — সঠিক পদ্ধতি দিয়েই পার্থক্য হয়।</span><span class="en-text">Being a better student isn't about more time — it's about the right methods.</span></p>
+      <p style="color:rgba(255,255,255,0.5);font-size:12px;margin-top:10px;">Study Techniques v1.0 — 8 Chapters | সম্পূর্ণ বাংলা গাইড</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const body=document.body;body.classList.add('light-mode');
+function toggleTheme(){
+  const b=document.getElementById('themeBtn');
+  if(body.classList.contains('light-mode')){
+    body.classList.replace('light-mode','dark-mode');
+    b.textContent='☀️ Light Mode';b.style.background='#ffd60a';b.style.color='#0d1b2a';
+    localStorage.setItem('theme','dark');
+  }else{
+    body.classList.replace('dark-mode','light-mode');
+    b.textContent='🌙 Dark Mode';b.style.background='#5c35c9';b.style.color='white';
+    localStorage.setItem('theme','light');
+  }
+}
+function toggleLang(){
+  const b=document.getElementById('langBtn');
+  if(body.classList.contains('lang-en')){
+    body.classList.remove('lang-en');b.textContent='🇬🇧 English';b.style.background='#0077b6';
+    localStorage.setItem('lang','bn');
+  }else{
+    body.classList.add('lang-en');b.textContent='🇧🇩 বাংলা';b.style.background='#e63946';
+    localStorage.setItem('lang','en');
+  }
+}
+function savePDF(){
+  const c=document.querySelector('.controls');c.style.display='none';window.print();
+  setTimeout(()=>{c.style.display='flex';},500);
+}
+window.addEventListener('DOMContentLoaded',()=>{
+  const t=localStorage.getItem('theme'),l=localStorage.getItem('lang');
+  if(t==='dark'){body.classList.replace('light-mode','dark-mode');const b=document.getElementById('themeBtn');if(b){b.textContent='☀️ Light Mode';b.style.background='#ffd60a';b.style.color='#0d1b2a';}}
+  if(l==='en'){body.classList.add('lang-en');const b=document.getElementById('langBtn');if(b){b.textContent='🇧🇩 বাংলা';b.style.background='#e63946';}}
+});
+</script>
+</body>
+</html>
