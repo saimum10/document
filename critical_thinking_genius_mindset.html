@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Critical Thinking & Genius Mindset — সম্পূর্ণ বাংলা গাইড</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #1a1a2e;
+    --accent: #f59e0b;
+    --gold: #f59e0b;
+    --blue: #3b82f6;
+    --green: #10b981;
+    --purple: #8b5cf6;
+    --red: #ef4444;
+    --code-bg: #0d1117;
+    --text: #1a1a2e;
+    --bg: #f8f7f2;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Hind Siliguri', 'Noto Sans Bengali', sans-serif; background: var(--bg); color: var(--text); font-size: 14.5px; line-height: 2; }
+
+  /* COVER */
+  .cover {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: white; min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    padding: 60px 40px; position: relative; overflow: hidden;
+  }
+  .cover::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at top, rgba(245,158,11,0.08) 0%, transparent 60%); }
+  .cover::after { content: ''; position: absolute; bottom: -100px; right: -100px; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(139,92,246,0.08) 0%, transparent 70%); }
+  .cover-badge { background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.4); padding: 6px 20px; border-radius: 20px; font-size: 12px; color: #fcd34d; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; position: relative; }
+  .cover-icon { font-size: 90px; margin-bottom: 15px; position: relative; }
+  .cover h1 { font-size: 42px; font-weight: 700; color: #fff; line-height: 1.2; position: relative; }
+  .cover h1 span { color: #fcd34d; text-shadow: 0 0 30px rgba(245,158,11,0.5); }
+  .cover h2 { font-size: 18px; font-weight: 400; opacity: 0.7; margin: 12px 0 20px; position: relative; }
+  .cover .divider { width: 100px; height: 3px; background: linear-gradient(90deg, #f59e0b, #8b5cf6); margin: 20px auto; border-radius: 2px; }
+  .cover .desc { font-size: 15px; opacity: 0.65; max-width: 650px; line-height: 2; position: relative; }
+  .cover-quotes { margin-top: 30px; position: relative; }
+  .cover-quote { background: rgba(255,255,255,0.06); border-left: 3px solid #f59e0b; padding: 12px 20px; border-radius: 0 8px 8px 0; margin: 10px auto; max-width: 550px; text-align: left; font-style: italic; font-size: 13.5px; color: rgba(255,255,255,0.8); }
+  .cover-quote .author { color: #fcd34d; font-size: 12px; margin-top: 4px; font-style: normal; font-weight: 600; }
+  .cover-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 25px; justify-content: center; position: relative; }
+  .cover-tag { background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.25); padding: 5px 14px; border-radius: 15px; font-size: 12px; color: #fde68a; }
+
+  /* TOC */
+  .toc { background: white; padding: 50px 60px; }
+  .toc-header { font-size: 28px; color: var(--primary); border-bottom: 4px solid var(--gold); padding-bottom: 15px; margin-bottom: 35px; }
+  .toc-chapter { margin-bottom: 5px; }
+  .toc-main { display: flex; justify-content: space-between; padding: 10px 0; font-weight: 700; font-size: 15px; color: var(--primary); border-bottom: 1px solid #eee; margin-top: 12px; }
+  .toc-main .num { color: var(--gold); margin-right: 10px; font-family: 'Courier New', monospace; }
+  .toc-sub { padding: 4px 0 4px 30px; color: #666; font-size: 13px; border-bottom: 1px dotted #f0f0f0; }
+
+  /* CHAPTERS */
+  .chapter { background: white; margin: 0; page-break-before: always; }
+  .chapter-header { padding: 40px 55px; position: relative; overflow: hidden; }
+  .ch1 .chapter-header { background: linear-gradient(135deg, #1a1a2e, #2d2d4e); }
+  .ch2 .chapter-header { background: linear-gradient(135deg, #1a1200, #3d2d00); }
+  .ch3 .chapter-header { background: linear-gradient(135deg, #0a1628, #1a2d5a); }
+  .ch4 .chapter-header { background: linear-gradient(135deg, #1a0d26, #2d1a4a); }
+  .ch5 .chapter-header { background: linear-gradient(135deg, #0d2818, #1a4731); }
+  .ch6 .chapter-header { background: linear-gradient(135deg, #1a0000, #3d1a00); }
+  .ch7 .chapter-header { background: linear-gradient(135deg, #001a1a, #003d3d); }
+  .ch8 .chapter-header { background: linear-gradient(135deg, #1a0d00, #3d2800); }
+  .ch9 .chapter-header { background: linear-gradient(135deg, #0d001a, #2d0050); }
+  .ch10 .chapter-header { background: linear-gradient(135deg, #001a0d, #004d26); }
+  .ch11 .chapter-header { background: linear-gradient(135deg, #1a1000, #3a2800); }
+  .ch12 .chapter-header { background: linear-gradient(135deg, #1a1a2e, #16213e); }
+  .chapter-header::after { content: ''; position: absolute; top: -40px; right: -40px; width: 180px; height: 180px; border-radius: 50%; background: rgba(255,255,255,0.03); }
+  .chapter-label { font-size: 11px; letter-spacing: 4px; color: #fcd34d; text-transform: uppercase; margin-bottom: 8px; font-family: 'Courier New', monospace; }
+  .chapter-title { font-size: 28px; color: white; font-weight: 700; }
+  .chapter-desc { font-size: 13.5px; color: rgba(255,255,255,0.55); margin-top: 8px; }
+  .chapter-body { padding: 40px 55px; }
+
+  h2.sec { font-size: 21px; color: var(--primary); margin: 35px 0 15px; padding-left: 16px; border-left: 5px solid var(--gold); }
+  h3.sub { font-size: 17px; color: #1a1a2e; margin: 25px 0 12px; padding-bottom: 6px; border-bottom: 2px dashed #e0e0e0; }
+  h4.mini { font-size: 15px; color: #333; margin: 16px 0 8px; font-weight: 600; }
+  p { margin-bottom: 14px; text-align: justify; }
+
+  /* QUOTE BOX */
+  .quote-box { background: linear-gradient(135deg, #fefce8, #fffbeb); border-left: 5px solid #f59e0b; padding: 18px 22px; border-radius: 0 12px 12px 0; margin: 20px 0; }
+  .quote-text { font-size: 16px; font-style: italic; color: #1a1a2e; line-height: 2; font-weight: 500; }
+  .quote-author { margin-top: 8px; color: #92400e; font-weight: 700; font-size: 13px; }
+
+  /* GENIUS CARD */
+  .genius-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 20px 0; }
+  .genius-card { border: 1px solid #e5e7eb; border-radius: 14px; overflow: hidden; }
+  .genius-header { padding: 14px 18px; color: white; font-weight: 700; font-size: 15px; display: flex; align-items: center; gap: 10px; }
+  .genius-body { padding: 16px 18px; background: #fafafa; }
+  .genius-body p { font-size: 13px; margin-bottom: 10px; }
+  .genius-body ul { margin: 8px 0 8px 20px; font-size: 13px; }
+  .genius-body li { margin-bottom: 5px; }
+  .gc-einstein .genius-header { background: linear-gradient(135deg, #1d4ed8, #1e40af); }
+  .gc-musk .genius-header { background: linear-gradient(135deg, #0369a1, #0c4a6e); }
+  .gc-jobs .genius-header { background: linear-gradient(135deg, #374151, #111827); }
+  .gc-buffett .genius-header { background: linear-gradient(135deg, #065f46, #064e3b); }
+  .gc-tesla .genius-header { background: linear-gradient(135deg, #6d28d9, #4c1d95); }
+  .gc-munger .genius-header { background: linear-gradient(135deg, #b45309, #78350f); }
+  .gc-feynman .genius-header { background: linear-gradient(135deg, #dc2626, #991b1b); }
+  .gc-darwin .genius-header { background: linear-gradient(135deg, #047857, #064e3b); }
+
+  /* BOXES */
+  .box { padding: 16px 20px; border-radius: 10px; margin: 18px 0; border-left: 5px solid; }
+  .info { background: #eff6ff; border-color: #3b82f6; color: #1e3a5f; }
+  .warn { background: #fffbeb; border-color: #f59e0b; color: #78350f; }
+  .danger { background: #fef2f2; border-color: #ef4444; color: #7f1d1d; }
+  .success { background: #f0fdf4; border-color: #10b981; color: #064e3b; }
+  .purple-box { background: #faf5ff; border-color: #8b5cf6; color: #3b0764; }
+  .gold-box { background: #fffbeb; border-color: #f59e0b; color: #78350f; }
+  .box-t { font-weight: 700; margin-bottom: 8px; font-size: 14px; }
+
+  /* TABLES */
+  table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 13.5px; }
+  thead tr { background: #1a1a2e; color: white; }
+  th { padding: 11px 14px; text-align: left; font-weight: 600; }
+  td { padding: 10px 14px; border-bottom: 1px solid #eee; }
+  tr:nth-child(even) { background: #fafaf5; }
+  tr:hover { background: #fffbeb; }
+
+  /* BADGE */
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 11.5px; font-weight: 600; margin: 2px; }
+  .badge-g { background: #d1fae5; color: #064e3b; }
+  .badge-r { background: #fee2e2; color: #7f1d1d; }
+  .badge-y { background: #fef3c7; color: #78350f; }
+  .badge-b { background: #dbeafe; color: #1e3a8a; }
+  .badge-p { background: #ede9fe; color: #3b0764; }
+
+  /* GRID */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 18px 0; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin: 16px 0; }
+  .card { background: #fafaf5; border: 1px solid #e5e7eb; border-radius: 10px; padding: 16px; }
+  .card h4 { color: var(--primary); margin-bottom: 10px; font-size: 14px; border-bottom: 2px solid var(--gold); padding-bottom: 5px; }
+  .card.red-card { background: #fef2f2; border-color: #ef4444; }
+  .card.red-card h4 { color: #7f1d1d; border-color: #ef4444; }
+  .card.green-card { background: #f0fdf4; border-color: #10b981; }
+  .card.green-card h4 { color: #064e3b; border-color: #10b981; }
+  .card.blue-card { background: #eff6ff; border-color: #3b82f6; }
+  .card.blue-card h4 { color: #1e3a8a; border-color: #3b82f6; }
+  .card.purple-card { background: #faf5ff; border-color: #8b5cf6; }
+  .card.purple-card h4 { color: #3b0764; border-color: #8b5cf6; }
+
+  /* SITUATION BOX */
+  .situation { background: #f8f7f2; border: 2px solid #e5e7eb; border-radius: 12px; padding: 20px 24px; margin: 20px 0; }
+  .situation .s-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #ef4444; font-weight: 700; margin-bottom: 8px; }
+  .situation .s-title { font-size: 17px; font-weight: 700; color: #1a1a2e; margin-bottom: 12px; }
+  .situation .s-wrong { background: #fef2f2; border-left: 4px solid #ef4444; padding: 10px 14px; border-radius: 0 8px 8px 0; margin: 10px 0; font-size: 13.5px; }
+  .situation .s-right { background: #f0fdf4; border-left: 4px solid #10b981; padding: 10px 14px; border-radius: 0 8px 8px 0; margin: 10px 0; font-size: 13.5px; }
+  .situation .s-label2 { font-weight: 700; font-size: 12px; display: block; margin-bottom: 4px; }
+  .situation .s-wrong .s-label2 { color: #ef4444; }
+  .situation .s-right .s-label2 { color: #10b981; }
+
+  /* FALLACY */
+  .fallacy-card { border: 1px solid #e5e7eb; border-radius: 10px; padding: 16px; margin: 12px 0; background: #fafaf5; }
+  .fallacy-name { font-size: 15px; font-weight: 700; color: #1a1a2e; display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .fallacy-def { font-size: 13.5px; color: #555; margin-bottom: 8px; }
+  .fallacy-ex { background: #fffbeb; border-left: 3px solid #f59e0b; padding: 8px 12px; border-radius: 0 6px 6px 0; font-size: 13px; color: #78350f; font-style: italic; }
+
+  /* MENTAL MODEL */
+  .model-card { background: linear-gradient(135deg, #1a1a2e, #2d2d4e); color: white; border-radius: 12px; padding: 20px 24px; margin: 14px 0; }
+  .model-name { font-size: 17px; font-weight: 700; color: #fcd34d; margin-bottom: 8px; }
+  .model-def { font-size: 13.5px; color: rgba(255,255,255,0.75); margin-bottom: 10px; }
+  .model-apply { background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.25); padding: 10px 14px; border-radius: 8px; font-size: 13px; color: #fde68a; }
+
+  .hl { background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 1px solid #f59e0b; padding: 14px 18px; border-radius: 8px; margin: 16px 0; }
+  .chapter-summary { background: linear-gradient(135deg, #1a1a2e, #2d2d4e); color: white; border-radius: 12px; padding: 24px 28px; margin-top: 40px; }
+  .chapter-summary h3 { color: #fcd34d; margin-bottom: 14px; font-size: 17px; }
+  .chapter-summary li { color: rgba(255,255,255,0.82); margin-bottom: 6px; }
+
+  ul, ol { margin: 10px 0 10px 24px; line-height: 2.1; }
+  li { margin-bottom: 4px; }
+
+  /* DARK MODE */
+  body.light-mode { --bg: #f8f7f2; --text: #1a1a2e; }
+  body.dark-mode { --bg: #0a0f1a; --text: #e2e8f0; }
+  body { background: var(--bg); color: var(--text); transition: background 0.3s, color 0.3s; }
+  body.dark-mode .toc { background: #111827; color: var(--text); }
+  body.dark-mode .chapter { background: #111827; }
+  body.dark-mode .chapter-body { background: #111827; }
+  body.dark-mode h2.sec { color: #fcd34d; }
+  body.dark-mode h3.sub { color: #fcd34d; border-color: #2d3748; }
+  body.dark-mode p { color: var(--text); }
+  body.dark-mode .toc-main { color: #e2e8f0; border-color: #2d3748; }
+  body.dark-mode .toc-header { color: #e2e8f0; }
+  body.dark-mode .toc-sub { color: #94a3b8; }
+  body.dark-mode table { color: var(--text); }
+  body.dark-mode td { border-color: #2d3748; color: var(--text); }
+  body.dark-mode tr:nth-child(even) { background: #151520; }
+  body.dark-mode tr:hover { background: #2a2000; }
+  body.dark-mode thead tr { background: #2a2000; }
+  body.dark-mode .card { background: #151520; border-color: #2d3748; color: var(--text); }
+  body.dark-mode .card h4 { color: #fcd34d; }
+  body.dark-mode .card.red-card { background: #2a0a0a; border-color: #ef4444; }
+  body.dark-mode .card.red-card h4 { color: #fca5a5; }
+  body.dark-mode .card.green-card { background: #0a2a15; border-color: #10b981; }
+  body.dark-mode .card.green-card h4 { color: #6ee7b7; }
+  body.dark-mode .card.blue-card { background: #0c1a3d; border-color: #3b82f6; }
+  body.dark-mode .card.blue-card h4 { color: #93c5fd; }
+  body.dark-mode .card.purple-card { background: #1a0a2a; border-color: #8b5cf6; }
+  body.dark-mode .card.purple-card h4 { color: #d8b4fe; }
+  body.dark-mode .info { background: #0c2340; color: #90cdf4; }
+  body.dark-mode .warn { background: #2a1500; color: #fcd34d; }
+  body.dark-mode .danger { background: #2a0a0a; color: #fca5a5; }
+  body.dark-mode .success { background: #0a2a15; color: #6ee7b7; }
+  body.dark-mode .purple-box { background: #1a0a2a; color: #d8b4fe; }
+  body.dark-mode .gold-box { background: #2a1500; color: #fcd34d; }
+  body.dark-mode .hl { background: #2a2000; border-color: #f59e0b; color: #fcd34d; }
+  body.dark-mode .quote-box { background: #2a2000; color: var(--text); }
+  body.dark-mode .quote-text { color: #e2e8f0; }
+  body.dark-mode .situation { background: #151520; border-color: #2d3748; }
+  body.dark-mode .situation .s-title { color: #e2e8f0; }
+  body.dark-mode .situation .s-wrong { background: #2a0a0a; }
+  body.dark-mode .situation .s-right { background: #0a2a15; }
+  body.dark-mode .fallacy-card { background: #151520; border-color: #2d3748; }
+  body.dark-mode .fallacy-name { color: #e2e8f0; }
+  body.dark-mode .fallacy-def { color: #94a3b8; }
+  body.dark-mode .fallacy-ex { background: #2a2000; color: #fcd34d; }
+  body.dark-mode .genius-body { background: #1a1a2e; }
+  body.dark-mode .genius-body p, body.dark-mode .genius-body li { color: #cbd5e0; }
+
+  /* BILINGUAL */
+  .en-text { display: none; } .bn-text { display: inline; }
+  body.lang-en .bn-text { display: none; } body.lang-en .en-text { display: inline; }
+  .en-block { display: none; } .bn-block { display: block; }
+  body.lang-en .bn-block { display: none; } body.lang-en .en-block { display: block; }
+
+  .top-controls { position: fixed; top: 18px; right: 18px; display: flex; gap: 8px; z-index: 9999; }
+  .ctrl-btn { border: none; padding: 9px 16px; border-radius: 8px; font-size: 13px; font-family: inherit; cursor: pointer; transition: all 0.3s; font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+  .lang-btn { background: #0077b6; color: white; }
+  .theme-btn { background: #2dc653; color: #0d1b2a; }
+  .print-btn { background: #f59e0b; color: #1a1a2e; }
+  .ctrl-btn:hover { transform: translateY(-2px); opacity: 0.9; }
+
+  @media print { .top-controls { display: none; } body { background: white; } .cover, .chapter-header, thead tr { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+  @media (max-width: 768px) { .grid2, .grid3, .genius-grid { grid-template-columns: 1fr; } .chapter-body { padding: 24px 20px; } .toc { padding: 30px 24px; } }
+</style>
+</head>
+<body class="light-mode">
+
+<div class="top-controls">
+  <button class="print-btn ctrl-btn" onclick="window.print()">🖨️ PDF</button>
+  <button class="theme-btn ctrl-btn" onclick="toggleTheme()" id="themeBtn">🌙 Dark Mode</button>
+  <button class="lang-btn ctrl-btn" onclick="toggleLang()" id="langBtn">🇬🇧 English</button>
+</div>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-badge">Critical Thinking & Genius Mindset</div>
+  <div class="cover-icon">🧠</div>
+  <h1>উন্নত চিন্তার <span>সম্পূর্ণ গাইড</span></h1>
+  <h2><span class="bn-text">Genius-দের মতো ভাবো — জীবনের প্রতিটি পরিস্থিতিতে এগিয়ে থাকো</span><span class="en-text">Think Like a Genius — Stay Ahead in Every Situation</span></h2>
+  <div class="divider"></div>
+  <div class="cover-quotes">
+    <div class="cover-quote">
+      <span class="bn-text">"আমার কাছে কোনো বিশেষ প্রতিভা নেই। আমি শুধু অদম্য কৌতূহলী।"</span>
+      <span class="en-text">"I have no special talents. I am only passionately curious."</span>
+      <div class="author">— Albert Einstein</div>
+    </div>
+    <div class="cover-quote">
+      <span class="bn-text">"প্রথম নীতিতে চিন্তা করো — যা সত্য বলে মনে হয় তা নয়, যা সত্য তা খোঁজো।"</span>
+      <span class="en-text">"Reason from first principles — not what seems true, but what is fundamentally true."</span>
+      <div class="author">— Elon Musk</div>
+    </div>
+  </div>
+  <div class="cover-tags">
+    <span class="cover-tag">🧠 Critical Thinking</span>
+    <span class="cover-tag">💡 Mental Models</span>
+    <span class="cover-tag">🏆 Genius Mindset</span>
+    <span class="cover-tag">⚔️ Logical Fallacies</span>
+    <span class="cover-tag">🎯 Situation Control</span>
+    <span class="cover-tag">🧘 Emotional Intelligence</span>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <div class="toc-header">📋 <span class="bn-text">বিষয়সূচি</span><span class="en-text">Table of Contents</span></div>
+  <div class="toc-chapter"><div class="toc-main"><span><span class="num">০১</span> Critical Thinking কী — সাধারণ vs উন্নত চিন্তা</span></div><div class="toc-sub"><span class="bn-text">চিন্তার স্তর, কেন বেশিরভাগ মানুষ ভুল ভাবে, System 1 vs System 2</span></div></div>
+  <div class="toc-chapter"><div class="toc-main"><span><span class="num">০২</span> <span class="bn-text">Genius-দের চিন্তার পদ্ধতি</span><span class="en-text">How Geniuses Think</span></span></div><div class="toc-sub"><span class="bn-text">Einstein, Newton, Tesla, Feynman, Darwin — তাদের চিন্তার secret</span></div></div>
+  <div class="toc-chapter"><div class="toc-main"><span><span class="num">০৩</span> Billionaire Mindset</span></div><div class="toc-sub"><span class="bn-text">Elon Musk, Steve Jobs, Warren Buffett, Charlie Munger — তারা কীভাবে ভাবে</span></div></div>
+  <div class="toc-chapter"><div class="toc-main"><span><span class="num">০৪</span> First Principles Thinking</span></div><div class="toc-sub"><span class="bn-text">সব ভেঙে নতুন করে ভাবো — সবচেয়ে শক্তিশালী চিন্তার পদ্ধতি</span></div></div>
+  <div class="toc-chapter"><div class="toc-main"><span><span class="num">০৫</span> Mental Models — <span class="bn-text">উন্নত সিদ্ধান্ত গ্রহণ</span><span class="en-text">Advanced Decision Making</span></span></div><div class="toc-sub"><span class="bn-text">Charlie Munger-এর Mental Models — Inversion, Second-order thinking, Occam's Razor</span></div></div>
+  <div class="toc-chapter"><div class="toc-main"><span><span class="num">০৬</span> Logical Fallacies — <span class="bn-text">ভুল যুক্তি চেনো</span><span class="en-text">Identify Flawed Arguments</span></span></div><div class="toc-sub"><span class="bn-text">Ad Hominem, Straw Man, False Dilemma, Appeal to Authority — সব চেনো ও ধরাও</span></div></div>
+  <div class="toc-chapter"><div class="toc-main"><span><span class="num">০৭</span> Situation Control — <span class="bn-text">যেকোনো পরিস্থিতিতে এগিয়ে</span><span class="en-text">Stay Ahead in Any Situation</span></span></div><div class="toc-sub"><span class="bn-text">Pressure-এ সঠিক সিদ্ধান্ত, কঠিন মানুষ handle করা, Power dynamics</span></div></div>
+  <div class="toc-chapter"><div class="toc-main"><span><span class="num">০৮</span> <span class="bn-text">লজ্জা দিলে ও Personal Attack-এর জবাব</span><span class="en-text">Responding to Shame & Personal Attacks</span></span></div><div class="toc-sub"><span class="bn-text">কী বলবে, কীভাবে বলবে — real situations সহ</span></div></div>
+  <div class="toc-chapter"><div class="toc-main"><span><span class="num">০৯</span> Manipulation চেনো ও Handle করো</span></div><div class="toc-sub"><span class="bn-text">Gaslighting, Guilt tripping, Emotional manipulation — চেনো ও রক্ষা করো</span></div></div>
+  <div class="toc-chapter"><div class="toc-main"><span><span class="num">১০</span> Debate & Argument — <span class="bn-text">যুক্তিতে জেতো</span><span class="en-text">Win Arguments</span></span></div><div class="toc-sub"><span class="bn-text">Socratic Method, Steel-manning, Reframing — কীভাবে যুক্তিতে এগিয়ে থাকবে</span></div></div>
+  <div class="toc-chapter"><div class="toc-main"><span><span class="num">১১</span> Emotional Intelligence — <span class="bn-text">আবেগ নিয়ন্ত্রণ</span><span class="en-text">Emotional Control</span></span></div><div class="toc-sub"><span class="bn-text">Stoicism, Anger management, Pressure-এ শান্ত থাকা</span></div></div>
+  <div class="toc-chapter"><div class="toc-main"><span><span class="num">১২</span> <span class="bn-text">দৈনন্দিন জীবনে প্রয়োগ</span><span class="en-text">Daily Practical Application</span></span></div><div class="toc-sub"><span class="bn-text">৩০-দিনের চিন্তা উন্নয়নের plan, Practical exercises</span></div></div>
+</div>
+
+<!-- CH1 -->
+<div class="chapter ch1">
+  <div class="chapter-header">
+    <div class="chapter-label">CHAPTER 01</div>
+    <div class="chapter-title">🧠 <span class="bn-text">Critical Thinking কী — সাধারণ vs উন্নত চিন্তা</span><span class="en-text">What is Critical Thinking — Ordinary vs Advanced Thinking</span></div>
+    <div class="chapter-desc"><span class="bn-text">কেন বেশিরভাগ মানুষ surface-level চিন্তা করে এবং কীভাবে তুমি আলাদা হবে</span><span class="en-text">Why most people think at the surface level and how you can be different</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">🎯 <span class="bn-text">Critical Thinking — সহজ সংজ্ঞা</span><span class="en-text">Simple Definition</span></h2>
+    <p><span class="bn-text">Critical Thinking মানে শুধু "সমালোচনা করা" নয়। এর মানে হলো — যেকোনো তথ্য, পরিস্থিতি বা সমস্যাকে <strong>objective ভাবে বিশ্লেষণ করা</strong>, প্রশ্ন করা, এবং সঠিক সিদ্ধান্তে পৌঁছানো। এটা একটা skill — জন্মগত নয়, অনুশীলনে শেখা যায়।</span><span class="en-text">Critical Thinking doesn't just mean "criticizing." It means objectively analyzing any information, situation, or problem — questioning assumptions and reaching sound conclusions. It's a skill — not innate, but learnable through practice.</span></p>
+
+    <h2 class="sec">🧩 <span class="bn-text">চিন্তার দুটো System — Daniel Kahneman</span><span class="en-text">Two Systems of Thinking — Daniel Kahneman</span></h2>
+    <div class="grid2">
+      <div class="card red-card">
+        <h4>⚡ System 1 — Fast Thinking</h4>
+        <ul>
+          <li><span class="bn-text">Automatic, instant, emotional</span></li>
+          <li><span class="bn-text">Gut feeling, intuition</span></li>
+          <li><span class="bn-text">Bias-prone, shortcuts নেয়</span></li>
+          <li><span class="bn-text">উদাহরণ: কাউকে দেখেই judge করা</span><span class="en-text">Ex: Judging someone at first glance</span></li>
+          <li><span class="bn-text">বেশিরভাগ মানুষ এতেই আটকে থাকে</span></li>
+        </ul>
+      </div>
+      <div class="card green-card">
+        <h4>🐢 System 2 — Slow Thinking</h4>
+        <ul>
+          <li><span class="bn-text">Deliberate, analytical, logical</span></li>
+          <li><span class="bn-text">Evidence দেখে সিদ্ধান্ত নেয়</span></li>
+          <li><span class="bn-text">Energy লাগে, কিন্তু accurate</span></li>
+          <li><span class="bn-text">উদাহরণ: সব তথ্য যাচাই করে সিদ্ধান্ত</span><span class="en-text">Ex: Verifying all info before deciding</span></li>
+          <li><span class="bn-text">Genius-রা এটা ব্যবহার করে</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="box warn">
+      <div class="box-t">⚠️ <span class="bn-text">সমস্যা কোথায়?</span><span class="en-text">What's the Problem?</span></div>
+      <span class="bn-text">আমাদের brain naturally System 1 prefer করে — কারণ এটা সহজ ও দ্রুত। কিন্তু এই কারণেই আমরা Cognitive Biases-এ আটকে যাই। Critical Thinking শেখা মানে ইচ্ছাকৃতভাবে System 2 activate করা।</span>
+      <span class="en-text">Our brain naturally prefers System 1 — it's easy and fast. But this is why we get trapped by cognitive biases. Learning critical thinking means deliberately activating System 2.</span>
+    </div>
+
+    <h2 class="sec">📊 <span class="bn-text">সাধারণ vs উন্নত চিন্তার পার্থক্য</span><span class="en-text">Ordinary vs Advanced Thinking</span></h2>
+    <table>
+      <thead><tr><th><span class="bn-text">পরিস্থিতি</span><span class="en-text">Situation</span></th><th>❌ <span class="bn-text">সাধারণ চিন্তা</span><span class="en-text">Ordinary Thinking</span></th><th>✅ <span class="bn-text">উন্নত চিন্তা</span><span class="en-text">Advanced Thinking</span></th></tr></thead>
+      <tbody>
+        <tr><td><span class="bn-text">কেউ সমালোচনা করলে</span><span class="en-text">Someone criticizes you</span></td><td><span class="bn-text">রাগ করো / দুঃখ পাও</span><span class="en-text">Get angry / sad</span></td><td><span class="bn-text">সমালোচনায় সত্য আছে কিনা বিশ্লেষণ করো</span><span class="en-text">Analyze if the criticism has merit</span></td></tr>
+        <tr><td><span class="bn-text">নতুন idea শুনলে</span><span class="en-text">Hear a new idea</span></td><td><span class="bn-text">সাথে সাথে agree বা disagree করো</span><span class="en-text">Immediately agree or disagree</span></td><td><span class="bn-text">Evidence খোঁজো, প্রশ্ন করো</span><span class="en-text">Look for evidence, ask questions</span></td></tr>
+        <tr><td><span class="bn-text">সমস্যা হলে</span><span class="en-text">Facing a problem</span></td><td><span class="bn-text">প্রথম solution-এ ঝাঁপ দাও</span><span class="en-text">Jump at the first solution</span></td><td><span class="bn-text">Root cause খোঁজো, multiple option ভাবো</span><span class="en-text">Find root cause, consider multiple options</span></td></tr>
+        <tr><td><span class="bn-text">কেউ argue করলে</span><span class="en-text">Someone argues</span></td><td><span class="bn-text">জিততে চাও</span><span class="en-text">Want to win</span></td><td><span class="bn-text">সত্য খুঁজতে চাও</span><span class="en-text">Want to find truth</span></td></tr>
+        <tr><td><span class="bn-text">ভুল হলে</span><span class="en-text">When you're wrong</span></td><td><span class="bn-text">Deny বা defend করো</span><span class="en-text">Deny or defend</span></td><td><span class="bn-text">স্বীকার করো ও শেখো</span><span class="en-text">Acknowledge and learn</span></td></tr>
+        <tr><td><span class="bn-text">Rumor শুনলে</span><span class="en-text">Hear a rumor</span></td><td><span class="bn-text">সাথে সাথে বিশ্বাস করো</span><span class="en-text">Immediately believe</span></td><td><span class="bn-text">Source verify করো</span><span class="en-text">Verify the source</span></td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="sec">🔑 <span class="bn-text">Critical Thinker-এর ৫টি মূল গুণ</span><span class="en-text">5 Core Qualities of a Critical Thinker</span></h2>
+    <div class="grid3">
+      <div class="card blue-card"><h4>❓ <span class="bn-text">প্রশ্ন করার সাহস</span><span class="en-text">Courage to Question</span></h4><p><span class="bn-text">সবকিছু প্রশ্ন করো — "সবাই বলছে তাই সত্য" এটা মানো না।</span><span class="en-text">Question everything — don't accept "everyone says so" as truth.</span></p></div>
+      <div class="card green-card"><h4>👁️ <span class="bn-text">Objective দৃষ্টিভঙ্গি</span><span class="en-text">Objective Perspective</span></h4><p><span class="bn-text">নিজের bias সরিয়ে বিষয়টা যেভাবে আছে সেভাবে দেখো।</span><span class="en-text">Remove your bias and see things as they are.</span></p></div>
+      <div class="card purple-card"><h4>🔍 <span class="bn-text">Evidence-based</span></h4><p><span class="bn-text">Feeling নয়, প্রমাণের উপর ভিত্তি করে সিদ্ধান্ত নাও।</span><span class="en-text">Make decisions based on evidence, not feelings.</span></p></div>
+      <div class="card red-card"><h4>🔄 <span class="bn-text">Open-minded</span></h4><p><span class="bn-text">নতুন তথ্য পেলে মত পরিবর্তন করতে ভয় পেও না।</span><span class="en-text">Don't fear changing your mind when you get new information.</span></p></div>
+      <div class="card"><h4>🎯 <span class="bn-text">Depth of Analysis</span></h4><p><span class="bn-text">Surface-এ না থেকে গভীরে যাও — কেন? কীভাবে? এই প্রশ্ন করো।</span><span class="en-text">Go deep, not surface — ask why? how?</span></p></div>
+      <div class="card blue-card"><h4>🧘 <span class="bn-text">Intellectual Humility</span></h4><p><span class="bn-text">"আমি ভুলও হতে পারি" — এটা বলার সাহস রাখো।</span><span class="en-text">Have the courage to say "I might be wrong."</span></p></div>
+    </div>
+
+    <div class="chapter-summary">
+      <h3>💡 <span class="bn-text">মূল কথা</span><span class="en-text">Key Takeaway</span></h3>
+      <ul>
+        <li><span class="bn-text">Critical Thinking মানে বেশি প্রশ্ন করা, কম assume করা</span><span class="en-text">Critical thinking means asking more, assuming less</span></li>
+        <li><span class="bn-text">System 1 (fast) আবেগী — System 2 (slow) যৌক্তিক — দুটোর balance দরকার</span></li>
+        <li><span class="bn-text">এটা একটা skill — প্রতিদিন অনুশীলনে উন্নত হওয়া যায়</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CH2: GENIUS THINKING -->
+<div class="chapter ch2">
+  <div class="chapter-header">
+    <div class="chapter-label">CHAPTER 02</div>
+    <div class="chapter-title">💡 <span class="bn-text">Genius-দের চিন্তার পদ্ধতি</span><span class="en-text">How Geniuses Think</span></div>
+    <div class="chapter-desc"><span class="bn-text">Einstein, Tesla, Feynman, Newton, Darwin — ইতিহাসের সেরা মাথারা কীভাবে চিন্তা করত</span><span class="en-text">How history's greatest minds — Einstein, Tesla, Feynman, Newton, Darwin — thought</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">🌟 <span class="bn-text">Genius-দের Common Traits</span><span class="en-text">Common Traits of Geniuses</span></h2>
+    <div class="box gold-box">
+      <div class="box-t">🔑 <span class="bn-text">সবচেয়ে গুরুত্বপূর্ণ সত্য</span><span class="en-text">The Most Important Truth</span></div>
+      <span class="bn-text">Genius-রা জন্মগতভাবে "স্মার্ট" নয়। তারা আলাদাভাবে <strong>চিন্তা করার পদ্ধতি</strong> শিখেছে এবং অনুশীলন করেছে। Einstein নিজেই বলেছেন তার কোনো বিশেষ প্রতিভা নেই — শুধু অদম্য কৌতূহল আছে।</span>
+      <span class="en-text">Geniuses are not born "smart." They learned and practiced a different <strong>method of thinking</strong>. Einstein himself said he had no special talent — just passionate curiosity.</span>
+    </div>
+
+    <h2 class="sec">🔬 <span class="bn-text">ইতিহাসের Genius-দের বিশেষ চিন্তাপদ্ধতি</span><span class="en-text">The Special Thinking Methods of Historical Geniuses</span></h2>
+
+    <div class="genius-grid">
+      <div class="genius-card gc-einstein">
+        <div class="genius-header">🌌 Albert Einstein</div>
+        <div class="genius-body">
+          <p><strong><span class="bn-text">Thought Experiments (মানসিক পরীক্ষা):</span><span class="en-text">Thought Experiments:</span></strong> <span class="bn-text">Einstein মাথার ভেতরে পরীক্ষা করতেন। "আমি যদি আলোর গতিতে ভ্রমণ করতাম তাহলে কী দেখতাম?" — এই প্রশ্ন থেকেই Theory of Relativity।</span><span class="en-text">Einstein experimented in his mind. "What would I see if I traveled at the speed of light?" — this question led to the Theory of Relativity.</span></p>
+          <p><strong><span class="bn-text">Secret:</span></strong></p>
+          <ul>
+            <li><span class="bn-text">Visualization — কল্পনায় দেখতেন সমস্যাটা</span><span class="en-text">Visualization — pictured the problem in imagination</span></li>
+            <li><span class="bn-text">Simple প্রশ্ন — "এটা আসলে কী?" বারবার জিজ্ঞেস করতেন</span></li>
+            <li><span class="bn-text">Failure-কে data মনে করতেন</span><span class="en-text">Treated failure as data</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="genius-card gc-tesla">
+        <div class="genius-header">⚡ Nikola Tesla</div>
+        <div class="genius-body">
+          <p><strong><span class="bn-text">Mental Simulation:</span></strong> <span class="bn-text">Tesla তার invention মাথায় তৈরি করতেন — কোনো sketch বা prototype ছাড়াই। মাথায় machine চালিয়ে দেখতেন কোথায় সমস্যা হবে।</span><span class="en-text">Tesla built his inventions entirely in his mind — no sketches or prototypes. He'd run the machine mentally to find where it would break.</span></p>
+          <p><strong><span class="bn-text">Secret:</span></strong></p>
+          <ul>
+            <li><span class="bn-text">৩D mental modeling — সব দিক থেকে ভাবতেন</span></li>
+            <li><span class="bn-text">Nature থেকে অনুপ্রেরণা নিতেন</span></li>
+            <li><span class="bn-text">একাকীত্বকে শক্তিতে পরিণত করতেন</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="genius-card gc-feynman">
+        <div class="genius-header">🔭 Richard Feynman</div>
+        <div class="genius-body">
+          <p><strong><span class="bn-text">Feynman Technique:</span></strong> <span class="bn-text">"যা শিখেছ তা একটি ১২ বছরের বাচ্চাকে বোঝাতে পারলে তুমি সত্যিই জানো।" সহজ ভাষায় বোঝাতে না পারলে বোঝাই হয়নি।</span><span class="en-text">"If you can explain what you've learned to a 12-year-old, you truly know it." If you can't explain it simply, you don't really understand it.</span></p>
+          <p><strong><span class="bn-text">Secret:</span></strong></p>
+          <ul>
+            <li><span class="bn-text">সরলীকরণ — জটিল জিনিস সহজে বলা</span></li>
+            <li><span class="bn-text">নিজের জ্ঞানের ফাঁক খোঁজা</span></li>
+            <li><span class="bn-text">Curiosity driven — ভালো লাগে বলে শেখা</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="genius-card gc-darwin">
+        <div class="genius-header">🦋 Charles Darwin</div>
+        <div class="genius-body">
+          <p><strong><span class="bn-text">Systematic Observation:</span></strong> <span class="bn-text">Darwin ২০ বছরেরও বেশি সময় ধরে তথ্য সংগ্রহ করেছেন। তাড়াহুড়া করেননি। "Theory of Evolution" প্রকাশ করেছেন যখন নিশ্চিত হয়েছেন।</span><span class="en-text">Darwin collected data for over 20 years before concluding. He didn't rush. He published the Theory of Evolution only when certain.</span></p>
+          <p><strong><span class="bn-text">Secret:</span></strong></p>
+          <ul>
+            <li><span class="bn-text">Patience — তাড়াহুড়া না করা</span></li>
+            <li><span class="bn-text">Counter-evidence খোঁজা — নিজের theory ভাঙার চেষ্টা</span></li>
+            <li><span class="bn-text">সবকিছু লিখে রাখা</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="sec">🛠️ <span class="bn-text">Feynman Technique — সবচেয়ে কার্যকর শেখার পদ্ধতি</span><span class="en-text">Feynman Technique — The Most Effective Learning Method</span></h2>
+    <table>
+      <thead><tr><th><span class="bn-text">ধাপ</span><span class="en-text">Step</span></th><th><span class="bn-text">কী করবে</span><span class="en-text">What to Do</span></th><th><span class="bn-text">উদ্দেশ্য</span><span class="en-text">Purpose</span></th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge badge-b">Step 1</span></td><td><span class="bn-text">Topic বেছে নাও ও কাগজে লেখো</span><span class="en-text">Choose a topic and write it down</span></td><td><span class="bn-text">Focus করো</span></td></tr>
+        <tr><td><span class="badge badge-g">Step 2</span></td><td><span class="bn-text">এমনভাবে explain করো যেন ১২ বছরের বাচ্চাকে বোঝাচ্ছ</span><span class="en-text">Explain as if teaching a 12-year-old</span></td><td><span class="bn-text">Real understanding test করো</span></td></tr>
+        <tr><td><span class="badge badge-r">Step 3</span></td><td><span class="bn-text">কোথায় আটকে গেলে সেটা note করো</span><span class="en-text">Note where you get stuck</span></td><td><span class="bn-text">Knowledge gap খোঁজো</span></td></tr>
+        <tr><td><span class="badge badge-y">Step 4</span></td><td><span class="bn-text">সেই gap পূরণ করো, আবার সহজ ভাষায় বলো</span><span class="en-text">Fill the gap, explain again simply</span></td><td><span class="bn-text">Deep understanding তৈরি করো</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="quote-box">
+      <div class="quote-text"><span class="bn-text">"যদি তুমি কোনো কিছু সহজ ভাষায় ব্যাখ্যা করতে না পারো, তাহলে তুমি নিজেই সেটা ঠিকমতো বোঝোনি।"</span><span class="en-text">"If you can't explain it simply, you don't understand it well enough."</span></div>
+      <div class="quote-author">— Richard Feynman, Nobel Prize in Physics</div>
+    </div>
+  </div>
+</div>
+
+<!-- CH3: BILLIONAIRE MINDSET -->
+<div class="chapter ch3">
+  <div class="chapter-header">
+    <div class="chapter-label">CHAPTER 03</div>
+    <div class="chapter-title">💰 Billionaire Mindset</div>
+    <div class="chapter-desc"><span class="bn-text">Elon Musk, Steve Jobs, Warren Buffett, Charlie Munger — তারা কীভাবে চিন্তা করে যা অন্যদের থেকে আলাদা</span><span class="en-text">How Elon Musk, Steve Jobs, Warren Buffett, Charlie Munger think differently from everyone else</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <div class="genius-grid">
+      <div class="genius-card gc-musk">
+        <div class="genius-header">🚀 Elon Musk</div>
+        <div class="genius-body">
+          <p><strong>First Principles Thinking:</strong> <span class="bn-text">Musk কখনো "এটা এভাবেই হয়" accept করেন না। সব ভেঙে fundamental truth খোঁজেন। Tesla-র battery cost কমাতে তিনি জিজ্ঞেস করেছিলেন — "battery-র raw materials-এর actual cost কত?"</span><span class="en-text">Musk never accepts "this is how it's done." He breaks everything down to find fundamental truths. To reduce Tesla's battery cost, he asked — "What's the actual cost of battery raw materials?"</span></p>
+          <p><strong><span class="bn-text">Musk-এর চিন্তার নিয়ম:</span></strong></p>
+          <ul>
+            <li><span class="bn-text">"এটা impossible" শুনলে "কেন impossible?" জিজ্ঞেস করো</span></li>
+            <li><span class="bn-text">Physics-এর limit ছাড়া কোনো কিছুই সত্যিকারের impossible নয়</span></li>
+            <li><span class="bn-text">Feedback loop — তাড়াতাড়ি fail করো, তাড়াতাড়ি শেখো</span></li>
+            <li><span class="bn-text">Multi-disciplinary thinking — বিভিন্ন field-এর knowledge একসাথে ব্যবহার করো</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="genius-card gc-jobs">
+        <div class="genius-header">🍎 Steve Jobs</div>
+        <div class="genius-body">
+          <p><strong>Connecting the Dots:</strong> <span class="bn-text">Jobs calligraphy class নিয়েছিলেন কোনো কারণ ছাড়াই — পরে Mac-এ সুন্দর typography-র কারণ হয়। "তুমি আগে থেকে dots connect করতে পারবে না, পেছনে তাকালে দেখবে।"</span></p>
+          <p><strong><span class="bn-text">Jobs-এর চিন্তার নিয়ম:</span></strong></p>
+          <ul>
+            <li><span class="bn-text">Simplicity is the ultimate sophistication — জটিলতা দুর্বলতা</span></li>
+            <li><span class="bn-text">"No" বলার সাহস — focus মানে হাজারটা জিনিস বাদ দেওয়া</span></li>
+            <li><span class="bn-text">User experience সবার আগে — technology পরে</span></li>
+            <li><span class="bn-text">Reality Distortion Field — অসম্ভবকেও সম্ভব মনে করানো</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="genius-card gc-buffett">
+        <div class="genius-header">📈 Warren Buffett</div>
+        <div class="genius-body">
+          <p><strong>Circle of Competence:</strong> <span class="bn-text">Buffett শুধু সেই বিষয়ে invest করেন যা তিনি সত্যিই বোঝেন। তার "No" বলার হার ৯৯%। "সবচেয়ে গুরুত্বপূর্ণ investment হলো নিজের মধ্যে।"</span></p>
+          <p><strong><span class="bn-text">Buffett-এর চিন্তার নিয়ম:</span></strong></p>
+          <ul>
+            <li><span class="bn-text">Long-term thinking — ১০ বছর পরে কী হবে ভাবো</span></li>
+            <li><span class="bn-text">Margin of Safety — সবসময় safety buffer রাখো</span></li>
+            <li><span class="bn-text">FOMO এড়াও — সবাই করছে বলে করো না</span></li>
+            <li><span class="bn-text">প্রতিদিন ৫-৬ ঘণ্টা পড়াশোনা করেন</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="genius-card gc-munger">
+        <div class="genius-header">🔧 Charlie Munger</div>
+        <div class="genius-body">
+          <p><strong>Latticework of Mental Models:</strong> <span class="bn-text">Munger বলেন — "Physics, Psychology, Math, Economics — সব discipline থেকে সেরা ideas নাও এবং একটা framework তৈরি করো।" তার ১০০+ Mental Models আছে।</span></p>
+          <p><strong><span class="bn-text">Munger-এর চিন্তার নিয়ম:</span></strong></p>
+          <ul>
+            <li><span class="bn-text">Invert always — উল্টো দিক থেকে ভাবো</span></li>
+            <li><span class="bn-text">Biases চেনো — নিজের biases সম্পর্কে সচেতন থাকো</span></li>
+            <li><span class="bn-text">Multidisciplinary approach — একটা lens দিয়ে সব দেখো না</span></li>
+            <li><span class="bn-text">প্রতিদিন নিজেকে আগের চেয়ে একটু কম বোকা বানাও</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="sec">🔑 <span class="bn-text">Billionaire-দের সবচেয়ে Common Habit</span><span class="en-text">Most Common Habit of Billionaires</span></h2>
+    <div class="box info">
+      <div class="box-t">📚 <span class="bn-text">সবাই পড়ে — প্রচুর পড়ে</span><span class="en-text">They All Read — A Lot</span></div>
+      <ul>
+        <li><span class="bn-text"><strong>Warren Buffett</strong> — প্রতিদিন ৫-৬ ঘণ্টা, বছরে ৫০০+ বই</span></li>
+        <li><span class="bn-text"><strong>Elon Musk</strong> — ছোটবেলায় দিনে ২টো বই পড়তেন</span></li>
+        <li><span class="bn-text"><strong>Bill Gates</strong> — বছরে ৫০টি বই পড়েন</span></li>
+        <li><span class="bn-text"><strong>Charlie Munger</strong> — "আমি আজীবনে এমন কোনো wise মানুষ দেখিনি যে বেশি পড়ে না"</span></li>
+        <li><span class="bn-text"><strong>Mark Zuckerberg</strong> — প্রতি ২ সপ্তাহে ১টি বই</span></li>
+      </ul>
+    </div>
+
+    <div class="quote-box">
+      <div class="quote-text"><span class="bn-text">"আমি এমন কাউকে দেখিনি যে সফল হয়েছে এবং অনেক বই পড়েনি। কেউ না। Warren বা আমার মতো পড়ে না। তবুও আমি তার half-ও smart না।"</span><span class="en-text">"I don't know anyone who's wise who doesn't read a lot. Nobody. Not Warren or me. But I don't read as much as Warren."</span></div>
+      <div class="quote-author">— Charlie Munger</div>
+    </div>
+  </div>
+</div>
+
+<!-- CH4: FIRST PRINCIPLES -->
+<div class="chapter ch4">
+  <div class="chapter-header">
+    <div class="chapter-label">CHAPTER 04</div>
+    <div class="chapter-title">🔬 First Principles Thinking</div>
+    <div class="chapter-desc"><span class="bn-text">সব ভেঙে নতুন করে ভাবো — Elon Musk, Aristotle যে পদ্ধতিতে চিন্তা করেন</span><span class="en-text">Break everything down and rebuild — the method Elon Musk and Aristotle use to think</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">🎯 <span class="bn-text">First Principles কী?</span><span class="en-text">What are First Principles?</span></h2>
+    <p><span class="bn-text">First Principles Thinking মানে হলো — কোনো বিষয়কে তার সবচেয়ে মৌলিক সত্যে ভেঙে ফেলা, এবং সেখান থেকে নতুন করে চিন্তা শুরু করা। Analogy বা "এটা আগে থেকেই এভাবে হয়" — এই ধারণা থেকে বেরিয়ে আসা।</span><span class="en-text">First Principles Thinking means breaking a subject down to its most fundamental truths and rebuilding from there. It means escaping analogy and the idea that "this is how things have always been done."</span></p>
+
+    <div class="grid2">
+      <div class="card red-card">
+        <h4>❌ Analogy Thinking (সাধারণ)</h4>
+        <p><span class="bn-text">"এটা এভাবেই হয় কারণ আগে থেকে এভাবে হয়ে আসছে।"</span></p>
+        <p><span class="bn-text">উদাহরণ: "Electric car battery অনেক দামি কারণ সবসময় দামি ছিল।"</span><span class="en-text">Example: "EV batteries are expensive because they always have been."</span></p>
+      </div>
+      <div class="card green-card">
+        <h4>✅ First Principles (উন্নত)</h4>
+        <p><span class="bn-text">"Battery কী দিয়ে তৈরি? সেই raw materials-এর market price কত? তাহলে theoretically কত হওয়া উচিত?"</span></p>
+        <p><span class="bn-text">→ Musk battery cost ৬০% কমিয়ে ফেললেন।</span><span class="en-text">→ Musk reduced battery costs by 60%.</span></p>
+      </div>
+    </div>
+
+    <h2 class="sec">🛠️ <span class="bn-text">First Principles কীভাবে Apply করবে</span><span class="en-text">How to Apply First Principles</span></h2>
+    <table>
+      <thead><tr><th><span class="bn-text">ধাপ</span><span class="en-text">Step</span></th><th><span class="bn-text">প্রশ্ন</span><span class="en-text">Question</span></th><th><span class="bn-text">উদাহরণ</span><span class="en-text">Example</span></th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge badge-b">1</span></td><td><span class="bn-text">সমস্যাটা কী?</span><span class="en-text">What's the problem?</span></td><td><span class="bn-text">"বাংলাদেশে rocket পাঠানো অনেক দামি"</span></td></tr>
+        <tr><td><span class="badge badge-g">2</span></td><td><span class="bn-text">কেন এটা সত্য বলে মনে করি?</span><span class="en-text">Why do I think this is true?</span></td><td><span class="bn-text">"কারণ সবাই বলে দামি"</span></td></tr>
+        <tr><td><span class="badge badge-y">3</span></td><td><span class="bn-text">এটা কি সত্যিই সত্য? Prove করো।</span><span class="en-text">Is it actually true? Prove it.</span></td><td><span class="bn-text">"কোন কোন উপাদান লাগে? প্রতিটার দাম কত?"</span></td></tr>
+        <tr><td><span class="badge badge-r">4</span></td><td><span class="bn-text">সবচেয়ে মৌলিক সত্য কী?</span><span class="en-text">What are the fundamental truths?</span></td><td><span class="bn-text">Steel, Aluminum, copper — এগুলোর actual cost</span></td></tr>
+        <tr><td><span class="badge badge-p">5</span></td><td><span class="bn-text">সেখান থেকে নতুনভাবে build করো</span><span class="en-text">Build fresh from there</span></td><td><span class="bn-text">সেই cost-এ কি rocket বানানো সম্ভব?</span></td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="sec">🌍 <span class="bn-text">দৈনন্দিন জীবনে First Principles</span><span class="en-text">First Principles in Daily Life</span></h2>
+    <div class="situation">
+      <div class="s-label">Real Example</div>
+      <div class="s-title">💼 <span class="bn-text">চাকরি নেব না ব্যবসা করব?</span><span class="en-text">Job or Business?</span></div>
+      <div class="s-wrong"><span class="s-label2">❌ Analogy Thinking:</span><span class="bn-text">"সবাই চাকরি করে, তাই আমিও করব। ব্যবসা risky।"</span></div>
+      <div class="s-right"><span class="s-label2">✅ First Principles:</span><span class="bn-text">আমার আসলে কী দরকার? (আর্থিক স্বাধীনতা, সময়) → চাকরিতে সেটা কীভাবে পাব? ব্যবসায় কীভাবে পাব? → কোনটা আমার actual goal-এর সাথে বেশি align করে?</span></div>
+    </div>
+
+    <div class="situation">
+      <div class="s-label">Real Example</div>
+      <div class="s-title">📚 <span class="bn-text">পড়াশোনায় ভালো হব কীভাবে?</span><span class="en-text">How to excel in studies?</span></div>
+      <div class="s-wrong"><span class="s-label2">❌ Analogy Thinking:</span><span class="bn-text">"বেশি বেশি পড়তে হবে, notes করতে হবে।"</span></div>
+      <div class="s-right"><span class="s-label2">✅ First Principles:</span><span class="bn-text">Exam-এ কী দেখা হয়? (Understanding + Recall) → Understanding কীভাবে হয়? (Active learning, application) → Recall কীভাবে বাড়ে? (Spaced repetition, testing) → তাহলে method কী হওয়া উচিত?</span></div>
+    </div>
+
+    <div class="quote-box">
+      <div class="quote-text"><span class="bn-text">"আমি physics-এর মতো চিন্তা করি। Physics শেখায় কীভাবে counter-intuitive জিনিসও discover করা যায় — analogy নয়, fundamental reasoning থেকে।"</span><span class="en-text">"I think it's important to reason from first principles rather than by analogy. Physics taught me that seemingly impossible things are possible if you reason from fundamental truths."</span></div>
+      <div class="quote-author">— Elon Musk</div>
+    </div>
+  </div>
+</div>
+
+<!-- CH5: MENTAL MODELS -->
+<div class="chapter ch5">
+  <div class="chapter-header">
+    <div class="chapter-label">CHAPTER 05</div>
+    <div class="chapter-title">🗺️ Mental Models — <span class="bn-text">উন্নত সিদ্ধান্ত গ্রহণ</span><span class="en-text">Advanced Decision Making</span></div>
+    <div class="chapter-desc"><span class="bn-text">Charlie Munger-এর Mental Models — যেকোনো সমস্যা দ্রুত ও সঠিকভাবে analyze করার tool</span><span class="en-text">Charlie Munger's Mental Models — tools for quickly and accurately analyzing any problem</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <div class="box purple-box">
+      <div class="box-t">💡 Mental Model কী?</div>
+      <span class="bn-text">Mental Model হলো একটা framework বা lens যা দিয়ে তুমি পৃথিবীকে বোঝো এবং সিদ্ধান্ত নাও। একটা মাত্র mental model থাকলে সব কিছু সেই দিয়েই দেখবে — এটা বিপজ্জনক। Charlie Munger বলেন — "একটা হাতুড়ি থাকলে সব কিছুকে পেরেক মনে হয়।"</span>
+      <span class="en-text">A Mental Model is a framework or lens through which you understand the world and make decisions. If you only have one mental model, you'll see everything through it — dangerous. Charlie Munger says — "To a man with a hammer, everything looks like a nail."</span>
+    </div>
+
+    <h2 class="sec">🔄 <span class="bn-text">সবচেয়ে গুরুত্বপূর্ণ Mental Models</span><span class="en-text">The Most Important Mental Models</span></h2>
+
+    <div class="model-card">
+      <div class="model-name">1. Inversion — উল্টো দিক থেকে ভাবো</div>
+      <div class="model-def"><span class="bn-text">সফলতা পেতে কী করতে হবে জিজ্ঞেস করার বদলে জিজ্ঞেস করো — "ব্যর্থ হতে কী কী করতে হবে?" তারপর সেগুলো এড়াও। Munger বলেন — "Invert, always invert."</span><span class="en-text">Instead of asking what to do to succeed, ask — "What would I need to do to fail?" Then avoid those things. Munger says — "Invert, always invert."</span></div>
+      <div class="model-apply">💡 <span class="bn-text">উদাহরণ: "ভালো সম্পর্ক কীভাবে বানাব?" এর বদলে → "সম্পর্ক নষ্ট করতে কী কী করতে হবে?" সেগুলো এড়াও।</span><span class="en-text">Example: Instead of "How do I build a good relationship?" ask → "What would destroy a relationship?" Then avoid those things.</span></div>
+    </div>
+
+    <div class="model-card">
+      <div class="model-name">2. Second-Order Thinking — পরের ধাপ ভাবো</div>
+      <div class="model-def"><span class="bn-text">বেশিরভাগ মানুষ প্রথম ধাপের consequence ভাবে। Genius-রা দ্বিতীয়, তৃতীয় ধাপের consequence ভাবে। "এই সিদ্ধান্তের consequence কী? তার consequence কী? তার পরে কী?"</span><span class="en-text">Most people think about first-order consequences. Geniuses think about second, third-order consequences. "What are the consequences? The consequences of those? And then?"</span></div>
+      <div class="model-apply">💡 <span class="bn-text">উদাহরণ: Pain killer নিলে → ব্যথা কমবে (1st) → কিন্তু dependency হতে পারে (2nd) → দীর্ঘমেয়াদে health খারাপ হতে পারে (3rd)।</span><span class="en-text">Example: Taking painkiller → pain gone (1st) → possible dependency (2nd) → long-term health issues (3rd).</span></div>
+    </div>
+
+    <div class="model-card">
+      <div class="model-name">3. Occam's Razor — সহজ ব্যাখ্যাই সঠিক</div>
+      <div class="model-def"><span class="bn-text">যখন দুটো ব্যাখ্যা আছে, সাধারণত সহজটাই সত্য। জটিল conspiracy খোঁজার আগে সহজ কারণটা দেখো।</span><span class="en-text">When two explanations exist, the simpler one is usually correct. Before looking for complex conspiracies, look for the simple cause.</span></div>
+      <div class="model-apply">💡 <span class="bn-text">উদাহরণ: বন্ধু reply না করলে → "সে আমাকে এড়িয়ে চলছে" না ভেবে → "সে busy থাকতে পারে" ভাবো।</span><span class="en-text">Example: Friend doesn't reply → don't think "they're avoiding me" → think "they might be busy."</span></div>
+    </div>
+
+    <div class="model-card">
+      <div class="model-name">4. Circle of Competence — নিজের সীমা জানো</div>
+      <div class="model-def"><span class="bn-text">তুমি কোন বিষয়ে সত্যিই জানো আর কোন বিষয়ে জানো না সেটা clearly বোঝো। যেটা জানো না সেটা নিয়ে confident হওয়া dangerous।</span><span class="en-text">Clearly understand what you truly know versus what you don't. Being confident about what you don't know is dangerous.</span></div>
+      <div class="model-apply">💡 <span class="bn-text">Buffett cryptocurrency নিয়ে invest করেন না — কারণ সেটা তার circle of competence-এ নেই।</span><span class="en-text">Buffett doesn't invest in cryptocurrency — it's outside his circle of competence.</span></div>
+    </div>
+
+    <div class="model-card">
+      <div class="model-name">5. Hanlon's Razor — মন্দ উদ্দেশ্য assume করো না</div>
+      <div class="model-def"><span class="bn-text">"যা stupidity দিয়ে ব্যাখ্যা করা যায় তার জন্য malice (খারাপ উদ্দেশ্য) assume করো না।" বেশিরভাগ সময় মানুষ ইচ্ছাকৃতভাবে ক্ষতি করে না — অজ্ঞতা বা অসাবধানতায় করে।</span><span class="en-text">"Never attribute to malice what can be explained by stupidity." Most of the time people don't deliberately harm — it's ignorance or carelessness.</span></div>
+      <div class="model-apply">💡 <span class="bn-text">কেউ তোমার কথা interrupt করলে → "আমাকে disrespect করছে" না ভেবে → "সে excited হয়ে গেছে" ভাবো।</span><span class="en-text">Someone interrupts you → don't think "they're disrespecting me" → think "they got excited."</span></div>
+    </div>
+
+    <div class="model-card">
+      <div class="model-name">6. Confirmation Bias — নিজের বিরুদ্ধে প্রমাণ খোঁজো</div>
+      <div class="model-def"><span class="bn-text">আমরা naturally এমন তথ্য খুঁজি যা আমাদের existing belief confirm করে। Critical thinker হলে actively নিজের বিরুদ্ধে প্রমাণ খোঁজো।</span><span class="en-text">We naturally seek information that confirms our existing beliefs. A critical thinker actively seeks evidence against their own views.</span></div>
+      <div class="model-apply">💡 <span class="bn-text">নিজেকে জিজ্ঞেস করো: "আমি যদি ভুল হই, তাহলে কোন evidence সেটা prove করবে?"</span><span class="en-text">Ask yourself: "If I'm wrong, what evidence would prove it?"</span></div>
+    </div>
+
+    <div class="model-card">
+      <div class="model-name">7. Sunk Cost Fallacy — আগের investment-এ আটকে থেকো না</div>
+      <div class="model-def"><span class="bn-text">অতীতে কত খরচ করেছ সেটা future decision-এ ভূমিকা রাখা উচিত নয়। যা গেছে গেছে — এখন থেকে forward সিদ্ধান্ত নাও।</span><span class="en-text">How much you've invested in the past should not influence future decisions. What's gone is gone — make forward-looking decisions from now.</span></div>
+      <div class="model-apply">💡 <span class="bn-text">ভুল relationship-এ ৩ বছর কাটিয়েছ বলে আরও থাকা উচিত নয় — "৩ বছর waste" এই চিন্তা trap।</span><span class="en-text">Staying in a bad relationship because you've spent 3 years in it is a trap — "3 years wasted" thinking is the Sunk Cost Fallacy.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CH6: LOGICAL FALLACIES -->
+<div class="chapter ch6">
+  <div class="chapter-header">
+    <div class="chapter-label">CHAPTER 06</div>
+    <div class="chapter-title">⚔️ Logical Fallacies — <span class="bn-text">ভুল যুক্তি চেনো ও ধরাও</span><span class="en-text">Identify & Call Out Flawed Arguments</span></div>
+    <div class="chapter-desc"><span class="bn-text">এই fallacies চিনতে পারলে কেউ তোমাকে ভুল যুক্তিতে ফাঁসাতে পারবে না</span><span class="en-text">Once you recognize these fallacies, no one can trap you with flawed arguments</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <div class="fallacy-card">
+      <div class="fallacy-name">1. 🎭 Ad Hominem — ব্যক্তি আক্রমণ</div>
+      <div class="fallacy-def"><span class="bn-text">যুক্তির বদলে ব্যক্তিকে attack করা। কেউ argument করছে তখন তার চরিত্র বা ব্যক্তিগত বিষয় তুলে ধরে যুক্তিটা dismiss করা।</span><span class="en-text">Attacking the person instead of their argument. Dismissing an argument by attacking the character or personal traits of the person making it.</span></div>
+      <div class="fallacy-ex"><span class="bn-text">উদাহরণ: "তুমি environment নিয়ে কী বলবে — তুমি নিজেই plastic ব্যবহার করো।"<br>জবাব: "আমার personal behavior আলাদা বিষয়, argument-এর validity আলাদা।"</span><span class="en-text">Example: "What do you know about environment — you use plastic yourself."<br>Response: "My personal behavior is separate from the validity of the argument."</span></div>
+    </div>
+
+    <div class="fallacy-card">
+      <div class="fallacy-name">2. 🌾 Straw Man — কথার অর্থ পালটে দেওয়া</div>
+      <div class="fallacy-def"><span class="bn-text">কারো আসল কথাকে দুর্বল বা extreme version-এ পরিণত করে তারপর সেটাকে attack করা।</span><span class="en-text">Misrepresenting someone's argument as a weaker or more extreme version, then attacking that.</span></div>
+      <div class="fallacy-ex"><span class="bn-text">তুমি বললে: "আমরা military budget কমানো উচিত।"<br>Straw Man: "ও চায় দেশের কোনো সেনাবাহিনী না থাকুক!"<br>জবাব: "আমি কখনো সেটা বলিনি।"</span><span class="en-text">You said: "We should reduce military budget."<br>Straw Man: "He wants no army at all!"<br>Response: "I never said that."</span></div>
+    </div>
+
+    <div class="fallacy-card">
+      <div class="fallacy-name">3. ⚡ False Dilemma — শুধু দুটো option দেখানো</div>
+      <div class="fallacy-def"><span class="bn-text">অনেক option থাকলেও শুধু দুটো extreme option দেখানো — "হয় এটা, নয় ওটা।"</span><span class="en-text">Presenting only two extreme options when more exist — "Either this, or that."</span></div>
+      <div class="fallacy-ex"><span class="bn-text">"তুমি যদি আমাদের সাথে না থাকো, তাহলে তুমি আমাদের শত্রু।"<br>জবাব: "এই দুটোর বাইরেও position থাকতে পারে।"</span><span class="en-text">"If you're not with us, you're against us."<br>Response: "There are positions beyond just these two."</span></div>
+    </div>
+
+    <div class="fallacy-card">
+      <div class="fallacy-name">4. 👑 Appeal to Authority — বড় নাম দিয়ে prove করা</div>
+      <div class="fallacy-def"><span class="bn-text">কোনো expert বা বিখ্যাত ব্যক্তি বলেছেন বলেই এটা সত্য — এই logic। Expert-এর মতামত সাহায্য করতে পারে, কিন্তু শেষ কথা না।</span><span class="en-text">Claiming something is true just because an expert or famous person said it. Expert opinion can help, but isn't final proof.</span></div>
+      <div class="fallacy-ex"><span class="bn-text">"Einstein বলেছেন God dice খেলে না — তাহলে quantum mechanics ভুল।"<br>জবাব: "Einstein এই বিষয়ে ভুলও ছিলেন।"</span><span class="en-text">"Einstein said God doesn't play dice — so quantum mechanics is wrong."<br>Response: "Even Einstein was wrong on this point."</span></div>
+    </div>
+
+    <div class="fallacy-card">
+      <div class="fallacy-name">5. 🌊 Bandwagon — সবাই করে তাই সত্য</div>
+      <div class="fallacy-def"><span class="bn-text">অনেক মানুষ বিশ্বাস করে তাই এটা সত্য — এই logic ভুল। এক সময় সবাই মনে করত পৃথিবী সমতল।</span><span class="en-text">Something must be true because many people believe it — this logic is flawed. Once, everyone thought the earth was flat.</span></div>
+      <div class="fallacy-ex"><span class="bn-text">"সবাই বলছে এই ব্যবসায় লাভ হয়, তাই অবশ্যই ভালো।"<br>জবাব: "Popularity আর সত্যতা এক নয়।"</span></div>
+    </div>
+
+    <div class="fallacy-card">
+      <div class="fallacy-name">6. 🎲 Post Hoc — পরে ঘটেছে তাই কারণ</div>
+      <div class="fallacy-def"><span class="bn-text">A-র পরে B ঘটেছে, তাই A কারণ — এটা ভুল। Correlation মানে causation নয়।</span><span class="en-text">B happened after A, so A must be the cause — this is wrong. Correlation doesn't equal causation.</span></div>
+      <div class="fallacy-ex"><span class="bn-text">"আমি কাল রাতে বাইরে গিয়েছিলাম, আজ বৃষ্টি হচ্ছে — আমার কারণেই বৃষ্টি হচ্ছে।"</span></div>
+    </div>
+
+    <div class="fallacy-card">
+      <div class="fallacy-name">7. 🎯 Slippery Slope — অতিরিক্ত chain of consequence</div>
+      <div class="fallacy-def"><span class="bn-text">একটা ছোট পদক্ষেপ থেকে extreme consequence-এ লাফিয়ে যাওয়া — evidence ছাড়াই।</span><span class="en-text">Jumping from a small step to an extreme consequence — without evidence.</span></div>
+      <div class="fallacy-ex"><span class="bn-text">"যদি gay marriage allow করা হয়, তাহলে মানুষ পশুর সাথেও বিয়ে করতে চাইবে।"<br>জবাব: "এই chain of logic-এর কোনো evidence নেই।"</span></div>
+    </div>
+
+    <div class="fallacy-card">
+      <div class="fallacy-name">8. 🔄 Circular Reasoning — নিজের কথাই প্রমাণ</div>
+      <div class="fallacy-def"><span class="bn-text">যে কথা prove করতে চাইছ, সেটাকেই premise হিসেবে ব্যবহার করা।</span><span class="en-text">Using the conclusion as a premise to prove the conclusion.</span></div>
+      <div class="fallacy-ex"><span class="bn-text">"বাইবেল সত্য কারণ বাইবেল বলছে এটা সত্য।"</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CH7: SITUATION CONTROL -->
+<div class="chapter ch7">
+  <div class="chapter-header">
+    <div class="chapter-label">CHAPTER 07</div>
+    <div class="chapter-title">🎯 Situation Control — <span class="bn-text">যেকোনো পরিস্থিতিতে এগিয়ে</span><span class="en-text">Stay in Control of Any Situation</span></div>
+    <div class="chapter-desc"><span class="bn-text">Pressure-এ সঠিক সিদ্ধান্ত, কঠিন মানুষ handle করা, Power dynamics বোঝা</span><span class="en-text">Making right decisions under pressure, handling difficult people, understanding power dynamics</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">⚡ <span class="bn-text">Pressure-এ কীভাবে সঠিক সিদ্ধান্ত নেবে</span><span class="en-text">How to Make Right Decisions Under Pressure</span></h2>
+    <div class="box warn">
+      <div class="box-t">⚠️ <span class="bn-text">সবচেয়ে বড় ভুল</span><span class="en-text">Biggest Mistake</span></div>
+      <span class="bn-text">Pressure-এ System 1 (emotional, fast) activate হয়। এই সময়ে তাৎক্ষণিক সিদ্ধান্ত নিলে প্রায়ই ভুল হয়। সবচেয়ে বড় skill হলো — <strong>পরিস্থিতি deescalate করে System 2 চালু করা।</strong></span>
+      <span class="en-text">Under pressure, System 1 (emotional, fast) activates. Immediate decisions at this point are often wrong. The biggest skill is — <strong>deescalating the situation to activate System 2.</strong></span>
+    </div>
+
+    <table>
+      <thead><tr><th><span class="bn-text">পরিস্থিতি</span><span class="en-text">Situation</span></th><th>❌ <span class="bn-text">ভুল প্রতিক্রিয়া</span><span class="en-text">Wrong Response</span></th><th>✅ <span class="bn-text">সঠিক প্রতিক্রিয়া</span><span class="en-text">Right Response</span></th></tr></thead>
+      <tbody>
+        <tr><td><span class="bn-text">কেউ চিৎকার করছে</span><span class="en-text">Someone is yelling</span></td><td><span class="bn-text">পাল্টা চিৎকার করো</span><span class="en-text">Yell back</span></td><td><span class="bn-text">শান্ত থাকো, "আমি বুঝি তুমি upset" বলো</span><span class="en-text">Stay calm, say "I understand you're upset"</span></td></tr>
+        <tr><td><span class="bn-text">কঠিন decision নিতে হবে</span><span class="en-text">Must make hard decision</span></td><td><span class="bn-text">এখনই সিদ্ধান্ত নাও</span><span class="en-text">Decide immediately</span></td><td><span class="bn-text">"আমাকে কিছু সময় দাও" — ৫ মিনিট নাও</span><span class="en-text">"Give me a moment" — take 5 minutes</span></td></tr>
+        <tr><td><span class="bn-text">ভুল ধরা পড়েছ</span><span class="en-text">Caught in a mistake</span></td><td><span class="bn-text">Defend করো বা excuse দাও</span><span class="en-text">Defend or make excuses</span></td><td><span class="bn-text">"হ্যাঁ, ভুল হয়েছে, এখন fix করব"</span><span class="en-text">"Yes, I made a mistake, I'll fix it now"</span></td></tr>
+        <tr><td><span class="bn-text">কেউ disrespect করছে</span><span class="en-text">Someone is disrespecting you</span></td><td><span class="bn-text">সাথে সাথে react করো</span><span class="en-text">React immediately</span></td><td><span class="bn-text">Pause করো, calmly address করো</span><span class="en-text">Pause, calmly address it</span></td></tr>
+        <tr><td><span class="bn-text">Ultimatum দেওয়া হচ্ছে</span><span class="en-text">Given an ultimatum</span></td><td><span class="bn-text">Pressure-এ decision নাও</span><span class="en-text">Decide under pressure</span></td><td><span class="bn-text">"Ultimatum-এ সিদ্ধান্ত নেওয়া আমার style নয়"</span><span class="en-text">"Making decisions under ultimatums isn't my style"</span></td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="sec">🤝 <span class="bn-text">কঠিন মানুষ Handle করার Tactics</span><span class="en-text">Tactics for Handling Difficult People</span></h2>
+
+    <div class="grid2">
+      <div class="card blue-card">
+        <h4>🧊 Grey Rock Method</h4>
+        <p><span class="bn-text">Toxic বা manipulative মানুষের সাথে যখন avoid করা সম্ভব না, তখন নিজেকে boring ও unresponsive করে তোলো। তাদের emotional reaction খোঁজার কোনো "fuel" দিও না।</span><span class="en-text">When you can't avoid toxic or manipulative people, make yourself boring and unresponsive. Give them no "fuel" for the emotional reaction they seek.</span></p>
+        <ul>
+          <li><span class="bn-text">Short, boring উত্তর দাও</span><span class="en-text">Give short, boring answers</span></li>
+          <li><span class="bn-text">Emotional react করো না</span><span class="en-text">Don't react emotionally</span></li>
+          <li><span class="bn-text">নিজের বিষয়ে কম বলো</span><span class="en-text">Share less about yourself</span></li>
+        </ul>
+      </div>
+      <div class="card green-card">
+        <h4>🪞 Mirroring Technique</h4>
+        <p><span class="bn-text">কারো সাথে rapport build করতে বা কাউকে বোঝাতে তার ভাষা, body language, এবং শেষ কয়েকটা word repeat করো। FBI Negotiator Chris Voss এটা ব্যবহার করেন।</span><span class="en-text">To build rapport or persuade someone, repeat their language, body language, and last few words. FBI Negotiator Chris Voss uses this.</span></p>
+        <ul>
+          <li><span class="bn-text">শেষ ২-৩টি word repeat করো</span></li>
+          <li><span class="bn-text">Calm, slow tone ব্যবহার করো</span></li>
+          <li><span class="bn-text">প্রশ্ন করো, listen করো</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="sec">👑 <span class="bn-text">Power Dynamics — কীভাবে কাজ করে</span><span class="en-text">How Power Dynamics Work</span></h2>
+    <div class="box info">
+      <div class="box-t">💡 <span class="bn-text">Power মানে শুধু পদ বা অর্থ নয়</span><span class="en-text">Power isn't just position or money</span></div>
+      <ul>
+        <li><span class="bn-text"><strong>Information Power:</strong> যার কাছে বেশি information আছে সে বেশি powerful</span><span class="en-text"><strong>Information Power:</strong> The one with more information is more powerful</span></li>
+        <li><span class="bn-text"><strong>Alternative Power:</strong> যার বেশি option আছে সে কম desperate — তাই বেশি power</span><span class="en-text"><strong>Alternative Power:</strong> The one with more options is less desperate — thus more powerful</span></li>
+        <li><span class="bn-text"><strong>Emotional Power:</strong> যে কম emotionally react করে সে বেশি control-এ থাকে</span><span class="en-text"><strong>Emotional Power:</strong> The one who reacts less emotionally stays more in control</span></li>
+        <li><span class="bn-text"><strong>Frame Power:</strong> যে conversation-এর frame set করে সে এগিয়ে থাকে</span><span class="en-text"><strong>Frame Power:</strong> The one who sets the conversation frame stays ahead</span></li>
+      </ul>
+    </div>
+
+    <div class="situation">
+      <div class="s-label">Practical Tip</div>
+      <div class="s-title">🎯 <span class="bn-text">Negotiation-এ Power রাখো</span><span class="en-text">Keep Power in Negotiations</span></div>
+      <div class="s-wrong"><span class="s-label2">❌ Power হারানো:</span><span class="bn-text">"আমার এটা খুব দরকার" বলো — এখনই desperate দেখাও।</span></div>
+      <div class="s-right"><span class="s-label2">✅ Power রাখা:</span><span class="bn-text">Alternative আছে দেখাও — "এটা ভালো option, কিন্তু আমার আরও option আছে।" তাড়াহুড়া না করার ভাব দেখাও।</span><span class="en-text">Show you have alternatives — "This is a good option, but I have others." Show you're not in a rush.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CH8: PERSONAL ATTACKS -->
+<div class="chapter ch8">
+  <div class="chapter-header">
+    <div class="chapter-label">CHAPTER 08</div>
+    <div class="chapter-title">🛡️ <span class="bn-text">লজ্জা দিলে ও Personal Attack-এর জবাব</span><span class="en-text">Responding to Shame & Personal Attacks</span></div>
+    <div class="chapter-desc"><span class="bn-text">কী বলবে, কীভাবে বলবে, কখন চুপ থাকবে — real situations-এর জন্য exact responses</span><span class="en-text">What to say, how to say it, when to stay silent — exact responses for real situations</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <div class="box success">
+      <div class="box-t">✅ <span class="bn-text">সবচেয়ে গুরুত্বপূর্ণ নিয়ম</span><span class="en-text">Most Important Rule</span></div>
+      <span class="bn-text"><strong>Defend করার দরকার নেই।</strong> যখন কেউ তোমাকে লজ্জা দেয় বা attack করে, তুমি যদি defensive হও তাহলে তুমি হেরে যাও। Calm, confident response-ই সবচেয়ে শক্তিশালী।</span>
+      <span class="en-text"><strong>You don't need to defend yourself.</strong> When someone shames or attacks you, if you become defensive, you lose. A calm, confident response is the most powerful.</span>
+    </div>
+
+    <h2 class="sec">🎭 <span class="bn-text">Real Situations ও Exact Responses</span><span class="en-text">Real Situations & Exact Responses</span></h2>
+
+    <div class="situation">
+      <div class="s-label">Situation 01</div>
+      <div class="s-title">😤 <span class="bn-text">"তুমি কিছু পারো না" / "তুমি failure"</span><span class="en-text">"You can't do anything" / "You're a failure"</span></div>
+      <div class="s-wrong"><span class="s-label2">❌ ভুল জবাব:</span><span class="bn-text">"না! আমি অনেক কিছু পারি!" (defensive হয়ে গেলে তুমিই হারলে)</span></div>
+      <div class="s-right"><span class="s-label2">✅ সঠিক জবাব ১:</span><span class="bn-text">"হতে পারে। তুমি কী specific বলতে চাইছ?" (calm, শুনতে ready — এটা strength দেখায়)</span></div>
+      <div class="s-right"><span class="s-label2">✅ সঠিক জবাব ২:</span><span class="bn-text">"আকর্ষণীয় মতামত।" (চুপ থাকো — silence is power)</span></div>
+      <div class="s-right"><span class="s-label2">✅ সঠিক জবাব ৩:</span><span class="bn-text">"সম্ভবত। কিন্তু আমি চেষ্টা করব।" (নিজের confidence দেখাও)</span></div>
+    </div>
+
+    <div class="situation">
+      <div class="s-label">Situation 02</div>
+      <div class="s-title">😳 <span class="bn-text">Public-এ লজ্জা দেওয়া হচ্ছে</span><span class="en-text">Being shamed publicly</span></div>
+      <div class="s-wrong"><span class="s-label2">❌ ভুল জবাব:</span><span class="bn-text">রাগ করা, কান্নাকাটি করা, অজুহাত দেওয়া</span></div>
+      <div class="s-right"><span class="s-label2">✅ সঠিক জবাব ১:</span><span class="bn-text">"ধন্যবাদ আপনার মতামতের জন্য।" (acknowledge করো, dismiss করো না)</span></div>
+      <div class="s-right"><span class="s-label2">✅ সঠিক জবাব ২:</span><span class="bn-text">"হ্যাঁ, এটা আমার দুর্বলতা — আমি কাজ করছি।" (vulnerability = strength)</span></div>
+      <div class="s-right"><span class="s-label2">✅ সঠিক জবাব ৩:</span><span class="bn-text">Smile করো, এগিয়ে যাও। (indifference সবচেয়ে powerful response)</span></div>
+    </div>
+
+    <div class="situation">
+      <div class="s-label">Situation 03</div>
+      <div class="s-title">🎯 <span class="bn-text">তোমার পুরোনো ভুল মনে করিয়ে দেওয়া হচ্ছে</span><span class="en-text">Being reminded of your past mistakes</span></div>
+      <div class="s-wrong"><span class="s-label2">❌ ভুল জবাব:</span><span class="bn-text">"ওটা তখনকার কথা!" (defensive anger)</span></div>
+      <div class="s-right"><span class="s-label2">✅ সঠিক জবাব:</span><span class="bn-text">"হ্যাঁ, আমি সেই ভুল করেছিলাম। সেখান থেকে শিখেছি। এখন কি এই বিষয়ে আলোচনা করা relevant?"</span><span class="en-text">"Yes, I made that mistake. I learned from it. Is it relevant to what we're discussing now?"</span></div>
+    </div>
+
+    <div class="situation">
+      <div class="s-label">Situation 04</div>
+      <div class="s-title">🔥 <span class="bn-text">"তোমার মতো মানুষরা..." — Group attack</span><span class="en-text">"People like you..." — Group attack</span></div>
+      <div class="s-wrong"><span class="s-label2">❌ ভুল জবাব:</span><span class="bn-text">Group defend করতে যাওয়া</span></div>
+      <div class="s-right"><span class="s-label2">✅ সঠিক জবাব:</span><span class="bn-text">"আমার কথা বলো, group generalization করা fair না। আমি কী করেছি?"</span><span class="en-text">"Talk about me specifically, generalizing a group isn't fair. What did I do?"</span></div>
+    </div>
+
+    <div class="situation">
+      <div class="s-label">Situation 05</div>
+      <div class="s-title">💰 <span class="bn-text">"তুমি গরিব / কম শিক্ষিত" — Status attack</span><span class="en-text">Status attacks about wealth or education</span></div>
+      <div class="s-wrong"><span class="s-label2">❌ ভুল জবাব:</span><span class="bn-text">নিজেকে justify করা, prove করার চেষ্টা</span></div>
+      <div class="s-right"><span class="s-label2">✅ সঠিক জবাব ১:</span><span class="bn-text">"হতে পারে। কিন্তু এই আলোচনায় সেটা কীভাবে relevant?" (reframe করো)</span></div>
+      <div class="s-right"><span class="s-label2">✅ সঠিক জবাব ২:</span><span class="bn-text">"তুমি কি আমার argument ভুল prove করতে পারবে? নাকি আমাকে attack করছ?" (logical fallacy expose করো)</span></div>
+    </div>
+
+    <h2 class="sec">🧘 <span class="bn-text">চুপ থাকা কখন সবচেয়ে শক্তিশালী জবাব</span><span class="en-text">When Silence is the Most Powerful Response</span></h2>
+    <div class="box gold-box">
+      <div class="box-t">🔑 <span class="bn-text">Silence = Power</span></div>
+      <ul>
+        <li><span class="bn-text">কেউ তোমাকে provoke করতে চাইলে — চুপ থাকো</span><span class="en-text">When someone tries to provoke you — stay silent</span></li>
+        <li><span class="bn-text">কারো কথায় উত্তর দেওয়ার মতো কিছু নেই — চুপ থাকো</span><span class="en-text">When there's nothing worth responding to — stay silent</span></li>
+        <li><span class="bn-text">রাগ লাগছে — ৫ সেকেন্ড চুপ থাকো তারপর কথা বলো</span><span class="en-text">When angry — stay silent 5 seconds then speak</span></li>
+        <li><span class="bn-text">Negotiation-এ — offer দেওয়ার পরে চুপ থাকো (যে আগে কথা বলে সে হারে)</span><span class="en-text">In negotiation — after making an offer, stay silent (whoever speaks first loses)</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CH9: MANIPULATION -->
+<div class="chapter ch9">
+  <div class="chapter-header">
+    <div class="chapter-label">CHAPTER 09</div>
+    <div class="chapter-title">🕵️ Manipulation — <span class="bn-text">চেনো ও নিজেকে রক্ষা করো</span><span class="en-text">Recognize & Protect Yourself</span></div>
+    <div class="chapter-desc"><span class="bn-text">Gaslighting, Guilt tripping, Love bombing — manipulation-এর সব form চেনো</span><span class="en-text">Recognize all forms of manipulation — Gaslighting, Guilt tripping, Love bombing</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">⚠️ <span class="bn-text">Manipulation-এর সবচেয়ে Common Forms</span><span class="en-text">Most Common Forms of Manipulation</span></h2>
+
+    <div class="fallacy-card">
+      <div class="fallacy-name">1. 😵 Gaslighting — তোমাকে নিজের উপর সন্দেহ করানো</div>
+      <div class="fallacy-def"><span class="bn-text">তুমি যা দেখেছ বা অনুভব করেছ সেটা নিয়ে তোমাকে সন্দিহান করা। "এটা হয়নি", "তুমি crazy", "তুমি এত sensitive" — এই কথাগুলো দিয়ে তোমার reality distort করার চেষ্টা।</span><span class="en-text">Making you doubt what you've seen or felt. "That didn't happen," "You're crazy," "You're so sensitive" — attempting to distort your reality with these phrases.</span></div>
+      <div class="fallacy-ex"><span class="bn-text">Signs: সবসময় নিজেকে confused মনে হওয়া, নিজের স্মৃতি নিয়ে সন্দেহ, সবসময় sorry বলা।<br>জবাব: "আমি যা দেখেছি/অনুভব করেছি তা real। তুমি বললে সেটা নেই হয়ে যায় না।"</span><span class="en-text">Signs: Always feeling confused, doubting your memory, always apologizing.<br>Response: "What I saw/felt is real. You saying it didn't happen doesn't make it untrue."</span></div>
+    </div>
+
+    <div class="fallacy-card">
+      <div class="fallacy-name">2. 😢 Guilt Tripping — guilt দিয়ে নিয়ন্ত্রণ করা</div>
+      <div class="fallacy-def"><span class="bn-text">তোমাকে guilty feel করিয়ে তাদের ইচ্ছামতো কাজ করানো। "তুমি যদি আমাকে সত্যিই ভালোবাসতে তাহলে এটা করতে।"</span><span class="en-text">Making you feel guilty to control your actions. "If you really loved me you would do this."</span></div>
+      <div class="fallacy-ex"><span class="bn-text">জবাব: "আমি তোমার জন্য অনেক কিছু করি। কিন্তু এই specific কাজটা করা আমার পক্ষে সম্ভব না, এবং সেটা আমার ভালোবাসার মাপকাঠি নয়।"</span></div>
+    </div>
+
+    <div class="fallacy-card">
+      <div class="fallacy-name">3. 💝 Love Bombing — অতিরিক্ত attention দিয়ে বশ করা</div>
+      <div class="fallacy-def"><span class="bn-text">শুরুতে অত্যধিক praise, attention, উপহার দিয়ে তোমাকে emotionally dependent করে ফেলা — তারপর সেই attention withhold করে control নেওয়া।</span><span class="en-text">Giving excessive praise, attention, gifts at first to make you emotionally dependent — then withholding that attention to gain control.</span></div>
+      <div class="fallacy-ex"><span class="bn-text">Signs: Relationship-এর শুরুতেই "তুমি আমার সব" — too fast, too intense।<br>জবাব: সময় নিয়ে জানো — কাউকে বিশ্বাস করতে time লাগে।</span></div>
+    </div>
+
+    <div class="fallacy-card">
+      <div class="fallacy-name">4. 🚪 Silent Treatment — চুপ থেকে শাস্তি দেওয়া</div>
+      <div class="fallacy-def"><span class="bn-text">সমস্যা সমাধানের বদলে communicate বন্ধ করে তোমাকে anxious করে তোলা এবং তোমাকেই ভুল মনে করানো।</span><span class="en-text">Instead of resolving issues, stopping communication to make you anxious and feel at fault.</span></div>
+      <div class="fallacy-ex"><span class="bn-text">জবাব: "যখন কথা বলতে ready হবে, আমি আছি। কিন্তু silence দিয়ে আমাকে control করা যাবে না।"</span></div>
+    </div>
+
+    <div class="fallacy-card">
+      <div class="fallacy-name">5. 📊 Moving the Goalposts — সবসময় নতুন শর্ত</div>
+      <div class="fallacy-def"><span class="bn-text">তুমি যখনই তাদের দেওয়া condition পূরণ করো, তারা নতুন condition দেয়। তুমি কখনো "যথেষ্ট" নও।</span><span class="en-text">Whenever you meet their condition, they add new ones. You're never "enough."</span></div>
+      <div class="fallacy-ex"><span class="bn-text">জবাব: "আমি আগের শর্ত পূরণ করেছি। এখন নতুন শর্ত দেওয়া fair না — আগে agree হওয়া terms-এ কথা বলো।"</span></div>
+    </div>
+
+    <h2 class="sec">🛡️ <span class="bn-text">নিজেকে Manipulation থেকে রক্ষা করো</span><span class="en-text">Protect Yourself from Manipulation</span></h2>
+    <div class="grid2">
+      <div class="card purple-card">
+        <h4>🔑 <span class="bn-text">Boundaries সেট করো</span><span class="en-text">Set Boundaries</span></h4>
+        <ul>
+          <li><span class="bn-text">"না" বলতে শেখো — guilt ছাড়া</span><span class="en-text">Learn to say "No" — without guilt</span></li>
+          <li><span class="bn-text">Boundary cross হলে consequence দেখাও</span><span class="en-text">Show consequences when boundaries are crossed</span></li>
+          <li><span class="bn-text">Boundary মানে selfish নয়</span><span class="en-text">Boundaries aren't selfish</span></li>
+        </ul>
+      </div>
+      <div class="card blue-card">
+        <h4>👁️ <span class="bn-text">Pattern চেনো</span><span class="en-text">Recognize Patterns</span></h4>
+        <ul>
+          <li><span class="bn-text">কারো সাথে থাকার পরে কেমন feel করো?</span><span class="en-text">How do you feel after being with someone?</span></li>
+          <li><span class="bn-text">সবসময় তুমিই sorry বলছ?</span><span class="en-text">Are you always the one apologizing?</span></li>
+          <li><span class="bn-text">তোমার emotions dismiss করা হচ্ছে?</span><span class="en-text">Are your emotions being dismissed?</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CH10: DEBATE & ARGUMENT -->
+<div class="chapter ch10">
+  <div class="chapter-header">
+    <div class="chapter-label">CHAPTER 10</div>
+    <div class="chapter-title">⚔️ Debate & Argument — <span class="bn-text">যুক্তিতে এগিয়ে থাকো</span><span class="en-text">Win Arguments with Logic</span></div>
+    <div class="chapter-desc"><span class="bn-text">Socratic Method, Steel-manning, Reframing — কীভাবে যুক্তিতে unbeatable হবে</span><span class="en-text">How to become unbeatable in arguments using Socratic Method, Steel-manning, Reframing</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <div class="box warn">
+      <div class="box-t">⚠️ <span class="bn-text">Argument-এর আসল উদ্দেশ্য</span><span class="en-text">True Purpose of Argument</span></div>
+      <span class="bn-text">বেশিরভাগ মানুষ argument-এ <strong>জিততে</strong> চায়। কিন্তু সত্যিকারের critical thinker argument-এ <strong>সত্য খুঁজে</strong> পেতে চায়। জেতার চেষ্টায় অনেক সময় সত্য হারিয়ে যায়।</span>
+      <span class="en-text">Most people want to <strong>win</strong> arguments. But a true critical thinker wants to <strong>find truth</strong>. In trying to win, truth is often lost.</span>
+    </div>
+
+    <h2 class="sec">🏛️ Socratic Method — <span class="bn-text">প্রশ্ন দিয়ে সত্য খোঁজো</span><span class="en-text">Find Truth Through Questions</span></h2>
+    <p><span class="bn-text">Socrates সরাসরি বলতেন না কেউ ভুল। বরং এমন প্রশ্ন করতেন যাতে মানুষ নিজেই তার ভুল আবিষ্কার করত। এটাই Socratic Method।</span><span class="en-text">Socrates never directly said someone was wrong. Instead, he asked questions that led people to discover their own mistakes. This is the Socratic Method.</span></p>
+
+    <div class="situation">
+      <div class="s-label">Socratic Method Example</div>
+      <div class="s-title"><span class="bn-text">কেউ বলছে: "সব politician corrupt"</span><span class="en-text">Someone says: "All politicians are corrupt"</span></div>
+      <div class="s-wrong"><span class="s-label2">❌ Direct Argument:</span><span class="bn-text">"না! সব politician corrupt না!" → এতে fight হয়, কেউ জেতে না।</span></div>
+      <div class="s-right"><span class="s-label2">✅ Socratic Questions:</span><span class="bn-text">"আকর্ষণীয়। তুমি কি বলতে চাইছ literally সব? একজনও নেই? তুমি কি সব politician-দের personally চেনো? এটা prove করা কীভাবে possible?" → ধীরে ধীরে সে নিজেই position moderate করবে।</span></div>
+    </div>
+
+    <h2 class="sec">🦾 Steel-manning — <span class="bn-text">প্রতিপক্ষের সেরা argument বলো</span><span class="en-text">State the Opponent's Best Argument</span></h2>
+    <p><span class="bn-text">Straw Man (দুর্বল version attack করা)-এর উল্টো হলো Steel-man। আগে প্রতিপক্ষের argument-এর সবচেয়ে শক্তিশালী version বলো। তারপর সেটার বিরুদ্ধে argue করো। এতে তুমি honest দেখাও এবং তোমার argument আরও শক্তিশালী হয়।</span><span class="en-text">The opposite of Straw Man (attacking a weak version) is Steel-manning. First state the strongest version of the opponent's argument. Then argue against that. This makes you appear honest and strengthens your position.</span></p>
+
+    <div class="code" style="background:#1a1a2e; color:#c9d1d9; padding:18px 22px; border-radius:10px; font-family:'Hind Siliguri',sans-serif; font-size:13.5px; border-left:4px solid #f59e0b; margin:16px 0; line-height:2;">
+<span style="color:#fcd34d;">Steel-manning Formula:</span><br>
+<span style="color:#6ee7b7;">"আমি বুঝতে পারি তোমার argument হলো [strongest version]।<br>
+এটা একটা valid point কারণ [acknowledge করো]।<br>
+কিন্তু আমি মনে করি [তোমার counter-argument] কারণ [evidence]।"</span>
+    </div>
+
+    <h2 class="sec">🔀 Reframing — <span class="bn-text">কথার Frame পালটে দাও</span><span class="en-text">Change the Frame of the Conversation</span></h2>
+    <p><span class="bn-text">যে conversation-এর frame (context/angle) set করে সে এগিয়ে থাকে। Reframing মানে কথাকে ভিন্ন perspective থেকে দেখানো।</span><span class="en-text">Whoever sets the frame (context/angle) of the conversation stays ahead. Reframing means presenting the issue from a different perspective.</span></p>
+
+    <table>
+      <thead><tr><th><span class="bn-text">Original Frame</span></th><th><span class="bn-text">Reframed Version</span></th></tr></thead>
+      <tbody>
+        <tr><td><span class="bn-text">"তুমি কেন এত slow?"</span><span class="en-text">"Why are you so slow?"</span></td><td><span class="bn-text">"আমি নিশ্চিত হয়ে কাজ করি।"</span><span class="en-text">"I work with certainty."</span></td></tr>
+        <tr><td><span class="bn-text">"এটা expensive"</span><span class="en-text">"This is expensive"</span></td><td><span class="bn-text">"এটা একটা long-term investment।"</span><span class="en-text">"This is a long-term investment."</span></td></tr>
+        <tr><td><span class="bn-text">"তুমি stubborn"</span><span class="en-text">"You're stubborn"</span></td><td><span class="bn-text">"আমি আমার values-এ consistent।"</span><span class="en-text">"I'm consistent with my values."</span></td></tr>
+        <tr><td><span class="bn-text">"তুমি risk নাও না"</span><span class="en-text">"You don't take risks"</span></td><td><span class="bn-text">"আমি calculated decision নিই।"</span><span class="en-text">"I make calculated decisions."</span></td></tr>
+        <tr><td><span class="bn-text">"তুমি fail করেছ"</span><span class="en-text">"You failed"</span></td><td><span class="bn-text">"আমি শিখেছি কীভাবে এটা কাজ করে না।"</span><span class="en-text">"I learned what doesn't work."</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- CH11: EMOTIONAL INTELLIGENCE -->
+<div class="chapter ch11">
+  <div class="chapter-header">
+    <div class="chapter-label">CHAPTER 11</div>
+    <div class="chapter-title">🧘 Emotional Intelligence — <span class="bn-text">আবেগ নিয়ন্ত্রণ</span><span class="en-text">Emotional Control</span></div>
+    <div class="chapter-desc"><span class="bn-text">Stoicism, Anger management, Pressure-এ শান্ত থাকা — আবেগের master হও</span><span class="en-text">Stoicism, Anger management, staying calm under pressure — master your emotions</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">🏛️ Stoicism — <span class="bn-text">সবচেয়ে practical philosophy</span><span class="en-text">The Most Practical Philosophy</span></h2>
+    <p><span class="bn-text">Stoicism হলো প্রাচীন Greek philosophy যা বলে — <strong>তুমি যা control করতে পারো শুধু সেটা নিয়ে চিন্তা করো।</strong> Marcus Aurelius (Roman Emperor), Epictetus (দাস থেকে philosopher), Seneca — এরাই Stoicism-এর মূল প্রবক্তা।</span><span class="en-text">Stoicism is an ancient Greek philosophy that says — <strong>only worry about what you can control.</strong> Marcus Aurelius (Roman Emperor), Epictetus (slave turned philosopher), Seneca — these are its main proponents.</span></p>
+
+    <div class="grid2">
+      <div class="card green-card">
+        <h4>✅ <span class="bn-text">আমার Control-এ আছে</span><span class="en-text">In My Control</span></h4>
+        <ul>
+          <li><span class="bn-text">আমার চিন্তা ও মতামত</span><span class="en-text">My thoughts and opinions</span></li>
+          <li><span class="bn-text">আমার কাজ ও প্রচেষ্টা</span><span class="en-text">My actions and efforts</span></li>
+          <li><span class="bn-text">আমার প্রতিক্রিয়া</span><span class="en-text">My reactions</span></li>
+          <li><span class="bn-text">আমার মূল্যবোধ</span><span class="en-text">My values</span></li>
+        </ul>
+      </div>
+      <div class="card red-card">
+        <h4>❌ <span class="bn-text">আমার Control-এ নেই</span><span class="en-text">Not in My Control</span></h4>
+        <ul>
+          <li><span class="bn-text">অন্যের মতামত ও কাজ</span><span class="en-text">Others' opinions and actions</span></li>
+          <li><span class="bn-text">ফলাফল ও পরিণতি</span><span class="en-text">Outcomes and results</span></li>
+          <li><span class="bn-text">প্রাকৃতিক ঘটনা</span><span class="en-text">Natural events</span></li>
+          <li><span class="bn-text">অতীত ও ভবিষ্যৎ</span><span class="en-text">Past and future</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="box success">
+      <div class="box-t">🔑 Stoic Rule: <span class="bn-text">Dichotomy of Control</span></div>
+      <span class="bn-text">প্রতিটি পরিস্থিতিতে নিজেকে জিজ্ঞেস করো: "এটা কি আমার control-এ? যদি হ্যাঁ — action নাও। যদি না — accept করো এবং এগিয়ে যাও।" এই একটা habit তোমার ৮০% anxiety দূর করবে।</span>
+      <span class="en-text">In every situation ask yourself: "Is this in my control? If yes — take action. If no — accept it and move forward." This single habit will eliminate 80% of your anxiety.</span>
+    </div>
+
+    <h2 class="sec">😤 <span class="bn-text">Anger Management — রাগ নিয়ন্ত্রণ</span><span class="en-text">Anger Management</span></h2>
+
+    <div class="situation">
+      <div class="s-label">Technique</div>
+      <div class="s-title">⏱️ <span class="bn-text">10-10-10 Rule</span></div>
+      <div class="s-right"><span class="s-label2">✅ কীভাবে ব্যবহার করব:</span><span class="bn-text">রাগের মুহূর্তে নিজেকে জিজ্ঞেস করো:<br>• "১০ মিনিট পরে কি এটা important মনে হবে?"<br>• "১০ দিন পরে কি এটা matter করবে?"<br>• "১০ বছর পরে কি এটা নিয়ে চিন্তা করব?"<br>যদি না, তাহলে এখন react করার কোনো কারণ নেই।</span></div>
+    </div>
+
+    <table>
+      <thead><tr><th><span class="bn-text">রাগের কারণ</span><span class="en-text">Cause of Anger</span></th><th>❌ <span class="bn-text">ভুল প্রতিক্রিয়া</span></th><th>✅ <span class="bn-text">Stoic প্রতিক্রিয়া</span></th></tr></thead>
+      <tbody>
+        <tr><td><span class="bn-text">কেউ সমালোচনা করেছে</span><span class="en-text">Someone criticized you</span></td><td><span class="bn-text">পাল্টা আঘাত করো</span></td><td><span class="bn-text">"এতে কি সত্য আছে?" — analyze করো</span></td></tr>
+        <tr><td><span class="bn-text">Plan মতো হয়নি</span><span class="en-text">Things didn't go as planned</span></td><td><span class="bn-text">Frustration দেখাও</span></td><td><span class="bn-text">"কী শিখলাম?" — শিখে পরবর্তী step নাও</span></td></tr>
+        <tr><td><span class="bn-text">কেউ disrespect করেছে</span><span class="en-text">Someone disrespected you</span></td><td><span class="bn-text">Ego রক্ষা করতে fight করো</span></td><td><span class="bn-text">শান্তভাবে address করো বা ignore করো</span></td></tr>
+        <tr><td><span class="bn-text">Unfair কিছু হয়েছে</span><span class="en-text">Something unfair happened</span></td><td><span class="bn-text">নিয়ন্ত্রণের বাইরে কিছুতে energy ব্যয় করো</span></td><td><span class="bn-text">"আমি কী control করতে পারি?" — সেটায় focus করো</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="quote-box">
+      <div class="quote-text"><span class="bn-text">"তুমি যা নিয়ে ভাবো তাই হও। তাই ভালো করে ভাবো।"</span><span class="en-text">"You have power over your mind, not outside events. Realize this, and you will find strength."</span></div>
+      <div class="quote-author">— Marcus Aurelius, Roman Emperor & Stoic Philosopher</div>
+    </div>
+  </div>
+</div>
+
+<!-- CH12: DAILY APPLICATION -->
+<div class="chapter ch12">
+  <div class="chapter-header">
+    <div class="chapter-label">CHAPTER 12</div>
+    <div class="chapter-title">📅 <span class="bn-text">দৈনন্দিন জীবনে প্রয়োগ</span><span class="en-text">Daily Application</span></div>
+    <div class="chapter-desc"><span class="bn-text">৩০-দিনের চিন্তা উন্নয়নের plan এবং practical exercises</span><span class="en-text">30-day thinking improvement plan and practical exercises</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">📋 <span class="bn-text">Daily Critical Thinking Habits</span><span class="en-text">Daily Critical Thinking Habits</span></h2>
+
+    <div class="grid2">
+      <div class="card blue-card">
+        <h4>🌅 <span class="bn-text">সকালের Routine (১৫ মিনিট)</span><span class="en-text">Morning Routine (15 min)</span></h4>
+        <ul>
+          <li><span class="bn-text"><strong>Journaling (৫ মিনিট):</strong> আজকে কী করব, কেন করব</span></li>
+          <li><span class="bn-text"><strong>News Questioning (৫ মিনিট):</strong> একটি news দেখো, প্রশ্ন করো — "source কে? bias আছে কিনা?"</span></li>
+          <li><span class="bn-text"><strong>Intention Setting (৫ মিনিট):</strong> আজকে কোন Mental Model apply করব?</span></li>
+        </ul>
+      </div>
+      <div class="card green-card">
+        <h4>🌙 <span class="bn-text">রাতের Review (১০ মিনিট)</span><span class="en-text">Evening Review (10 min)</span></h4>
+        <ul>
+          <li><span class="bn-text"><strong>What went well?</strong> ভালো কী হলো?</span></li>
+          <li><span class="bn-text"><strong>What could be better?</strong> কী উন্নত হতে পারত?</span></li>
+          <li><span class="bn-text"><strong>What did I learn?</strong> কী শিখলাম আজকে?</span></li>
+          <li><span class="bn-text"><strong>Did I react or respond?</strong> আমি react নাকি respond করেছি?</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="sec">📆 <span class="bn-text">৩০ দিনের Critical Thinking Challenge</span><span class="en-text">30-Day Critical Thinking Challenge</span></h2>
+    <table>
+      <thead><tr><th><span class="bn-text">সপ্তাহ</span><span class="en-text">Week</span></th><th><span class="bn-text">Focus</span></th><th><span class="bn-text">Daily Practice</span></th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge badge-b">Week 1</span></td><td><span class="bn-text">Awareness — নিজের চিন্তা observe করো</span><span class="en-text">Awareness — observe your own thinking</span></td><td><span class="bn-text">প্রতিটি বড় opinion-এ নিজেকে জিজ্ঞেস করো "কেন আমি এটা বিশ্বাস করি?"</span></td></tr>
+        <tr><td><span class="badge badge-g">Week 2</span></td><td><span class="bn-text">Questioning — সব প্রশ্ন করো</span><span class="en-text">Questioning — question everything</span></td><td><span class="bn-text">প্রতিদিন একটা "assumed truth" challenge করো</span></td></tr>
+        <tr><td><span class="badge badge-y">Week 3</span></td><td><span class="bn-text">Response vs React — conscious হও</span><span class="en-text">Response vs React — be conscious</span></td><td><span class="bn-text">যেকোনো negative trigger-এ ৫ সেকেন্ড pause করো</span></td></tr>
+        <tr><td><span class="badge badge-p">Week 4</span></td><td><span class="bn-text">Application — real life-এ apply করো</span><span class="en-text">Application — apply in real life</span></td><td><span class="bn-text">একটি real decision-এ First Principles apply করো</span></td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="sec">🔑 <span class="bn-text">Critical Thinking-এর সবচেয়ে Powerful প্রশ্নগুলো</span><span class="en-text">The Most Powerful Critical Thinking Questions</span></h2>
+    <div class="grid3">
+      <div class="card purple-card"><h4>🎯 <span class="bn-text">যেকোনো Claim-এ</span></h4><ul><li><span class="bn-text">এটার প্রমাণ কী?</span></li><li><span class="bn-text">Source কোথায়?</span></li><li><span class="bn-text">Alternative explanation আছে?</span></li></ul></div>
+      <div class="card blue-card"><h4>💡 <span class="bn-text">সিদ্ধান্ত নেওয়ার সময়</span></h4><ul><li><span class="bn-text">আমি কি যথেষ্ট জানি?</span></li><li><span class="bn-text">এর long-term effect কী?</span></li><li><span class="bn-text">আমি কি ভুলও হতে পারি?</span></li></ul></div>
+      <div class="card green-card"><h4>🤝 <span class="bn-text">মতবিরোধে</span></h4><ul><li><span class="bn-text">তাদের সেরা point কী?</span></li><li><span class="bn-text">আমার position কি পরিবর্তনযোগ্য?</span></li><li><span class="bn-text">সত্যটা কোথায়?</span></li></ul></div>
+    </div>
+
+    <div class="chapter-summary">
+      <h3>🧠 <span class="bn-text">সম্পূর্ণ Guide-এর মূল কথা</span><span class="en-text">Key Takeaways from This Complete Guide</span></h3>
+      <ul>
+        <li>🎯 <span class="bn-text"><strong>Slow down:</strong> Pressure-এ তাৎক্ষণিক react করো না — pause করো, তারপর respond করো</span><span class="en-text"><strong>Slow down:</strong> Don't react immediately under pressure — pause, then respond</span></li>
+        <li>🔬 <span class="bn-text"><strong>First Principles:</strong> "এটা এভাবেই হয়" accept করো না — কেন হয় সেটা জানো</span><span class="en-text"><strong>First Principles:</strong> Don't accept "this is how things are" — find out why</span></li>
+        <li>🗺️ <span class="bn-text"><strong>Mental Models:</strong> Multiple lens দিয়ে দেখো — একটা দিয়ে সব বিচার করো না</span><span class="en-text"><strong>Mental Models:</strong> See with multiple lenses — don't judge everything with one</span></li>
+        <li>⚔️ <span class="bn-text"><strong>Fallacies:</strong> ভুল যুক্তি চিনতে পারলে কেউ তোমাকে ফাঁসাতে পারবে না</span><span class="en-text"><strong>Fallacies:</strong> Recognizing flawed arguments means no one can trap you</span></li>
+        <li>🛡️ <span class="bn-text"><strong>Attack-এর জবাব:</strong> Defend করো না — calm, confident এবং কখনো silent থাকো</span><span class="en-text"><strong>Responding to attacks:</strong> Don't defend — be calm, confident, and sometimes silent</span></li>
+        <li>🧘 <span class="bn-text"><strong>Stoicism:</strong> Control করতে পারো এমন বিষয়ে focus করো, বাকিটা accept করো</span><span class="en-text"><strong>Stoicism:</strong> Focus on what you can control, accept the rest</span></li>
+        <li>📚 <span class="bn-text"><strong>Lifelong learning:</strong> প্রতিদিন পড়ো, প্রশ্ন করো, নিজেকে challenge করো</span><span class="en-text"><strong>Lifelong learning:</strong> Read daily, question everything, challenge yourself</span></li>
+      </ul>
+    </div>
+
+    <div style="text-align:center; margin-top:50px; padding:35px; background: linear-gradient(135deg, #1a1a2e, #16213e); border-radius:16px; color:rgba(255,255,255,0.8);">
+      <p style="font-size:22px; color:#fcd34d; margin-bottom:12px; font-weight:700;">🧠 <span class="bn-text">মনে রাখো</span><span class="en-text">Remember</span></p>
+      <p style="font-size:15px; color:rgba(255,255,255,0.7); margin-bottom:20px; line-height:2;">
+        <span class="bn-text">"বুদ্ধিমান মানুষ তথ্য সংগ্রহ করে। জ্ঞানী মানুষ সেই তথ্য নিয়ে প্রশ্ন করে।<br>Critical thinker সেই প্রশ্ন থেকে সত্য খুঁজে বের করে।"</span>
+        <span class="en-text">"Smart people collect information. Wise people question that information.<br>Critical thinkers find truth from those questions."</span>
+      </p>
+      <p style="font-size:13px; color:rgba(255,255,255,0.4);">Critical Thinking & Genius Mindset — সম্পূর্ণ বাংলা গাইড | v1.0</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const body = document.body;
+body.classList.add('light-mode');
+function toggleTheme() {
+  const btn = document.getElementById('themeBtn');
+  if (body.classList.contains('light-mode')) {
+    body.classList.replace('light-mode', 'dark-mode');
+    btn.textContent = '☀️ Light Mode'; btn.style.background = '#ffd60a'; btn.style.color = '#1a1a2e';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    body.classList.replace('dark-mode', 'light-mode');
+    btn.textContent = '🌙 Dark Mode'; btn.style.background = '#2dc653'; btn.style.color = '#0d1b2a';
+    localStorage.setItem('theme', 'light');
+  }
+}
+function toggleLang() {
+  const btn = document.getElementById('langBtn');
+  if (body.classList.contains('lang-en')) {
+    body.classList.remove('lang-en');
+    btn.textContent = '🇬🇧 English'; btn.style.background = '#0077b6';
+    localStorage.setItem('lang', 'bn');
+  } else {
+    body.classList.add('lang-en');
+    btn.textContent = '🇧🇩 বাংলা'; btn.style.background = '#e63946';
+    localStorage.setItem('lang', 'en');
+  }
+}
+window.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme');
+  const savedLang = localStorage.getItem('lang');
+  if (savedTheme === 'dark') {
+    body.classList.replace('light-mode', 'dark-mode');
+    const btn = document.getElementById('themeBtn');
+    if (btn) { btn.textContent = '☀️ Light Mode'; btn.style.background = '#ffd60a'; btn.style.color = '#1a1a2e'; }
+  }
+  if (savedLang === 'en') {
+    body.classList.add('lang-en');
+    const btn = document.getElementById('langBtn');
+    if (btn) { btn.textContent = '🇧🇩 বাংলা'; btn.style.background = '#e63946'; }
+  }
+});
+</script>
+</body>
+</html>

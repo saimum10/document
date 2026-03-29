@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reverse Psychology — মনের হ্যাকার</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #1a0a2e;
+    --accent: #e63946;
+    --purple: #7b2d8b;
+    --violet: #9b5de5;
+    --pink: #f15bb5;
+    --gold: #ffd60a;
+    --teal: #00bbf9;
+    --code-bg: #120820;
+    --code-border: #3d1f5c;
+    --text: #1a1a2e;
+    --bg: #f5f0ff;
+    --card: #ffffff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Hind Siliguri','Noto Sans Bengali',sans-serif; background:var(--bg); color:var(--text); font-size:14px; line-height:1.9; }
+
+  /* COVER */
+  .cover {
+    background: linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 40%, #0d0520 100%);
+    color:white; min-height:100vh; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; text-align:center;
+    padding:60px 40px; page-break-after:always; position:relative; overflow:hidden;
+  }
+  .cover::before {
+    content:''; position:absolute; top:0; left:0; right:0; bottom:0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 40px,
+      rgba(155,93,229,0.03) 40px, rgba(155,93,229,0.03) 41px);
+  }
+  .cover::after {
+    content:''; position:absolute; top:-200px; right:-200px;
+    width:500px; height:500px; border-radius:50%;
+    background: radial-gradient(circle, rgba(155,93,229,0.12), transparent 70%);
+  }
+  .cover-icon { font-size:90px; margin-bottom:20px; position:relative; z-index:1; }
+  .cover h1 { font-size:44px; font-weight:700; background: linear-gradient(135deg, #9b5de5, #f15bb5, #ffd60a); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; position:relative; z-index:1; }
+  .cover h1-sub { font-size:22px; }
+  .cover .subtitle { font-size:20px; font-weight:600; color:#c9b8ff; margin:8px 0 5px; position:relative; z-index:1; }
+  .cover h2 { font-size:18px; font-weight:400; opacity:0.75; margin:5px 0 25px; position:relative; z-index:1; }
+  .cover .divider { width:140px; height:3px; background:linear-gradient(90deg,#9b5de5,#f15bb5); margin:20px auto; border-radius:2px; position:relative; z-index:1; }
+  .cover .desc { font-size:16px; opacity:0.75; max-width:650px; line-height:2.1; position:relative; z-index:1; }
+  .cover .badges { margin-top:28px; position:relative; z-index:1; }
+  .cover .badge {
+    display:inline-block; background:rgba(155,93,229,0.15);
+    border:1px solid rgba(155,93,229,0.4); padding:6px 18px;
+    border-radius:20px; margin:5px; font-size:13px; color:#c9b8ff;
+  }
+  .cover .quote-box {
+    background:rgba(255,255,255,0.07); border:1px solid rgba(155,93,229,0.3);
+    border-radius:12px; padding:22px 32px; margin-top:30px;
+    font-size:15px; color:#e2d9ff; text-align:left; max-width:540px;
+    position:relative; z-index:1; line-height:2;
+  }
+  .cover .quote-box .q-mark { font-size:40px; color:#9b5de5; line-height:1; float:left; margin-right:10px; margin-top:-5px; }
+
+  /* TOC */
+  .toc { background:white; padding:50px 60px; page-break-after:always; }
+  .toc-header { font-size:30px; color:var(--primary); border-bottom:4px solid #9b5de5; padding-bottom:15px; margin-bottom:35px; }
+  .toc-chapter { margin-bottom:5px; }
+  .toc-main { display:flex; justify-content:space-between; padding:10px 0; font-weight:700; font-size:16px; color:var(--primary); border-bottom:1px solid #eee; margin-top:15px; }
+  .toc-main .num { color:#9b5de5; margin-right:10px; }
+  .toc-sub { display:flex; justify-content:space-between; padding:5px 0 5px 30px; color:#666; font-size:13.5px; border-bottom:1px dotted #f0f0f0; }
+
+  /* CHAPTERS */
+  .chapter { background:white; margin:0; page-break-before:always; }
+  .chapter-header { padding:40px 55px; position:relative; overflow:hidden; }
+  .ch1  .chapter-header { background:linear-gradient(135deg,#1a0a2e,#3d1f5c); }
+  .ch2  .chapter-header { background:linear-gradient(135deg,#2d0a4e,#5c1f8b); }
+  .ch3  .chapter-header { background:linear-gradient(135deg,#1a0a3e,#2d1b6e); }
+  .ch4  .chapter-header { background:linear-gradient(135deg,#3d0a2e,#6e1f5c); }
+  .ch5  .chapter-header { background:linear-gradient(135deg,#0a1a2e,#1f3d6e); }
+  .ch6  .chapter-header { background:linear-gradient(135deg,#2e1a0a,#6e3d1f); }
+  .ch7  .chapter-header { background:linear-gradient(135deg,#0a2e1a,#1f6e3d); }
+  .ch8  .chapter-header { background:linear-gradient(135deg,#1a0a0a,#4e1f1f); }
+  .ch9  .chapter-header { background:linear-gradient(135deg,#0d0520,#2d1b4e); }
+  .ch10 .chapter-header { background:linear-gradient(135deg,#1f0a2e,#4a1f6e); }
+  .ch11 .chapter-header { background:linear-gradient(135deg,#0a2020,#1f5050); }
+  .ch12 .chapter-header { background:linear-gradient(135deg,#2e2a0a,#6e651f); }
+  .ch13 .chapter-header { background:linear-gradient(135deg,#1a0a2e,#4d1560); }
+  .chapter-header::after { content:''; position:absolute; top:-30px; right:-30px; width:160px; height:160px; border-radius:50%; background:rgba(255,255,255,0.04); }
+  .chapter-label { font-size:11px; letter-spacing:4px; color:#c9b8ff; text-transform:uppercase; margin-bottom:10px; }
+  .chapter-title { font-size:30px; color:white; font-weight:700; }
+  .chapter-desc { font-size:14px; color:rgba(255,255,255,0.6); margin-top:8px; }
+  .chapter-body { padding:40px 55px; }
+
+  /* HEADINGS */
+  h2.sec { font-size:22px; color:var(--primary); margin:35px 0 15px; padding-left:18px; border-left:5px solid #9b5de5; }
+  h3.sub { font-size:17px; color:#2d1b4e; margin:25px 0 12px; padding-bottom:6px; border-bottom:2px dashed #ddd; }
+  p { margin-bottom:14px; text-align:justify; }
+
+  /* QUOTE BLOCKS */
+  .quote {
+    background:linear-gradient(135deg, #f5f0ff, #fff0f8);
+    border-left:5px solid #9b5de5; padding:18px 24px; border-radius:0 10px 10px 0;
+    margin:20px 0; font-style:italic; color:#3d1f5c; font-size:15px; line-height:2;
+  }
+  .quote .author { font-style:normal; font-weight:700; color:#9b5de5; margin-top:8px; font-size:13px; }
+
+  /* TECHNIQUE BOX */
+  .technique {
+    background:linear-gradient(135deg, #1a0a2e, #2d1b4e);
+    color:white; border-radius:12px; padding:22px 28px; margin:20px 0;
+    border:1px solid rgba(155,93,229,0.3);
+  }
+  .technique .tech-label { font-size:11px; letter-spacing:3px; color:#c9b8ff; text-transform:uppercase; margin-bottom:8px; }
+  .technique .tech-name { font-size:20px; font-weight:700; color:#ffd60a; margin-bottom:10px; }
+  .technique .tech-desc { color:rgba(255,255,255,0.8); line-height:2; }
+  .technique .tech-example { background:rgba(255,255,255,0.07); border-radius:8px; padding:12px 16px; margin-top:14px; font-size:13.5px; color:#e2d9ff; border-left:3px solid #9b5de5; }
+  .technique .tech-example .label { font-size:11px; color:#c9b8ff; letter-spacing:2px; text-transform:uppercase; margin-bottom:6px; }
+
+  /* BOXES */
+  .box { padding:18px 22px; border-radius:10px; margin:20px 0; border-left:5px solid; }
+  .info    { background:#f0e8ff; border-color:#9b5de5; color:#3d1f5c; }
+  .warn    { background:#fff8e6; border-color:#ffd60a; color:#7b5e00; }
+  .danger  { background:#fde8ea; border-color:#e63946; color:#9b1d20; }
+  .success { background:#e8fff4; border-color:#00bbf9; color:#005580; }
+  .pink-box   { background:#fff0f8; border-color:#f15bb5; color:#7b0050; }
+  .gold-box   { background:#fffde7; border-color:#ffd60a; color:#7b5e00; }
+  .box-t { font-weight:700; margin-bottom:8px; font-size:15px; }
+
+  /* TABLES */
+  table { width:100%; border-collapse:collapse; margin:20px 0; font-size:13.5px; }
+  thead tr { background:linear-gradient(135deg,#1a0a2e,#3d1f5c); color:white; }
+  th { padding:12px 15px; text-align:left; font-weight:600; }
+  td { padding:10px 15px; border-bottom:1px solid #eee; }
+  tr:nth-child(even) { background:#faf5ff; }
+  tr:hover { background:#f0e8ff; }
+
+  /* GRID */
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:20px 0; }
+  .grid3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:15px; margin:20px 0; }
+  .card { background:#faf5ff; border:1px solid #e0d0ff; border-radius:10px; padding:18px; }
+  .card h4 { color:var(--primary); margin-bottom:10px; font-size:15px; border-bottom:2px solid #9b5de5; padding-bottom:6px; }
+  .card.pink-card { border-color:#f15bb5; }
+  .card.pink-card h4 { color:#7b0050; border-color:#f15bb5; }
+  .card.gold-card { border-color:#ffd60a; }
+  .card.gold-card h4 { color:#7b5e00; border-color:#ffd60a; }
+  .card.teal-card { border-color:#00bbf9; }
+  .card.teal-card h4 { color:#005580; border-color:#00bbf9; }
+
+  /* BADGE */
+  .badge { display:inline-block; padding:3px 10px; border-radius:12px; font-size:12px; font-weight:600; margin:2px; }
+  .badge-p { background:#f0e8ff; color:#3d1f5c; }
+  .badge-pk{ background:#fff0f8; color:#7b0050; }
+  .badge-g { background:#d1e7dd; color:#0f5132; }
+  .badge-r { background:#fde8ea; color:#c1121f; }
+  .badge-y { background:#fff3cd; color:#856404; }
+  .badge-t { background:#e0f7ff; color:#005580; }
+
+  /* STEP FLOW */
+  .step-flow { display:flex; flex-direction:column; gap:0; margin:20px 0; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; padding:16px 20px; border-radius:10px; margin-bottom:8px; border:1px solid #e0d0ff; background:#faf5ff; }
+  .step-num { background:linear-gradient(135deg,#9b5de5,#f15bb5); color:white; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:16px; flex-shrink:0; }
+  .step-body { flex:1; }
+  .step-title { font-weight:700; font-size:15px; color:#1a0a2e; margin-bottom:4px; }
+  .step-desc { font-size:13.5px; color:#555; }
+  body.dark-mode .step-item { background:#1a1030; border-color:#3d2060; }
+  body.dark-mode .step-title { color:#e2d9ff; }
+  body.dark-mode .step-desc { color:#94a3b8; }
+
+  /* MIND DIAGRAM */
+  .mind-box {
+    background:#0d0520; border:1px solid #3d1f5c;
+    border-radius:12px; padding:24px; font-family:'Hind Siliguri',sans-serif;
+    font-size:13.5px; line-height:2; margin:20px 0; color:#c9d1d9; overflow-x:auto;
+  }
+  .mind-box .mp { color:#9b5de5; font-weight:700; }
+  .mind-box .my { color:#ffd60a; }
+  .mind-box .mt { color:#00bbf9; }
+  .mind-box .mg { color:#2dc653; }
+  .mind-box .mr { color:#ff7b72; }
+  .mind-box .mpk{ color:#f15bb5; }
+
+  /* SCENARIO BOX */
+  .scenario {
+    background:#fff8ff; border:1px solid #e0c0f0;
+    border-radius:10px; padding:20px 24px; margin:18px 0;
+  }
+  .scenario .sc-label { font-size:11px; letter-spacing:3px; color:#9b5de5; text-transform:uppercase; font-weight:700; margin-bottom:10px; }
+  .scenario .sc-situation { font-weight:700; color:#1a0a2e; margin-bottom:8px; font-size:15px; }
+  .scenario .sc-normal { background:#fde8ea; border-radius:8px; padding:10px 14px; margin-bottom:8px; font-size:13.5px; color:#7b1020; }
+  .scenario .sc-reverse { background:#e8fff4; border-radius:8px; padding:10px 14px; font-size:13.5px; color:#0a5c3e; }
+  .scenario .sc-tag { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:4px; }
+  body.dark-mode .scenario { background:#1a0a2e; border-color:#3d1f5c; }
+  body.dark-mode .scenario .sc-situation { color:#e2d9ff; }
+
+  /* ROADMAP */
+  .roadmap-phase { display:flex; gap:20px; margin-bottom:30px; align-items:flex-start; }
+  .phase-number { min-width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:20px; font-weight:800; color:white; flex-shrink:0; box-shadow:0 4px 15px rgba(0,0,0,0.3); }
+  .phase-content { flex:1; }
+  .phase-title { font-size:18px; font-weight:700; margin-bottom:8px; }
+  .phase-desc { font-size:13.5px; color:#555; margin-bottom:10px; }
+  body.dark-mode .phase-desc { color:#94a3b8; }
+  .phase-items { display:flex; flex-wrap:wrap; gap:8px; }
+  .phase-item { padding:5px 14px; border-radius:20px; font-size:12.5px; font-weight:600; border:1.5px solid currentColor; }
+  .roadmap-arrow { text-align:center; font-size:28px; color:#9b5de5; margin:-15px 0 10px 26px; }
+
+  /* CHEAT SHEET */
+  .cheat-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:20px 0; }
+  @media (max-width:768px) { .cheat-grid,.grid2,.grid3 { grid-template-columns:1fr; } }
+  .cheat-card { background:var(--card); border:1px solid #e0d0ff; border-radius:10px; overflow:hidden; }
+  body.dark-mode .cheat-card { border-color:#2d2048; }
+  .cheat-card-header { padding:10px 16px; font-weight:700; font-size:14px; color:white; }
+  .cheat-row { display:flex; padding:8px 14px; border-bottom:1px solid #f5f0ff; font-size:13px; gap:12px; align-items:flex-start; }
+  body.dark-mode .cheat-row { border-color:#1f1535; }
+  .cheat-row:last-child { border-bottom:none; }
+  .cheat-key { font-weight:700; color:#9b5de5; min-width:180px; }
+  body.dark-mode .cheat-key { color:#c9b8ff; }
+  .cheat-val { color:#444; line-height:1.7; }
+  body.dark-mode .cheat-val { color:#94a3b8; }
+
+  /* HIGHLIGHTS */
+  .hl { background:linear-gradient(135deg,#f5f0ff,#fff0f8); border:1px solid #c9b8ff; padding:16px 20px; border-radius:8px; margin:18px 0; }
+  .chapter-summary { background:linear-gradient(135deg,#1a0a2e,#2d1b4e); color:white; border-radius:12px; padding:25px 30px; margin-top:40px; }
+  .chapter-summary h3 { color:#c9b8ff; margin-bottom:15px; font-size:18px; }
+  .chapter-summary li { color:rgba(255,255,255,0.85); margin-bottom:6px; }
+  ul, ol { margin:12px 0 12px 25px; line-height:2; }
+  li { margin-bottom:4px; }
+
+  @media print {
+    .print-btn { display:none; }
+    body { background:white; }
+    .cover,.chapter-header,thead tr { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    .technique,.mind-box { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  }
+
+  /* DARK MODE */
+  body.light-mode { --bg:#f5f0ff; --card:#ffffff; --text:#1a1a2e; --code-bg:#120820; --code-border:#3d1f5c; --toc-bg:#ffffff; --ch-body-bg:#ffffff; }
+  body.dark-mode  { --bg:#0a0515; --card:#120820; --text:#e2d9ff; --toc-bg:#120820; --ch-body-bg:#120820; }
+  body { background:var(--bg); color:var(--text); transition:background 0.3s,color 0.3s; }
+  body.dark-mode .toc,.dark-mode .chapter,.dark-mode .chapter-body { background:var(--ch-body-bg); }
+  body.dark-mode h2.sec { color:#c9b8ff; }
+  body.dark-mode h3.sub { color:#a78bfa; border-color:#2d2048; }
+  body.dark-mode p { color:var(--text); }
+  body.dark-mode .toc-main { color:#e2d9ff; border-color:#2d2048; }
+  body.dark-mode .toc-header { color:#e2d9ff; border-color:#9b5de5; }
+  body.dark-mode .toc-sub { color:#94a3b8; }
+  body.dark-mode table { color:var(--text); }
+  body.dark-mode td { border-color:#2d2048; color:var(--text); }
+  body.dark-mode tr:nth-child(even) { background:#180d28; }
+  body.dark-mode tr:hover { background:#2d1b4e; }
+  body.dark-mode .card { background:#180d28; border-color:#2d2048; color:var(--text); }
+  body.dark-mode .card h4 { color:#c9b8ff; }
+  body.dark-mode .info    { background:#1a0d30; color:#c9b8ff; }
+  body.dark-mode .warn    { background:#1a1500; color:#fbbf24; }
+  body.dark-mode .danger  { background:#200a0a; color:#fc8181; }
+  body.dark-mode .success { background:#001520; color:#67e8f9; }
+  body.dark-mode .pink-box  { background:#1a0015; color:#f9a8d4; }
+  body.dark-mode .gold-box  { background:#1a1400; color:#fbbf24; }
+  body.dark-mode .hl { background:#180d28; border-color:#3d2060; color:#c9b8ff; }
+  body.dark-mode .quote { background:#180d28; color:#c9b8ff; }
+
+  /* BILINGUAL */
+  .en-text { display:none; }
+  .bn-text { display:inline; }
+  body.lang-en .bn-text { display:none; }
+  body.lang-en .en-text { display:inline; }
+  .en-block { display:none; }
+  .bn-block { display:block; }
+  body.lang-en .bn-block { display:none; }
+  body.lang-en .en-block { display:block; }
+
+  /* BUTTONS */
+  .top-controls { position:fixed; top:20px; right:20px; display:flex; gap:10px; z-index:9999; }
+  .ctrl-btn { border:none; padding:10px 18px; border-radius:8px; font-size:14px; font-family:inherit; cursor:pointer; transition:all 0.3s; font-weight:600; box-shadow:0 4px 12px rgba(0,0,0,0.3); }
+  .lang-btn  { background:#9b5de5; color:white; }
+  .lang-btn:hover  { background:#7b3dc5; transform:translateY(-2px); }
+  .theme-btn { background:#f15bb5; color:white; }
+  .theme-btn:hover { background:#d13b95; transform:translateY(-2px); }
+  .print-btn { background:#e63946; color:white; border:none; padding:10px 18px; border-radius:8px; font-size:14px; font-family:inherit; cursor:pointer; transition:all 0.3s; font-weight:600; box-shadow:0 4px 15px rgba(230,57,70,0.4); }
+  .print-btn:hover { background:#c1121f; transform:translateY(-2px); }
+
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+  @media print { .top-controls { display:none; } }
+</style>
+</head>
+<body>
+
+<div class="top-controls">
+  <button class="print-btn ctrl-btn" onclick="window.print()">🖨️ PDF</button>
+  <button class="theme-btn ctrl-btn" onclick="toggleTheme()" id="themeBtn">🌙 Dark Mode</button>
+  <button class="lang-btn ctrl-btn" onclick="toggleLang()" id="langBtn">🇬🇧 English</button>
+</div>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-icon">🧠</div>
+  <h1>Reverse Psychology</h1>
+  <div class="subtitle">
+    <span class="bn-text">মনের হ্যাকার — মানুষকে বোঝার অসাধারণ শিল্প</span>
+    <span class="en-text">The Mind Hacker — The Art of Understanding People</span>
+  </div>
+  <h2>
+    <span class="bn-text">দৈনন্দিন জীবনে মনস্তত্ত্বের ব্যবহার — সম্পূর্ণ বাংলা গাইড</span>
+    <span class="en-text">Psychology in Daily Life — Complete Bilingual Guide</span>
+  </h2>
+  <div class="divider"></div>
+  <p class="desc">
+    <span class="bn-text">মানুষের মন বোঝো, তাদের আচরণ পড়ো, যেকোনো পরিস্থিতিতে এগিয়ে থাকো — Reverse Psychology দিয়ে জীবনকে নিজের মতো করে সাজাও।</span>
+    <span class="en-text">Understand the human mind, read behavior, stay ahead in any situation — reshape your life on your own terms with Reverse Psychology.</span>
+  </p>
+  <div class="quote-box">
+    <span class="q-mark">"</span>
+    <span class="bn-text">সবচেয়ে শক্তিশালী মানুষ সে নয় যে সবচেয়ে বেশি চিৎকার করে — সে যে নীরবে মানুষের মন পড়তে পারে।</span>
+    <span class="en-text">The most powerful person is not the one who shouts the loudest — but the one who silently reads the human mind.</span>
+  </div>
+  <div class="badges">
+    <span class="badge">🧠 Mind Reading</span>
+    <span class="badge">🔄 Reverse Psychology</span>
+    <span class="badge">💫 Impression</span>
+    <span class="badge">❤️ Connection</span>
+    <span class="badge">🎭 Body Language</span>
+    <span class="badge">🗣️ Persuasion</span>
+    <span class="badge">🪞 Mirror Effect</span>
+    <span class="badge">🌀 Manipulation Defense</span>
+    <span class="badge">💡 Dark Psychology</span>
+    <span class="badge">🏆 Social Mastery</span>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <div class="toc-header">
+    <span class="bn-text">📋 বিষয়সূচি — সম্পূর্ণ তালিকা</span>
+    <span class="en-text">📋 Table of Contents — Full List</span>
+  </div>
+
+  <div class="toc-chapter">
+    <div class="toc-main"><span><span class="num">০১</span> <span class="bn-text">মানুষের মন — কিভাবে কাজ করে?</span><span class="en-text">The Human Mind — How Does It Work?</span></span></div>
+    <div class="toc-sub"><span><span class="bn-text">Conscious vs Subconscious, Emotion-এর role, মন পড়ার ভিত্তি</span><span class="en-text">Conscious vs Subconscious, role of emotion, foundations of mind reading</span></span></div>
+  </div>
+  <div class="toc-chapter">
+    <div class="toc-main"><span><span class="num">০২</span> Reverse Psychology — <span class="bn-text">উল্টো কথায় সোজা কাজ</span><span class="en-text">Getting Results Through Opposite Approach</span></span></div>
+    <div class="toc-sub"><span><span class="bn-text">Reverse Psychology কী, কেন কাজ করে, কোথায় ব্যবহার করবে</span><span class="en-text">What it is, why it works, where to use it</span></span></div>
+  </div>
+  <div class="toc-chapter">
+    <div class="toc-main"><span><span class="num">০৩</span> <span class="bn-text">মানুষ পড়ার কৌশল — Body Language</span><span class="en-text">Reading People — Body Language</span></span></div>
+    <div class="toc-sub"><span><span class="bn-text">চোখ, হাত, ভঙ্গি, কণ্ঠস্বর — শরীরের ভাষা বোঝা</span><span class="en-text">Eyes, hands, posture, voice — understanding body language</span></span></div>
+  </div>
+  <div class="toc-chapter">
+    <div class="toc-main"><span><span class="num">০৪</span> <span class="bn-text">Impression — প্রথম দেখায় মনে গেঁথে যাওয়া</span><span class="en-text">Impression — Being Unforgettable at First Glance</span></span></div>
+    <div class="toc-sub"><span><span class="bn-text">First impression, কথা বলার style, আত্মবিশ্বাস প্রকাশ করা</span><span class="en-text">First impression, speaking style, projecting confidence</span></span></div>
+  </div>
+  <div class="toc-chapter">
+    <div class="toc-main"><span><span class="num">০৫</span> <span class="bn-text">অন্যের মনে জায়গা করে নেওয়া</span><span class="en-text">Making a Place in Someone's Heart</span></span></div>
+    <div class="toc-sub"><span>Mirroring, Rapport Building, Vulnerability, Deep Connection</span></div>
+  </div>
+  <div class="toc-chapter">
+    <div class="toc-main"><span><span class="num">০৬</span> Persuasion — <span class="bn-text">মানুষকে রাজি করানোর শিল্প</span><span class="en-text">The Art of Getting People to Agree</span></span></div>
+    <div class="toc-sub"><span>Cialdini-র 6 Principles: Reciprocity, Scarcity, Authority, Social Proof, Liking, Commitment</span></div>
+  </div>
+  <div class="toc-chapter">
+    <div class="toc-main"><span><span class="num">০৭</span> Cognitive Biases — <span class="bn-text">মনের ফাঁদ</span><span class="en-text">Traps of the Mind</span></span></div>
+    <div class="toc-sub"><span>Confirmation Bias, Anchoring, Halo Effect, Scarcity, FOMO</span></div>
+  </div>
+  <div class="toc-chapter">
+    <div class="toc-main"><span><span class="num">০৮</span> <span class="bn-text">প্রেম ও সম্পর্কে Reverse Psychology</span><span class="en-text">Reverse Psychology in Love & Relationships</span></span></div>
+    <div class="toc-sub"><span><span class="bn-text">Attraction-এর psychology, Withdraw করা, Mystery রাখা, Validation না দেওয়া</span><span class="en-text">Psychology of attraction, withdrawing, maintaining mystery, withholding validation</span></span></div>
+  </div>
+  <div class="toc-chapter">
+    <div class="toc-main"><span><span class="num">০৯</span> <span class="bn-text">কর্মক্ষেত্রে মনস্তত্ত্ব</span><span class="en-text">Psychology in the Workplace</span></span></div>
+    <div class="toc-sub"><span><span class="bn-text">Boss, colleague, negotiation-এ Reverse Psychology</span><span class="en-text">Reverse psychology with boss, colleagues, in negotiations</span></span></div>
+  </div>
+  <div class="toc-chapter">
+    <div class="toc-main"><span><span class="num">১০</span> Dark Psychology — <span class="bn-text">সতর্ক থাকো</span><span class="en-text">Stay Alert</span></span></div>
+    <div class="toc-sub"><span>Gaslighting, Manipulation, Narcissism — <span class="bn-text">চেনো এবং বাঁচো</span><span class="en-text">Recognize and protect yourself</span></span></div>
+  </div>
+  <div class="toc-chapter">
+    <div class="toc-main"><span><span class="num">১১</span> <span class="bn-text">নিজেকে Mentally শক্তিশালী করা</span><span class="en-text">Building Mental Strength</span></span></div>
+    <div class="toc-sub"><span>Stoicism, Emotional Detachment, Self-Control, High Value Mindset</span></div>
+  </div>
+  <div class="toc-chapter">
+    <div class="toc-main"><span><span class="num">১২</span> <span class="bn-text">দৈনন্দিন জীবনে ব্যবহারিক প্রয়োগ ও Cheat Sheet</span><span class="en-text">Practical Applications & Cheat Sheet</span></span></div>
+    <div class="toc-sub"><span><span class="bn-text">পরিবার, বন্ধু, পরিচিত — সব ক্ষেত্রে সম্পূর্ণ গাইড</span><span class="en-text">Complete guide for family, friends, acquaintances</span></span></div>
+  </div>
+  <div class="toc-chapter">
+    <div class="toc-main"><span><span class="num">১৩</span> <span class="bn-text">সমাপ্তি — সত্যিকারের Social Mastery</span><span class="en-text">Conclusion — True Social Mastery</span></span></div>
+    <div class="toc-sub"><span><span class="bn-text">Ethical Psychology, Books, Podcasts, Career</span><span class="en-text">Ethical psychology, books, podcasts, career</span></span></div>
+  </div>
+</div>
+
+<!-- CH 1 -->
+<div class="chapter ch1">
+  <div class="chapter-header">
+    <div class="chapter-label">Chapter 01</div>
+    <div class="chapter-title">🧠 <span class="bn-text">মানুষের মন — কিভাবে কাজ করে?</span><span class="en-text">The Human Mind — How Does It Work?</span></div>
+    <div class="chapter-desc"><span class="bn-text">সবকিছুর ভিত্তি — মনের ভেতরের দুনিয়া বোঝা</span><span class="en-text">The foundation of everything — understanding the inner world of the mind</span></div>
+  </div>
+  <div class="chapter-body">
+    <h2 class="sec">🧩 <span class="bn-text">Conscious vs Subconscious Mind</span><span class="en-text">Conscious vs Subconscious Mind</span></h2>
+    <p>
+      <span class="bn-text">মানুষের মন দুটো স্তরে কাজ করে। Conscious Mind হলো যেটা আমরা জানি — সচেতন চিন্তা, সিদ্ধান্ত। কিন্তু Subconscious Mind হলো সেই বিশাল অদৃশ্য অংশ যেটা আমাদের ৯৫% আচরণ নিয়ন্ত্রণ করে। Reverse Psychology মূলত Subconscious Mind-কে Target করে।</span>
+      <span class="en-text">The human mind operates on two levels. The Conscious Mind is what we're aware of — deliberate thoughts and decisions. But the Subconscious Mind is the vast hidden part that controls 95% of our behavior. Reverse Psychology primarily targets the Subconscious Mind.</span>
+    </p>
+    <div class="mind-box">
+<span class="mp">মানুষের মন (Iceberg Model):</span>
+
+<span class="my">🌊 সমুদ্রের উপরে (Conscious — ১০%):</span>
+   ├── <span class="mt">সচেতন চিন্তা / Conscious Thoughts</span>
+   ├── <span class="mt">তাৎক্ষণিক সিদ্ধান্ত / Immediate Decisions</span>
+   └── <span class="mt">বর্তমান অনুভূতি / Current Feelings</span>
+
+<span class="my">🌊 সমুদ্রের নিচে (Subconscious — ৯০%):</span>
+   ├── <span class="mpk">পুরনো স্মৃতি ও অভিজ্ঞতা / Old Memories & Experiences</span>
+   ├── <span class="mpk">গভীর বিশ্বাস ও মূল্যবোধ / Deep Beliefs & Values</span>
+   ├── <span class="mpk">ভয় ও আকাঙ্ক্ষা / Fears & Desires</span>
+   ├── <span class="mpk">স্বয়ংক্রিয় আচরণ / Automatic Behaviors</span>
+   └── <span class="mg">← এখানেই Reverse Psychology কাজ করে!</span>
+    </div>
+
+    <h2 class="sec">❤️ <span class="bn-text">Emotion-ই সব সিদ্ধান্ত নেয়</span><span class="en-text">Emotion Drives Every Decision</span></h2>
+    <div class="box info">
+      <div class="box-t">🔬 <span class="bn-text">বৈজ্ঞানিক সত্য</span><span class="en-text">Scientific Fact</span></div>
+      <span class="bn-text">Neuroscientist Antonio Damasio গবেষণায় দেখেছেন যে যাদের Brain-এর Emotional অংশ নষ্ট হয়ে যায়, তারা কোনো সিদ্ধান্তই নিতে পারে না — যতই Logic দাও না কেন। মানুষ আগে Emotion দিয়ে সিদ্ধান্ত নেয়, পরে Logic দিয়ে justify করে।</span>
+      <span class="en-text">Neuroscientist Antonio Damasio found that people with damage to the emotional part of their brain cannot make any decisions — no matter how much logic you give them. People decide with emotion first, then justify with logic.</span>
+    </div>
+
+    <div class="quote">
+      <span class="bn-text">"মানুষ যুক্তি দিয়ে কেনে না। কেনে অনুভূতি দিয়ে, তারপর যুক্তি দিয়ে justify করে।"</span>
+      <span class="en-text">"People don't buy with logic. They buy with feeling, then justify it with logic."</span>
+      <div class="author">— Zig Ziglar</div>
+    </div>
+
+    <h2 class="sec">🎯 <span class="bn-text">মানুষের ৫টি মূল চাহিদা</span><span class="en-text">5 Core Human Needs</span></h2>
+    <div class="grid3">
+      <div class="card">
+        <h4>🏆 Significance</h4>
+        <p><span class="bn-text">প্রত্যেক মানুষ special ও important feel করতে চায়। এটা exploit করলে সহজেই কারো মন জয় করা যায়।</span><span class="en-text">Every person wants to feel special and important. Tapping into this can easily win someone's heart.</span></p>
+      </div>
+      <div class="card pink-card">
+        <h4>🤝 Connection</h4>
+        <p><span class="bn-text">ভালোবাসা, অন্তর্ভুক্তি, বোঝা — মানুষ এগুলোর জন্য যেকোনো কিছু করতে রাজি।</span><span class="en-text">Love, belonging, being understood — people will do almost anything for these.</span></p>
+      </div>
+      <div class="card gold-card">
+        <h4>🛡️ Certainty</h4>
+        <p><span class="bn-text">নিরাপত্তা ও নিশ্চয়তা দিতে পারলে মানুষ তোমার উপর নির্ভর করবে।</span><span class="en-text">Provide security and certainty, and people will rely on you.</span></p>
+      </div>
+    </div>
+
+    <h2 class="sec">🔑 <span class="bn-text">মন পড়ার ৩টি মূল নিয়ম</span><span class="en-text">3 Core Rules of Mind Reading</span></h2>
+    <div class="step-flow">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title"><span class="bn-text">মনোযোগ দিয়ে শোনো — শুধু কথা নয়, অনুভূতি শোনো</span><span class="en-text">Listen attentively — not just words, but feelings</span></div>
+          <div class="step-desc"><span class="bn-text">মানুষ যা বলে, তার পেছনে সবসময় একটা অনুভূতি থাকে। সেই অনুভূতি ধরতে পারাই আসল দক্ষতা।</span><span class="en-text">Behind everything people say, there's always a feeling. Catching that feeling is the real skill.</span></div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title"><span class="bn-text">Pattern লক্ষ্য করো — মানুষ বারবার একই কাজ করে</span><span class="en-text">Notice patterns — people repeat the same behaviors</span></div>
+          <div class="step-desc"><span class="bn-text">কেউ কি সবসময় নিজের কথা বেশি বলে? কেউ কি অনুমোদন খোঁজে? এই Pattern চেনাই মন পড়ার চাবিকাঠি।</span><span class="en-text">Does someone always talk about themselves? Does someone always seek approval? Recognizing these patterns is the key to reading minds.</span></div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title"><span class="bn-text">কী বলছে না, সেটা দেখো</span><span class="en-text">Notice what they're NOT saying</span></div>
+          <div class="step-desc"><span class="bn-text">চুপ থাকা, বিষয় পরিবর্তন করা, হাসি দিয়ে এড়ানো — এগুলো কখনো কথার চেয়ে বেশি বলে।</span><span class="en-text">Staying silent, changing subjects, deflecting with a smile — these often say more than words.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chapter-summary">
+      <h3>🧠 <span class="bn-text">Chapter সারসংক্ষেপ</span><span class="en-text">Chapter Summary</span></h3>
+      <ul>
+        <li>🌊 <span class="bn-text">৯০% আচরণ Subconscious থেকে আসে — সেটাকেই Target করো</span><span class="en-text">90% of behavior comes from the subconscious — that's your target</span></li>
+        <li>❤️ <span class="bn-text">মানুষ Emotion দিয়ে সিদ্ধান্ত নেয়, Logic দিয়ে নয়</span><span class="en-text">People decide with emotion, not logic</span></li>
+        <li>🎯 <span class="bn-text">Significance + Connection = মানুষের সবচেয়ে বড় চাহিদা</span><span class="en-text">Significance + Connection = humanity's greatest needs</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CH 2 -->
+<div class="chapter ch2">
+  <div class="chapter-header">
+    <div class="chapter-label">Chapter 02</div>
+    <div class="chapter-title">🔄 Reverse Psychology — <span class="bn-text">উল্টো কথায় সোজা কাজ</span><span class="en-text">Getting Results Through the Opposite</span></div>
+    <div class="chapter-desc"><span class="bn-text">যা চাও, তার বিপরীত বলো — মানুষ নিজেই সেটা করবে</span><span class="en-text">Say the opposite of what you want — and people will do it themselves</span></div>
+  </div>
+  <div class="chapter-body">
+    <h2 class="sec">🤔 <span class="bn-text">Reverse Psychology কী?</span><span class="en-text">What is Reverse Psychology?</span></h2>
+    <p>
+      <span class="bn-text">Reverse Psychology হলো এমন একটি কৌশল যেখানে তুমি যা চাও তার বিপরীত প্রস্তাব দিয়ে মানুষকে সেটাই করাও যা তুমি আসলে চেয়েছিলে। মানুষের স্বাভাবিক প্রবণতা হলো তাকে যা করতে বলা হয় তার বিরোধিতা করা — এটাকে Psychological Reactance বলে।</span>
+      <span class="en-text">Reverse Psychology is a technique where you get someone to do exactly what you want by suggesting the opposite. People have a natural tendency to resist being told what to do — this is called Psychological Reactance.</span>
+    </p>
+
+    <div class="technique">
+      <div class="tech-label">Core Concept</div>
+      <div class="tech-name">🔄 Psychological Reactance</div>
+      <div class="tech-desc">
+        <span class="bn-text">মানুষ তার স্বাধীনতা রক্ষা করতে চায়। যখন কেউ বলে "এটা করো না" বা "তুমি পারবে না" — মানুষ প্রমাণ করতে চায় যে সে পারে। Reverse Psychology এই Reactance-কে কাজে লাগায়।</span>
+        <span class="en-text">People want to protect their freedom. When someone says "don't do this" or "you can't" — people want to prove they can. Reverse Psychology uses this Reactance.</span>
+      </div>
+      <div class="tech-example">
+        <div class="label">🇧🇩 <span class="bn-text">বাস্তব উদাহরণ</span><span class="en-text">Real Example</span></div>
+        <span class="bn-text">বাচ্চাকে বললে "এই বইটা পড়ো" — সে পড়বে না। কিন্তু বললে "এই বইটা তোমার জন্য কঠিন হবে, তুমি বুঝবে না" — সে রাতেই পড়ে শেষ করবে।</span>
+        <span class="en-text">Tell a child "read this book" — they won't. But say "this book is too hard for you, you won't understand it" — they'll finish it that night.</span>
+      </div>
+    </div>
+
+    <h2 class="sec">🎯 <span class="bn-text">Reverse Psychology-র ৭টি প্রধান Technique</span><span class="en-text">7 Main Reverse Psychology Techniques</span></h2>
+
+    <div class="technique">
+      <div class="tech-label">Technique 01</div>
+      <div class="tech-name">🚫 <span class="bn-text">নিষেধ করো — আগ্রহ বাড়াও</span><span class="en-text">Forbid It — Increase Interest</span></div>
+      <div class="tech-desc"><span class="bn-text">যা চাও মানুষ জানুক বা করুক, তাতে নিষেধ করো বা "এটা সবার জন্য না" বলো।</span><span class="en-text">Forbid what you want people to know or do, or say "this isn't for everyone."</span></div>
+      <div class="tech-example">
+        <div class="label"><span class="bn-text">উদাহরণ</span><span class="en-text">Example</span></div>
+        <span class="bn-text">বন্ধুকে party-তে আনতে চাইলে বলো: "তুই না আসলেও চলবে, এটা তোর type না হতে পারে।" — সে নিশ্চিত আসবে।</span>
+        <span class="en-text">To get a friend to come to a party: "You don't have to come, it might not be your type." — They'll definitely show up.</span>
+      </div>
+    </div>
+
+    <div class="technique">
+      <div class="tech-label">Technique 02</div>
+      <div class="tech-name">🤷 <span class="bn-text">উদাসীনতা দেখাও — মূল্য বাড়াও</span><span class="en-text">Show Indifference — Increase Your Value</span></div>
+      <div class="tech-desc"><span class="bn-text">যাকে Impress করতে চাও তার প্রতি হঠাৎ একটু উদাসীন হও। মানুষ যা সহজে পায় তার মূল্য দেয় না।</span><span class="en-text">Be slightly indifferent toward the person you want to impress. People don't value what comes easily.</span></div>
+      <div class="tech-example">
+        <div class="label"><span class="bn-text">উদাহরণ</span><span class="en-text">Example</span></div>
+        <span class="bn-text">সবসময় তাড়াতাড়ি reply করো না। কখনো কখনো ব্যস্ত থাকো। তোমার presence-এর মূল্য তৈরি হবে।</span>
+        <span class="en-text">Don't always reply instantly. Sometimes be busy. Your presence will become valued.</span>
+      </div>
+    </div>
+
+    <div class="technique">
+      <div class="tech-label">Technique 03</div>
+      <div class="tech-name">🎭 <span class="bn-text">Agree করো — নিজেই সরে আসবে</span><span class="en-text">Agree — They'll Back Off Themselves</span></div>
+      <div class="tech-desc"><span class="bn-text">কেউ তোমার সাথে তর্ক করছে? তার কথায় Exaggerate করে agree করো। এতে তর্কের মজা নষ্ট হয়।</span><span class="en-text">Someone arguing with you? Exaggeratedly agree with them. This ruins the fun of the argument.</span></div>
+      <div class="tech-example">
+        <div class="label"><span class="bn-text">উদাহরণ</span><span class="en-text">Example</span></div>
+        <span class="bn-text">কেউ বলছে "তুমি কিছু পারো না" → তুমি বলো "হ্যাঁ, আমি একদম বেকার, আমার থেকে কিছুই আশা করো না।" — তারাই awkward feel করবে এবং সরে আসবে।</span>
+        <span class="en-text">Someone says "you can't do anything" → You say "Yes, I'm totally useless, don't expect anything from me." — They'll feel awkward and back off.</span>
+      </div>
+    </div>
+
+    <div class="technique">
+      <div class="tech-label">Technique 04</div>
+      <div class="tech-name">🔓 <span class="bn-text">Choice দাও — Control রাখো</span><span class="en-text">Give a Choice — Keep Control</span></div>
+      <div class="tech-desc"><span class="bn-text">দুটো option দাও যেখানে দুটোই তোমার পক্ষে। মানুষ choice পেলে স্বাধীন feel করে এবং সহজে agree করে।</span><span class="en-text">Give two options where both favor you. When people get a choice, they feel free and agree easily.</span></div>
+      <div class="tech-example">
+        <div class="label"><span class="bn-text">উদাহরণ</span><span class="en-text">Example</span></div>
+        <span class="bn-text">"তুমি কি আজ রাতে আমাকে সাহায্য করবে নাকি কালকে সকালে?" — "না" বলার সুযোগ নেই, শুধু কখন সেটাই প্রশ্ন।</span>
+        <span class="en-text">"Will you help me tonight or tomorrow morning?" — There's no chance to say "no", the only question is when.</span>
+      </div>
+    </div>
+
+    <div class="technique">
+      <div class="tech-label">Technique 05</div>
+      <div class="tech-name">🌟 <span class="bn-text">Challenge করো — মানুষ নিজেই প্রমাণ করবে</span><span class="en-text">Challenge Them — They'll Prove It Themselves</span></div>
+      <div class="tech-desc"><span class="bn-text">মানুষের Ego-কে কাজে লাগাও। বলো "তুমি সম্ভবত এটা করতে পারবে না।"</span><span class="en-text">Leverage people's ego. Say "you probably can't do this."</span></div>
+      <div class="tech-example">
+        <div class="label"><span class="bn-text">উদাহরণ</span><span class="en-text">Example</span></div>
+        <span class="bn-text">কাউকে দিয়ে কাজ করাতে: "এই project-টা অনেক কঠিন, সবাই পারে না।" — তুমি না চাইতেই সে নিজে উঠে পড়ে লাগবে।</span>
+        <span class="en-text">To get someone to do work: "This project is really hard, not everyone can handle it." — They'll take it on without you even asking.</span>
+      </div>
+    </div>
+
+    <div class="technique">
+      <div class="tech-label">Technique 06</div>
+      <div class="tech-name">🪞 <span class="bn-text">Withdraw করো — Pull টা আসবে</span><span class="en-text">Withdraw — The Pull Will Come to You</span></div>
+      <div class="tech-desc"><span class="bn-text">সবসময় Available থেকো না। মানুষ তোমাকে যত কম পাবে, তোমার প্রতি তত বেশি Pull অনুভব করবে।</span><span class="en-text">Don't always be available. The less people can reach you, the more pull they'll feel toward you.</span></div>
+    </div>
+
+    <div class="technique">
+      <div class="tech-label">Technique 07</div>
+      <div class="tech-name">🎁 <span class="bn-text">Unexpected দাও — Loyalty তৈরি হয়</span><span class="en-text">Give the Unexpected — Build Loyalty</span></div>
+      <div class="tech-desc"><span class="bn-text">মানুষ যা expect করে না তা দিলে সে সারাজীবন মনে রাখে। ছোট একটা unexpected gesture বড় relationship তৈরি করে।</span><span class="en-text">When you give something unexpected, people remember it forever. A small unexpected gesture builds great relationships.</span></div>
+    </div>
+
+    <h2 class="sec">📊 <span class="bn-text">কোথায় কোন Technique ব্যবহার করবে?</span><span class="en-text">Which Technique to Use Where?</span></h2>
+    <table>
+      <thead><tr><th><span class="bn-text">পরিস্থিতি</span><span class="en-text">Situation</span></th><th>Technique</th><th><span class="bn-text">ফলাফল</span><span class="en-text">Result</span></th></tr></thead>
+      <tbody>
+        <tr><td><span class="bn-text">বাচ্চাকে কিছু করাতে</span><span class="en-text">Getting a child to do something</span></td><td>Challenge / নিষেধ</td><td><span class="badge badge-g">✅ <span class="bn-text">কাজ করে</span><span class="en-text">Works</span></span></td></tr>
+        <tr><td><span class="bn-text">কাউকে আকর্ষণ করতে</span><span class="en-text">Attracting someone</span></td><td>Withdraw + Indifference</td><td><span class="badge badge-g">✅ <span class="bn-text">অনেক কার্যকর</span><span class="en-text">Very effective</span></span></td></tr>
+        <tr><td><span class="bn-text">তর্ক থামাতে</span><span class="en-text">Stopping an argument</span></td><td>Exaggerated Agreement</td><td><span class="badge badge-p">⚡ <span class="bn-text">সাথে সাথে কাজ করে</span><span class="en-text">Immediate effect</span></span></td></tr>
+        <tr><td><span class="bn-text">কাজ করিয়ে নিতে</span><span class="en-text">Getting work done</span></td><td>Fake Choice + Challenge</td><td><span class="badge badge-g">✅ <span class="bn-text">স্বাভাবিকভাবে</span><span class="en-text">Naturally</span></span></td></tr>
+        <tr><td><span class="bn-text">মানুষের কাছে valuable হতে</span><span class="en-text">Becoming valuable to people</span></td><td>Scarcity + Withdraw</td><td><span class="badge badge-pk">💜 <span class="bn-text">দীর্ঘমেয়াদী</span><span class="en-text">Long-term</span></span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="chapter-summary">
+      <h3>🔄 <span class="bn-text">Chapter সারসংক্ষেপ</span><span class="en-text">Chapter Summary</span></h3>
+      <ul>
+        <li>🧠 <span class="bn-text">মানুষের Reactance-ই Reverse Psychology-র জ্বালানি</span><span class="en-text">Human Reactance is the fuel of Reverse Psychology</span></li>
+        <li>🚫 <span class="bn-text">নিষেধ করলে আগ্রহ বাড়ে, challenge করলে Ego কাজ করে</span><span class="en-text">Forbidding increases interest; challenging activates the ego</span></li>
+        <li>🤷 <span class="bn-text">উদাসীনতা + Scarcity = সবচেয়ে শক্তিশালী Combination</span><span class="en-text">Indifference + Scarcity = most powerful combination</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CH 3 -->
+<div class="chapter ch3">
+  <div class="chapter-header">
+    <div class="chapter-label">Chapter 03</div>
+    <div class="chapter-title">🎭 <span class="bn-text">মানুষ পড়ার কৌশল — Body Language</span><span class="en-text">Reading People — Body Language</span></div>
+    <div class="chapter-desc"><span class="bn-text">কথার চেয়ে শরীর বেশি সত্যি কথা বলে</span><span class="en-text">The body tells more truth than words</span></div>
+  </div>
+  <div class="chapter-body">
+    <h2 class="sec">👁️ <span class="bn-text">চোখের ভাষা</span><span class="en-text">The Language of Eyes</span></h2>
+    <table>
+      <thead><tr><th><span class="bn-text">চোখের আচরণ</span><span class="en-text">Eye Behavior</span></th><th><span class="bn-text">অর্থ</span><span class="en-text">Meaning</span></th></tr></thead>
+      <tbody>
+        <tr><td><span class="bn-text">সরাসরি চোখে তাকানো</span><span class="en-text">Direct eye contact</span></td><td><span class="bn-text">আত্মবিশ্বাস, আগ্রহ বা চ্যালেঞ্জ</span><span class="en-text">Confidence, interest, or challenge</span></td></tr>
+        <tr><td><span class="bn-text">চোখ সরিয়ে নেওয়া</span><span class="en-text">Looking away</span></td><td><span class="bn-text">অস্বস্তি, মিথ্যা বলা, লজ্জা</span><span class="en-text">Discomfort, lying, embarrassment</span></td></tr>
+        <tr><td><span class="bn-text">Pupil বড় হওয়া</span><span class="en-text">Dilated pupils</span></td><td><span class="bn-text">আকর্ষণ বা উত্তেজনা — কৃত্রিমভাবে লুকানো যায় না</span><span class="en-text">Attraction or excitement — cannot be faked</span></td></tr>
+        <tr><td><span class="bn-text">দ্রুত পলক ফেলা</span><span class="en-text">Rapid blinking</span></td><td><span class="bn-text">চাপ বা মিথ্যা</span><span class="en-text">Stress or lying</span></td></tr>
+        <tr><td><span class="bn-text">উপরে ডানে তাকানো</span><span class="en-text">Looking up and right</span></td><td><span class="bn-text">নতুন কিছু কল্পনা করছে (সত্যি নয়)</span><span class="en-text">Imagining something new (not true)</span></td></tr>
+        <tr><td><span class="bn-text">উপরে বামে তাকানো</span><span class="en-text">Looking up and left</span></td><td><span class="bn-text">স্মৃতি থেকে মনে করছে (সত্যি হওয়ার সম্ভাবনা)</span><span class="en-text">Recalling from memory (more likely true)</span></td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="sec">🤲 <span class="bn-text">হাত ও শরীরের ভাষা</span><span class="en-text">Hand and Body Language</span></h2>
+    <div class="grid2">
+      <div class="card">
+        <h4>✋ <span class="bn-text">Open Body Language (ইতিবাচক)</span><span class="en-text">Open Body Language (Positive)</span></h4>
+        <ul>
+          <li><span class="bn-text">হাত খোলা রাখা = সততা, বিশ্বাসযোগ্যতা</span><span class="en-text">Open palms = honesty, trustworthiness</span></li>
+          <li><span class="bn-text">সামনে ঝুঁকে বসা = আগ্রহ</span><span class="en-text">Leaning forward = interest</span></li>
+          <li><span class="bn-text">মাথা কাত করা = মনোযোগ দিয়ে শোনা</span><span class="en-text">Head tilt = attentive listening</span></li>
+          <li><span class="bn-text">Mirroring ভঙ্গি = পছন্দ করছে</span><span class="en-text">Mirroring posture = likes you</span></li>
+        </ul>
+      </div>
+      <div class="card pink-card">
+        <h4>🙅 <span class="bn-text">Closed Body Language (নেতিবাচক)</span><span class="en-text">Closed Body Language (Negative)</span></h4>
+        <ul>
+          <li><span class="bn-text">হাত বুকে ভাঁজ করা = রক্ষণাত্মক, বন্ধ মন</span><span class="en-text">Crossed arms = defensive, closed off</span></li>
+          <li><span class="bn-text">পা দরজার দিকে = বের হতে চাইছে</span><span class="en-text">Feet pointing to door = wants to leave</span></li>
+          <li><span class="bn-text">মুখে হাত দেওয়া = কিছু লুকাচ্ছে</span><span class="en-text">Hand over mouth = hiding something</span></li>
+          <li><span class="bn-text">পেছনে হেলান = আগ্রহ নেই</span><span class="en-text">Leaning back = not interested</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="sec">🎙️ <span class="bn-text">কণ্ঠস্বরের ভাষা</span><span class="en-text">The Language of Voice</span></h2>
+    <div class="box info">
+      <div class="box-t">💡 Albert Mehrabian Rule (7-38-55)</div>
+      <span class="bn-text">Communication-এ শব্দের অর্থ মাত্র <strong>৭%</strong>, কণ্ঠস্বরের tone <strong>৩৮%</strong>, এবং Body Language <strong>৫৫%</strong> ভূমিকা রাখে। তাই কথা কম, ভঙ্গি বেশি গুরুত্বপূর্ণ।</span>
+      <span class="en-text">In communication, the meaning of words is only <strong>7%</strong>, vocal tone is <strong>38%</strong>, and body language is <strong>55%</strong>. So how you say things matters far more than what you say.</span>
+    </div>
+    <table>
+      <thead><tr><th><span class="bn-text">কণ্ঠের বৈশিষ্ট্য</span><span class="en-text">Voice Quality</span></th><th><span class="bn-text">যা বোঝায়</span><span class="en-text">What It Signals</span></th><th><span class="bn-text">কৌশল</span><span class="en-text">Strategy</span></th></tr></thead>
+      <tbody>
+        <tr><td><span class="bn-text">নিচু, ধীর কণ্ঠ</span><span class="en-text">Low, slow voice</span></td><td><span class="bn-text">আত্মবিশ্বাস, কর্তৃত্ব</span><span class="en-text">Confidence, authority</span></td><td><span class="badge badge-g">✅ <span class="bn-text">ব্যবহার করো</span><span class="en-text">Use this</span></span></td></tr>
+        <tr><td><span class="bn-text">উঁচু, দ্রুত কণ্ঠ</span><span class="en-text">High, fast voice</span></td><td><span class="bn-text">নার্ভাসনেস, ভয়</span><span class="en-text">Nervousness, fear</span></td><td><span class="badge badge-r">❌ <span class="bn-text">এড়িয়ে চলো</span><span class="en-text">Avoid</span></span></td></tr>
+        <tr><td><span class="bn-text">শেষে নামিয়ে আনা</span><span class="en-text">Downward inflection</span></td><td><span class="bn-text">নিশ্চিত, বিশ্বাসযোগ্য</span><span class="en-text">Certain, trustworthy</span></td><td><span class="badge badge-g">✅ <span class="bn-text">Statement-এ</span><span class="en-text">For statements</span></span></td></tr>
+        <tr><td><span class="bn-text">Pause ব্যবহার করা</span><span class="en-text">Strategic pauses</span></td><td><span class="bn-text">বুদ্ধিমান, ভেবে বলছে</span><span class="en-text">Thoughtful, intelligent</span></td><td><span class="badge badge-p">⚡ <span class="bn-text">শক্তিশালী কৌশল</span><span class="en-text">Powerful technique</span></span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="chapter-summary">
+      <h3>🎭 <span class="bn-text">Chapter সারসংক্ষেপ</span><span class="en-text">Chapter Summary</span></h3>
+      <ul>
+        <li>👁️ <span class="bn-text">Pupil dilate হওয়া = আকর্ষণ — কৃত্রিমভাবে লুকানো যায় না</span><span class="en-text">Dilated pupils = attraction — impossible to fake</span></li>
+        <li>🤲 <span class="bn-text">Mirroring ভঙ্গি = সে তোমাকে পছন্দ করছে</span><span class="en-text">Mirroring posture = they like you</span></li>
+        <li>🎙️ <span class="bn-text">নিচু, ধীর কণ্ঠ = আত্মবিশ্বাসের সবচেয়ে বড় চিহ্ন</span><span class="en-text">Low, slow voice = the biggest sign of confidence</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CH 4 -->
+<div class="chapter ch4">
+  <div class="chapter-header">
+    <div class="chapter-label">Chapter 04</div>
+    <div class="chapter-title">💫 <span class="bn-text">Impression — প্রথম দেখায় মনে গেঁথে যাওয়া</span><span class="en-text">Impression — Being Unforgettable at First Glance</span></div>
+    <div class="chapter-desc"><span class="bn-text">মানুষ মাত্র ৭ সেকেন্ডে তোমার সম্পর্কে সিদ্ধান্ত নেয়</span><span class="en-text">People make up their minds about you in just 7 seconds</span></div>
+  </div>
+  <div class="chapter-body">
+    <h2 class="sec">⏱️ <span class="bn-text">First Impression — মাত্র ৭ সেকেন্ড</span><span class="en-text">First Impression — Just 7 Seconds</span></h2>
+    <div class="box gold-box">
+      <div class="box-t">🔬 <span class="bn-text">গবেষণা বলছে</span><span class="en-text">Research Says</span></div>
+      <span class="bn-text">Harvard University-র গবেষণা অনুযায়ী, মানুষ অপরিচিত কাউকে দেখার মাত্র ৭ সেকেন্ডের মধ্যে তার সম্পর্কে বিচার করে ফেলে। এবং এই প্রথম বিচার পরিবর্তন করা অনেক কঠিন।</span>
+      <span class="en-text">According to Harvard University research, people judge a stranger within just 7 seconds of seeing them. And this first judgment is very hard to change.</span>
+    </div>
+
+    <h2 class="sec">🎯 <span class="bn-text">Unforgettable Impression-এর ৬টি উপাদান</span><span class="en-text">6 Elements of an Unforgettable Impression</span></h2>
+    <div class="step-flow">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">👁️ <span class="bn-text">Eye Contact — চোখেই আত্মবিশ্বাস দেখাও</span><span class="en-text">Eye Contact — Show Confidence Through Your Eyes</span></div>
+          <div class="step-desc"><span class="bn-text">কথা বলার সময় ৬০–৭০% eye contact রাখো। বেশি হলে staring, কম হলে আত্মবিশ্বাসহীন মনে হয়। Rule: তাকাও → অন্য দিকে সরাও → আবার তাকাও।</span><span class="en-text">Maintain 60–70% eye contact while speaking. More feels like staring; less seems unconfident. Rule: look → look away → look back.</span></div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">😊 <span class="bn-text">Genuine Smile — নকল নয়, আসল হাসি</span><span class="en-text">Genuine Smile — Not Fake, Real</span></div>
+          <div class="step-desc"><span class="bn-text">Duchenne Smile — চোখের কোণে ভাঁজ পড়া হাসি। এটা trust তৈরি করে সবচেয়ে দ্রুত। নকল হাসি মানুষ subconsciously ধরে ফেলে।</span><span class="en-text">Duchenne Smile — a smile that crinkles the corners of your eyes. This builds trust fastest. A fake smile is subconsciously detected.</span></div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">🧍 <span class="bn-text">Posture — সোজা দাঁড়াও, জায়গা নাও</span><span class="en-text">Posture — Stand Tall, Own Your Space</span></div>
+          <div class="step-desc"><span class="bn-text">Amy Cuddy-র "Power Pose" গবেষণা: সোজা দাঁড়ানো, কাঁধ পেছনে রাখা মানুষকে শুধু দেখতে না, নিজেকে feel করতেও confident করে।</span><span class="en-text">Amy Cuddy's "Power Pose" research: standing tall with shoulders back makes you not just look confident, but feel it too.</span></div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <div class="step-title">🗣️ <span class="bn-text">নাম ব্যবহার করো — সবচেয়ে মিষ্টি শব্দ</span><span class="en-text">Use Their Name — The Sweetest Word</span></div>
+          <div class="step-desc"><span class="bn-text">Dale Carnegie বলেছেন: একজন মানুষের কাছে তার নিজের নাম পৃথিবীর সবচেয়ে মিষ্টি শব্দ। কথার মাঝে নাম ব্যবহার করো — সে immediately তোমার প্রতি আগ্রহী হবে।</span><span class="en-text">Dale Carnegie said: To a person, their own name is the sweetest sound in the world. Use their name in conversation — they'll become immediately engaged with you.</span></div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <div class="step-title">🎧 <span class="bn-text">Active Listening — শোনার ভান নয়, সত্যিই শোনো</span><span class="en-text">Active Listening — Not Pretending, Actually Listen</span></div>
+          <div class="step-desc"><span class="bn-text">মাথা নাড়াও, "হুম" বলো, last কথাটা repeat করো। মানুষ যখন বোঝে সে সত্যিই শোনা যাচ্ছে, তখনই সে তোমার প্রেমে পড়ে।</span><span class="en-text">Nod, say "mm-hmm", repeat the last thing they said. When people feel truly heard, that's when they fall for you.</span></div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <div class="step-title">❓ <span class="bn-text">সঠিক প্রশ্ন করো — কথা বলাও, মুগ্ধ হও</span><span class="en-text">Ask the Right Questions — Let Them Talk, Be Amazed</span></div>
+          <div class="step-desc"><span class="bn-text">"আপনি এটা কিভাবে শুরু করলেন?" — এই ধরনের প্রশ্ন মানুষকে নিজের সম্পর্কে বলতে দেয়। বেশি কথা বলে সে, বেশি impress হয় তোমার দ্বারা।</span><span class="en-text">"How did you get started with this?" — Questions like this let people talk about themselves. The more they talk, the more impressed they are by you.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="quote">
+      <span class="bn-text">"তুমি দুই ঘণ্টা নিজের কথা বলে মানুষকে যতটা impress করতে পারবে, তার চেয়ে বেশি পারবে দুই ঘণ্টা তার কথা মনোযোগ দিয়ে শুনে।"</span>
+      <span class="en-text">"You can make more friends in two months by becoming interested in other people than you can in two years by trying to get other people interested in you."</span>
+      <div class="author">— Dale Carnegie</div>
+    </div>
+
+    <div class="chapter-summary">
+      <h3>💫 <span class="bn-text">Chapter সারসংক্ষেপ</span><span class="en-text">Chapter Summary</span></h3>
+      <ul>
+        <li>⏱️ <span class="bn-text">৭ সেকেন্ড — এটুকুতেই সব ঠিক হয়ে যায়</span><span class="en-text">7 seconds — that's all it takes</span></li>
+        <li>😊 <span class="bn-text">চোখের হাসি = সবচেয়ে বিশ্বাসযোগ্য Signal</span><span class="en-text">Eye-crinkling smile = most trustworthy signal</span></li>
+        <li>🎧 <span class="bn-text">বেশি শোনো, কম বলো — বেশি impress করো</span><span class="en-text">Listen more, speak less — impress more</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CH 5 -->
+<div class="chapter ch5">
+  <div class="chapter-header">
+    <div class="chapter-label">Chapter 05</div>
+    <div class="chapter-title">❤️ <span class="bn-text">অন্যের মনে জায়গা করে নেওয়া</span><span class="en-text">Making a Place in Someone's Heart</span></div>
+    <div class="chapter-desc"><span class="bn-text">Mirroring, Rapport, Vulnerability — গভীর সংযোগ তৈরির শিল্প</span><span class="en-text">Mirroring, Rapport, Vulnerability — the art of building deep connection</span></div>
+  </div>
+  <div class="chapter-body">
+    <h2 class="sec">🪞 Mirroring — <span class="bn-text">সবচেয়ে শক্তিশালী Connection Tool</span><span class="en-text">The Most Powerful Connection Tool</span></h2>
+    <p>
+      <span class="bn-text">Mirroring মানে হলো অপরজনের ভঙ্গি, কথার ধরন, শব্দ পছন্দ, এমনকি শ্বাস-প্রশ্বাসের ছন্দ subtly অনুকরণ করা। এটা Subconscious-এ "আমরা একই রকম" এই message দেয়, যা instantly trust ও likeness তৈরি করে।</span>
+      <span class="en-text">Mirroring means subtly imitating the other person's posture, speech patterns, word choices, even breathing rhythm. This sends a subconscious message of "we are alike," which instantly builds trust and likeness.</span>
+    </p>
+    <div class="scenario">
+      <div class="sc-label">🎬 <span class="bn-text">বাস্তব Scenario</span><span class="en-text">Real Scenario</span></div>
+      <div class="sc-situation"><span class="bn-text">প্রথম পরিচয়ে কেউ বললো: "আমি মূলত Creative কাজ করি, সেটাতেই মজা পাই।"</span><span class="en-text">On first meeting, someone says: "I mostly do creative work, that's what I enjoy."</span></div>
+      <div class="sc-normal">
+        <div class="sc-tag">❌ <span class="bn-text">সাধারণ উত্তর</span><span class="en-text">Normal Response</span></div>
+        <span class="bn-text">"ওহ আচ্ছা, আমিও অনেক কিছু করি।" — সংযোগ তৈরি হলো না।</span>
+        <span class="en-text">"Oh interesting, I do a lot of things too." — No connection made.</span>
+      </div>
+      <div class="sc-reverse">
+        <div class="sc-tag">✅ Mirroring <span class="bn-text">উত্তর</span><span class="en-text">Response</span></div>
+        <span class="bn-text">"Creative কাজ — সত্যিই সবচেয়ে satisfying। তুমি কোন ধরনের Creative কাজে বেশি মজা পাও?" — তার নিজের শব্দ ব্যবহার করলে, তার মনে হবে তুমি তাকে বোঝো।</span>
+        <span class="en-text">"Creative work — truly the most satisfying. What kind of creative work do you enjoy most?" — Using their own words makes them feel deeply understood.</span>
+      </div>
+    </div>
+
+    <h2 class="sec">🤝 Rapport Building — <span class="bn-text">বিশ্বাসের সেতু তৈরি</span><span class="en-text">Building the Bridge of Trust</span></h2>
+    <div class="grid2">
+      <div class="card">
+        <h4>🌱 <span class="bn-text">দ্রুত Rapport তৈরির উপায়</span><span class="en-text">Ways to Build Rapport Quickly</span></h4>
+        <ul>
+          <li><strong>FORD</strong> — Family, Occupation, Recreation, Dreams</li>
+          <li><span class="bn-text">মিল খোঁজো — "আমিও!" বলার সুযোগ তৈরি করো</span><span class="en-text">Find similarities — create "me too!" moments</span></li>
+          <li><span class="bn-text">নাম মনে রেখে আবার ব্যবহার করো</span><span class="en-text">Remember and reuse their name</span></li>
+          <li><span class="bn-text">আগের কথা মনে রাখো, পরে refer করো</span><span class="en-text">Remember past conversations, refer back</span></li>
+        </ul>
+      </div>
+      <div class="card gold-card">
+        <h4>💡 <span class="bn-text">Ben Franklin Effect</span><span class="en-text">Ben Franklin Effect</span></h4>
+        <p><span class="bn-text">কারো কাছ থেকে ছোট একটা favor চাও। এতে সে subconsciously মনে করে "আমি তাকে help করেছি, মানে আমি তাকে পছন্দ করি।" — তোমার প্রতি তার ভালো লাগা বেড়ে যায়!</span>
+        <span class="en-text">Ask someone for a small favor. They subconsciously think "I helped them, so I must like them." — Their positive feelings toward you increase!</span></p>
+      </div>
+    </div>
+
+    <h2 class="sec">💔 <span class="bn-text">Vulnerability — দুর্বলতা প্রকাশই সবচেয়ে বড় শক্তি</span><span class="en-text">Vulnerability — Showing Weakness Is Your Greatest Strength</span></h2>
+    <div class="box info">
+      <div class="box-t">🔬 Brené Brown-এর গবেষণা</div>
+      <span class="bn-text">মানুষ সেই মানুষদের বেশি পছন্দ করে যারা কখনো কখনো নিজের দুর্বলতা বা ভুল স্বীকার করে। Perfect মানুষকে কাছের মনে হয় না — Imperfect মানুষকে মনে হয় real এবং trustworthy।</span>
+      <span class="en-text">People like those who sometimes admit their weaknesses or mistakes far more. A perfect person doesn't feel close — an imperfect person feels real and trustworthy.</span>
+    </div>
+    <div class="scenario">
+      <div class="sc-label">💡 <span class="bn-text">Vulnerability কৌশল</span><span class="en-text">Vulnerability Strategy</span></div>
+      <div class="sc-situation"><span class="bn-text">নতুন কাউকে impress করার সময়:</span><span class="en-text">When impressing someone new:</span></div>
+      <div class="sc-normal">
+        <div class="sc-tag">❌ <span class="bn-text">ভুল পদ্ধতি</span><span class="en-text">Wrong Approach</span></div>
+        <span class="bn-text">শুধু সাফল্যের গল্প বলা, সব সময় perfect দেখানো। → মানুষ তোমাকে arrogant মনে করবে।</span>
+        <span class="en-text">Only talking about successes, always appearing perfect → People will think you're arrogant.</span>
+      </div>
+      <div class="sc-reverse">
+        <div class="sc-tag">✅ <span class="bn-text">সঠিক পদ্ধতি</span><span class="en-text">Right Approach</span></div>
+        <span class="bn-text">একটা ছোট ব্যর্থতার গল্প বলো, তারপর কিভাবে শিখলে সেটা বলো। → মানুষ তোমাকে authentic মনে করবে এবং কাছে টানবে।</span>
+        <span class="en-text">Tell a small failure story, then how you learned from it → People will see you as authentic and be drawn closer.</span>
+      </div>
+    </div>
+
+    <div class="chapter-summary">
+      <h3>❤️ <span class="bn-text">Chapter সারসংক্ষেপ</span><span class="en-text">Chapter Summary</span></h3>
+      <ul>
+        <li>🪞 <span class="bn-text">Mirroring = তার ভাষায় কথা বলো — সে মনে করবে তুমি তাকে বোঝো</span><span class="en-text">Mirroring = speak their language — they'll feel understood</span></li>
+        <li>🤝 <span class="bn-text">Ben Franklin Effect = ছোট favor চাও — ভালো লাগা বাড়ে</span><span class="en-text">Ben Franklin Effect = ask a small favor — their liking increases</span></li>
+        <li>💔 <span class="bn-text">Vulnerability = Perfect নয়, Real হও — মানুষ কাছে আসবে</span><span class="en-text">Vulnerability = don't be perfect, be real — people will come closer</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CH 6 -->
+<div class="chapter ch6">
+  <div class="chapter-header">
+    <div class="chapter-label">Chapter 06</div>
+    <div class="chapter-title">🗣️ Persuasion — <span class="bn-text">মানুষকে রাজি করানোর শিল্প</span><span class="en-text">The Art of Getting People to Agree</span></div>
+    <div class="chapter-desc">Robert Cialdini-র 6 Principles of Influence</div>
+  </div>
+  <div class="chapter-body">
+    <h2 class="sec">📖 <span class="bn-text">Cialdini-র ৬টি Influence-এর নিয়ম</span><span class="en-text">Cialdini's 6 Principles of Influence</span></h2>
+    <div class="technique">
+      <div class="tech-label">Principle 01</div>
+      <div class="tech-name">🔄 Reciprocity — <span class="bn-text">দিলে পাওয়া যায়</span><span class="en-text">Give and You'll Receive</span></div>
+      <div class="tech-desc"><span class="bn-text">কাউকে কিছু দিলে সে automatically দেওয়ার জন্য বাধ্য feel করে। তুমি আগে give করো — তারপর receive করো।</span><span class="en-text">When you give someone something, they automatically feel obliged to give back. Give first — then receive.</span></div>
+      <div class="tech-example">
+        <div class="label"><span class="bn-text">দৈনন্দিন ব্যবহার</span><span class="en-text">Daily Use</span></div>
+        <span class="bn-text">কোনো কাজ চাওয়ার আগে সেই মানুষকে কিছু সাহায্য করো বা compliment করো।</span>
+        <span class="en-text">Before asking for something, help that person or give them a genuine compliment.</span>
+      </div>
+    </div>
+
+    <div class="technique">
+      <div class="tech-label">Principle 02</div>
+      <div class="tech-name">⏳ Scarcity — <span class="bn-text">কম পাওয়া জিনিসের মূল্য বেশি</span><span class="en-text">Rare Things Are More Valuable</span></div>
+      <div class="tech-desc"><span class="bn-text">"শেষ সুযোগ", "সীমিত সময়" — এগুলো মানুষকে দ্রুত সিদ্ধান্ত নিতে বাধ্য করে। তোমার সময় ও Attention-ও Scarce রাখো।</span><span class="en-text">"Last chance," "limited time" — these force people to decide quickly. Keep your own time and attention scarce too.</span></div>
+    </div>
+
+    <div class="technique">
+      <div class="tech-label">Principle 03</div>
+      <div class="tech-name">👑 Authority — <span class="bn-text">বিশেষজ্ঞকে মানুষ বিশ্বাস করে</span><span class="en-text">People Trust Experts</span></div>
+      <div class="tech-desc"><span class="bn-text">নিজের knowledge দেখাও, confident ভাবে কথা বলো। মানুষ authority figure-কে সহজে follow করে।</span><span class="en-text">Display your knowledge, speak confidently. People easily follow authority figures.</span></div>
+    </div>
+
+    <div class="technique">
+      <div class="tech-label">Principle 04</div>
+      <div class="tech-name">👥 Social Proof — <span class="bn-text">সবাই করছে তাই আমিও করব</span><span class="en-text">Everyone's Doing It So I Will Too</span></div>
+      <div class="tech-desc"><span class="bn-text">"সবাই এটা পছন্দ করছে" বললে মানুষ দ্রুত influenced হয়। Review, testimonial, "অনেকেই এটা করছেন" — এগুলো শক্তিশালী।</span><span class="en-text">"Everyone loves this" quickly influences people. Reviews, testimonials, "many people are doing this" — these are powerful.</span></div>
+    </div>
+
+    <div class="technique">
+      <div class="tech-label">Principle 05</div>
+      <div class="tech-name">❤️ Liking — <span class="bn-text">পছন্দের মানুষকেই বিশ্বাস করি</span><span class="en-text">We Trust Who We Like</span></div>
+      <div class="tech-desc"><span class="bn-text">মানুষ তাকেই বিশ্বাস করে যাকে সে পছন্দ করে। Mirroring, compliment, মিল খোঁজা — এগুলো Liking বাড়ায়।</span><span class="en-text">People trust those they like. Mirroring, compliments, finding common ground — these increase liking.</span></div>
+    </div>
+
+    <div class="technique">
+      <div class="tech-label">Principle 06</div>
+      <div class="tech-name">📝 Commitment — <span class="bn-text">ছোট হ্যাঁ বড় হ্যাঁ-তে পরিণত হয়</span><span class="en-text">Small Yes Leads to Big Yes</span></div>
+      <div class="tech-desc"><span class="bn-text">প্রথমে ছোট একটা request করো — সে agree করলে বড় request-এ agree করার সম্ভাবনা বেড়ে যায়। এটাকে Foot-in-the-door technique বলে।</span><span class="en-text">Make a small request first — once they agree, the chance of agreeing to a bigger request increases. This is the Foot-in-the-door technique.</span></div>
+    </div>
+
+    <div class="chapter-summary">
+      <h3>🗣️ <span class="bn-text">Chapter সারসংক্ষেপ</span><span class="en-text">Chapter Summary</span></h3>
+      <ul>
+        <li>🔄 <span class="bn-text">আগে দাও — পরে নাও (Reciprocity)</span><span class="en-text">Give first — receive later (Reciprocity)</span></li>
+        <li>⏳ <span class="bn-text">নিজেকে Scarce রাখো — মূল্য বাড়বে (Scarcity)</span><span class="en-text">Keep yourself scarce — your value will rise (Scarcity)</span></li>
+        <li>📝 <span class="bn-text">ছোট হ্যাঁ থেকে শুরু করো — বড় হ্যাঁ আসবে (Commitment)</span><span class="en-text">Start with a small yes — the big yes will follow (Commitment)</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CH 7 -->
+<div class="chapter ch7">
+  <div class="chapter-header">
+    <div class="chapter-label">Chapter 07</div>
+    <div class="chapter-title">🌀 Cognitive Biases — <span class="bn-text">মনের ফাঁদ</span><span class="en-text">Traps of the Mind</span></div>
+    <div class="chapter-desc"><span class="bn-text">মানুষের চিন্তার ফাঁকগুলো বোঝো — নিজেকে বাঁচাও এবং সুবিধা নাও</span><span class="en-text">Understand the gaps in human thinking — protect yourself and gain advantage</span></div>
+  </div>
+  <div class="chapter-body">
+    <h2 class="sec">🧩 <span class="bn-text">সবচেয়ে গুরুত্বপূর্ণ Cognitive Biases</span><span class="en-text">Most Important Cognitive Biases</span></h2>
+    <table>
+      <thead><tr><th>Bias</th><th><span class="bn-text">অর্থ</span><span class="en-text">Meaning</span></th><th><span class="bn-text">কাজে লাগানোর উপায়</span><span class="en-text">How to Use It</span></th></tr></thead>
+      <tbody>
+        <tr><td><strong>Halo Effect</strong></td><td><span class="bn-text">একটা ভালো দিক দেখলে সব দিক ভালো মনে করা</span><span class="en-text">One good quality makes everything seem good</span></td><td><span class="bn-text">Dress well, প্রথম কথাটা confident করো</span><span class="en-text">Dress well, make your first impression confident</span></td></tr>
+        <tr><td><strong>Anchoring</strong></td><td><span class="bn-text">প্রথম number/তথ্যকে reference হিসেবে ধরা</span><span class="en-text">First number/info becomes the reference point</span></td><td><span class="bn-text">দাম negotiate করতে আগে বড় সংখ্যা বলো</span><span class="en-text">State a high number first in negotiations</span></td></tr>
+        <tr><td><strong>Confirmation Bias</strong></td><td><span class="bn-text">যা বিশ্বাস করি তার প্রমাণ খুঁজি</span><span class="en-text">We seek proof of what we already believe</span></td><td><span class="bn-text">তার existing belief-এর সাথে align করো</span><span class="en-text">Align your message with their existing beliefs</span></td></tr>
+        <tr><td><strong>FOMO</strong></td><td><span class="bn-text">মিস হওয়ার ভয় (Fear of Missing Out)</span><span class="en-text">Fear of missing out</span></td><td><span class="bn-text">"সবাই এটা করছে, তুমি না করলে পিছিয়ে যাবে"</span><span class="en-text">"Everyone's doing this, you'll fall behind if you don't"</span></td></tr>
+        <tr><td><strong>Sunk Cost Fallacy</strong></td><td><span class="bn-text">যা খরচ হয়েছে তার জন্য ছাড়তে পারি না</span><span class="en-text">Can't let go because of past investment</span></td><td><span class="bn-text">Relationship, বিনিয়োগ — সচেতন থাকো</span><span class="en-text">In relationships, investments — stay aware</span></td></tr>
+        <tr><td><strong>Reciprocity Bias</strong></td><td><span class="bn-text">কেউ কিছু দিলে ফেরত দেওয়ার বাধ্যবাধকতা</span><span class="en-text">Obligated to give back when given something</span></td><td><span class="bn-text">আগে give করো, সহজেই পাবে</span><span class="en-text">Give first, receive easily</span></td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="sec">🎯 <span class="bn-text">Halo Effect — সবচেয়ে ব্যবহারিক Bias</span><span class="en-text">Halo Effect — Most Practical Bias</span></h2>
+    <div class="box info">
+      <div class="box-t">💡 <span class="bn-text">Halo Effect কাজে লাগাও</span><span class="en-text">Use the Halo Effect</span></div>
+      <ul>
+        <li><span class="bn-text">👔 ভালো পোশাক = সব বিষয়ে competent মনে হবে</span><span class="en-text">Good clothing = you'll seem competent in everything</span></li>
+        <li><span class="bn-text">🏃 Fit থাকলে = disciplined ও successful মনে হবে</span><span class="en-text">Being fit = you'll seem disciplined and successful</span></li>
+        <li><span class="bn-text">🗣️ Confident কণ্ঠ = সব কথা বিশ্বাসযোগ্য হবে</span><span class="en-text">Confident voice = all your words will seem credible</span></li>
+        <li><span class="bn-text">😊 প্রথম দেখায় হাসো = সব দিক positive মনে হবে</span><span class="en-text">Smile at first meeting = everything about you will seem positive</span></li>
+      </ul>
+    </div>
+
+    <div class="chapter-summary">
+      <h3>🌀 <span class="bn-text">Chapter সারসংক্ষেপ</span><span class="en-text">Chapter Summary</span></h3>
+      <ul>
+        <li>😇 <span class="bn-text">Halo Effect = একটা ভালো দিক সব ঢেকে দেয় — সেটা তৈরি করো</span><span class="en-text">Halo Effect = one good quality covers everything — create it</span></li>
+        <li>⚓ <span class="bn-text">Anchoring = আগে বড় সংখ্যা বলো — সুবিধা পাবে</span><span class="en-text">Anchoring = state a high number first — gain advantage</span></li>
+        <li>😨 <span class="bn-text">FOMO দিয়ে মানুষ দ্রুত সিদ্ধান্ত নেয় — ব্যবহার করো</span><span class="en-text">FOMO makes people decide quickly — use it</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CH 8 -->
+<div class="chapter ch8">
+  <div class="chapter-header">
+    <div class="chapter-label">Chapter 08</div>
+    <div class="chapter-title">💕 <span class="bn-text">প্রেম ও সম্পর্কে Reverse Psychology</span><span class="en-text">Reverse Psychology in Love & Relationships</span></div>
+    <div class="chapter-desc"><span class="bn-text">Attraction-এর অদৃশ্য নিয়ম — কেন মানুষ যা পায় না, তাই চায়</span><span class="en-text">The invisible rules of attraction — why people want what they can't have</span></div>
+  </div>
+  <div class="chapter-body">
+    <h2 class="sec">🧲 <span class="bn-text">Attraction-এর Psychology</span><span class="en-text">The Psychology of Attraction</span></h2>
+    <div class="box pink-box">
+      <div class="box-t">💡 <span class="bn-text">সবচেয়ে বড় সত্য</span><span class="en-text">The Biggest Truth</span></div>
+      <span class="bn-text">মানুষ সেটাই চায় যা সহজে পায় না। বেশি available থাকলে, বেশি chase করলে — তোমার মূল্য কমে যায়। এটা Biology — Dopamine তখনই release হয় যখন outcome uncertain থাকে।</span>
+      <span class="en-text">People want what they can't easily have. Being too available, chasing too hard — your value drops. It's biology — Dopamine releases when the outcome is uncertain.</span>
+    </div>
+
+    <div class="grid2">
+      <div class="card danger-card">
+        <h4>❌ <span class="bn-text">যা attraction নষ্ট করে</span><span class="en-text">What Kills Attraction</span></h4>
+        <ul>
+          <li><span class="bn-text">সবসময় available থাকা</span><span class="en-text">Always being available</span></li>
+          <li><span class="bn-text">অতিরিক্ত compliment করা</span><span class="en-text">Excessive complimenting</span></li>
+          <li><span class="bn-text">নিজের সম্পর্কে সব বলে দেওয়া</span><span class="en-text">Telling everything about yourself</span></li>
+          <li><span class="bn-text">বেশি needy বা desperate দেখানো</span><span class="en-text">Appearing too needy or desperate</span></li>
+          <li><span class="bn-text">তাড়াতাড়ি validation দেওয়া</span><span class="en-text">Giving validation too quickly</span></li>
+        </ul>
+      </div>
+      <div class="card pink-card">
+        <h4>✅ <span class="bn-text">যা attraction বাড়ায়</span><span class="en-text">What Builds Attraction</span></h4>
+        <ul>
+          <li><span class="bn-text">Mystery রাখা — সব না বলা</span><span class="en-text">Maintaining mystery — not saying everything</span></li>
+          <li><span class="bn-text">নিজের জীবন নিয়ে ব্যস্ত থাকা</span><span class="en-text">Being busy with your own life</span></li>
+          <li><span class="bn-text">মাঝে মাঝে Withdraw করা</span><span class="en-text">Occasionally withdrawing</span></li>
+          <li><span class="bn-text">নিজের Standards রাখা</span><span class="en-text">Maintaining your own standards</span></li>
+          <li><span class="bn-text">Validation সহজে না দেওয়া</span><span class="en-text">Not giving validation easily</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="sec">🔮 <span class="bn-text">Push-Pull Technique</span><span class="en-text">Push-Pull Technique</span></h2>
+    <div class="technique">
+      <div class="tech-label">Relationship Technique</div>
+      <div class="tech-name">🔄 Push-Pull — <span class="bn-text">টানো ও ছাড়ো</span><span class="en-text">Pull and Release</span></div>
+      <div class="tech-desc"><span class="bn-text">একটু কাছে টানো, তারপর একটু দূরে সরো। এই অনিশ্চয়তাই মানুষকে আগ্রহী রাখে। সবসময় one direction-এ গেলে সে predict করতে পারে এবং আগ্রহ হারায়।</span><span class="en-text">Pull them close, then step back a little. This uncertainty keeps people engaged. Always going one direction makes you predictable and they lose interest.</span></div>
+      <div class="tech-example">
+        <div class="label"><span class="bn-text">উদাহরণ</span><span class="en-text">Example</span></div>
+        <span class="bn-text">আজ অনেক হাসিখুশি কথা বললে → কাল একটু কম reply করো → পরশু আবার স্বাভাবিক হও। এই rhythm-এ সে সবসময় তোমার ব্যাপারে ভাবতে থাকবে।</span>
+        <span class="en-text">Talk warmly today → respond less tomorrow → be normal again the day after. This rhythm keeps them constantly thinking about you.</span>
+      </div>
+    </div>
+
+    <div class="quote">
+      <span class="bn-text">"যে মানুষ নিজেকে ভালোবাসে, নিজের জীবন নিয়ে ব্যস্ত থাকে, নিজের standards রাখে — সেই মানুষই সবচেয়ে বেশি attractive।"</span>
+      <span class="en-text">"The person who loves themselves, stays busy with their own life, and maintains their standards — that person is the most attractive."</span>
+      <div class="author">— Robert Greene, The Art of Seduction</div>
+    </div>
+
+    <div class="chapter-summary">
+      <h3>💕 <span class="bn-text">Chapter সারসংক্ষেপ</span><span class="en-text">Chapter Summary</span></h3>
+      <ul>
+        <li>🧲 <span class="bn-text">Easy = No Value। Mystery + Withdraw = High Value</span><span class="en-text">Easy = No Value. Mystery + Withdraw = High Value</span></li>
+        <li>🔄 <span class="bn-text">Push-Pull rhythm রাখো — predictable হওয়া যাবে না</span><span class="en-text">Maintain Push-Pull rhythm — never be predictable</span></li>
+        <li>🏆 <span class="bn-text">নিজের জীবন সুন্দর করো — attraction আপনিই আসবে</span><span class="en-text">Build a beautiful life — attraction will come naturally</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CH 9 -->
+<div class="chapter ch9">
+  <div class="chapter-header">
+    <div class="chapter-label">Chapter 09</div>
+    <div class="chapter-title">💼 <span class="bn-text">কর্মক্ষেত্রে মনস্তত্ত্ব</span><span class="en-text">Psychology in the Workplace</span></div>
+    <div class="chapter-desc"><span class="bn-text">Boss, Colleague ও Negotiation-এ Reverse Psychology</span><span class="en-text">Reverse Psychology with Boss, Colleagues, and in Negotiations</span></div>
+  </div>
+  <div class="chapter-body">
+    <h2 class="sec">👔 Boss-<span class="bn-text">এর সাথে Reverse Psychology</span><span class="en-text">Reverse Psychology with Your Boss</span></h2>
+    <div class="scenario">
+      <div class="sc-label">📋 <span class="bn-text">Scenario ০১ — Salary বাড়ানো</span><span class="en-text">Scenario 01 — Getting a Raise</span></div>
+      <div class="sc-situation"><span class="bn-text">Salary বাড়ানোর কথা বলতে চাও।</span><span class="en-text">You want to ask for a raise.</span></div>
+      <div class="sc-normal">
+        <div class="sc-tag">❌ <span class="bn-text">সরাসরি চাওয়া</span><span class="en-text">Asking Directly</span></div>
+        <span class="bn-text">"স্যার, আমার Salary বাড়িয়ে দিন।" → Boss defensive হয়।</span>
+        <span class="en-text">"Sir, please give me a raise." → Boss becomes defensive.</span>
+      </div>
+      <div class="sc-reverse">
+        <div class="sc-tag">✅ Reverse Psychology</div>
+        <span class="bn-text">"স্যার, আমি লক্ষ্য করছি অন্য Company-তে এই role-এ X টাকা দেওয়া হচ্ছে। আমি এখানেই থাকতে চাই, কিন্তু জানতে চাইছিলাম এই gap নিয়ে আপনার কী ভাবনা।" → Boss নিজেই solution দেবে।</span>
+        <span class="en-text">"Sir, I've noticed that other companies pay X for this role. I want to stay here, but I was wondering what your thoughts are on this gap." → The boss will offer a solution themselves.</span>
+      </div>
+    </div>
+
+    <div class="scenario">
+      <div class="sc-label">📋 <span class="bn-text">Scenario ০২ — নিজের Idea পাস করানো</span><span class="en-text">Scenario 02 — Getting Your Idea Approved</span></div>
+      <div class="sc-situation"><span class="bn-text">তোমার নতুন idea boss মানছে না।</span><span class="en-text">Your boss won't accept your new idea.</span></div>
+      <div class="sc-normal">
+        <div class="sc-tag">❌ <span class="bn-text">তর্ক করা</span><span class="en-text">Arguing</span></div>
+        <span class="bn-text">"না স্যার, এটা করলে ভালো হবে।" → Boss আরও বিরোধিতা করবে।</span>
+        <span class="en-text">"No sir, this would be better." → Boss will oppose it more.</span>
+      </div>
+      <div class="sc-reverse">
+        <div class="sc-tag">✅ <span class="bn-text">Credit দিয়ে দাও</span><span class="en-text">Give Away the Credit</span></div>
+        <span class="bn-text">"স্যার, আপনি আগে যে idea-টা দিয়েছিলেন সেটা থেকে এটা মাথায় এলো — এটা কি আপনার idea-র extension হিসেবে try করা যায়?" → Boss নিজের idea মনে করে accept করবে।</span>
+        <span class="en-text">"Sir, the idea you gave earlier inspired this — could we try this as an extension of your idea?" → The boss will accept it thinking it's their own idea.</span>
+      </div>
+    </div>
+
+    <h2 class="sec">💰 Negotiation <span class="bn-text">কৌশল</span><span class="en-text">Negotiation Techniques</span></h2>
+    <div class="grid2">
+      <div class="card">
+        <h4>⚓ <span class="bn-text">Anchoring কৌশল</span><span class="en-text">Anchoring Strategy</span></h4>
+        <p><span class="bn-text">প্রথম সংখ্যা সবসময় বড় বলো। মানুষের মন সেটাকে reference ধরে। তুমি ৫০,০০০ চাইলে ৭০,০০০ দিয়ে শুরু করো।</span><span class="en-text">Always start with a high number. The mind uses it as a reference. If you want 50,000, start at 70,000.</span></p>
+      </div>
+      <div class="card gold-card">
+        <h4>🤫 <span class="bn-text">Strategic Silence</span><span class="en-text">Strategic Silence</span></h4>
+        <p><span class="bn-text">Offer দেওয়ার পর চুপ থাকো। যে আগে কথা বলে, সে দুর্বল। Silence অস্বস্তিকর — সে নিজেই concession দেবে।</span><span class="en-text">After making an offer, stay silent. Whoever speaks first is weaker. Silence is uncomfortable — they'll make concessions themselves.</span></p>
+      </div>
+    </div>
+
+    <div class="chapter-summary">
+      <h3>💼 <span class="bn-text">Chapter সারসংক্ষেপ</span><span class="en-text">Chapter Summary</span></h3>
+      <ul>
+        <li>👔 <span class="bn-text">Boss-কে Credit দাও — সে নিজেই তোমার idea accept করবে</span><span class="en-text">Give the boss credit — they'll accept your idea themselves</span></li>
+        <li>⚓ <span class="bn-text">Negotiation = আগে বড় সংখ্যা + পরে Strategic Silence</span><span class="en-text">Negotiation = high number first + strategic silence after</span></li>
+        <li>🤝 <span class="bn-text">Reciprocity = Office-এ সাহায্য করো, সুবিধা পাবে</span><span class="en-text">Reciprocity = help at the office, gain advantages</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CH 10 -->
+<div class="chapter ch10">
+  <div class="chapter-header">
+    <div class="chapter-label">Chapter 10</div>
+    <div class="chapter-title">🌑 Dark Psychology — <span class="bn-text">সতর্ক থাকো</span><span class="en-text">Stay Alert</span></div>
+    <div class="chapter-desc"><span class="bn-text">Manipulation, Gaslighting, Narcissism — চেনো এবং নিজেকে বাঁচাও</span><span class="en-text">Manipulation, Gaslighting, Narcissism — recognize and protect yourself</span></div>
+  </div>
+  <div class="chapter-body">
+    <h2 class="sec">⚠️ <span class="bn-text">Dark Psychology Tactics — যা তোমার বিরুদ্ধে ব্যবহার হতে পারে</span><span class="en-text">Dark Psychology Tactics — That May Be Used Against You</span></h2>
+    <div class="box danger">
+      <div class="box-t">🚨 <span class="bn-text">এই Chapter-এর উদ্দেশ্য</span><span class="en-text">Purpose of This Chapter</span></div>
+      <span class="bn-text">Dark Psychology শেখানো হচ্ছে যাতে তুমি এগুলো চিনতে পারো এবং নিজেকে রক্ষা করতে পারো — ব্যবহার করার জন্য নয়।</span>
+      <span class="en-text">Dark Psychology is taught here so you can recognize it and protect yourself — not to use it on others.</span>
+    </div>
+
+    <table>
+      <thead><tr><th>Tactic</th><th><span class="bn-text">কিভাবে কাজ করে</span><span class="en-text">How It Works</span></th><th><span class="bn-text">চেনার উপায়</span><span class="en-text">How to Recognize It</span></th></tr></thead>
+      <tbody>
+        <tr><td><strong>Gaslighting</strong></td><td><span class="bn-text">তোমার বাস্তবতাকে প্রশ্ন করে, তুমি ভুল মনে করায়</span><span class="en-text">Questions your reality, makes you doubt yourself</span></td><td><span class="bn-text">"তুমি অতিরিক্ত ভাবছো", "এটা হয়নি"</span><span class="en-text">"You're overthinking", "That never happened"</span></td></tr>
+        <tr><td><strong>Love Bombing</strong></td><td><span class="bn-text">প্রথমে অতিরিক্ত ভালোবাসা, পরে control</span><span class="en-text">Overwhelming love first, then control</span></td><td><span class="bn-text">খুব দ্রুত intense হয়ে যাওয়া</span><span class="en-text">Becoming intense very quickly</span></td></tr>
+        <tr><td><strong>Silent Treatment</strong></td><td><span class="bn-text">চুপ থেকে কষ্ট দেওয়া ও control করা</span><span class="en-text">Hurting and controlling through silence</span></td><td><span class="bn-text">Punishment হিসেবে ignore করা</span><span class="en-text">Using ignoring as punishment</span></td></tr>
+        <tr><td><strong>Triangulation</strong></td><td><span class="bn-text">তৃতীয় কাউকে এনে jealousy তৈরি করা</span><span class="en-text">Bringing in a third party to create jealousy</span></td><td><span class="bn-text">অন্যের সাথে compare করা</span><span class="en-text">Constant comparisons to others</span></td></tr>
+        <tr><td><strong>Future Faking</strong></td><td><span class="bn-text">ভবিষ্যতের মিথ্যা প্রতিশ্রুতি দিয়ে বাঁধা</span><span class="en-text">Binding you with false future promises</span></td><td><span class="bn-text">প্রতিশ্রুতি কিন্তু কাজ নেই</span><span class="en-text">Promises but no action</span></td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="sec">🛡️ <span class="bn-text">নিজেকে রক্ষা করার উপায়</span><span class="en-text">How to Protect Yourself</span></h2>
+    <div class="grid2">
+      <div class="card success-card">
+        <h4>🔒 <span class="bn-text">Manipulation থেকে বাঁচো</span><span class="en-text">Protect Against Manipulation</span></h4>
+        <ul>
+          <li><span class="bn-text">নিজের Emotion-এ trust করো</span><span class="en-text">Trust your own emotions</span></li>
+          <li><span class="bn-text">Boundaries তৈরি করো ও রক্ষা করো</span><span class="en-text">Create and protect boundaries</span></li>
+          <li><span class="bn-text">কেউ তোমাকে অনুভব করায় সে সবসময় ভুল — সেটা trust করো</span><span class="en-text">If someone always makes you feel bad — trust that feeling</span></li>
+          <li><span class="bn-text">Trusted বন্ধুর মতামত নাও</span><span class="en-text">Seek the opinion of trusted friends</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>🧠 <span class="bn-text">Grey Rock Technique</span><span class="en-text">Grey Rock Technique</span></h4>
+        <p><span class="bn-text">Narcissist বা Manipulator-এর সাথে কাজ করতে হলে: তাদের কোনো reaction দিও না। Boring, flat, uninteresting হও। তারা reaction পায় না, তাই আগ্রহ হারায়।</span>
+        <span class="en-text">When dealing with a narcissist or manipulator: give them no reactions. Be boring, flat, uninteresting. They get no reaction, so they lose interest.</span></p>
+      </div>
+    </div>
+
+    <div class="chapter-summary">
+      <h3>🌑 <span class="bn-text">Chapter সারসংক্ষেপ</span><span class="en-text">Chapter Summary</span></h3>
+      <ul>
+        <li>🚨 <span class="bn-text">Gaslighting চিনলে সাথে সাথে দূরে সরে যাও</span><span class="en-text">Once you recognize gaslighting, distance yourself immediately</span></li>
+        <li>🪨 <span class="bn-text">Grey Rock = Manipulator-এর সেরা দাওয়াই</span><span class="en-text">Grey Rock = best remedy for manipulators</span></li>
+        <li>🛡️ <span class="bn-text">Boundaries = নিজেকে ভালোবাসার সবচেয়ে বড় চিহ্ন</span><span class="en-text">Boundaries = the greatest sign of self-love</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CH 11 -->
+<div class="chapter ch11">
+  <div class="chapter-header">
+    <div class="chapter-label">Chapter 11</div>
+    <div class="chapter-title">💪 <span class="bn-text">নিজেকে Mentally শক্তিশালী করা</span><span class="en-text">Building Mental Strength</span></div>
+    <div class="chapter-desc">Stoicism, Emotional Detachment, High Value Mindset</div>
+  </div>
+  <div class="chapter-body">
+    <h2 class="sec">⚡ High Value Mindset — <span class="bn-text">নিজের মূল্য নিজে তৈরি করো</span><span class="en-text">Create Your Own Value</span></h2>
+    <div class="grid2">
+      <div class="card danger-card">
+        <h4>😞 Low Value Mindset</h4>
+        <ul>
+          <li><span class="bn-text">অনুমোদনের জন্য অপেক্ষা করা</span><span class="en-text">Waiting for approval</span></li>
+          <li><span class="bn-text">অন্যের opinion-এ নিজেকে পরিবর্তন করা</span><span class="en-text">Changing yourself based on others' opinions</span></li>
+          <li><span class="bn-text">Rejection-এ ভেঙে পড়া</span><span class="en-text">Falling apart at rejection</span></li>
+          <li><span class="bn-text">সবাই পছন্দ করুক এই চেষ্টা</span><span class="en-text">Trying to be liked by everyone</span></li>
+        </ul>
+      </div>
+      <div class="card pink-card">
+        <h4>👑 High Value Mindset</h4>
+        <ul>
+          <li><span class="bn-text">নিজের Standards রাখা</span><span class="en-text">Maintaining your own standards</span></li>
+          <li><span class="bn-text">Rejection = Redirection মনে করা</span><span class="en-text">Seeing rejection as redirection</span></li>
+          <li><span class="bn-text">Outcome থেকে Detached থাকা</span><span class="en-text">Being detached from outcomes</span></li>
+          <li><span class="bn-text">নিজের growth-এই focus</span><span class="en-text">Focusing on your own growth</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="sec">🏛️ Stoicism — <span class="bn-text">যা control করা যায় না তা ছেড়ে দাও</span><span class="en-text">Let Go of What You Can't Control</span></h2>
+    <div class="technique">
+      <div class="tech-label">Ancient Wisdom</div>
+      <div class="tech-name">🏛️ Stoic Dichotomy of Control</div>
+      <div class="tech-desc">
+        <span class="bn-text">Marcus Aurelius, Epictetus-এর দর্শন: সব কিছুকে দুটো ভাগে ভাগ করো —</span>
+        <span class="en-text">The philosophy of Marcus Aurelius, Epictetus: divide everything into two categories —</span>
+      </div>
+      <div class="tech-example">
+        <div class="label"><span class="bn-text">নিয়ন্ত্রণ আছে</span><span class="en-text">In Your Control</span></div>
+        <span class="bn-text">তোমার চিন্তা, কাজ, প্রতিক্রিয়া, effort — এগুলোতে সব শক্তি দাও।</span>
+        <span class="en-text">Your thoughts, actions, reactions, effort — put all your energy here.</span>
+      </div>
+      <div class="tech-example" style="margin-top:8px;">
+        <div class="label"><span class="bn-text">নিয়ন্ত্রণ নেই</span><span class="en-text">Not In Your Control</span></div>
+        <span class="bn-text">অন্যের মতামত, আবহাওয়া, অতীত, অন্যের কাজ — এগুলো নিয়ে energy নষ্ট করো না।</span>
+        <span class="en-text">Others' opinions, weather, the past, others' actions — don't waste energy on these.</span>
+      </div>
+    </div>
+
+    <h2 class="sec">🧘 Emotional Detachment</h2>
+    <div class="box info">
+      <div class="box-t">💡 <span class="bn-text">Emotional Detachment মানে 차냐</span><span class="en-text">What Emotional Detachment Means</span></div>
+      <span class="bn-text">Detachment মানে emotion না থাকা নয়। মানে হলো Emotion তোমাকে control করবে না — তুমি Emotion-কে control করবে। Outcome-এর সাথে নিজেকে attach না করা।</span>
+      <span class="en-text">Detachment doesn't mean not having emotions. It means emotions won't control you — you'll control your emotions. Not attaching yourself to outcomes.</span>
+    </div>
+
+    <div class="chapter-summary">
+      <h3>💪 <span class="bn-text">Chapter সারসংক্ষেপ</span><span class="en-text">Chapter Summary</span></h3>
+      <ul>
+        <li>👑 <span class="bn-text">High Value = নিজের Standards রাখো, approval খোঁজো না</span><span class="en-text">High Value = maintain your standards, don't seek approval</span></li>
+        <li>🏛️ <span class="bn-text">Stoicism = যা control করা যায় না, তা নিয়ে ভেবো না</span><span class="en-text">Stoicism = don't think about what you can't control</span></li>
+        <li>🧘 <span class="bn-text">Detachment = সবচেয়ে শক্তিশালী মানুষের পরিচয়</span><span class="en-text">Detachment = the mark of the most powerful person</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CH 12 -->
+<div class="chapter ch12">
+  <div class="chapter-header">
+    <div class="chapter-label">Chapter 12</div>
+    <div class="chapter-title">📋 <span class="bn-text">দৈনন্দিন জীবনে প্রয়োগ ও Cheat Sheet</span><span class="en-text">Daily Applications & Cheat Sheet</span></div>
+    <div class="chapter-desc"><span class="bn-text">পরিবার, বন্ধু, প্রেম — সব ক্ষেত্রে Reverse Psychology-র Quick Reference</span><span class="en-text">Family, friends, love — Quick Reference for all situations</span></div>
+  </div>
+  <div class="chapter-body">
+    <h2 class="sec">📋 <span class="bn-text">সম্পূর্ণ Situation Cheat Sheet</span><span class="en-text">Complete Situation Cheat Sheet</span></h2>
+    <div class="cheat-grid">
+      <div class="cheat-card">
+        <div class="cheat-card-header" style="background:linear-gradient(135deg,#9b5de5,#7b3dc5);">👨‍👩‍👧 <span class="bn-text">পরিবার</span><span class="en-text">Family</span></div>
+        <div class="cheat-card-body">
+          <div class="cheat-row"><div class="cheat-key"><span class="bn-text">বাচ্চাকে কিছু করাতে</span><span class="en-text">Getting child to act</span></div><div class="cheat-val"><span class="bn-text">Challenge করো বা নিষেধ করো</span><span class="en-text">Challenge or forbid it</span></div></div>
+          <div class="cheat-row"><div class="cheat-key"><span class="bn-text">মা-বাবাকে রাজি করাতে</span><span class="en-text">Convincing parents</span></div><div class="cheat-val"><span class="bn-text">তাদের idea হিসেবে present করো</span><span class="en-text">Present it as their idea</span></div></div>
+          <div class="cheat-row"><div class="cheat-key"><span class="bn-text">তর্ক থামাতে</span><span class="en-text">Stopping arguments</span></div><div class="cheat-val"><span class="bn-text">Exaggerated agreement করো</span><span class="en-text">Use exaggerated agreement</span></div></div>
+          <div class="cheat-row"><div class="cheat-key"><span class="bn-text">কাছের মানুষ দূরে সরে যাচ্ছে</span><span class="en-text">Loved one pulling away</span></div><div class="cheat-val"><span class="bn-text">আরও দূরে সরো — সে কাছে আসবে</span><span class="en-text">Pull back more — they'll come closer</span></div></div>
+        </div>
+      </div>
+      <div class="cheat-card">
+        <div class="cheat-card-header" style="background:linear-gradient(135deg,#f15bb5,#d13b95);">👫 <span class="bn-text">বন্ধুত্ব</span><span class="en-text">Friendship</span></div>
+        <div class="cheat-card-body">
+          <div class="cheat-row"><div class="cheat-key"><span class="bn-text">নতুন বন্ধু বানাতে</span><span class="en-text">Making new friends</span></div><div class="cheat-val"><span class="bn-text">ছোট favor চাও (Ben Franklin)</span><span class="en-text">Ask a small favor (Ben Franklin)</span></div></div>
+          <div class="cheat-row"><div class="cheat-key"><span class="bn-text">কাউকে impress করতে</span><span class="en-text">Impressing someone</span></div><div class="cheat-val"><span class="bn-text">তার কথা বলতে দাও, মনোযোগ দাও</span><span class="en-text">Let them talk, give attention</span></div></div>
+          <div class="cheat-row"><div class="cheat-key"><span class="bn-text">Valuable থাকতে</span><span class="en-text">Staying valuable</span></div><div class="cheat-val"><span class="bn-text">সবসময় available থেকো না</span><span class="en-text">Don't always be available</span></div></div>
+          <div class="cheat-row"><div class="cheat-key"><span class="bn-text">মনে রাখাতে</span><span class="en-text">Being remembered</span></div><div class="cheat-val"><span class="bn-text">Unexpected কিছু করো</span><span class="en-text">Do something unexpected</span></div></div>
+        </div>
+      </div>
+      <div class="cheat-card">
+        <div class="cheat-card-header" style="background:linear-gradient(135deg,#ffd60a,#e6b800); color:#1a0a2e;">💕 <span class="bn-text">প্রেম ও Attraction</span><span class="en-text">Love & Attraction</span></div>
+        <div class="cheat-card-body">
+          <div class="cheat-row"><div class="cheat-key"><span class="bn-text">Attract করতে</span><span class="en-text">To attract</span></div><div class="cheat-val"><span class="bn-text">Mystery রাখো, সব বলো না</span><span class="en-text">Keep mystery, don't say everything</span></div></div>
+          <div class="cheat-row"><div class="cheat-key"><span class="bn-text">Boring লাগছে</span><span class="en-text">Feeling boring</span></div><div class="cheat-val"><span class="bn-text">Push-Pull rhythm শুরু করো</span><span class="en-text">Start Push-Pull rhythm</span></div></div>
+          <div class="cheat-row"><div class="cheat-key"><span class="bn-text">Desperate না দেখাতে</span><span class="en-text">Not appearing desperate</span></div><div class="cheat-val"><span class="bn-text">নিজের life-এ ব্যস্ত থাকো</span><span class="en-text">Stay busy with your own life</span></div></div>
+          <div class="cheat-row"><div class="cheat-key"><span class="bn-text">সে সরে যাচ্ছে</span><span class="en-text">They're pulling away</span></div><div class="cheat-val"><span class="bn-text">Chase করো না, নিজে সরো</span><span class="en-text">Don't chase, pull back yourself</span></div></div>
+        </div>
+      </div>
+      <div class="cheat-card">
+        <div class="cheat-card-header" style="background:linear-gradient(135deg,#00bbf9,#0099d4);">💼 <span class="bn-text">কর্মক্ষেত্র</span><span class="en-text">Workplace</span></div>
+        <div class="cheat-card-body">
+          <div class="cheat-row"><div class="cheat-key"><span class="bn-text">Salary বাড়াতে</span><span class="en-text">Getting a raise</span></div><div class="cheat-val"><span class="bn-text">Market rate বলো + value দেখাও</span><span class="en-text">Mention market rate + show value</span></div></div>
+          <div class="cheat-row"><div class="cheat-key"><span class="bn-text">Idea পাস করাতে</span><span class="en-text">Getting idea approved</span></div><div class="cheat-val"><span class="bn-text">Boss-এর idea হিসেবে frame করো</span><span class="en-text">Frame it as boss's idea</span></div></div>
+          <div class="cheat-row"><div class="cheat-key"><span class="bn-text">Negotiation-এ</span><span class="en-text">In negotiation</span></div><div class="cheat-val"><span class="bn-text">High anchor + Strategic silence</span><span class="en-text">High anchor + strategic silence</span></div></div>
+          <div class="cheat-row"><div class="cheat-key"><span class="bn-text">Respected থাকতে</span><span class="en-text">Earning respect</span></div><div class="cheat-val"><span class="bn-text">Reciprocity + Authority দেখাও</span><span class="en-text">Show Reciprocity + Authority</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="sec">🌟 <span class="bn-text">প্রতিদিনের ৫টি অভ্যাস</span><span class="en-text">5 Daily Habits</span></h2>
+    <div class="step-flow">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title"><span class="bn-text">🌅 সকালে — Power Pose নাও (2 মিনিট)</span><span class="en-text">🌅 Morning — Take a Power Pose (2 minutes)</span></div>
+          <div class="step-desc"><span class="bn-text">আয়নার সামনে সোজা দাঁড়াও, কাঁধ পেছনে। Cortisol কমে, Testosterone বাড়ে — সারাদিন confident থাকবে।</span><span class="en-text">Stand straight before a mirror, shoulders back. Cortisol drops, testosterone rises — stay confident all day.</span></div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title"><span class="bn-text">💬 কথার সময় — নাম ব্যবহার করো</span><span class="en-text">💬 In Conversation — Use Their Name</span></div>
+          <div class="step-desc"><span class="bn-text">প্রতিটি কথোপকথনে অন্তত একবার তার নাম ব্যবহার করো। সে automatically তোমার দিকে বেশি focused হবে।</span><span class="en-text">Use their name at least once in every conversation. They'll automatically focus more on you.</span></div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title"><span class="bn-text">🤫 Silent করো — বেশি শোনো</span><span class="en-text">🤫 Go Silent — Listen More</span></div>
+          <div class="step-desc"><span class="bn-text">কথোপকথনে ৩০% বলো, ৭০% শোনো। মানুষ তোমাকে বুদ্ধিমান এবং বিশ্বাসযোগ্য মনে করবে।</span><span class="en-text">In conversations, speak 30%, listen 70%. People will think you're intelligent and trustworthy.</span></div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <div class="step-title"><span class="bn-text">🎁 প্রতিদিন — একটা Unexpected act করো</span><span class="en-text">🎁 Daily — Do One Unexpected Act</span></div>
+          <div class="step-desc"><span class="bn-text">ছোট কিছু — একটা compliment, একটা মনে রাখার gesture। মানুষ এটা দীর্ঘদিন মনে রাখে।</span><span class="en-text">Something small — a compliment, a remembering gesture. People remember this for a long time.</span></div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <div class="step-title"><span class="bn-text">🌙 রাতে — নিজেকে মূল্যায়ন করো</span><span class="en-text">🌙 Night — Evaluate Yourself</span></div>
+          <div class="step-desc"><span class="bn-text">আজকে কার সাথে কথা হলো? কোন Technique কাজ করলো? কোথায় improve করতে পারি? এই ৩টি প্রশ্নের উত্তর লেখো।</span><span class="en-text">Who did I talk to today? Which technique worked? Where can I improve? Write answers to these 3 questions.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CH 13 -->
+<div class="chapter ch13">
+  <div class="chapter-header">
+    <div class="chapter-label">Chapter 13</div>
+    <div class="chapter-title">🏆 <span class="bn-text">সমাপ্তি — সত্যিকারের Social Mastery</span><span class="en-text">Conclusion — True Social Mastery</span></div>
+    <div class="chapter-desc"><span class="bn-text">Ethics, Books, Resources এবং সত্যিকারের Mastery-র পথ</span><span class="en-text">Ethics, books, resources, and the path to true mastery</span></div>
+  </div>
+  <div class="chapter-body">
+    <h2 class="sec">⚖️ <span class="bn-text">Ethical Psychology — সবচেয়ে গুরুত্বপূর্ণ কথা</span><span class="en-text">Ethical Psychology — The Most Important Point</span></h2>
+    <div class="box info">
+      <div class="box-t">💡 <span class="bn-text">মনে রেখো</span><span class="en-text">Remember This</span></div>
+      <span class="bn-text">Reverse Psychology-র সর্বোচ্চ ব্যবহার হলো Win-Win পরিস্থিতি তৈরি করা। মানুষকে hurt করার জন্য এটা ব্যবহার করলে তুমিই হারবে — কারণ মানুষ eventually বুঝতে পারে। True Mastery মানে মানুষের সাথে genuine connection তৈরি করা।</span>
+      <span class="en-text">The highest use of Reverse Psychology is creating win-win situations. Using it to hurt people will make you the loser — because people eventually figure it out. True Mastery means building genuine connections with people.</span>
+    </div>
+
+    <h2 class="sec">📚 <span class="bn-text">সেরা Books</span><span class="en-text">Best Books</span></h2>
+    <div class="grid3">
+      <div class="card">
+        <h4>🧠 Psychology</h4>
+        <ul>
+          <li>Influence — Robert Cialdini</li>
+          <li>Thinking Fast & Slow — Kahneman</li>
+          <li>Pre-suasion — Cialdini</li>
+          <li>The Power of Now — Tolle</li>
+        </ul>
+      </div>
+      <div class="card pink-card">
+        <h4>🤝 Social Skills</h4>
+        <ul>
+          <li>How to Win Friends — Dale Carnegie</li>
+          <li>Never Split the Difference — Voss</li>
+          <li>The Like Switch — Schafer</li>
+          <li>What Every Body is Saying</li>
+        </ul>
+      </div>
+      <div class="card gold-card">
+        <h4>👑 Mindset</h4>
+        <ul>
+          <li>48 Laws of Power — Greene</li>
+          <li>The Art of Seduction — Greene</li>
+          <li>Meditations — Marcus Aurelius</li>
+          <li>The Subtle Art — Manson</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:50px; padding:40px; background:linear-gradient(135deg,#1a0a2e,#2d1b4e); border-radius:16px; color:rgba(255,255,255,0.85);">
+      <p style="font-size:24px; background:linear-gradient(135deg,#9b5de5,#f15bb5,#ffd60a); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:15px; font-weight:700;">
+        🧠 "The greatest power is the power to understand."
+      </p>
+      <p>
+        <span class="bn-text">মনের সবচেয়ে বড় শক্তি হলো বোঝার ক্ষমতা। মানুষকে বোঝো, নিজেকে বোঝো — তারপর নিজের জীবন নিজের মতো সাজাও।</span>
+        <span class="en-text">The greatest strength of the mind is the power to understand. Understand people, understand yourself — then shape your life on your own terms.</span>
+      </p>
+      <p style="margin-top:15px; font-size:13px; color:#c9b8ff;">Reverse Psychology — <span class="bn-text">মনের হ্যাকার | সম্পূর্ণ বাংলা গাইড</span><span class="en-text">The Mind Hacker | Complete Bilingual Guide</span></p>
+      <p style="font-size:12px; color:rgba(255,255,255,0.35); margin-top:8px;">13 Chapters • Bilingual • Dark Mode • Daily Cheat Sheet</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const body = document.body;
+body.classList.add('light-mode');
+function toggleTheme() {
+  const btn = document.getElementById('themeBtn');
+  if (body.classList.contains('light-mode')) {
+    body.classList.replace('light-mode','dark-mode');
+    btn.textContent = '☀️ Light Mode';
+    localStorage.setItem('theme','dark');
+  } else {
+    body.classList.replace('dark-mode','light-mode');
+    btn.textContent = '🌙 Dark Mode';
+    localStorage.setItem('theme','light');
+  }
+}
+function toggleLang() {
+  const btn = document.getElementById('langBtn');
+  if (body.classList.contains('lang-en')) {
+    body.classList.remove('lang-en');
+    btn.textContent = '🇬🇧 English';
+    btn.style.background = '#9b5de5';
+    localStorage.setItem('lang','bn');
+  } else {
+    body.classList.add('lang-en');
+    btn.textContent = '🇧🇩 বাংলা';
+    btn.style.background = '#e63946';
+    localStorage.setItem('lang','en');
+  }
+}
+window.addEventListener('DOMContentLoaded', () => {
+  if (localStorage.getItem('theme') === 'dark') {
+    body.classList.replace('light-mode','dark-mode');
+    const btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = '☀️ Light Mode';
+  }
+  if (localStorage.getItem('lang') === 'en') {
+    body.classList.add('lang-en');
+    const btn = document.getElementById('langBtn');
+    if (btn) { btn.textContent = '🇧🇩 বাংলা'; btn.style.background = '#e63946'; }
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>বাংলাদেশ সাইবার আইন — সম্পূর্ণ গাইড</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green-dark: #006a4e;
+  --green:      #1a8a64;
+  --green-light:#22a87a;
+  --red-dark:   #990000;
+  --red:        #c0392b;
+  --red-light:  #e74c3c;
+  --gold:       #f0a500;
+  --gold-dark:  #c48200;
+  --ink:        #0d1117;
+  --ink2:       #161b22;
+  --ink3:       #21262d;
+  --paper:      #f6f8fa;
+  --paper2:     #eef0f4;
+  --blue:       #1a5fa8;
+  --purple:     #6e40c9;
+  --orange:     #cf6a00;
+  --text:       #0d1117;
+  --muted:      #57606a;
+  --border:     #d0d7de;
+  --mono:       'JetBrains Mono', monospace;
+  --body:       'Hind Siliguri', 'Noto Sans Bengali', sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body {
+  font-family: var(--body);
+  background: var(--paper);
+  color: var(--text);
+  font-size: 14.5px;
+  line-height: 1.95;
+}
+
+/* ══ CONTROLS ══ */
+.top-controls {
+  position: fixed; top: 0; left: 0; right: 0;
+  background: var(--ink); padding: 10px 28px;
+  display: flex; align-items: center; gap: 10px;
+  z-index: 9999; box-shadow: 0 2px 16px rgba(0,0,0,0.5);
+}
+.ctrl-logo {
+  font-size: 15px; font-weight: 700;
+  color: white; margin-right: auto; letter-spacing: 1px;
+}
+.ctrl-logo span { color: var(--gold); }
+.ctrl-btn {
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.07);
+  color: #ccc; padding: 6px 16px; border-radius: 5px;
+  font-size: 13px; font-family: var(--body); cursor: pointer;
+  font-weight: 600; transition: all 0.2s;
+}
+.ctrl-btn:hover { background: rgba(255,255,255,0.15); color: white; }
+
+/* ══ PAGE ══ */
+.page { max-width: 920px; margin: 60px auto 40px; padding: 0 20px; }
+
+/* ══ COVER ══ */
+.cover {
+  background: var(--ink);
+  color: white;
+  margin-bottom: 10px;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+}
+.cover-flag-stripe {
+  height: 8px;
+  background: linear-gradient(90deg, var(--green-dark) 50%, var(--red-dark) 50%);
+}
+.cover-inner {
+  padding: 52px 56px;
+  position: relative;
+}
+.cover-inner::after {
+  content: '⚖️';
+  position: absolute;
+  font-size: 200px;
+  opacity: 0.04;
+  bottom: -20px; right: 20px;
+  line-height: 1;
+}
+.cover-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(240,165,0,0.12);
+  border: 1px solid rgba(240,165,0,0.35);
+  padding: 6px 18px; border-radius: 4px;
+  font-size: 12px; letter-spacing: 2px; color: var(--gold);
+  margin-bottom: 28px; font-weight: 600;
+}
+.cover h1 {
+  font-size: 42px; font-weight: 700;
+  line-height: 1.2; margin-bottom: 10px;
+  color: white;
+}
+.cover h1 .g { color: var(--green-light); }
+.cover h1 .r { color: #f08080; }
+.cover-sub {
+  font-size: 18px; color: rgba(255,255,255,0.5);
+  margin-bottom: 36px;
+}
+.cover-divider { width: 56px; height: 3px; background: var(--gold); margin-bottom: 32px; border-radius: 2px; }
+.cover-laws {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 14px; margin-bottom: 36px;
+}
+.cover-law-item {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px; padding: 14px 16px;
+}
+.cover-law-item .year {
+  font-family: var(--mono); font-size: 11px;
+  color: var(--gold); margin-bottom: 4px; letter-spacing: 1px;
+}
+.cover-law-item .name { font-size: 13px; font-weight: 600; color: white; }
+.cover-law-item .desc { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 3px; }
+.cover-note {
+  font-size: 12px; color: rgba(255,255,255,0.25);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 20px; line-height: 1.7;
+}
+
+/* ══ TOC ══ */
+.toc { background: white; padding: 44px 52px; margin-bottom: 10px; }
+.toc-head {
+  font-size: 22px; font-weight: 700; color: var(--ink);
+  border-bottom: 3px solid var(--green); padding-bottom: 14px; margin-bottom: 28px;
+}
+.toc-law-label {
+  font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+  font-weight: 700; margin: 22px 0 8px;
+}
+.toc-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 0; border-bottom: 1px dotted #eee; font-size: 14px;
+}
+.toc-item .num { font-family: var(--mono); font-size: 12px; color: var(--muted); min-width: 36px; }
+.toc-item .title { flex: 1; color: var(--ink); font-weight: 500; }
+.toc-item .pg { font-size: 12px; color: var(--muted); }
+
+/* ══ SECTION ══ */
+.sec {
+  background: white;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.sec-header {
+  padding: 20px 36px;
+  display: flex; align-items: center; gap: 14px;
+}
+.sec-num {
+  font-family: var(--mono); font-size: 11px;
+  color: rgba(255,255,255,0.45); min-width: 30px; letter-spacing: 1px;
+}
+.sec-title { font-size: 17px; font-weight: 700; color: white; letter-spacing: 0.5px; flex: 1; }
+.sec-tag {
+  font-size: 10px; font-weight: 700; letter-spacing: 2px;
+  padding: 3px 10px; border-radius: 3px; text-transform: uppercase;
+}
+.sec-body { padding: 28px 36px; }
+
+/* Header colors */
+.hdr-green  { background: linear-gradient(135deg, #004d38, #006a4e); }
+.hdr-red    { background: linear-gradient(135deg, #6b0000, #990000); }
+.hdr-blue   { background: linear-gradient(135deg, #0a2a5c, #1a4a8a); }
+.hdr-gold   { background: linear-gradient(135deg, #4a3000, #7a5000); }
+.hdr-purple { background: linear-gradient(135deg, #2a1060, #4a2090); }
+.hdr-ink    { background: linear-gradient(135deg, #0d1117, #161b22); }
+
+/* ══ HEADINGS ══ */
+h2.sh {
+  font-size: 16px; font-weight: 700; color: var(--ink2);
+  margin: 26px 0 12px; padding-left: 14px;
+  border-left: 4px solid var(--green);
+}
+h2.sh.red  { border-color: var(--red); }
+h2.sh.gold { border-color: var(--gold); }
+h2.sh.blue { border-color: var(--blue); }
+h3.ssh {
+  font-size: 14px; font-weight: 700; color: var(--ink3);
+  margin: 18px 0 8px; padding-bottom: 5px;
+  border-bottom: 1px dashed var(--border);
+}
+p { margin-bottom: 12px; color: #2a3350; }
+
+/* ══ ARTICLE CARD ══ */
+.law-article {
+  border: 1px solid var(--border);
+  border-radius: 6px; margin: 16px 0; overflow: hidden;
+}
+.law-article-head {
+  padding: 12px 18px;
+  display: flex; align-items: center; gap: 12px;
+}
+.art-num {
+  font-family: var(--mono); font-size: 11px;
+  color: rgba(255,255,255,0.6); min-width: 80px;
+}
+.art-title { font-size: 14px; font-weight: 600; color: white; flex: 1; }
+.law-article-body { padding: 14px 18px; font-size: 13.5px; }
+.law-article-body p { margin-bottom: 8px; }
+
+/* Article header colors */
+.art-green  { background: var(--green-dark); }
+.art-red    { background: var(--red-dark); }
+.art-blue   { background: var(--blue); }
+.art-gold   { background: var(--gold-dark); }
+.art-purple { background: var(--purple); }
+
+/* ══ PENALTY BOX ══ */
+.penalty {
+  display: flex; gap: 0; margin: 10px 0; border-radius: 5px; overflow: hidden;
+  border: 1px solid var(--border);
+}
+.penalty-label {
+  background: var(--ink2); color: white;
+  padding: 10px 16px; font-size: 11px; font-weight: 700;
+  letter-spacing: 1px; writing-mode: vertical-rl;
+  text-orientation: mixed; display: flex;
+  align-items: center; justify-content: center;
+  min-width: 36px; text-transform: uppercase;
+}
+.penalty-body { padding: 12px 16px; flex: 1; font-size: 13px; }
+.penalty-body .jail { color: var(--red-dark); font-weight: 700; font-size: 15px; }
+.penalty-body .fine { color: var(--orange); font-weight: 700; font-size: 15px; }
+.penalty-body small { color: var(--muted); font-size: 12px; }
+
+/* ══ DO / DON'T GRID ══ */
+.do-dont {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 18px 0;
+}
+.do-box, .dont-box {
+  border-radius: 6px; overflow: hidden;
+}
+.do-head {
+  background: var(--green-dark); color: white;
+  padding: 10px 16px; font-size: 13px; font-weight: 700; letter-spacing: 1px;
+}
+.dont-head {
+  background: var(--red-dark); color: white;
+  padding: 10px 16px; font-size: 13px; font-weight: 700; letter-spacing: 1px;
+}
+.do-body { background: #f0faf5; padding: 14px 16px; border: 1px solid #b0dcc8; border-top: none; }
+.dont-body { background: #fff0f0; padding: 14px 16px; border: 1px solid #f0b8b8; border-top: none; }
+.do-item, .dont-item {
+  display: flex; gap: 10px; margin-bottom: 9px;
+  font-size: 13px; line-height: 1.7;
+  align-items: flex-start;
+}
+.do-item:last-child, .dont-item:last-child { margin-bottom: 0; }
+.do-icon { color: var(--green-dark); font-size: 14px; flex-shrink: 0; margin-top: 2px; }
+.dont-icon { color: var(--red-dark); font-size: 14px; flex-shrink: 0; margin-top: 2px; }
+
+/* ══ TABLE ══ */
+table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 13.5px; }
+thead tr { background: var(--ink2); color: white; }
+th { padding: 11px 14px; text-align: left; font-weight: 600; font-size: 12px; letter-spacing: 0.5px; }
+td { padding: 9px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+tr:nth-child(even) td { background: #f9fafb; }
+tr:hover td { background: #f0f7f4; }
+
+/* ══ BOXES ══ */
+.box { padding: 14px 18px; border-radius: 6px; margin: 14px 0; border-left: 4px solid; font-size: 13.5px; }
+.box-green  { background: #f0faf5; border-color: var(--green); color: #0a3a22; }
+.box-red    { background: #fff0f0; border-color: var(--red); color: #5c0a0a; }
+.box-gold   { background: #fffbec; border-color: var(--gold); color: #5c3a00; }
+.box-blue   { background: #eef4fc; border-color: var(--blue); color: #0a2050; }
+.box-purple { background: #f5f0ff; border-color: var(--purple); color: #2a1060; }
+.box-t { font-weight: 700; margin-bottom: 6px; font-size: 13px; }
+
+/* ══ SECTION SUMMARY ══ */
+.summary {
+  background: var(--ink2); color: white;
+  border-radius: 8px; padding: 22px 26px; margin-top: 30px;
+}
+.summary h3 { color: var(--gold); margin-bottom: 12px; font-size: 15px; }
+.summary li { color: rgba(255,255,255,0.82); margin-bottom: 5px; font-size: 13.5px; }
+
+ul, ol { margin: 10px 0 10px 22px; line-height: 2.1; }
+li { margin-bottom: 3px; }
+code {
+  background: #f0f3f6; color: #c0392b;
+  padding: 2px 7px; border-radius: 3px;
+  font-family: var(--mono); font-size: 12px;
+}
+
+/* ══ COMPARISON TABLE ══ */
+.comp-table th:first-child { background: var(--ink3); }
+.comp-table .law-col { background: var(--green-dark) !important; }
+.comp-table .dsa-col { background: var(--red-dark) !important; }
+.comp-table .csa-col { background: var(--blue) !important; }
+
+/* ══ PRINT ══ */
+@media print {
+  .top-controls { display: none !important; }
+  .page { margin-top: 0; }
+  body { background: white; }
+  .cover-flag-stripe, .sec-header, .law-article-head,
+  .do-head, .dont-head, .summary, thead tr {
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+}
+
+/* ══ DARK MODE ══ */
+body.dark-mode {
+  background: #080d14; color: #c9d1d9;
+}
+body.dark-mode .toc,
+body.dark-mode .sec { background: #0d1117; }
+body.dark-mode .toc-head { color: #c9d1d9; }
+body.dark-mode .toc-item .title { color: #c9d1d9; }
+body.dark-mode h2.sh { color: #7ee8c4; }
+body.dark-mode h3.ssh { color: #90cdf4; border-color: #21262d; }
+body.dark-mode p { color: #b0bec5; }
+body.dark-mode td { border-color: #21262d; color: #c9d1d9; }
+body.dark-mode tr:nth-child(even) td { background: #0d1424; }
+body.dark-mode tr:hover td { background: #0f1e14; }
+body.dark-mode .law-article { border-color: #21262d; }
+body.dark-mode .law-article-body { background: #0d1424; color: #c9d1d9; }
+body.dark-mode .law-article-body p { color: #b0bec5; }
+body.dark-mode .do-body { background: #071408; border-color: #1a4028; color: #a0d8b4; }
+body.dark-mode .dont-body { background: #140707; border-color: #401a1a; color: #e0a0a0; }
+body.dark-mode .box-green { background: #061410; color: #a0d8c0; }
+body.dark-mode .box-red { background: #140606; color: #e0a0a0; }
+body.dark-mode .box-gold { background: #141000; color: #f0d070; }
+body.dark-mode .box-blue { background: #060e20; color: #90b8f0; }
+body.dark-mode .penalty { border-color: #21262d; }
+body.dark-mode .penalty-body { background: #0d1424; color: #c9d1d9; }
+body.dark-mode code { background: #21262d; color: #f08080; }
+</style>
+</head>
+<body>
+
+<!-- CONTROLS -->
+<div class="top-controls">
+  <div class="ctrl-logo">🇧🇩 বাংলাদেশ <span>সাইবার আইন</span></div>
+  <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">🌙 Dark Mode</button>
+  <button class="ctrl-btn" onclick="window.print()">🖨️ Print / PDF</button>
+</div>
+
+<div class="page">
+
+<!-- ══════════ COVER ══════════ -->
+<div class="cover">
+  <div class="cover-flag-stripe"></div>
+  <div class="cover-inner">
+    <div class="cover-badge">⚖️ &nbsp; আইনি তথ্য ও শিক্ষামূলক গাইড</div>
+    <h1>বাংলাদেশ<br><span class="g">সাইবার আইন</span> ও<br><span class="r">ডিজিটাল নিরাপত্তা</span></h1>
+    <div class="cover-sub">ICT Act • Digital Security Act • Cyber Security Act • অন্যান্য আইন</div>
+    <div class="cover-divider"></div>
+
+    <div class="cover-laws">
+      <div class="cover-law-item">
+        <div class="year">2006 / 2013</div>
+        <div class="name">ICT Act</div>
+        <div class="desc">তথ্য ও যোগাযোগ প্রযুক্তি আইন</div>
+      </div>
+      <div class="cover-law-item">
+        <div class="year">2018</div>
+        <div class="name">Digital Security Act</div>
+        <div class="desc">ডিজিটাল নিরাপত্তা আইন</div>
+      </div>
+      <div class="cover-law-item">
+        <div class="year">2023</div>
+        <div class="name">Cyber Security Act</div>
+        <div class="desc">সাইবার নিরাপত্তা আইন</div>
+      </div>
+      <div class="cover-law-item">
+        <div class="year">2023</div>
+        <div class="name">Pornography Control Act</div>
+        <div class="desc">পর্নোগ্রাফি নিয়ন্ত্রণ আইন</div>
+      </div>
+      <div class="cover-law-item">
+        <div class="year">2012</div>
+        <div class="name">RJSC & Other Laws</div>
+        <div class="desc">Telecom ও অন্যান্য আইন</div>
+      </div>
+      <div class="cover-law-item">
+        <div class="year">General</div>
+        <div class="name">কী করা যাবে / যাবে না</div>
+        <div class="desc">সম্পূর্ণ Do & Don't গাইড</div>
+      </div>
+    </div>
+
+    <div class="cover-note">
+      ⚠️ এই গাইডটি সম্পূর্ণ শিক্ষামূলক উদ্দেশ্যে তৈরি। এটি আইনি পরামর্শ নয়। নির্দিষ্ট আইনি বিষয়ে অ্যাডভোকেটের সাথে পরামর্শ করুন।
+      আইনগুলো সংসদে পরিবর্তন হতে পারে — সর্বশেষ তথ্যের জন্য Bangladesh Gazette দেখুন।
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════ TOC ══════════ -->
+<div class="toc">
+  <div class="toc-head">📋 সূচিপত্র</div>
+
+  <div class="toc-law-label" style="color: var(--green);">🌐 মূল আইনসমূহ</div>
+  <div class="toc-item"><span class="num">01</span><span class="title">ICT Act 2006 (সংশোধনী 2013) — তথ্য ও যোগাযোগ প্রযুক্তি আইন</span><span class="pg">Ch. 1</span></div>
+  <div class="toc-item"><span class="num">02</span><span class="title">Digital Security Act 2018 — ডিজিটাল নিরাপত্তা আইন</span><span class="pg">Ch. 2</span></div>
+  <div class="toc-item"><span class="num">03</span><span class="title">Cyber Security Act 2023 — সাইবার নিরাপত্তা আইন</span><span class="pg">Ch. 3</span></div>
+
+  <div class="toc-law-label" style="color: var(--orange);">📜 সংশ্লিষ্ট আইনসমূহ</div>
+  <div class="toc-item"><span class="num">04</span><span class="title">Pornography Control Act 2012 — পর্নোগ্রাফি নিয়ন্ত্রণ আইন</span><span class="pg">Ch. 4</span></div>
+  <div class="toc-item"><span class="num">05</span><span class="title">Telecommunications Act 2001 ও অন্যান্য আইন</span><span class="pg">Ch. 5</span></div>
+  <div class="toc-item"><span class="num">06</span><span class="title">Copyright ও Intellectual Property আইন</span><span class="pg">Ch. 6</span></div>
+
+  <div class="toc-law-label" style="color: var(--red);">⚠️ ব্যবহারিক গাইড</div>
+  <div class="toc-item"><span class="num">07</span><span class="title">কী করা যাবে — কী করা যাবে না (সম্পূর্ণ Do & Don't)</span><span class="pg">Ch. 7</span></div>
+  <div class="toc-item"><span class="num">08</span><span class="title">Ethical Hacker ও Security Researcher-এর জন্য আইন</span><span class="pg">Ch. 8</span></div>
+  <div class="toc-item"><span class="num">09</span><span class="title">তিনটি আইনের তুলনা ও সাজার পরিমাণ</span><span class="pg">Ch. 9</span></div>
+  <div class="toc-item"><span class="num">10</span><span class="title">আইনি সুরক্ষা ও করণীয়</span><span class="pg">Ch. 10</span></div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     CH 1: ICT Act 2006
+══════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-header hdr-green">
+    <div class="sec-num">01</div>
+    <div class="sec-title">তথ্য ও যোগাযোগ প্রযুক্তি আইন, ২০০৬ (সংশোধনী ২০১৩)</div>
+    <div class="sec-tag" style="background: rgba(255,255,255,0.15); color: #90f0c0;">ICT Act</div>
+  </div>
+  <div class="sec-body">
+
+    <h2 class="sh">📖 আইনের পরিচিতি</h2>
+    <p>বাংলাদেশে ডিজিটাল লেনদেন ও সাইবার অপরাধ নিয়ন্ত্রণে ২০০৬ সালে তথ্য ও যোগাযোগ প্রযুক্তি আইন প্রণীত হয়। ২০১৩ সালে গুরুত্বপূর্ণ সংশোধনী আনা হয়, বিশেষত ধারা ৫৭ যুক্ত করা হয়। এই আইনটি পরবর্তীতে ২০১৮ সালে ডিজিটাল নিরাপত্তা আইন দ্বারা অনেকাংশে প্রতিস্থাপিত হয়।</p>
+
+    <div class="box box-gold">
+      <div class="box-t">⚠️ বর্তমান অবস্থা</div>
+      ICT Act ২০০৬-এর ধারা ৫৪, ৫৫, ৫৬, ৫৭ এবং ৬৬ রহিত করা হয়েছে এবং এই বিষয়গুলো এখন Digital Security Act 2018 ও Cyber Security Act 2023 দ্বারা নিয়ন্ত্রিত হচ্ছে। তবে বাকি ধারাগুলো এখনও কার্যকর।
+    </div>
+
+    <h2 class="sh">🔑 গুরুত্বপূর্ণ ধারাসমূহ</h2>
+
+    <div class="law-article">
+      <div class="law-article-head art-green">
+        <div class="art-num">ধারা ৫৪</div>
+        <div class="art-title">কম্পিউটার সিস্টেমে অননুমোদিত প্রবেশ (Hacking)</div>
+        <span style="background:rgba(255,255,255,0.15); color:#90f0c0; padding:3px 10px; border-radius:3px; font-size:11px; font-weight:700;">DSA-তে স্থানান্তর</span>
+      </div>
+      <div class="law-article-body">
+        <p>যদি কেউ অনুমতি ছাড়া কোনো কম্পিউটার বা নেটওয়ার্ক সিস্টেমে প্রবেশ করে বা প্রবেশের চেষ্টা করে।</p>
+        <div class="penalty">
+          <div class="penalty-label">সাজা</div>
+          <div class="penalty-body">
+            <div class="jail">সর্বোচ্চ ৭ বছর কারাদণ্ড</div>
+            <div class="fine">সর্বোচ্চ ১০ লক্ষ টাকা জরিমানা</div>
+            <small>বা উভয় দণ্ড</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="law-article">
+      <div class="law-article-head art-green">
+        <div class="art-num">ধারা ৫৫</div>
+        <div class="art-title">ডেটা নষ্ট করা বা পরিবর্তন করা</div>
+      </div>
+      <div class="law-article-body">
+        <p>অনুমতি ছাড়া কোনো কম্পিউটার সিস্টেমের ডেটা মুছে ফেলা, পরিবর্তন করা বা নষ্ট করা।</p>
+        <div class="penalty">
+          <div class="penalty-label">সাজা</div>
+          <div class="penalty-body">
+            <div class="jail">সর্বোচ্চ ৭ বছর কারাদণ্ড</div>
+            <div class="fine">সর্বোচ্চ ১০ লক্ষ টাকা জরিমানা</div>
+            <small>বা উভয় দণ্ড</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="law-article">
+      <div class="law-article-head art-red">
+        <div class="art-num">ধারা ৫৭</div>
+        <div class="art-title">মানহানিকর, মিথ্যা বা অশ্লীল তথ্য প্রকাশ (বিতর্কিত ধারা)</div>
+        <span style="background:rgba(255,255,255,0.15); color:#ffaaaa; padding:3px 10px; border-radius:3px; font-size:11px; font-weight:700;">DSA-তে স্থানান্তর</span>
+      </div>
+      <div class="law-article-body">
+        <p>ইলেকট্রনিক মাধ্যমে এমন কোনো তথ্য প্রকাশ করা যা মানহানিকর, মিথ্যা, অশ্লীল বা ধর্মীয় অনুভূতিতে আঘাত করে। এই ধারাটি ব্যাপক সমালোচিত হয়েছিল কারণ এটি মুক্ত মতপ্রকাশকে সীমিত করত।</p>
+        <div class="penalty">
+          <div class="penalty-label">সাজা</div>
+          <div class="penalty-body">
+            <div class="jail">সর্বোচ্চ ১৪ বছর, সর্বনিম্ন ৭ বছর কারাদণ্ড</div>
+            <div class="fine">সর্বোচ্চ ১ কোটি টাকা জরিমানা</div>
+            <small>অজামিনযোগ্য অপরাধ ছিল</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="law-article">
+      <div class="law-article-head art-green">
+        <div class="art-num">ধারা ৬৩</div>
+        <div class="art-title">Electronic Records ও Digital Signature</div>
+      </div>
+      <div class="law-article-body">
+        <p>ডিজিটাল স্বাক্ষর জালিয়াতি, মিথ্যা Electronic Certificate তৈরি, বা সরকারি রেকর্ড পরিবর্তন।</p>
+        <div class="penalty">
+          <div class="penalty-label">সাজা</div>
+          <div class="penalty-body">
+            <div class="jail">সর্বোচ্চ ১০ বছর কারাদণ্ড</div>
+            <div class="fine">সর্বোচ্চ ১ কোটি টাকা জরিমানা</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="law-article">
+      <div class="law-article-head art-green">
+        <div class="art-num">ধারা ৬৬</div>
+        <div class="art-title">Hacking — কম্পিউটারে অনধিকার প্রবেশ ও ক্ষতি</div>
+      </div>
+      <div class="law-article-body">
+        <p>উদ্দেশ্যমূলকভাবে কম্পিউটার সিস্টেম বা নেটওয়ার্কে অনুপ্রবেশ করে ক্ষতি করা বা তথ্য চুরি করা।</p>
+        <div class="penalty">
+          <div class="penalty-label">সাজা</div>
+          <div class="penalty-body">
+            <div class="jail">সর্বোচ্চ ১৪ বছর কারাদণ্ড</div>
+            <div class="fine">সর্বোচ্চ ১ কোটি টাকা জরিমানা</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="sh">✅ ICT Act-এর ইতিবাচক দিক</h2>
+    <ul>
+      <li>ইলেকট্রনিক লেনদেন ও Digital Signature-কে আইনি স্বীকৃতি দেওয়া</li>
+      <li>ই-কমার্স ও অনলাইন ব্যবসার আইনি ভিত্তি তৈরি</li>
+      <li>Certifying Authority প্রতিষ্ঠার বিধান</li>
+      <li>Cyber Tribunal গঠনের ব্যবস্থা</li>
+    </ul>
+
+    <div class="summary">
+      <h3>📌 Chapter সারসংক্ষেপ</h3>
+      <ul>
+        <li>ICT Act 2006 — বাংলাদেশের প্রথম সাইবার আইন</li>
+        <li>ধারা ৫৭ — সবচেয়ে বিতর্কিত, এখন DSA-তে স্থানান্তরিত</li>
+        <li>Hacking, data theft, digital fraud — সবই শাস্তিযোগ্য অপরাধ</li>
+        <li>Digital Signature ও e-commerce-কে আইনি ভিত্তি দেয়</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     CH 2: Digital Security Act 2018
+══════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-header hdr-red">
+    <div class="sec-num">02</div>
+    <div class="sec-title">ডিজিটাল নিরাপত্তা আইন, ২০১৮ (Digital Security Act)</div>
+    <div class="sec-tag" style="background: rgba(255,255,255,0.15); color: #ffaaaa;">DSA 2018</div>
+  </div>
+  <div class="sec-body">
+
+    <h2 class="sh red">📖 পরিচিতি</h2>
+    <p>ডিজিটাল নিরাপত্তা আইন ২০১৮ ICT Act-এর বহু ধারা প্রতিস্থাপন করে প্রণীত হয়। এই আইনটি ব্যাপকভাবে সমালোচিত হয়েছে কারণ এটি সাংবাদিক, ব্লগার ও সাধারণ নাগরিকদের বিরুদ্ধে ব্যাপকভাবে প্রয়োগ করা হয়েছে। ২০২৩ সালে এটি Cyber Security Act 2023 দ্বারা প্রতিস্থাপিত হয়েছে।</p>
+
+    <div class="box box-red">
+      <div class="box-t">⚠️ বর্তমান অবস্থা</div>
+      DSA 2018 আনুষ্ঠানিকভাবে ২০২৩ সালে বাতিল করে Cyber Security Act 2023 কার্যকর করা হয়েছে। তবে DSA-তে দায়েরকৃত মামলাগুলো এখনও চলমান।
+    </div>
+
+    <h2 class="sh red">🔑 DSA-র প্রধান ধারাসমূহ</h2>
+
+    <div class="law-article">
+      <div class="law-article-head art-red">
+        <div class="art-num">ধারা ১৭</div>
+        <div class="art-title">Critical Information Infrastructure-এ আক্রমণ</div>
+        <span style="background:rgba(255,255,255,0.15); color:#ffaaaa; padding:3px 10px; border-radius:3px; font-size:11px; font-weight:700;">অজামিনযোগ্য</span>
+      </div>
+      <div class="law-article-body">
+        <p>দেশের গুরুত্বপূর্ণ অবকাঠামো যেমন বিদ্যুৎ, পানি, ব্যাংক, হাসপাতাল, সরকারি সিস্টেমে ডিজিটাল আক্রমণ করা।</p>
+        <div class="penalty">
+          <div class="penalty-label">সাজা</div>
+          <div class="penalty-body">
+            <div class="jail">সর্বোচ্চ ১৪ বছর বা যাবজ্জীবন কারাদণ্ড</div>
+            <div class="fine">সর্বোচ্চ ১ কোটি টাকা জরিমানা</div>
+            <small>পুনরায় করলে যাবজ্জীবন বা মৃত্যুদণ্ড</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="law-article">
+      <div class="law-article-head art-red">
+        <div class="art-num">ধারা ১৯</div>
+        <div class="art-title">ডিজিটাল গুপ্তচরবৃত্তি (Digital Espionage)</div>
+        <span style="background:rgba(255,255,255,0.15); color:#ffaaaa; padding:3px 10px; border-radius:3px; font-size:11px; font-weight:700;">অজামিনযোগ্য</span>
+      </div>
+      <div class="law-article-body">
+        <p>রাষ্ট্রের স্বার্থের বিরুদ্ধে বা বিদেশি রাষ্ট্রের সুবিধার জন্য ডিজিটাল মাধ্যমে গোপন তথ্য সংগ্রহ বা প্রেরণ।</p>
+        <div class="penalty">
+          <div class="penalty-label">সাজা</div>
+          <div class="penalty-body">
+            <div class="jail">সর্বোচ্চ ১৪ বছর কারাদণ্ড বা যাবজ্জীবন</div>
+            <div class="fine">সর্বোচ্চ ২৫ লক্ষ টাকা জরিমানা</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="law-article">
+      <div class="law-article-head art-red">
+        <div class="art-num">ধারা ২১</div>
+        <div class="art-title">মুক্তিযুদ্ধ বা জাতির পিতার বিরুদ্ধে প্রচারণা</div>
+        <span style="background:rgba(255,255,255,0.15); color:#ffaaaa; padding:3px 10px; border-radius:3px; font-size:11px; font-weight:700;">অজামিনযোগ্য</span>
+      </div>
+      <div class="law-article-body">
+        <p>ডিজিটাল মাধ্যমে মুক্তিযুদ্ধের চেতনা, জাতির পিতা বা জাতীয় সংগীতের বিরুদ্ধে প্রচারণা চালানো।</p>
+        <div class="penalty">
+          <div class="penalty-label">সাজা</div>
+          <div class="penalty-body">
+            <div class="jail">সর্বোচ্চ ১০ বছর কারাদণ্ড</div>
+            <div class="fine">সর্বোচ্চ ১ কোটি টাকা জরিমানা</div>
+            <small>পুনরায় করলে যাবজ্জীবন</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="law-article">
+      <div class="law-article-head art-red">
+        <div class="art-num">ধারা ২৫</div>
+        <div class="art-title">আক্রমণাত্মক, মিথ্যা বা ভীতিপ্রদ তথ্য প্রেরণ</div>
+      </div>
+      <div class="law-article-body">
+        <p>ডিজিটাল মাধ্যমে কাউকে ভয় দেখানো, হুমকি দেওয়া, বিরক্ত করা বা মিথ্যা তথ্য ছড়ানো।</p>
+        <div class="penalty">
+          <div class="penalty-label">সাজা</div>
+          <div class="penalty-body">
+            <div class="jail">সর্বোচ্চ ৩ বছর কারাদণ্ড</div>
+            <div class="fine">সর্বোচ্চ ৩ লক্ষ টাকা জরিমানা</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="law-article">
+      <div class="law-article-head art-red">
+        <div class="art-num">ধারা ২৬</div>
+        <div class="art-title">পরিচয় চুরি ও Phishing (Identity Theft)</div>
+      </div>
+      <div class="law-article-body">
+        <p>অন্যের পরিচয়, ছবি বা তথ্য ব্যবহার করে ডিজিটাল প্রতারণা করা। ফেসবুকে অন্যের নামে ভুয়া একাউন্ট খোলা।</p>
+        <div class="penalty">
+          <div class="penalty-label">সাজা</div>
+          <div class="penalty-body">
+            <div class="jail">সর্বোচ্চ ৫ বছর কারাদণ্ড</div>
+            <div class="fine">সর্বোচ্চ ৫ লক্ষ টাকা জরিমানা</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="law-article">
+      <div class="law-article-head art-red">
+        <div class="art-num">ধারা ২৭</div>
+        <div class="art-title">Cyber Terrorism</div>
+        <span style="background:rgba(255,255,255,0.15); color:#ffaaaa; padding:3px 10px; border-radius:3px; font-size:11px; font-weight:700;">অজামিনযোগ্য</span>
+      </div>
+      <div class="law-article-body">
+        <p>রাষ্ট্রের নিরাপত্তা বিঘ্নিত করার উদ্দেশ্যে ডিজিটাল সন্ত্রাসী কার্যক্রম পরিচালনা করা।</p>
+        <div class="penalty">
+          <div class="penalty-label">সাজা</div>
+          <div class="penalty-body">
+            <div class="jail">যাবজ্জীবন কারাদণ্ড</div>
+            <div class="fine">সর্বোচ্চ ১ কোটি টাকা জরিমানা</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="law-article">
+      <div class="law-article-head art-red">
+        <div class="art-num">ধারা ২৮</div>
+        <div class="art-title">ধর্মীয় অনুভূতিতে আঘাত</div>
+      </div>
+      <div class="law-article-body">
+        <p>ডিজিটাল মাধ্যমে কোনো ধর্ম বা ধর্মীয় অনুভূতিতে আঘাত হানে এমন তথ্য প্রকাশ।</p>
+        <div class="penalty">
+          <div class="penalty-label">সাজা</div>
+          <div class="penalty-body">
+            <div class="jail">সর্বোচ্চ ৭ বছর কারাদণ্ড</div>
+            <div class="fine">সর্বোচ্চ ১০ লক্ষ টাকা জরিমানা</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="law-article">
+      <div class="law-article-head art-red">
+        <div class="art-num">ধারা ২৯</div>
+        <div class="art-title">অনলাইন মানহানি</div>
+      </div>
+      <div class="law-article-body">
+        <p>ডিজিটাল মাধ্যমে কারো সম্পর্কে মানহানিকর তথ্য প্রকাশ করা। Penal Code-এর মানহানি আইনের ডিজিটাল সংস্করণ।</p>
+        <div class="penalty">
+          <div class="penalty-label">সাজা</div>
+          <div class="penalty-body">
+            <div class="jail">সর্বোচ্চ ৩ বছর কারাদণ্ড</div>
+            <div class="fine">সর্বোচ্চ ৫ লক্ষ টাকা জরিমানা</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="law-article">
+      <div class="law-article-head art-red">
+        <div class="art-num">ধারা ৩২</div>
+        <div class="art-title">সরকারি তথ্য চুরি ও প্রকাশ</div>
+        <span style="background:rgba(255,255,255,0.15); color:#ffaaaa; padding:3px 10px; border-radius:3px; font-size:11px; font-weight:700;">অজামিনযোগ্য</span>
+      </div>
+      <div class="law-article-body">
+        <p>অনুমতি ছাড়া সরকারি কম্পিউটার সিস্টেমে প্রবেশ করে গোপন তথ্য সংগ্রহ বা প্রকাশ করা। Official Secrets Act-এর ডিজিটাল সংস্করণ।</p>
+        <div class="penalty">
+          <div class="penalty-label">সাজা</div>
+          <div class="penalty-body">
+            <div class="jail">সর্বোচ্চ ১৪ বছর কারাদণ্ড বা যাবজ্জীবন</div>
+            <div class="fine">সর্বোচ্চ ২৫ লক্ষ টাকা জরিমানা</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="law-article">
+      <div class="law-article-head art-red">
+        <div class="art-num">ধারা ৩৩</div>
+        <div class="art-title">Hacking ও Cracking</div>
+      </div>
+      <div class="law-article-body">
+        <p>অনুমতি ছাড়া কম্পিউটার বা ডিজিটাল সিস্টেমে প্রবেশ করা, ডেটা চুরি বা ক্ষতি করা।</p>
+        <div class="penalty">
+          <div class="penalty-label">সাজা</div>
+          <div class="penalty-body">
+            <div class="jail">সর্বোচ্চ ১৪ বছর কারাদণ্ড</div>
+            <div class="fine">সর্বোচ্চ ১ কোটি টাকা জরিমানা</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="law-article">
+      <div class="law-article-head art-red">
+        <div class="art-num">ধারা ৩৪</div>
+        <div class="art-title">Virus বা Malware ছড়ানো</div>
+      </div>
+      <div class="law-article-body">
+        <p>ইচ্ছাকৃতভাবে ভাইরাস, র‍্যানসমওয়্যার বা অন্য ক্ষতিকর সফটওয়্যার তৈরি বা বিতরণ করা।</p>
+        <div class="penalty">
+          <div class="penalty-label">সাজা</div>
+          <div class="penalty-body">
+            <div class="jail">সর্বোচ্চ ১৪ বছর কারাদণ্ড</div>
+            <div class="fine">সর্বোচ্চ ১ কোটি টাকা জরিমানা</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="law-article">
+      <div class="law-article-head art-red">
+        <div class="art-num">ধারা ৩৮</div>
+        <div class="art-title">অনলাইন যৌন হয়রানি</div>
+      </div>
+      <div class="law-article-body">
+        <p>ডিজিটাল মাধ্যমে যৌন হয়রানি, অশ্লীল বার্তা পাঠানো, অনুমতিবিহীন অন্তরঙ্গ ছবি প্রকাশ (Revenge Porn)।</p>
+        <div class="penalty">
+          <div class="penalty-label">সাজা</div>
+          <div class="penalty-body">
+            <div class="jail">সর্বোচ্চ ৭ বছর কারাদণ্ড</div>
+            <div class="fine">সর্বোচ্চ ৫ লক্ষ টাকা জরিমানা</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary">
+      <h3>📌 Chapter সারসংক্ষেপ</h3>
+      <ul>
+        <li>DSA 2018 — এখন CSA 2023 দ্বারা প্রতিস্থাপিত, তবে পুরনো মামলা চলমান</li>
+        <li>সবচেয়ে কঠোর আইন — অনেক ধারা অজামিনযোগ্য ছিল</li>
+        <li>Hacking, Identity Theft, Cyber Terrorism, মানহানি সব কভার করে</li>
+        <li>সাংবাদিক ও সাধারণ নাগরিকদের বিরুদ্ধে প্রয়োগের জন্য ব্যাপক সমালোচিত</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     CH 3: Cyber Security Act 2023
+══════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-header hdr-blue">
+    <div class="sec-num">03</div>
+    <div class="sec-title">সাইবার নিরাপত্তা আইন, ২০২৩ (Cyber Security Act)</div>
+    <div class="sec-tag" style="background: rgba(255,255,255,0.15); color: #90c8ff;">CSA 2023</div>
+  </div>
+  <div class="sec-body">
+
+    <h2 class="sh blue">📖 পরিচিতি</h2>
+    <p>২০২৩ সালে Digital Security Act 2018 বাতিল করে Cyber Security Act 2023 প্রণীত হয়। এই আইনটি DSA-র তুলনায় কিছুটা নমনীয় — অনেক ধারা জামিনযোগ্য করা হয়েছে এবং সাজার মেয়াদ কমানো হয়েছে। তবে মূল বিষয়গুলো একই রয়েছে।</p>
+
+    <div class="box box-blue">
+      <div class="box-t">🔵 DSA থেকে মূল পরিবর্তন</div>
+      <ul>
+        <li>অনেক অজামিনযোগ্য ধারা → জামিনযোগ্য করা হয়েছে</li>
+        <li>কিছু ধারার সাজার মেয়াদ কমানো হয়েছে</li>
+        <li>Cyber Security Agency গঠনের বিধান</li>
+        <li>ধারা ৪২ — বিনা ওয়ারেন্টে তল্লাশির ক্ষমতা বহাল</li>
+      </ul>
+    </div>
+
+    <h2 class="sh blue">🔑 CSA 2023-এর প্রধান ধারাসমূহ</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ধারা</th>
+          <th>অপরাধ</th>
+          <th>সর্বোচ্চ সাজা</th>
+          <th>জামিন</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>ধারা ১৭</strong></td>
+          <td>Critical Infrastructure আক্রমণ</td>
+          <td>১৪ বছর / যাবজ্জীবন</td>
+          <td style="color: var(--red-dark); font-weight:600;">অজামিনযোগ্য</td>
+        </tr>
+        <tr>
+          <td><strong>ধারা ১৯</strong></td>
+          <td>ডিজিটাল গুপ্তচরবৃত্তি</td>
+          <td>১৪ বছর</td>
+          <td style="color: var(--red-dark); font-weight:600;">অজামিনযোগ্য</td>
+        </tr>
+        <tr>
+          <td><strong>ধারা ২১</strong></td>
+          <td>মুক্তিযুদ্ধ বিরোধী প্রচারণা</td>
+          <td>৭ বছর (কমানো হয়েছে)</td>
+          <td style="color: var(--green); font-weight:600;">জামিনযোগ্য</td>
+        </tr>
+        <tr>
+          <td><strong>ধারা ২৫</strong></td>
+          <td>আক্রমণাত্মক / মিথ্যা তথ্য</td>
+          <td>২ বছর (কমানো হয়েছে)</td>
+          <td style="color: var(--green); font-weight:600;">জামিনযোগ্য</td>
+        </tr>
+        <tr>
+          <td><strong>ধারা ২৬</strong></td>
+          <td>Identity Theft</td>
+          <td>৫ বছর</td>
+          <td style="color: var(--green); font-weight:600;">জামিনযোগ্য</td>
+        </tr>
+        <tr>
+          <td><strong>ধারা ২৭</strong></td>
+          <td>Cyber Terrorism</td>
+          <td>যাবজ্জীবন</td>
+          <td style="color: var(--red-dark); font-weight:600;">অজামিনযোগ্য</td>
+        </tr>
+        <tr>
+          <td><strong>ধারা ২৮</strong></td>
+          <td>ধর্মীয় অনুভূতিতে আঘাত</td>
+          <td>৫ বছর (কমানো হয়েছে)</td>
+          <td style="color: var(--green); font-weight:600;">জামিনযোগ্য</td>
+        </tr>
+        <tr>
+          <td><strong>ধারা ২৯</strong></td>
+          <td>অনলাইন মানহানি</td>
+          <td>২ বছর (কমানো হয়েছে)</td>
+          <td style="color: var(--green); font-weight:600;">জামিনযোগ্য</td>
+        </tr>
+        <tr>
+          <td><strong>ধারা ৩২</strong></td>
+          <td>সরকারি তথ্য হ্যাকিং</td>
+          <td>১৪ বছর</td>
+          <td style="color: var(--red-dark); font-weight:600;">অজামিনযোগ্য</td>
+        </tr>
+        <tr>
+          <td><strong>ধারা ৩৩</strong></td>
+          <td>Hacking</td>
+          <td>৭ বছর (কমানো হয়েছে)</td>
+          <td style="color: var(--green); font-weight:600;">জামিনযোগ্য</td>
+        </tr>
+        <tr>
+          <td><strong>ধারা ৩৪</strong></td>
+          <td>Malware / Virus ছড়ানো</td>
+          <td>৭ বছর</td>
+          <td style="color: var(--green); font-weight:600;">জামিনযোগ্য</td>
+        </tr>
+        <tr>
+          <td><strong>ধারা ৩৮</strong></td>
+          <td>অনলাইন যৌন হয়রানি</td>
+          <td>৭ বছর</td>
+          <td style="color: var(--red-dark); font-weight:600;">অজামিনযোগ্য</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="sh blue">🏛️ Cyber Security Agency</h2>
+    <p>CSA 2023-এ একটি জাতীয় Cyber Security Agency গঠনের বিধান রয়েছে যা দেশের সাইবার নিরাপত্তা নিশ্চিত করবে, incident response পরিচালনা করবে এবং সাইবার নিরাপত্তা গবেষণাকে সহায়তা করবে।</p>
+
+    <div class="box box-gold">
+      <div class="box-t">⚠️ সমালোচনা</div>
+      সমালোচকরা বলছেন CSA 2023 DSA-র মতোই মত প্রকাশের স্বাধীনতাকে সীমিত করে। মূল ধারাগুলো অপরিবর্তিত থাকায় এটি কার্যত DSA-এরই পরিমার্জিত সংস্করণ।
+    </div>
+
+    <div class="summary">
+      <h3>📌 Chapter সারসংক্ষেপ</h3>
+      <ul>
+        <li>CSA 2023 = DSA 2018-এর প্রতিস্থাপন, কিছুটা নমনীয়</li>
+        <li>অনেক ধারা জামিনযোগ্য করা হয়েছে, সাজা কমানো হয়েছে</li>
+        <li>Critical Infrastructure, Terrorism — এখনও অজামিনযোগ্য</li>
+        <li>Cyber Security Agency গঠনের বিধান নতুন সংযোজন</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     CH 4: Pornography Control Act
+══════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-header hdr-gold">
+    <div class="sec-num">04</div>
+    <div class="sec-title">পর্নোগ্রাফি নিয়ন্ত্রণ আইন, ২০১২</div>
+    <div class="sec-tag" style="background: rgba(255,255,255,0.15); color: #ffe090;">PCA 2012</div>
+  </div>
+  <div class="sec-body">
+
+    <h2 class="sh gold">📖 পরিচিতি</h2>
+    <p>পর্নোগ্রাফি উৎপাদন, বিতরণ ও প্রদর্শন নিয়ন্ত্রণে ২০১২ সালে এই আইন প্রণীত হয়। ডিজিটাল মাধ্যমে পর্নোগ্রাফি ছড়ানো এই আইনের আওতায় গুরুতর অপরাধ।</p>
+
+    <div class="law-article">
+      <div class="law-article-head art-gold">
+        <div class="art-num">ধারা ৮</div>
+        <div class="art-title">পর্নোগ্রাফি উৎপাদন ও বিতরণ</div>
+      </div>
+      <div class="law-article-body">
+        <p>ইন্টারনেট, মোবাইল বা যেকোনো ডিজিটাল মাধ্যমে পর্নোগ্রাফি উৎপাদন, বিতরণ, ক্রয়-বিক্রয় বা ডাউনলোড করা।</p>
+        <div class="penalty">
+          <div class="penalty-label">সাজা</div>
+          <div class="penalty-body">
+            <div class="jail">সর্বোচ্চ ১০ বছর কারাদণ্ড</div>
+            <div class="fine">সর্বোচ্চ ৫ লক্ষ টাকা জরিমানা</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="law-article">
+      <div class="law-article-head art-gold">
+        <div class="art-num">ধারা ৯</div>
+        <div class="art-title">শিশু পর্নোগ্রাফি</div>
+        <span style="background:rgba(255,255,255,0.15); color:#ffe090; padding:3px 10px; border-radius:3px; font-size:11px; font-weight:700;">সর্বোচ্চ সাজা</span>
+      </div>
+      <div class="law-article-body">
+        <p>শিশুদের (১৮ বছরের নিচে) যৌন বিষয়বস্তু তৈরি, সংরক্ষণ বা বিতরণ করা।</p>
+        <div class="penalty">
+          <div class="penalty-label">সাজা</div>
+          <div class="penalty-body">
+            <div class="jail">সর্বোচ্চ ১০ বছর সশ্রম কারাদণ্ড</div>
+            <div class="fine">সর্বোচ্চ ১০ লক্ষ টাকা জরিমানা</div>
+            <small>এবং CSA 2023-এর ধারা ৩৮ একসাথে প্রযোজ্য</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box box-red">
+      <div class="box-t">⛔ মনে রাখো</div>
+      অনলাইনে পর্নোগ্রাফিক ছবি বা ভিডিও শেয়ার করা, WhatsApp গ্রুপে পাঠানো, বা সোশ্যাল মিডিয়ায় পোস্ট করা — সবই এই আইনে শাস্তিযোগ্য অপরাধ।
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     CH 5: Telecom & Other Laws
+══════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-header hdr-purple">
+    <div class="sec-num">05</div>
+    <div class="sec-title">টেলিযোগাযোগ আইন ও অন্যান্য সংশ্লিষ্ট আইন</div>
+    <div class="sec-tag" style="background: rgba(255,255,255,0.15); color: #c8a0ff;">Other Laws</div>
+  </div>
+  <div class="sec-body">
+
+    <h2 class="sh">📡 Telecommunications Act 2001</h2>
+    <table>
+      <thead>
+        <tr><th>অপরাধ</th><th>আইন</th><th>সাজা</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>অননুমোদিত টেলিযোগাযোগ সেবা পরিচালনা</td>
+          <td>ধারা ৬৬</td>
+          <td>সর্বোচ্চ ৩ বছর ও ৩০০ কোটি টাকা</td>
+        </tr>
+        <tr>
+          <td>SIM Card জালিয়াতি ও অবৈধ SIM ব্যবহার</td>
+          <td>ধারা ৬৮</td>
+          <td>সর্বোচ্চ ২ বছর ও ৫ লক্ষ টাকা</td>
+        </tr>
+        <tr>
+          <td>নেটওয়ার্কে অবৈধ সংযোগ বা Jamming</td>
+          <td>ধারা ৭০</td>
+          <td>সর্বোচ্চ ৫ বছর ও ৫ কোটি টাকা</td>
+        </tr>
+        <tr>
+          <td>VoIP অবৈধ ব্যবহার</td>
+          <td>ধারা ৬৬</td>
+          <td>সর্বোচ্চ ৩ বছর ও জরিমানা</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="sh">💳 Money Laundering Prevention Act 2012</h2>
+    <p>অনলাইনে অর্থ পাচার, Bitcoin/Cryptocurrency দিয়ে অবৈধ লেনদেন, Online Gambling এবং Fraud দিয়ে অর্থ আত্মসাৎ করা।</p>
+    <div class="penalty">
+      <div class="penalty-label">সাজা</div>
+      <div class="penalty-body">
+        <div class="jail">সর্বোচ্চ ১২ বছর, সর্বনিম্ন ৪ বছর</div>
+        <div class="fine">সম্পদের দ্বিগুণ পর্যন্ত জরিমানা</div>
+      </div>
+    </div>
+
+    <h2 class="sh">🏦 Bangladesh Bank IT Security Guidelines</h2>
+    <p>অনলাইন ব্যাংকিং জালিয়াতি, ATM Skimming, Internet Banking-এ অনধিকার প্রবেশ — এগুলো CSA 2023 এবং Penal Code উভয়ের অধীনে বিচারযোগ্য।</p>
+
+    <h2 class="sh">📱 Right to Information Act 2009</h2>
+    <p>সরকারি তথ্য প্রকাশ করতে অস্বীকার করা বা তথ্য লুকানো এই আইনের অধীনে শাস্তিযোগ্য। একই সাথে, সরকারি গোপন তথ্য অননুমোদিতভাবে প্রকাশ করা CSA 2023 ধারা ৩২-এর অধীনে অপরাধ।</p>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     CH 6: Copyright Law
+══════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-header hdr-ink">
+    <div class="sec-num">06</div>
+    <div class="sec-title">Copyright ও Intellectual Property আইন</div>
+    <div class="sec-tag" style="background: rgba(255,255,255,0.15); color: #c0c8d0;">Copyright</div>
+  </div>
+  <div class="sec-body">
+
+    <h2 class="sh">©️ Copyright Act 2000</h2>
+    <p>ডিজিটাল মাধ্যমে অন্যের সৃষ্টিকর্ম (গান, ছবি, ভিডিও, লেখা, সফটওয়্যার) অনুমতি ছাড়া ব্যবহার বা বিতরণ করা।</p>
+
+    <table>
+      <thead>
+        <tr><th>অপরাধ</th><th>সাজা</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Copyright লঙ্ঘন (Piracy)</td>
+          <td>সর্বোচ্চ ৪ বছর ও ২ লক্ষ টাকা</td>
+        </tr>
+        <tr>
+          <td>Software Piracy</td>
+          <td>সর্বোচ্চ ৪ বছর ও ২ লক্ষ টাকা</td>
+        </tr>
+        <tr>
+          <td>পুনরাবৃত্তিমূলক লঙ্ঘন</td>
+          <td>সর্বোচ্চ ৬ বছর ও ৪ লক্ষ টাকা</td>
+        </tr>
+        <tr>
+          <td>বাণিজ্যিক উদ্দেশ্যে Piracy</td>
+          <td>অতিরিক্ত জরিমানা ও সম্পদ বাজেয়াপ্ত</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="box box-gold">
+      <div class="box-t">💡 সাধারণ ভুল ধারণা</div>
+      YouTube থেকে ভিডিও ডাউনলোড করা, Torrent দিয়ে সফটওয়্যার ডাউনলোড করা, WhatsApp-এ গান শেয়ার করা — এগুলো সবই Copyright আইনের লঙ্ঘন। তবে ব্যক্তিগত ব্যবহারের ক্ষেত্রে সাধারণত প্রয়োগ কম হয়।
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     CH 7: DO & DON'T
+══════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-header" style="background: linear-gradient(135deg, #003d2a, #006a4e);">
+    <div class="sec-num">07</div>
+    <div class="sec-title">কী করা যাবে — কী করা যাবে না</div>
+    <div class="sec-tag" style="background: rgba(255,255,255,0.15); color: #90f0c0;">Do & Don't</div>
+  </div>
+  <div class="sec-body">
+
+    <h2 class="sh">💬 সোশ্যাল মিডিয়া ব্যবহার</h2>
+    <div class="do-dont">
+      <div class="do-box">
+        <div class="do-head">✅ করা যাবে</div>
+        <div class="do-body">
+          <div class="do-item"><span class="do-icon">✔</span>নিজের মতামত বা সমালোচনা প্রকাশ করা (তথ্যভিত্তিক হলে)</div>
+          <div class="do-item"><span class="do-icon">✔</span>সরকারি কাজের বৈধ সমালোচনা করা</div>
+          <div class="do-item"><span class="do-icon">✔</span>সত্য ও প্রমাণিত তথ্য শেয়ার করা</div>
+          <div class="do-item"><span class="do-icon">✔</span>নিজের অভিজ্ঞতা ও অনুভূতি প্রকাশ করা</div>
+          <div class="do-item"><span class="do-icon">✔</span>সাংবাদিকতামূলক রিপোর্টিং করা</div>
+          <div class="do-item"><span class="do-icon">✔</span>সৃজনশীল লেখা, গল্প, কবিতা প্রকাশ করা</div>
+        </div>
+      </div>
+      <div class="dont-box">
+        <div class="dont-head">❌ করা যাবে না</div>
+        <div class="dont-body">
+          <div class="dont-item"><span class="dont-icon">✖</span>মিথ্যা বা ভুল তথ্য জেনেশুনে ছড়ানো</div>
+          <div class="dont-item"><span class="dont-icon">✖</span>কাউকে ব্যক্তিগতভাবে আক্রমণ বা মানহানি করা</div>
+          <div class="dont-item"><span class="dont-icon">✖</span>ধর্মীয় উস্কানি দেওয়া বা সাম্প্রদায়িক বিদ্বেষ ছড়ানো</div>
+          <div class="dont-item"><span class="dont-icon">✖</span>অন্যের ছবি বা তথ্য অনুমতি ছাড়া ব্যবহার করা</div>
+          <div class="dont-item"><span class="dont-icon">✖</span>হুমকি বা ভয় দেখানো বার্তা পাঠানো</div>
+          <div class="dont-item"><span class="dont-icon">✖</span>অশ্লীল ছবি বা ভিডিও শেয়ার করা</div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="sh">💻 Hacking ও Security</h2>
+    <div class="do-dont">
+      <div class="do-box">
+        <div class="do-head">✅ করা যাবে</div>
+        <div class="do-body">
+          <div class="do-item"><span class="do-icon">✔</span>নিজের সিস্টেমে penetration test করা</div>
+          <div class="do-item"><span class="do-icon">✔</span>Bug Bounty program-এ অংশ নিয়ে অনুমোদিত সিস্টেম পরীক্ষা করা</div>
+          <div class="do-item"><span class="do-icon">✔</span>DVWA, TryHackMe-তে practice করা</div>
+          <div class="do-item"><span class="do-icon">✔</span>Vulnerability পেলে তা দায়িত্বশীলভাবে রিপোর্ট করা</div>
+          <div class="do-item"><span class="do-icon">✔</span>Cyber Security গবেষণা ও শিক্ষা কার্যক্রম পরিচালনা করা</div>
+          <div class="do-item"><span class="do-icon">✔</span>Security conference-এ vulnerability নিয়ে কথা বলা</div>
+        </div>
+      </div>
+      <div class="dont-box">
+        <div class="dont-head">❌ করা যাবে না</div>
+        <div class="dont-body">
+          <div class="dont-item"><span class="dont-icon">✖</span>অনুমতি ছাড়া যেকোনো সিস্টেমে প্রবেশ করা</div>
+          <div class="dont-item"><span class="dont-icon">✖</span>Malware, Ransomware বা Virus তৈরি ও বিতরণ করা</div>
+          <div class="dont-item"><span class="dont-icon">✖</span>DDoS বা অন্য আক্রমণ পরিচালনা করা</div>
+          <div class="dont-item"><span class="dont-icon">✖</span>সরকারি বা ব্যাংকিং সিস্টেমে অনুপ্রবেশ করা</div>
+          <div class="dont-item"><span class="dont-icon">✖</span>অন্যের credential বা data চুরি করা</div>
+          <div class="dont-item"><span class="dont-icon">✖</span>Exploit বিক্রি করা বা ব্ল্যাক মার্কেটে কাজ করা</div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="sh">📧 Email ও Messaging</h2>
+    <div class="do-dont">
+      <div class="do-box">
+        <div class="do-head">✅ করা যাবে</div>
+        <div class="do-body">
+          <div class="do-item"><span class="do-icon">✔</span>Encrypted messaging app ব্যবহার করা (Signal, WhatsApp)</div>
+          <div class="do-item"><span class="do-icon">✔</span>নিজের অধিকার ও অভিযোগ জানিয়ে ইমেইল পাঠানো</div>
+          <div class="do-item"><span class="do-icon">✔</span>ব্যবসায়িক ও শিক্ষামূলক যোগাযোগ করা</div>
+          <div class="do-item"><span class="do-icon">✔</span>Newsletter বা Group Email সঠিক সম্মতিতে পাঠানো</div>
+        </div>
+      </div>
+      <div class="dont-box">
+        <div class="dont-head">❌ করা যাবে না</div>
+        <div class="dont-body">
+          <div class="dont-item"><span class="dont-icon">✖</span>Spam Email বা Phishing Mail পাঠানো</div>
+          <div class="dont-item"><span class="dont-icon">✖</span>হুমকি বা ব্ল্যাকমেইল করা</div>
+          <div class="dont-item"><span class="dont-icon">✖</span>Impersonation করে মিথ্যা পরিচয়ে যোগাযোগ করা</div>
+          <div class="dont-item"><span class="dont-icon">✖</span>অন্যের Email account-এ অনুপ্রবেশ করা</div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="sh">💰 অনলাইন আর্থিক লেনদেন</h2>
+    <div class="do-dont">
+      <div class="do-box">
+        <div class="do-head">✅ করা যাবে</div>
+        <div class="do-body">
+          <div class="do-item"><span class="do-icon">✔</span>বৈধ e-commerce সাইটে কেনাকাটা করা</div>
+          <div class="do-item"><span class="do-icon">✔</span>Mobile Banking (bKash, Nagad) ব্যবহার করা</div>
+          <div class="do-item"><span class="do-icon">✔</span>Freelancing income গ্রহণ করা</div>
+          <div class="do-item"><span class="do-icon">✔</span>বৈধ Cryptocurrency লেনদেন (সীমিত)</div>
+        </div>
+      </div>
+      <div class="dont-box">
+        <div class="dont-head">❌ করা যাবে না</div>
+        <div class="dont-body">
+          <div class="dont-item"><span class="dont-icon">✖</span>Online Fraud বা Ponzi Scheme পরিচালনা করা</div>
+          <div class="dont-item"><span class="dont-icon">✖</span>Credit Card / Debit Card তথ্য চুরি বা ব্যবহার করা</div>
+          <div class="dont-item"><span class="dont-icon">✖</span>Money Laundering-এর জন্য ডিজিটাল মাধ্যম ব্যবহার করা</div>
+          <div class="dont-item"><span class="dont-icon">✖</span>অবৈধ Online Gambling বা Casino পরিচালনা করা</div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="sh">📸 ছবি ও ভিডিও</h2>
+    <div class="do-dont">
+      <div class="do-box">
+        <div class="do-head">✅ করা যাবে</div>
+        <div class="do-body">
+          <div class="do-item"><span class="do-icon">✔</span>নিজের ছবি ও ভিডিও শেয়ার করা</div>
+          <div class="do-item"><span class="do-icon">✔</span>অনুমতি নিয়ে অন্যের ছবি ব্যবহার করা</div>
+          <div class="do-item"><span class="do-icon">✔</span>Creative Commons লাইসেন্সের কন্টেন্ট ব্যবহার করা</div>
+          <div class="do-item"><span class="do-icon">✔</span>সংবাদ বা শিক্ষামূলক উদ্দেশ্যে screenshot ব্যবহার করা</div>
+        </div>
+      </div>
+      <div class="dont-box">
+        <div class="dont-head">❌ করা যাবে না</div>
+        <div class="dont-body">
+          <div class="dont-item"><span class="dont-icon">✖</span>অনুমতি ছাড়া কারো ব্যক্তিগত ছবি প্রকাশ করা</div>
+          <div class="dont-item"><span class="dont-icon">✖</span>Deepfake বা মিথ্যা ছবি তৈরি করে কাউকে হেয় করা</div>
+          <div class="dont-item"><span class="dont-icon">✖</span>অন্তরঙ্গ ছবি প্রকাশ বা ব্ল্যাকমেইল করা (Revenge Porn)</div>
+          <div class="dont-item"><span class="dont-icon">✖</span>শিশুদের অনুচিত ছবি তৈরি বা শেয়ার করা</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     CH 8: Ethical Hacker Rights
+══════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-header hdr-green">
+    <div class="sec-num">08</div>
+    <div class="sec-title">Ethical Hacker ও Security Researcher-এর জন্য আইন</div>
+    <div class="sec-tag" style="background: rgba(255,255,255,0.15); color: #90f0c0;">For Hackers</div>
+  </div>
+  <div class="sec-body">
+
+    <h2 class="sh">🛡️ Ethical Hacker হিসেবে আইনি অবস্থান</h2>
+    <p>বাংলাদেশের Cyber Security Act 2023-এ Ethical Hacking বা Security Research-এর জন্য কোনো স্পষ্ট ব্যতিক্রম নেই। তাই Ethical Hacker হিসেবে কাজ করতে হলে বিশেষ সতর্কতা অবলম্বন করতে হবে।</p>
+
+    <div class="box box-red">
+      <div class="box-t">⚠️ বাংলাদেশের বাস্তবতা</div>
+      বাংলাদেশে "Ethical Hacking"-এর কোনো আইনি সংজ্ঞা নেই। অনুমতি ছাড়া যেকোনো সিস্টেমে প্রবেশ — এমনকি দুর্বলতা খুঁজে রিপোর্ট করার উদ্দেশ্যে হলেও — আইনগতভাবে অপরাধ হতে পারে।
+    </div>
+
+    <h2 class="sh">✅ নিরাপদে কাজ করার উপায়</h2>
+
+    <div class="law-article">
+      <div class="law-article-head art-green">
+        <div class="art-num">নিয়ম ১</div>
+        <div class="art-title">সর্বদা লিখিত অনুমতি নিন</div>
+      </div>
+      <div class="law-article-body">
+        <p>কোনো সিস্টেম পরীক্ষার আগে অবশ্যই সিস্টেম মালিকের কাছ থেকে <strong>লিখিত অনুমোদন</strong> (Scope of Work, Rules of Engagement) নিন। মৌখিক অনুমতি যথেষ্ট নয়।</p>
+      </div>
+    </div>
+
+    <div class="law-article">
+      <div class="law-article-head art-green">
+        <div class="art-num">নিয়ম ২</div>
+        <div class="art-title">Bug Bounty Program অনুসরণ করুন</div>
+      </div>
+      <div class="law-article-body">
+        <p>HackerOne, Bugcrowd বা কোম্পানির নিজস্ব Bug Bounty Program-এ কাজ করুন। এই program-গুলোতে স্পষ্ট Scope ও Rules থাকে যা আপনাকে আইনি সুরক্ষা দেয়।</p>
+      </div>
+    </div>
+
+    <div class="law-article">
+      <div class="law-article-head art-green">
+        <div class="art-num">নিয়ম ৩</div>
+        <div class="art-title">Responsible Disclosure মেনে চলুন</div>
+      </div>
+      <div class="law-article-body">
+        <p>কোনো vulnerability পেলে সংশ্লিষ্ট কর্তৃপক্ষকে <strong>সরাসরি ও গোপনে</strong> জানান। সোশ্যাল মিডিয়ায় বা পাবলিকলি প্রকাশ করার আগে তাদের ঠিক করার সময় দিন (সাধারণত ৯০ দিন)।</p>
+      </div>
+    </div>
+
+    <div class="law-article">
+      <div class="law-article-head art-green">
+        <div class="art-num">নিয়ম ৪</div>
+        <div class="art-title">ডেটা স্পর্শ করবেন না</div>
+      </div>
+      <div class="law-article-body">
+        <p>Vulnerability প্রমাণ করতে যতটুকু দরকার ততটুকুই করুন। User data পড়া, কপি করা বা সংরক্ষণ করা — এমনকি Ethical Hacking-এর নামেও — আইনত অপরাধ।</p>
+      </div>
+    </div>
+
+    <div class="law-article">
+      <div class="law-article-head art-green">
+        <div class="art-num">নিয়ম ৫</div>
+        <div class="art-title">শুধু অনুমোদিত Environment-এ Practice করুন</div>
+      </div>
+      <div class="law-article-body">
+        <p>TryHackMe, HackTheBox, DVWA, Metasploitable, VulnHub — এই platform-গুলো সম্পূর্ণ আইনি। নিজের VM-এ lab setup করুন।</p>
+      </div>
+    </div>
+
+    <h2 class="sh">🏛️ সরকারি Bug Bounty / Disclosure Program</h2>
+    <p>Bangladesh Computer Council (BCC) ও BGD e-GOV CIRT বাংলাদেশ সরকারের সাইবার নিরাপত্তা দেখাশোনা করে। সরকারি সাইটে vulnerability পেলে সরাসরি BGD e-GOV CIRT-এ (<strong>incident@cirt.gov.bd</strong>) রিপোর্ট করুন।</p>
+
+    <div class="box box-blue">
+      <div class="box-t">📞 BGD e-GOV CIRT যোগাযোগ</div>
+      <ul>
+        <li><strong>Email:</strong> incident@cirt.gov.bd</li>
+        <li><strong>Website:</strong> cirt.gov.bd</li>
+        <li><strong>Hotline:</strong> 16001</li>
+      </ul>
+    </div>
+
+    <div class="summary">
+      <h3>📌 Chapter সারসংক্ষেপ</h3>
+      <ul>
+        <li>বাংলাদেশে Ethical Hacking-এর কোনো আইনি সংজ্ঞা নেই</li>
+        <li>সর্বদা লিখিত অনুমতি নিন — মৌখিক নয়</li>
+        <li>Bug Bounty Program-এর scope মেনে চলুন</li>
+        <li>Vulnerability পেলে দায়িত্বশীলভাবে Responsible Disclosure করুন</li>
+        <li>সরকারি সিস্টেমে vulnerability → BGD e-GOV CIRT-এ রিপোর্ট করুন</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     CH 9: Law Comparison
+══════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-header hdr-ink">
+    <div class="sec-num">09</div>
+    <div class="sec-title">তিনটি আইনের তুলনা ও সাজার পরিমাণ</div>
+    <div class="sec-tag" style="background: rgba(255,255,255,0.15); color: #c0c8d0;">Comparison</div>
+  </div>
+  <div class="sec-body">
+
+    <h2 class="sh">📊 অপরাধ ও সাজার তুলনামূলক চার্ট</h2>
+
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>অপরাধ</th>
+          <th style="background:#006a4e !important;">ICT Act 2006</th>
+          <th style="background:#990000 !important;">DSA 2018</th>
+          <th style="background:#1a5fa8 !important;">CSA 2023</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Hacking / অনুপ্রবেশ</strong></td>
+          <td>৭ বছর / ১০ লক্ষ</td>
+          <td>১৪ বছর / ১ কোটি</td>
+          <td>৭ বছর / ১ কোটি</td>
+        </tr>
+        <tr>
+          <td><strong>মিথ্যা / ক্ষতিকর তথ্য</strong></td>
+          <td>১৪ বছর (ধারা ৫৭)</td>
+          <td>১০ বছর / ১ কোটি</td>
+          <td>২ বছর / ৩ লক্ষ</td>
+        </tr>
+        <tr>
+          <td><strong>Critical Infrastructure</strong></td>
+          <td>—</td>
+          <td>যাবজ্জীবন / ১ কোটি</td>
+          <td>১৪ বছর বা যাবজ্জীবন</td>
+        </tr>
+        <tr>
+          <td><strong>Identity Theft</strong></td>
+          <td>—</td>
+          <td>৫ বছর / ৫ লক্ষ</td>
+          <td>৫ বছর / ৫ লক্ষ</td>
+        </tr>
+        <tr>
+          <td><strong>Cyber Terrorism</strong></td>
+          <td>—</td>
+          <td>যাবজ্জীবন / ১ কোটি</td>
+          <td>যাবজ্জীবন / ১ কোটি</td>
+        </tr>
+        <tr>
+          <td><strong>মানহানি</strong></td>
+          <td>—</td>
+          <td>৩ বছর / ৫ লক্ষ</td>
+          <td>২ বছর / ৩ লক্ষ</td>
+        </tr>
+        <tr>
+          <td><strong>ধর্মীয় আঘাত</strong></td>
+          <td>—</td>
+          <td>৭ বছর / ১০ লক্ষ</td>
+          <td>৫ বছর / ১০ লক্ষ</td>
+        </tr>
+        <tr>
+          <td><strong>Malware বিতরণ</strong></td>
+          <td>৭ বছর</td>
+          <td>১৪ বছর / ১ কোটি</td>
+          <td>৭ বছর / ১ কোটি</td>
+        </tr>
+        <tr>
+          <td><strong>যৌন হয়রানি</strong></td>
+          <td>—</td>
+          <td>৭ বছর / ৫ লক্ষ</td>
+          <td>৭ বছর / ৫ লক্ষ</td>
+        </tr>
+        <tr>
+          <td><strong>সরকারি তথ্য চুরি</strong></td>
+          <td>—</td>
+          <td>যাবজ্জীবন</td>
+          <td>১৪ বছর (অজামিনযোগ্য)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="sh">⚖️ তিনটি আইনের মূল পার্থক্য</h2>
+    <table>
+      <thead>
+        <tr><th>বিষয়</th><th>ICT Act 2006</th><th>DSA 2018</th><th>CSA 2023</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>বর্তমান অবস্থা</td>
+          <td>আংশিক কার্যকর</td>
+          <td>বাতিল (মামলা চলছে)</td>
+          <td>পূর্ণ কার্যকর</td>
+        </tr>
+        <tr>
+          <td>অজামিনযোগ্য ধারা</td>
+          <td>অনেক</td>
+          <td>সবচেয়ে বেশি</td>
+          <td>কম</td>
+        </tr>
+        <tr>
+          <td>সাজার তীব্রতা</td>
+          <td>মাঝারি</td>
+          <td>সর্বোচ্চ</td>
+          <td>কিছুটা কম</td>
+        </tr>
+        <tr>
+          <td>মত প্রকাশের উপর প্রভাব</td>
+          <td>মাঝারি</td>
+          <td>সর্বোচ্চ</td>
+          <td>মাঝারি</td>
+        </tr>
+        <tr>
+          <td>আন্তর্জাতিক সমালোচনা</td>
+          <td>মাঝারি</td>
+          <td>অনেক বেশি</td>
+          <td>মাঝারি</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <h3>📌 Chapter সারসংক্ষেপ</h3>
+      <ul>
+        <li>Hacking: CSA 2023-এ ৭ বছর (DSA-র তুলনায় কম)</li>
+        <li>Cyber Terrorism ও Critical Infrastructure: এখনও যাবজ্জীবন পর্যন্ত</li>
+        <li>মানহানি ও সাধারণ অপরাধ: CSA 2023-এ সাজা কমানো হয়েছে</li>
+        <li>DSA 2018 বাতিল কিন্তু পুরনো মামলাগুলো এখনও চলছে</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     CH 10: Legal Protection
+══════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-header hdr-green">
+    <div class="sec-num">10</div>
+    <div class="sec-title">আইনি সুরক্ষা ও সমস্যায় করণীয়</div>
+    <div class="sec-tag" style="background: rgba(255,255,255,0.15); color: #90f0c0;">Protection</div>
+  </div>
+  <div class="sec-body">
+
+    <h2 class="sh">🛡️ নিজেকে সুরক্ষিত রাখতে</h2>
+
+    <div class="do-dont">
+      <div class="do-box">
+        <div class="do-head">✅ সবসময় করুন</div>
+        <div class="do-body">
+          <div class="do-item"><span class="do-icon">✔</span>শেয়ার করার আগে তথ্য যাচাই করুন</div>
+          <div class="do-item"><span class="do-icon">✔</span>Screenshot বা evidence সংরক্ষণ করুন</div>
+          <div class="do-item"><span class="do-icon">✔</span>দুই ধাপের নিরাপত্তা (2FA) ব্যবহার করুন</div>
+          <div class="do-item"><span class="do-icon">✔</span>Strong password ও password manager ব্যবহার করুন</div>
+          <div class="do-item"><span class="do-icon">✔</span>VPN ব্যবহার করুন (বৈধ কারণে)</div>
+          <div class="do-item"><span class="do-icon">✔</span>পরিচিত link-এ click করার আগে যাচাই করুন</div>
+        </div>
+      </div>
+      <div class="dont-box">
+        <div class="dont-head">❌ কখনো করবেন না</div>
+        <div class="dont-body">
+          <div class="dont-item"><span class="dont-icon">✖</span>অপরিচিত সোর্স থেকে কন্টেন্ট forward করবেন না</div>
+          <div class="dont-item"><span class="dont-icon">✖</span>অন্যের account বা password শেয়ার করবেন না</div>
+          <div class="dont-item"><span class="dont-icon">✖</span>ব্যক্তিগত তথ্য অপরিচিতকে দেবেন না</div>
+          <div class="dont-item"><span class="dont-icon">✖</span>রাগের মাথায় আক্রমণাত্মক পোস্ট করবেন না</div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="sh red">⚠️ আইনি সমস্যায় পড়লে করণীয়</h2>
+
+    <div class="law-article">
+      <div class="law-article-head art-green">
+        <div class="art-num">ধাপ ১</div>
+        <div class="art-title">অবিলম্বে একজন আইনজীবী নিয়োগ করুন</div>
+      </div>
+      <div class="law-article-body">
+        <p>Cyber Law বিশেষজ্ঞ আইনজীবী খুঁজুন। পুলিশের কাছে কোনো বক্তব্য দেওয়ার আগে আইনজীবীর পরামর্শ নিন।</p>
+      </div>
+    </div>
+
+    <div class="law-article">
+      <div class="law-article-head art-green">
+        <div class="art-num">ধাপ ২</div>
+        <div class="art-title">সব প্রমাণ সংরক্ষণ করুন</div>
+      </div>
+      <div class="law-article-body">
+        <p>আপনার পক্ষের সব প্রমাণ (চুক্তিপত্র, message, email, screenshot) সংরক্ষণ করুন। কিছু delete করবেন না।</p>
+      </div>
+    </div>
+
+    <div class="law-article">
+      <div class="law-article-head art-green">
+        <div class="art-num">ধাপ ৩</div>
+        <div class="art-title">Cyber Crime complaint করুন</div>
+      </div>
+      <div class="law-article-body">
+        <p>আপনি যদি সাইবার অপরাধের শিকার হন:</p>
+        <ul>
+          <li>নিকটতম থানায় GD বা মামলা দায়ের করুন</li>
+          <li><strong>Police Cyber Support for Women:</strong> 01320000888</li>
+          <li><strong>BGD e-GOV CIRT:</strong> 16001</li>
+          <li><strong>Digital Security Cell:</strong> DSC, DMP</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="sh">📞 গুরুত্বপূর্ণ যোগাযোগ</h2>
+    <table>
+      <thead>
+        <tr><th>সংস্থা</th><th>যোগাযোগ</th><th>কাজ</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>BGD e-GOV CIRT</strong></td>
+          <td>incident@cirt.gov.bd / 16001</td>
+          <td>সাইবার incident রিপোর্ট</td>
+        </tr>
+        <tr>
+          <td><strong>Police Cyber Unit (DMP)</strong></td>
+          <td>cybercrime@dmp.gov.bd</td>
+          <td>সাইবার অপরাধ মামলা</td>
+        </tr>
+        <tr>
+          <td><strong>Women Cyber Support</strong></td>
+          <td>01320000888</td>
+          <td>নারী সাইবার হয়রানি</td>
+        </tr>
+        <tr>
+          <td><strong>National Human Rights Commission</strong></td>
+          <td>nhrc.gov.bd</td>
+          <td>আইনি অধিকার লঙ্ঘন</td>
+        </tr>
+        <tr>
+          <td><strong>BTRC Complaint Cell</strong></td>
+          <td>complaint@btrc.gov.bd</td>
+          <td>টেলিযোগাযোগ অভিযোগ</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="box box-green">
+      <div class="box-t">💡 মনে রাখুন</div>
+      আইন না জানা কোনো সুরক্ষা নয়। সোশ্যাল মিডিয়ায় কিছু পোস্ট করার আগে ভাবুন — এটা কি মিথ্যা? এটা কি কাউকে আঘাত করবে? এটা কি অন্যের অনুমতি ছাড়া তাদের তথ্য? যদি উত্তর হ্যাঁ হয়, পোস্ট করবেন না।
+    </div>
+
+    <div class="summary">
+      <h3>📌 সামগ্রিক সারসংক্ষেপ — সব আইনের মূল কথা</h3>
+      <ul>
+        <li>🔐 অনুমতি ছাড়া যেকোনো সিস্টেমে প্রবেশ = অপরাধ</li>
+        <li>📢 মিথ্যা তথ্য ছড়ানো বা মানহানি = অপরাধ</li>
+        <li>📸 অন্যের ছবি অনুমতি ছাড়া ব্যবহার = অপরাধ</li>
+        <li>💰 অনলাইন জালিয়াতি বা প্রতারণা = অপরাধ</li>
+        <li>🦠 Malware বা Virus ছড়ানো = অপরাধ</li>
+        <li>✅ Ethical Hacking-এ সর্বদা লিখিত অনুমতি নিন</li>
+        <li>📞 সমস্যায় BGD e-GOV CIRT: 16001</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div style="background: var(--ink); color: rgba(255,255,255,0.4); padding: 20px 36px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; margin-top: 10px; border-radius: 0 0 4px 4px;">
+  <div>
+    ⚠️ এই গাইড শিক্ষামূলক উদ্দেশ্যে। নির্দিষ্ট আইনি বিষয়ে অ্যাডভোকেটের পরামর্শ নিন।
+  </div>
+  <div style="color: var(--gold); font-weight: 600;">বাংলাদেশ সাইবার আইন গাইড — v1.0 | ২০২৫</div>
+</div>
+
+</div><!-- /page -->
+
+<script>
+function toggleTheme() {
+  const btn = document.getElementById('themeBtn');
+  document.body.classList.toggle('dark-mode');
+  btn.textContent = document.body.classList.contains('dark-mode') ? '☀️ Light Mode' : '🌙 Dark Mode';
+  localStorage.setItem('clTheme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+}
+function toggleLang() {
+  document.body.classList.toggle('lang-en');
+}
+window.addEventListener('DOMContentLoaded', () => {
+  if (localStorage.getItem('clTheme') === 'dark') {
+    document.body.classList.add('dark-mode');
+    document.getElementById('themeBtn').textContent = '☀️ Light Mode';
+  }
+});
+</script>
+</body>
+</html>
