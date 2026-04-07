@@ -17,6 +17,9 @@
 - [Public speaking](https://saimum10.github.io/document/public_speaking_guide.html)
 - [Mental Health](https://saimum10.github.io/document/mental_health_guide.html)
 - [Reverse psychology](https://saimum10.github.io/document/reverse_psychology.html)
+- [Emotional inteligent](https://saimum10.github.io/document/emotional_intelligence.html)
+- [English communication](https://saimum10.github.io/document/english_communication.html)
+- [Personality development](https://saimum10.github.io/document/personality_development.html)
 
 
 - [Github security](https://saimum10.github.io/document/git_github_security_bangla.html)
