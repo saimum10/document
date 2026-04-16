@@ -23,6 +23,9 @@
 
 
 - [Github security](https://saimum10.github.io/document/git_github_security_bangla.html)
+- [Webapp pen test playbook](https://saimum10.github.io/document/webapp_pentest_playbook.html)
+- [Pentest handbook](https://saimum10.github.io/document/pentest_handbook.html)
+- [Pentest guide bangla](https://saimum10.github.io/document/pentest_guide_bangla.html)
 
 
 
