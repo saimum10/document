@@ -26,7 +26,7 @@
 - [Webapp pen test playbook](https://saimum10.github.io/document/webapp_pentest_playbook.html)
 - [Pentest handbook](https://saimum10.github.io/document/pentest_handbook.html)
 - [Pentest guide bangla](https://saimum10.github.io/document/pentest_guide_bangla.html)
-- [Pentest guide bangla](https://saimum10.github.io/document/critical_thinking_genius_mindset.html)
+- [daily routine](https://saimum10.github.io/document/ethical_hacking_6month_routine.html)
 
 
 
