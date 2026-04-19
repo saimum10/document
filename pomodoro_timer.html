@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pomodoro Timer 🍅</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0e0e12;
+  --card: #16161e;
+  --border: #2a2a38;
+  --text: #e0e0f0;
+  --muted: #5a5a78;
+  --work-c: #ff6b6b;
+  --break-c: #51cf66;
+  --long-c: #339af0;
+  --body: 'Hind Siliguri', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+  --mode-color: var(--work-c);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+/* BG GLOW */
+body::before {
+  content: '';
+  position: fixed;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,107,107,0.06), transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  transition: background 0.8s;
+  pointer-events: none;
+}
+body.break-mode::before { background: radial-gradient(circle, rgba(81,207,102,0.06), transparent 70%); }
+body.long-mode::before  { background: radial-gradient(circle, rgba(51,154,240,0.06), transparent 70%); }
+
+/* MODE TABS */
+.mode-tabs {
+  display: flex;
+  gap: 4px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 5px;
+  margin-bottom: 32px;
+}
+.mode-tab {
+  padding: 8px 20px;
+  border-radius: 8px;
+  border: none;
+  background: none;
+  color: var(--muted);
+  font-family: var(--body);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.mode-tab.active {
+  background: var(--mode-color);
+  color: white;
+}
+.mode-tab:hover:not(.active) { color: var(--text); }
+
+/* MAIN CARD */
+.timer-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 40px 48px;
+  text-align: center;
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+}
+
+/* MODE LABEL */
+.mode-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--mode-color);
+  margin-bottom: 8px;
+  transition: color 0.5s;
+}
+
+.mode-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 32px;
+}
+
+/* CIRCLE TIMER */
+.circle-wrap {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  margin: 0 auto 32px;
+}
+.circle-wrap svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+.circle-bg {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 6;
+}
+.circle-progress {
+  fill: none;
+  stroke: var(--mode-color);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-dasharray: 660;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s linear, stroke 0.5s;
+  filter: drop-shadow(0 0 6px var(--mode-color));
+}
+.circle-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.time-display {
+  font-family: var(--mono);
+  font-size: 52px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -2px;
+  line-height: 1;
+}
+.time-session {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+/* CONTROLS */
+.controls {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+.btn {
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: var(--body);
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.btn-main {
+  background: var(--mode-color);
+  color: white;
+  font-size: 16px;
+  padding: 14px 40px;
+  border-radius: 14px;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 20px rgba(255,107,107,0.25);
+  transition: background 0.5s, box-shadow 0.5s, transform 0.15s;
+}
+.btn-main:hover { transform: translateY(-2px); }
+.btn-main:active { transform: scale(0.97); }
+.btn-icon {
+  background: var(--border);
+  color: var(--muted);
+  font-size: 18px;
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-icon:hover { background: #333345; color: var(--text); }
+
+/* STATS ROW */
+.stats {
+  display: flex;
+  gap: 0;
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+}
+.stat {
+  flex: 1;
+  text-align: center;
+}
+.stat:not(:last-child) { border-right: 1px solid var(--border); }
+.stat-num {
+  font-family: var(--mono);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--mode-color);
+  transition: color 0.5s;
+}
+.stat-label {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* SETTINGS */
+.settings-btn {
+  margin-top: 20px;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-family: var(--body);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.settings-btn:hover { border-color: var(--text); color: var(--text); }
+
+/* SETTINGS PANEL */
+.settings-panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  width: 100%;
+  max-width: 420px;
+  margin-top: 12px;
+  display: none;
+}
+.settings-panel.open { display: block; }
+.settings-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.setting-row:last-child { margin-bottom: 0; }
+.setting-label { font-size: 14px; color: var(--text); }
+.setting-input {
+  width: 70px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 7px 10px;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 14px;
+  text-align: center;
+  outline: none;
+}
+.setting-input:focus { border-color: var(--mode-color); }
+
+/* TASK INPUT */
+.task-wrap {
+  margin-top: 12px;
+  width: 100%;
+  max-width: 420px;
+}
+.task-input {
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 11px 16px;
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.task-input:focus { border-color: var(--mode-color); }
+.task-input::placeholder { color: var(--muted); }
+
+/* NOTIFICATION TOAST */
+.notif {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-80px);
+  background: var(--mode-color);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  z-index: 100;
+  white-space: nowrap;
+}
+.notif.show { transform: translateX(-50%) translateY(0); }
+
+/* HISTORY */
+.history {
+  width: 100%;
+  max-width: 420px;
+  margin-top: 12px;
+}
+.history-title {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 120px;
+  overflow-y: auto;
+}
+.history-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--muted);
+  padding: 5px 10px;
+  background: var(--card);
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+.history-item .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.history-item .time { margin-left: auto; font-family: var(--mono); font-size: 11px; }
+</style>
+</head>
+<body>
+
+<!-- MODE TABS -->
+<div class="mode-tabs">
+  <button class="mode-tab active" onclick="setMode('work')">🍅 কাজ</button>
+  <button class="mode-tab" onclick="setMode('break')">☕ বিরতি</button>
+  <button class="mode-tab" onclick="setMode('long')">🌙 দীর্ঘ বিরতি</button>
+</div>
+
+<!-- TASK INPUT -->
+<div class="task-wrap">
+  <input type="text" class="task-input" id="taskInput" placeholder="এখন কী কাজ করছো? (ঐচ্ছিক)">
+</div>
+
+<!-- TIMER CARD -->
+<div class="timer-card">
+  <div class="mode-label" id="modeLabel">FOCUS TIME</div>
+  <div class="mode-title" id="modeTitle">মনোযোগ দিয়ে কাজ করো</div>
+
+  <div class="circle-wrap">
+    <svg viewBox="0 0 220 220">
+      <circle class="circle-bg" cx="110" cy="110" r="105"/>
+      <circle class="circle-progress" id="circleProgress" cx="110" cy="110" r="105"/>
+    </svg>
+    <div class="circle-inner">
+      <div class="time-display" id="timeDisplay">25:00</div>
+      <div class="time-session" id="sessionLabel">সেশন ১</div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="btn btn-icon" onclick="resetTimer()" title="Reset">↺</button>
+    <button class="btn btn-main" id="startBtn" onclick="toggleTimer()">▶ শুরু</button>
+    <button class="btn btn-icon" onclick="skipSession()" title="Skip">⏭</button>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num" id="todaySessions">0</div>
+      <div class="stat-label">আজকের সেশন</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" id="totalMinutes">0</div>
+      <div class="stat-label">মিনিট কাজ</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" id="streakCount">0</div>
+      <div class="stat-label">পর্যায়ক্রমে</div>
+    </div>
+  </div>
+</div>
+
+<!-- SETTINGS BUTTON -->
+<button class="settings-btn" onclick="toggleSettings()">⚙️ সেটিংস</button>
+
+<!-- SETTINGS PANEL -->
+<div class="settings-panel" id="settingsPanel">
+  <div class="settings-title">সময় পরিবর্তন (মিনিট)</div>
+  <div class="setting-row">
+    <span class="setting-label">🍅 কাজের সময়</span>
+    <input type="number" class="setting-input" id="workMin" value="25" min="1" max="60" onchange="updateSettings()">
+  </div>
+  <div class="setting-row">
+    <span class="setting-label">☕ বিরতির সময়</span>
+    <input type="number" class="setting-input" id="breakMin" value="5" min="1" max="30" onchange="updateSettings()">
+  </div>
+  <div class="setting-row">
+    <span class="setting-label">🌙 দীর্ঘ বিরতি</span>
+    <input type="number" class="setting-input" id="longMin" value="15" min="5" max="60" onchange="updateSettings()">
+  </div>
+  <div class="setting-row">
+    <span class="setting-label">🔄 কতটার পর দীর্ঘ বিরতি</span>
+    <input type="number" class="setting-input" id="sessionsBeforeLong" value="4" min="2" max="8" onchange="updateSettings()">
+  </div>
+</div>
+
+<!-- HISTORY -->
+<div class="history" id="historyWrap" style="display:none">
+  <div class="history-title">আজকের ইতিহাস</div>
+  <div class="history-list" id="historyList"></div>
+</div>
+
+<!-- NOTIFICATION -->
+<div class="notif" id="notif">🍅 সেশন শেষ!</div>
+
+<script>
+// ═══ STATE ═══
+const STATE = {
+  mode: 'work',       // work | break | long
+  running: false,
+  timeLeft: 25 * 60,
+  total:    25 * 60,
+  sessions: 0,
+  todaySessions: 0,
+  totalMinutes: 0,
+  streak: 0,
+  interval: null,
+  history: [],
+};
+
+const MODES = {
+  work:  { label:'FOCUS TIME', title:'মনোযোগ দিয়ে কাজ করো', color:'#ff6b6b', cls:'', session:'সেশন', emoji:'🍅' },
+  break: { label:'SHORT BREAK', title:'একটু বিশ্রাম নাও',   color:'#51cf66', cls:'break-mode', session:'বিরতি', emoji:'☕' },
+  long:  { label:'LONG BREAK',  title:'দীর্ঘ বিরতি — চা খাও', color:'#339af0', cls:'long-mode', session:'দীর্ঘ বিরতি', emoji:'🌙' },
+};
+
+function getSettings() {
+  return {
+    work:  parseInt(document.getElementById('workMin').value) || 25,
+    break: parseInt(document.getElementById('breakMin').value) || 5,
+    long:  parseInt(document.getElementById('longMin').value) || 15,
+    sessionsBeforeLong: parseInt(document.getElementById('sessionsBeforeLong').value) || 4,
+  };
+}
+
+// ═══ TIMER ═══
+function toggleTimer() {
+  STATE.running ? pauseTimer() : startTimer();
+}
+
+function startTimer() {
+  STATE.running = true;
+  document.getElementById('startBtn').textContent = '⏸ থামাও';
+  STATE.interval = setInterval(tick, 1000);
+}
+
+function pauseTimer() {
+  STATE.running = false;
+  document.getElementById('startBtn').textContent = '▶ চালু';
+  clearInterval(STATE.interval);
+}
+
+function resetTimer() {
+  pauseTimer();
+  const s = getSettings();
+  STATE.timeLeft = s[STATE.mode] * 60;
+  STATE.total    = STATE.timeLeft;
+  updateDisplay();
+}
+
+function skipSession() {
+  pauseTimer();
+  completeSession(false);
+}
+
+function tick() {
+  STATE.timeLeft--;
+  if (STATE.timeLeft <= 0) {
+    STATE.timeLeft = 0;
+    updateDisplay();
+    clearInterval(STATE.interval);
+    STATE.running = false;
+    completeSession(true);
+    return;
+  }
+  updateDisplay();
+}
+
+function completeSession(auto) {
+  const m = MODES[STATE.mode];
+  const s = getSettings();
+
+  // Stats update
+  if (STATE.mode === 'work') {
+    STATE.todaySessions++;
+    STATE.sessions++;
+    STATE.totalMinutes += s.work;
+    STATE.streak++;
+    addHistory('work', s.work);
+  } else {
+    STATE.streak = 0;
+  }
+
+  updateStats();
+  if (auto) showNotif(m.emoji + ' ' + (STATE.mode === 'work' ? 'কাজের সময় শেষ!' : 'বিরতি শেষ!'));
+
+  // Auto next mode
+  if (STATE.mode === 'work') {
+    const isLong = STATE.sessions % s.sessionsBeforeLong === 0;
+    setMode(isLong ? 'long' : 'break');
+  } else {
+    setMode('work');
+  }
+
+  if (auto) setTimeout(startTimer, 1500);
+}
+
+// ═══ MODE ═══
+function setMode(mode) {
+  STATE.mode = mode;
+  STATE.running = false;
+  clearInterval(STATE.interval);
+  document.getElementById('startBtn').textContent = '▶ শুরু';
+
+  const m  = MODES[mode];
+  const s  = getSettings();
+  STATE.timeLeft = s[mode] * 60;
+  STATE.total    = STATE.timeLeft;
+
+  // Colors
+  document.documentElement.style.setProperty('--mode-color', m.color);
+
+  // Body class
+  document.body.className = m.cls;
+
+  // Labels
+  document.getElementById('modeLabel').textContent = m.label;
+  document.getElementById('modeTitle').textContent  = m.title;
+
+  // Tabs
+  document.querySelectorAll('.mode-tab').forEach((tab, i) => {
+    const modes = ['work','break','long'];
+    tab.classList.toggle('active', modes[i] === mode);
+  });
+
+  updateDisplay();
+}
+
+// ═══ DISPLAY ═══
+function updateDisplay() {
+  const m = Math.floor(STATE.timeLeft / 60);
+  const s = STATE.timeLeft % 60;
+  document.getElementById('timeDisplay').textContent =
+    String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+
+  // Circle
+  const circumference = 2 * Math.PI * 105;
+  const progress = STATE.timeLeft / STATE.total;
+  const offset   = circumference * (1 - progress);
+  document.getElementById('circleProgress').style.strokeDashoffset = offset;
+  document.getElementById('circleProgress').style.strokeDasharray  = circumference;
+
+  // Session label
+  const mo = MODES[STATE.mode];
+  document.getElementById('sessionLabel').textContent =
+    mo.session + ' ' + (STATE.mode === 'work' ? STATE.sessions + 1 : '');
+
+  // Page title
+  document.title = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')} ${mo.emoji} Pomodoro`;
+}
+
+function updateStats() {
+  document.getElementById('todaySessions').textContent = STATE.todaySessions;
+  document.getElementById('totalMinutes').textContent  = STATE.totalMinutes;
+  document.getElementById('streakCount').textContent   = STATE.streak;
+}
+
+// ═══ HISTORY ═══
+function addHistory(type, minutes) {
+  const now = new Date();
+  const time = now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0');
+  const task = document.getElementById('taskInput').value || '—';
+  STATE.history.unshift({ type, minutes, time, task });
+  renderHistory();
+}
+
+function renderHistory() {
+  const wrap = document.getElementById('historyWrap');
+  const list = document.getElementById('historyList');
+  if (STATE.history.length === 0) { wrap.style.display = 'none'; return; }
+  wrap.style.display = 'block';
+  list.innerHTML = STATE.history.slice(0,10).map(h => `
+    <div class="history-item">
+      <span class="dot" style="background:${h.type === 'work' ? '#ff6b6b' : '#51cf66'}"></span>
+      <span>${h.type === 'work' ? '🍅 কাজ' : '☕ বিরতি'} · ${h.task}</span>
+      <span class="time">${h.time}</span>
+    </div>
+  `).join('');
+}
+
+// ═══ SETTINGS ═══
+function toggleSettings() {
+  const p = document.getElementById('settingsPanel');
+  p.classList.toggle('open');
+}
+
+function updateSettings() {
+  if (!STATE.running) resetTimer();
+}
+
+// ═══ NOTIFICATION ═══
+function showNotif(msg) {
+  const el = document.getElementById('notif');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 3500);
+
+  // Browser notification
+  if (Notification.permission === 'granted') {
+    new Notification('Pomodoro', { body: msg, icon: '🍅' });
+  } else if (Notification.permission !== 'denied') {
+    Notification.requestPermission();
+  }
+}
+
+// INIT
+setMode('work');
+updateStats();
+
+// Keyboard shortcut
+document.addEventListener('keydown', e => {
+  if (e.code === 'Space' && e.target.tagName !== 'INPUT') {
+    e.preventDefault();
+    toggleTimer();
+  }
+});
+</script>
+</body>
+</html>

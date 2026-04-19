@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>মানসিক স্বাস্থ্য — সম্পূর্ণ গাইড</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Serif+Bengali:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #faf7f4;
+  --surface: #ffffff;
+  --surface2: #f0ebe4;
+  --border: #e0d8cf;
+  --accent: #5c7a5e;
+  --accent2: #7b6fa0;
+  --accent3: #c0624a;
+  --accent4: #c8923a;
+  --accent5: #4a7fa0;
+  --text: #2d2416;
+  --text-dim: #7a6a54;
+  --text-bright: #1a1408;
+  --code-bg: #2d2416;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Hind Siliguri', 'Noto Serif Bengali', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 2;
+}
+
+/* ══ TOP CONTROLS ══ */
+.top-controls { position:fixed; top:16px; right:16px; display:flex; gap:8px; z-index:9999; }
+.ctrl-btn {
+  padding:8px 16px; border-radius:6px; font-size:13px;
+  font-family:'Outfit',sans-serif; cursor:pointer; font-weight:700;
+  transition:all 0.2s; border:1.5px solid; background:var(--surface);
+}
+.print-btn { border-color:var(--accent3); color:var(--accent3); }
+.print-btn:hover { background:var(--accent3); color:#fff; }
+.theme-btn { border-color:var(--accent4); color:var(--accent4); }
+.theme-btn:hover { background:var(--accent4); color:#fff; }
+
+/* ══ DARK MODE ══ */
+body.dark-mode {
+  --bg: #0f0e0c;
+  --surface: #1a1814;
+  --surface2: #22201a;
+  --border: #302c24;
+  --text: #e0d8c8;
+  --text-dim: #8a7a64;
+  --text-bright: #f0e8d8;
+  --accent: #7daa7f;
+  --accent2: #a89fcc;
+  --accent3: #e07860;
+  --accent4: #e0b060;
+  --accent5: #70a8cc;
+}
+body.dark-mode .card { background: var(--surface2); }
+body.dark-mode tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+
+/* ══ COVER ══ */
+.cover {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #1a2e1c 0%, #2a1e3a 40%, #1e2a2e 70%, #2e1a0e 100%);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:80px 40px; page-break-after:always; position:relative; overflow:hidden;
+}
+.cover-leaf {
+  position:absolute; inset:0; opacity:0.04;
+  background: radial-gradient(ellipse 80% 60% at 20% 40%, rgba(92,122,94,1) 0%, transparent 60%),
+              radial-gradient(ellipse 60% 80% at 80% 60%, rgba(123,111,160,1) 0%, transparent 60%);
+}
+.cover-icon { font-size:80px; margin-bottom:20px; position:relative; filter:drop-shadow(0 0 30px rgba(92,122,94,0.5)); }
+.cover-eyebrow {
+  font-family:'Outfit',sans-serif; font-size:11px; letter-spacing:4px;
+  color:rgba(125,170,127,0.7); text-transform:uppercase; margin-bottom:20px; position:relative;
+  border:1px solid rgba(125,170,127,0.2); padding:5px 18px; border-radius:2px;
+}
+.cover h1 {
+  font-family:'Noto Serif Bengali',serif; font-size:52px; font-weight:700;
+  color:#f0e8d8; line-height:1.2; position:relative; margin-bottom:8px;
+}
+.cover h1 span { color:#7daa7f; }
+.cover h2 { font-size:18px; font-weight:400; color:rgba(200,185,165,0.55); margin-bottom:28px; position:relative; }
+.cover-bar { width:60px; height:3px; background:var(--accent); margin:0 auto 28px; border-radius:2px; }
+.cover-desc { font-size:15px; color:rgba(180,165,145,0.6); max-width:640px; line-height:2.2; margin-bottom:36px; position:relative; }
+.cover-quote {
+  background:rgba(0,0,0,0.3); border:1px solid rgba(125,170,127,0.2);
+  border-left:3px solid var(--accent); border-radius:6px; padding:18px 26px;
+  font-size:15px; color:rgba(220,205,185,0.75); font-style:italic;
+  max-width:540px; position:relative; margin-bottom:28px; line-height:2;
+}
+.cover-pills { display:flex; flex-wrap:wrap; gap:7px; justify-content:center; position:relative; }
+.cpill { font-size:12px; padding:5px 14px; border-radius:20px; border:1px solid; font-weight:500; }
+.cp-g { color:#7daa7f; border-color:rgba(125,170,127,0.3); background:rgba(125,170,127,0.08); }
+.cp-p { color:#a89fcc; border-color:rgba(168,159,204,0.3); background:rgba(168,159,204,0.08); }
+.cp-r { color:#e07860; border-color:rgba(224,120,96,0.3); background:rgba(224,120,96,0.08); }
+.cp-y { color:#e0b060; border-color:rgba(224,176,96,0.3); background:rgba(224,176,96,0.08); }
+.cp-b { color:#70a8cc; border-color:rgba(112,168,204,0.3); background:rgba(112,168,204,0.08); }
+
+/* ══ TOC ══ */
+.toc { background:var(--surface); padding:55px 65px; page-break-after:always; border-top:4px solid var(--accent); }
+.toc-h { font-family:'Noto Serif Bengali',serif; font-size:26px; font-weight:700; color:var(--accent); margin-bottom:5px; }
+.toc-sh { font-size:12px; color:var(--text-dim); margin-bottom:32px; }
+.toc-row { display:flex; align-items:flex-start; gap:14px; padding:12px 0; border-bottom:1px solid var(--border); transition:padding-left 0.2s; }
+.toc-row:hover { padding-left:6px; }
+.toc-n { font-family:'Outfit',monospace; font-size:12px; color:var(--accent); min-width:30px; padding-top:2px; font-weight:700; }
+.toc-info { flex:1; }
+.toc-name { font-size:15px; font-weight:600; color:var(--text-bright); }
+.toc-sub { font-size:12px; color:var(--text-dim); margin-top:2px; }
+.toc-tag { font-size:11px; padding:2px 10px; border-radius:10px; white-space:nowrap; align-self:center; border:1px solid; font-weight:600; }
+
+/* ══ CHAPTERS ══ */
+.chapter { background:var(--surface); page-break-before:always; }
+.chapter-header { padding:50px 65px; position:relative; overflow:hidden; }
+.ch1  .chapter-header { background:linear-gradient(135deg,#0e1a10,#1a2e1c); border-top:4px solid #7daa7f; }
+.ch2  .chapter-header { background:linear-gradient(135deg,#120e1a,#1e1630); border-top:4px solid #a89fcc; }
+.ch3  .chapter-header { background:linear-gradient(135deg,#1a0e0a,#2e1814); border-top:4px solid #e07860; }
+.ch4  .chapter-header { background:linear-gradient(135deg,#1a1206,#2e2010); border-top:4px solid #e0b060; }
+.ch5  .chapter-header { background:linear-gradient(135deg,#06121a,#0e2030); border-top:4px solid #70a8cc; }
+.ch6  .chapter-header { background:linear-gradient(135deg,#0a1412,#14241e); border-top:4px solid #7daa7f; }
+.ch7  .chapter-header { background:linear-gradient(135deg,#14100a,#241c0e); border-top:4px solid #e0b060; }
+.ch8  .chapter-header { background:linear-gradient(135deg,#0e0a16,#1a1228); border-top:4px solid #a89fcc; }
+.ch9  .chapter-header { background:linear-gradient(135deg,#0a1612,#12281e); border-top:4px solid #7daa7f; }
+.ch10 .chapter-header { background:linear-gradient(135deg,#160e0a,#281810); border-top:4px solid #e07860; }
+
+.chapter-header::after {
+  content:attr(data-num); position:absolute; right:60px; top:50%; transform:translateY(-50%);
+  font-family:'Outfit',sans-serif; font-size:120px; font-weight:800; opacity:0.04; color:white; line-height:1;
+}
+.ch-label { font-family:'Outfit',sans-serif; font-size:10px; letter-spacing:4px; color:rgba(255,255,255,0.3); text-transform:uppercase; margin-bottom:10px; }
+.ch-title { font-family:'Noto Serif Bengali',serif; font-size:32px; color:#f0e8d8; font-weight:700; line-height:1.3; }
+.ch-desc { font-size:13px; color:rgba(200,185,165,0.5); margin-top:8px; }
+.chapter-body { padding:50px 65px; }
+
+/* ══ HEADINGS ══ */
+h2.sec {
+  font-family:'Noto Serif Bengali',serif; font-size:21px; font-weight:700;
+  color:var(--accent); margin:40px 0 16px; padding-left:16px; border-left:4px solid var(--accent);
+}
+.ch2 h2.sec  { color:var(--accent2); border-left-color:var(--accent2); }
+.ch3 h2.sec  { color:var(--accent3); border-left-color:var(--accent3); }
+.ch4 h2.sec  { color:var(--accent4); border-left-color:var(--accent4); }
+.ch5 h2.sec  { color:var(--accent5); border-left-color:var(--accent5); }
+.ch6 h2.sec  { color:var(--accent);  border-left-color:var(--accent); }
+.ch7 h2.sec  { color:var(--accent4); border-left-color:var(--accent4); }
+.ch8 h2.sec  { color:var(--accent2); border-left-color:var(--accent2); }
+.ch9 h2.sec  { color:var(--accent);  border-left-color:var(--accent); }
+.ch10 h2.sec { color:var(--accent3); border-left-color:var(--accent3); }
+
+h3.sub { font-family:'Noto Serif Bengali',serif; font-size:17px; font-weight:600; color:var(--text-bright); margin:26px 0 12px; padding-bottom:6px; border-bottom:1px dashed var(--border); }
+p { margin-bottom:16px; text-align:justify; }
+
+/* ══ BOXES ══ */
+.box { padding:18px 22px; border-radius:8px; margin:18px 0; border-left:4px solid; }
+.info    { background:rgba(112,168,204,0.08); border-color:var(--accent5); }
+.warn    { background:rgba(224,176,96,0.08);  border-color:var(--accent4); }
+.danger  { background:rgba(224,120,96,0.08);  border-color:var(--accent3); }
+.success { background:rgba(92,122,94,0.08);   border-color:var(--accent); }
+.purple-box { background:rgba(123,111,160,0.08); border-color:var(--accent2); }
+.box-t { font-weight:700; font-size:15px; margin-bottom:8px; font-family:'Noto Serif Bengali',serif; }
+.box p,.box li { color:var(--text); }
+.quran-box {
+  background: linear-gradient(135deg, rgba(92,122,94,0.08), rgba(123,111,160,0.06));
+  border:1px solid rgba(92,122,94,0.2); border-left:4px solid var(--accent);
+  border-radius:8px; padding:20px 24px; margin:20px 0;
+  font-style:italic; text-align:center;
+}
+.quran-arabic { font-size:22px; color:var(--accent); line-height:2.5; margin-bottom:8px; font-style:normal; }
+.quran-bn { font-size:14px; color:var(--text); margin-bottom:6px; }
+.quran-ref { font-size:12px; color:var(--text-dim); }
+
+/* ══ TABLES ══ */
+table { width:100%; border-collapse:collapse; margin:18px 0; font-size:14px; }
+thead tr { background:var(--code-bg); color:#f0e8d8; }
+th { padding:11px 15px; text-align:left; font-weight:600; color:#c8a870; border-bottom:1px solid var(--border); font-size:13px; }
+td { padding:10px 15px; border-bottom:1px solid var(--border); color:var(--text); }
+tr:nth-child(even) { background:rgba(0,0,0,0.02); }
+tr:hover { background:rgba(92,122,94,0.04); }
+
+/* ══ GRID ══ */
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:18px 0; }
+.grid3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin:16px 0; }
+.card { background:var(--surface2); border:1px solid var(--border); border-radius:8px; padding:18px; }
+.card h4 { font-size:14px; font-weight:700; margin-bottom:10px; padding-bottom:7px; border-bottom:1px solid var(--border); font-family:'Noto Serif Bengali',serif; }
+.card.g-card  { border-color:rgba(92,122,94,0.3);  } .card.g-card  h4 { color:var(--accent); }
+.card.p-card  { border-color:rgba(123,111,160,0.3);} .card.p-card  h4 { color:var(--accent2); }
+.card.r-card  { border-color:rgba(192,98,74,0.3);  } .card.r-card  h4 { color:var(--accent3); }
+.card.y-card  { border-color:rgba(200,146,58,0.3); } .card.y-card  h4 { color:var(--accent4); }
+.card.b-card  { border-color:rgba(74,127,160,0.3); } .card.b-card  h4 { color:var(--accent5); }
+
+/* ══ BADGE ══ */
+.badge { display:inline-block; padding:3px 10px; border-radius:12px; font-size:12px; font-weight:600; margin:2px; border:1px solid; }
+.badge-g { background:rgba(92,122,94,0.1);  color:var(--accent);  border-color:rgba(92,122,94,0.25); }
+.badge-p { background:rgba(123,111,160,0.1);color:var(--accent2); border-color:rgba(123,111,160,0.25); }
+.badge-r { background:rgba(192,98,74,0.1);  color:var(--accent3); border-color:rgba(192,98,74,0.25); }
+.badge-y { background:rgba(200,146,58,0.1); color:var(--accent4); border-color:rgba(200,146,58,0.25); }
+.badge-b { background:rgba(74,127,160,0.1); color:var(--accent5); border-color:rgba(74,127,160,0.25); }
+
+ul,ol { margin:12px 0 12px 24px; line-height:2.2; }
+li { margin-bottom:4px; }
+
+/* ══ SUMMARY ══ */
+.ch-summary {
+  background:var(--code-bg); border-radius:8px; padding:26px 30px; margin-top:42px;
+  border-top:3px solid var(--accent);
+}
+.ch2  .ch-summary { border-top-color:var(--accent2); }
+.ch3  .ch-summary { border-top-color:var(--accent3); }
+.ch4  .ch-summary { border-top-color:var(--accent4); }
+.ch5  .ch-summary { border-top-color:var(--accent5); }
+.ch-summary h3 { font-family:'Noto Serif Bengali',serif; font-size:16px; font-weight:700; color:#f0e8d8; margin-bottom:14px; }
+.ch-summary li { color:#b0a090; }
+
+/* ══ FACTOR CARD ══ */
+.factor-item { display:flex; gap:14px; padding:14px 0; border-bottom:1px solid var(--border); align-items:flex-start; }
+.factor-icon { font-size:28px; flex-shrink:0; margin-top:2px; }
+.factor-title { font-size:15px; font-weight:700; color:var(--text-bright); margin-bottom:4px; }
+.factor-desc { font-size:13.5px; color:var(--text-dim); line-height:1.8; }
+
+/* ══ DO/DONT ══ */
+.do-dont { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:20px 0; }
+.do-col { background:rgba(92,122,94,0.06); border:1px solid rgba(92,122,94,0.2); border-radius:8px; padding:18px; }
+.dont-col { background:rgba(192,98,74,0.06); border:1px solid rgba(192,98,74,0.2); border-radius:8px; padding:18px; }
+.do-title { font-weight:700; color:var(--accent); margin-bottom:12px; font-size:15px; }
+.dont-title { font-weight:700; color:var(--accent3); margin-bottom:12px; font-size:15px; }
+.do-item { display:flex; gap:8px; margin-bottom:10px; font-size:13.5px; align-items:flex-start; }
+.do-check { color:var(--accent); font-weight:700; flex-shrink:0; margin-top:2px; }
+.dont-check { color:var(--accent3); font-weight:700; flex-shrink:0; margin-top:2px; }
+
+@media (max-width:768px) {
+  .grid2,.grid3,.do-dont { grid-template-columns:1fr; }
+  .chapter-body,.chapter-header { padding:28px 22px; }
+  .toc { padding:32px 22px; }
+  .cover h1 { font-size:36px; }
+}
+@media print {
+  .top-controls { display:none; }
+  .chapter-header { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .cover { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+}
+</style>
+</head>
+<body>
+
+<div class="top-controls">
+  <button class="print-btn ctrl-btn" onclick="window.print()">🖨️ PDF</button>
+  <button class="theme-btn ctrl-btn" onclick="toggleTheme()" id="themeBtn">🌙 Dark</button>
+</div>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-leaf"></div>
+  <div class="cover-icon">🧠</div>
+  <div class="cover-eyebrow">// সম্পূর্ণ গাইড //</div>
+  <h1><span>মানসিক স্বাস্থ্য</span></h1>
+  <h1 style="font-size:28px; color:rgba(200,185,165,0.45); font-weight:400; margin-top:4px;">Mental Health — সুস্থ মন, সুখী জীবন</h1>
+  <div class="cover-bar"></div>
+  <p class="cover-desc">
+    মানসিক স্বাস্থ্য কী, কোন কোন বিষয় মানসিক স্বাস্থ্যকে প্রভাবিত করে, কী করলে মানসিক স্বাস্থ্য ভালো থাকে, ইসলামের দৃষ্টিভঙ্গি — সবকিছু নিয়ে একটি সম্পূর্ণ আলোচনা।
+  </p>
+  <div class="cover-quote">
+    "সুস্থ শরীরে সুস্থ মন" — কিন্তু সুস্থ মনেই আসলে সুস্থ জীবনের শুরু।
+  </div>
+  <div class="cover-pills">
+    <span class="cpill cp-g">🧘 মানসিক সুস্থতা</span>
+    <span class="cpill cp-p">🔗 প্রভাবিত কারণ</span>
+    <span class="cpill cp-r">⚠️ সমস্যার লক্ষণ</span>
+    <span class="cpill cp-y">✅ করণীয়</span>
+    <span class="cpill cp-b">❌ বর্জনীয়</span>
+    <span class="cpill cp-g">☪️ ইসলামিক দৃষ্টিভঙ্গি</span>
+    <span class="cpill cp-p">💬 সম্পর্ক ও সামাজিকতা</span>
+    <span class="cpill cp-r">😴 ঘুম ও বিশ্রাম</span>
+    <span class="cpill cp-y">🍎 খাদ্য ও জীবনযাপন</span>
+    <span class="cpill cp-b">🆘 সাহায্য নেওয়া</span>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <div class="toc-h">📋 বিষয়সূচি</div>
+  <div class="toc-sh">Mental Health — সম্পূর্ণ গাইড</div>
+
+  <div class="toc-row"><span class="toc-n">০১</span><div class="toc-info"><div class="toc-name">মানসিক স্বাস্থ্য কী এবং কেন গুরুত্বপূর্ণ?</div><div class="toc-sub">সংজ্ঞা, শারীরিক-মানসিক সংযোগ, ভুল ধারণা</div></div><span class="toc-tag badge-g">BASICS</span></div>
+
+  <div class="toc-row"><span class="toc-n">০২</span><div class="toc-info"><div class="toc-name">কোন কোন বিষয় মানসিক স্বাস্থ্যকে প্রভাবিত করে?</div><div class="toc-sub">জৈবিক, মনোসামাজিক, পরিবেশগত, জীবনযাপনগত কারণ</div></div><span class="toc-tag badge-p">FACTORS</span></div>
+
+  <div class="toc-row"><span class="toc-n">০৩</span><div class="toc-info"><div class="toc-name">মানসিক সমস্যার ধরন ও লক্ষণ</div><div class="toc-sub">বিষণ্নতা, উদ্বেগ, স্ট্রেস, ট্রমা — চেনার উপায়</div></div><span class="toc-tag badge-r">PROBLEMS</span></div>
+
+  <div class="toc-row"><span class="toc-n">০৪</span><div class="toc-info"><div class="toc-name">মানসিক স্বাস্থ্যে খাদ্য, ঘুম ও ব্যায়ামের ভূমিকা</div><div class="toc-sub">কী খাবে, কতক্ষণ ঘুমাবে, কোন ব্যায়াম করবে</div></div><span class="toc-tag badge-y">LIFESTYLE</span></div>
+
+  <div class="toc-row"><span class="toc-n">০৫</span><div class="toc-info"><div class="toc-name">সম্পর্ক, সামাজিকতা ও একাকীত্ব</div><div class="toc-sub">পরিবার, বন্ধু, সম্পর্কের প্রভাব, একা থাকার ক্ষতি</div></div><span class="toc-tag badge-b">SOCIAL</span></div>
+
+  <div class="toc-row"><span class="toc-n">০৬</span><div class="toc-info"><div class="toc-name">সোশ্যাল মিডিয়া, প্রযুক্তি ও মানসিক স্বাস্থ্য</div><div class="toc-sub">Screen time-এর প্রভাব, digital detox, সুস্থ ব্যবহার</div></div><span class="toc-tag badge-g">DIGITAL</span></div>
+
+  <div class="toc-row"><span class="toc-n">০৭</span><div class="toc-info"><div class="toc-name">মানসিক চাপ (Stress) নিয়ন্ত্রণ</div><div class="toc-sub">Stress কী, কারণ, Coping techniques, Mindfulness</div></div><span class="toc-tag badge-y">STRESS</span></div>
+
+  <div class="toc-row"><span class="toc-n">০৮</span><div class="toc-info"><div class="toc-name">ইসলামের আলোকে মানসিক স্বাস্থ্য</div><div class="toc-sub">কুরআন-হাদিসের নির্দেশনা, নামাজ, জিকর, তাওয়াক্কুল</div></div><span class="toc-tag badge-p">ISLAM</span></div>
+
+  <div class="toc-row"><span class="toc-n">০৯</span><div class="toc-info"><div class="toc-name">করণীয় ও বর্জনীয় — সম্পূর্ণ গাইড</div><div class="toc-sub">দৈনন্দিন অভ্যাস, কী করলে ভালো থাকবে, কী এড়াবে</div></div><span class="toc-tag badge-g">GUIDE</span></div>
+
+  <div class="toc-row"><span class="toc-n">১০</span><div class="toc-info"><div class="toc-name">সাহায্য চাওয়া ও পুনরুদ্ধার</div><div class="toc-sub">কখন বিশেষজ্ঞের কাছে যাবে, stigma ভাঙা, সেলফ-কেয়ার রুটিন</div></div><span class="toc-tag badge-r">HELP</span></div>
+</div>
+
+<!-- CH 1: WHAT IS MENTAL HEALTH -->
+<div class="chapter ch1">
+  <div class="chapter-header" data-num="০১">
+    <div class="ch-label">CHAPTER 01</div>
+    <div class="ch-title">🧠 মানসিক স্বাস্থ্য কী এবং কেন গুরুত্বপূর্ণ?</div>
+    <div class="ch-desc">সংজ্ঞা, শারীরিক ও মানসিক স্বাস্থ্যের সংযোগ, প্রচলিত ভুল ধারণা</div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">মানসিক স্বাস্থ্য কী?</h2>
+    <p>বিশ্ব স্বাস্থ্য সংস্থা (WHO) অনুযায়ী, <strong>মানসিক স্বাস্থ্য</strong> হলো সুস্থতার এমন একটি অবস্থা যেখানে একজন মানুষ তার নিজের সম্ভাবনা সম্পর্কে সচেতন, জীবনের স্বাভাবিক চাপ সামলাতে পারে, উৎপাদনশীলভাবে কাজ করতে পারে এবং সমাজে অবদান রাখতে পারে।</p>
+    <p>সহজ ভাষায়, মানসিক স্বাস্থ্য মানে শুধু মানসিক অসুস্থতার অনুপস্থিতি নয় — বরং এটি হলো জীবনকে ইতিবাচকভাবে দেখার, অনুভব করার এবং কার্যকরভাবে চালিয়ে যাওয়ার ক্ষমতা।</p>
+
+    <div class="grid3">
+      <div class="card g-card">
+        <h4>😊 মানসিকভাবে সুস্থ ব্যক্তি</h4>
+        <ul style="font-size:13px;">
+          <li>নিজেকে ভালোবাসে</li>
+          <li>আবেগ নিয়ন্ত্রণ করতে পারে</li>
+          <li>সম্পর্ক বজায় রাখতে পারে</li>
+          <li>পরিবর্তনের সাথে মানিয়ে নেয়</li>
+          <li>উদ্দেশ্য খুঁজে পায়</li>
+        </ul>
+      </div>
+      <div class="card y-card">
+        <h4>⚖️ মানসিক স্বাস্থ্যের তিনটি স্তম্ভ</h4>
+        <ul style="font-size:13px;">
+          <li><strong>আবেগীয়:</strong> অনুভূতি নিয়ন্ত্রণ</li>
+          <li><strong>মনোবৈজ্ঞানিক:</strong> চিন্তার ধরন</li>
+          <li><strong>সামাজিক:</strong> সম্পর্কের মান</li>
+        </ul>
+      </div>
+      <div class="card b-card">
+        <h4>🔗 শরীর ও মনের সংযোগ</h4>
+        <ul style="font-size:13px;">
+          <li>মানসিক চাপে রক্তচাপ বাড়ে</li>
+          <li>বিষণ্নতায় রোগ প্রতিরোধ কমে</li>
+          <li>সুখী মানুষ বেশি দিন বাঁচে</li>
+          <li>ব্যায়ামে মন ভালো হয়</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="sec">প্রচলিত ভুল ধারণা</h2>
+    <table>
+      <thead><tr><th>ভুল ধারণা</th><th>আসল সত্য</th></tr></thead>
+      <tbody>
+        <tr><td>"মানসিক সমস্যা মানে পাগল"</td><td>মানসিক সমস্যা যেকোনো মানুষের হতে পারে — এটি দুর্বলতা নয়, একটি স্বাস্থ্য অবস্থা</td></tr>
+        <tr><td>"ইচ্ছাশক্তি দিয়ে সব ঠিক হয়"</td><td>মানসিক সমস্যার জৈবিক ভিত্তি আছে, শুধু চেষ্টায় সব সমাধান হয় না</td></tr>
+        <tr><td>"মানসিক রোগীরা বিপজ্জনক"</td><td>বেশিরভাগ মানসিক সমস্যাগ্রস্ত মানুষ নিরীহ এবং সমাজে স্বাভাবিক জীবন যাপন করেন</td></tr>
+        <tr><td>"মনোবিদের কাছে যাওয়া লজ্জার"</td><td>ডাক্তারের কাছে যাওয়া যেমন স্বাভাবিক, মনোবিদের কাছে যাওয়াও তেমনই</td></tr>
+        <tr><td>"শিশুদের মানসিক সমস্যা হয় না"</td><td>শিশু ও কিশোরদেরও মানসিক স্বাস্থ্য সমস্যা হতে পারে এবং হয়</td></tr>
+      </tbody>
+    </table>
+
+    <div class="box success">
+      <div class="box-t">💡 মনে রাখো</div>
+      <p>মানসিক স্বাস্থ্য একটি <strong>বর্ণালী (spectrum)</strong> — কেউ পুরোপুরি সুস্থ বা পুরোপুরি অসুস্থ নয়। আমরা সবাই এই বর্ণালীর কোনো না কোনো জায়গায় আছি এবং দিন বা পরিস্থিতি অনুযায়ী সেই অবস্থান পরিবর্তন হয়।</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- CH 2: FACTORS -->
+<div class="chapter ch2">
+  <div class="chapter-header" data-num="০২">
+    <div class="ch-label">CHAPTER 02</div>
+    <div class="ch-title">🔗 কোন কোন বিষয় মানসিক স্বাস্থ্যকে প্রভাবিত করে?</div>
+    <div class="ch-desc">জৈবিক, মনোসামাজিক, পরিবেশগত এবং জীবনযাপনগত কারণ</div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">জৈবিক কারণ (Biological Factors)</h2>
+    <div class="grid2">
+      <div>
+        <div class="factor-item">
+          <div class="factor-icon">🧬</div>
+          <div><div class="factor-title">জিন ও বংশগতি</div><div class="factor-desc">পরিবারে যদি বিষণ্নতা বা অন্য মানসিক সমস্যার ইতিহাস থাকে, তাহলে সেই সম্ভাবনা কিছুটা বেশি থাকে। তবে জিন মানেই নিয়তি নয় — পরিবেশ ও অভ্যাস অনেক পার্থক্য করে।</div></div>
+        </div>
+        <div class="factor-item">
+          <div class="factor-icon">⚗️</div>
+          <div><div class="factor-title">মস্তিষ্কের রসায়ন (Brain Chemistry)</div><div class="factor-desc">Serotonin, Dopamine, Norepinephrine — এই নিউরোট্রান্সমিটারগুলোর ভারসাম্য মানসিক অবস্থা নিয়ন্ত্রণ করে। এগুলোর অসামঞ্জস্য বিষণ্নতা ও উদ্বেগ তৈরি করতে পারে।</div></div>
+        </div>
+        <div class="factor-item">
+          <div class="factor-icon">🏥</div>
+          <div><div class="factor-title">শারীরিক রোগ</div><div class="factor-desc">থাইরয়েড সমস্যা, দীর্ঘস্থায়ী ব্যথা, ক্যান্সার, ডায়াবেটিস — এসব শারীরিক রোগ মানসিক স্বাস্থ্যকে সরাসরি প্রভাবিত করে।</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="factor-item">
+          <div class="factor-icon">😴</div>
+          <div><div class="factor-title">ঘুমের সমস্যা</div><div class="factor-desc">অনিদ্রা এবং মানসিক সমস্যার সম্পর্ক দ্বিমুখী — একটি অন্যটিকে আরো খারাপ করে। ভালো ঘুম মস্তিষ্ক মেরামত করে।</div></div>
+        </div>
+        <div class="factor-item">
+          <div class="factor-icon">🧪</div>
+          <div><div class="factor-title">হরমোন</div><div class="factor-desc">বয়ঃসন্ধি, গর্ভকাল, প্রসব পরবর্তী সময়, মেনোপজ — হরমোনের পরিবর্তন মানসিক অবস্থাকে গভীরভাবে প্রভাবিত করে।</div></div>
+        </div>
+        <div class="factor-item">
+          <div class="factor-icon">🍷</div>
+          <div><div class="factor-title">মাদক ও পদার্থ</div><div class="factor-desc">ধূমপান, মদ বা নেশাজাতীয় পদার্থ সাময়িক স্বস্তি দিলেও দীর্ঘমেয়াদে মানসিক স্বাস্থ্য মারাত্মকভাবে ক্ষতিগ্রস্ত করে।</div></div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="sec">মনোসামাজিক কারণ (Psychosocial Factors)</h2>
+    <div class="grid3">
+      <div class="card p-card">
+        <h4>👨‍👩‍👧 শৈশবের অভিজ্ঞতা</h4>
+        <p style="font-size:13px;">শৈশবে ট্রমা, অবহেলা, শারীরিক বা মানসিক নির্যাতন প্রাপ্তবয়স্ক জীবনের মানসিক স্বাস্থ্যে গভীর প্রভাব ফেলে। ইতিবাচক শৈশব মানসিক দৃঢ়তা তৈরি করে।</p>
+      </div>
+      <div class="card p-card">
+        <h4>💔 জীবনের ঘটনা</h4>
+        <p style="font-size:13px;">প্রিয়জনের মৃত্যু, বিচ্ছেদ, চাকরি হারানো, দুর্ঘটনা — এসব জীবন-পরিবর্তনকারী ঘটনা মানসিক স্বাস্থ্যকে চ্যালেঞ্জ করে।</p>
+      </div>
+      <div class="card p-card">
+        <h4>😰 দীর্ঘস্থায়ী চাপ</h4>
+        <p style="font-size:13px;">দারিদ্র্য, পারিবারিক সংঘাত, কর্মক্ষেত্রের চাপ — দীর্ঘমেয়াদি স্ট্রেস মস্তিষ্কের গঠন পরিবর্তন করতে পারে।</p>
+      </div>
+      <div class="card p-card">
+        <h4>🤝 সামাজিক সহায়তা</h4>
+        <p style="font-size:13px;">শক্তিশালী সামাজিক নেটওয়ার্ক মানসিক সমস্যার বিরুদ্ধে সবচেয়ে শক্তিশালী সুরক্ষা। একাকীত্ব একটি বড় ঝুঁকি।</p>
+      </div>
+      <div class="card p-card">
+        <h4>💸 আর্থিক অবস্থা</h4>
+        <p style="font-size:13px;">আর্থিক অনিশ্চয়তা ও দারিদ্র্য মানসিক চাপ বহুগুণে বাড়িয়ে দেয়। অর্থনৈতিক নিরাপত্তা মানসিক প্রশান্তি দেয়।</p>
+      </div>
+      <div class="card p-card">
+        <h4>🏫 শিক্ষা ও কাজ</h4>
+        <p style="font-size:13px;">পরীক্ষার চাপ, বেকারত্ব, কর্মক্ষেত্রে উৎপীড়ন — এগুলো মানসিক স্বাস্থ্যের উপর সরাসরি প্রভাব ফেলে।</p>
+      </div>
+    </div>
+
+    <h2 class="sec">পরিবেশগত ও জীবনযাপনগত কারণ</h2>
+    <table>
+      <thead><tr><th>কারণ</th><th>মানসিক স্বাস্থ্যে প্রভাব</th><th>তীব্রতা</th></tr></thead>
+      <tbody>
+        <tr><td>প্রকৃতি থেকে দূরে থাকা</td><td>উদ্বেগ ও বিষণ্নতা বাড়ে</td><td><span class="badge badge-y">মাঝারি</span></td></tr>
+        <tr><td>শব্দ ও বায়ু দূষণ</td><td>মানসিক চাপ ও বিরক্তি বাড়ে</td><td><span class="badge badge-y">মাঝারি</span></td></tr>
+        <tr><td>অতিরিক্ত সোশ্যাল মিডিয়া</td><td>হীনমন্যতা, উদ্বেগ, নিদ্রাহীনতা</td><td><span class="badge badge-r">বেশি</span></td></tr>
+        <tr><td>শারীরিক নিষ্ক্রিয়তা</td><td>বিষণ্নতার ঝুঁকি ৩০% বাড়ে</td><td><span class="badge badge-r">বেশি</span></td></tr>
+        <tr><td>অনিয়মিত ঘুম</td><td>মেজাজ অস্থির, সিদ্ধান্ত নিতে সমস্যা</td><td><span class="badge badge-r">বেশি</span></td></tr>
+        <tr><td>অস্বাস্থ্যকর খাদ্যাভ্যাস</td><td>মস্তিষ্কে পুষ্টির ঘাটতি, বিষণ্নতা</td><td><span class="badge badge-y">মাঝারি</span></td></tr>
+        <tr><td>সামাজিক বিচ্ছিন্নতা</td><td>বিষণ্নতার সবচেয়ে বড় কারণগুলোর একটি</td><td><span class="badge badge-r">খুব বেশি</span></td></tr>
+        <tr><td>উদ্দেশ্যহীনতা</td><td>জীবনে অর্থ না পাওয়া, হতাশা</td><td><span class="badge badge-r">বেশি</span></td></tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+<!-- CH 3: PROBLEMS & SYMPTOMS -->
+<div class="chapter ch3">
+  <div class="chapter-header" data-num="০৩">
+    <div class="ch-label">CHAPTER 03</div>
+    <div class="ch-title">⚠️ মানসিক সমস্যার ধরন ও লক্ষণ</div>
+    <div class="ch-desc">বিষণ্নতা, উদ্বেগ, স্ট্রেস, ট্রমা — চেনার উপায় ও পার্থক্য</div>
+  </div>
+  <div class="chapter-body">
+
+    <div class="box danger">
+      <div class="box-t">⚠️ গুরুত্বপূর্ণ</div>
+      <p>এই তথ্য শুধু সচেতনতার জন্য। নিজে বা কাউকে diagnose করার চেষ্টা করো না। কোনো লক্ষণ দেখলে একজন যোগ্য মনোবিদ বা মনোরোগ বিশেষজ্ঞের সাথে কথা বলো।</p>
+    </div>
+
+    <h2 class="sec">বিষণ্নতা (Depression)</h2>
+    <p>বিষণ্নতা শুধু "মন খারাপ" নয় — এটি একটি ক্লিনিকাল অবস্থা যা দৈনন্দিন জীবনকে ব্যাহত করে। এটি বিশ্বব্যাপী অক্ষমতার সবচেয়ে বড় কারণগুলোর একটি।</p>
+    <div class="grid2">
+      <div class="card r-card">
+        <h4>🔴 প্রধান লক্ষণ</h4>
+        <ul style="font-size:13px;">
+          <li>দীর্ঘস্থায়ী দুঃখ বা শূন্যতা (২ সপ্তাহ+)</li>
+          <li>যে কাজে আনন্দ পেতে সেগুলোতে আর আগ্রহ নেই</li>
+          <li>ঘুমের পরিবর্তন — অতিরিক্ত বা অনিদ্রা</li>
+          <li>ক্লান্তি ও শক্তির অভাব</li>
+          <li>মনোযোগ দিতে সমস্যা</li>
+          <li>নিজেকে দোষী মনে করা</li>
+          <li>ওজনের পরিবর্তন</li>
+          <li>মৃত্যু বা নিজেকে ক্ষতির চিন্তা</li>
+        </ul>
+      </div>
+      <div class="card y-card">
+        <h4>💡 বিষণ্নতা vs সাধারণ দুঃখ</h4>
+        <p style="font-size:13px; margin-bottom:8px;"><strong>সাধারণ দুঃখ:</strong></p>
+        <ul style="font-size:13px; margin-bottom:10px;">
+          <li>নির্দিষ্ট কারণ আছে</li>
+          <li>কিছু সময় পর কমে আসে</li>
+          <li>ভালো মুহূর্ত আসে</li>
+        </ul>
+        <p style="font-size:13px; margin-bottom:8px;"><strong>বিষণ্নতা:</strong></p>
+        <ul style="font-size:13px;">
+          <li>কারণ নাও থাকতে পারে</li>
+          <li>দীর্ঘস্থায়ী, কমে না</li>
+          <li>সবকিছুতেই প্রভাব পড়ে</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="sec">উদ্বেগ ও দুশ্চিন্তা (Anxiety)</h2>
+    <div class="grid3">
+      <div class="card b-card">
+        <h4>😰 Generalized Anxiety</h4>
+        <p style="font-size:13px;">সবকিছু নিয়ে অতিরিক্ত দুশ্চিন্তা, নিয়ন্ত্রণ করা যায় না। পেশী টান, মাথাব্যথা, ঘুমের সমস্যা।</p>
+      </div>
+      <div class="card b-card">
+        <h4>😱 Panic Disorder</h4>
+        <p style="font-size:13px;">হঠাৎ তীব্র ভয়ের আক্রমণ — বুক ধড়ফড়, শ্বাস নিতে কষ্ট, মনে হয় মারা যাচ্ছে।</p>
+      </div>
+      <div class="card b-card">
+        <h4>🌍 Social Anxiety</h4>
+        <p style="font-size:13px;">মানুষের সামনে কথা বলতে বা থাকতে তীব্র ভয়, বিচার হওয়ার ভয়।</p>
+      </div>
+    </div>
+
+    <h2 class="sec">স্ট্রেস ও বার্নআউট (Stress & Burnout)</h2>
+    <table>
+      <thead><tr><th></th><th>স্বাভাবিক স্ট্রেস</th><th>দীর্ঘস্থায়ী স্ট্রেস</th><th>বার্নআউট</th></tr></thead>
+      <tbody>
+        <tr><td><strong>কারণ</strong></td><td>নির্দিষ্ট ঘটনা</td><td>একাধিক চাপ</td><td>দীর্ঘ overwork</td></tr>
+        <tr><td><strong>অনুভূতি</strong></td><td>উদ্বিগ্ন কিন্তু উদ্যমী</td><td>ক্লান্ত, বিরক্ত</td><td>সম্পূর্ণ শূন্য</td></tr>
+        <tr><td><strong>কাজ</strong></td><td>কাজ করতে পারে</td><td>কষ্টে করে</td><td>করতেই পারে না</td></tr>
+        <tr><td><strong>সমাধান</strong></td><td>বিশ্রাম ও সময়</td><td>জীবনযাপন পরিবর্তন</td><td>পেশাদার সাহায্য</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="sec">ট্রমা ও PTSD</h2>
+    <p>কোনো ভয়ঙ্কর ঘটনার পর — দুর্ঘটনা, সহিংসতা, প্রিয়জন হারানো — মস্তিষ্ক সেই স্মৃতি প্রক্রিয়া করতে সমস্যায় পড়ে। লক্ষণের মধ্যে আছে বারবার সেই ঘটনার স্মৃতি ফিরে আসা, দুঃস্বপ্ন, সম্পর্কিত জায়গা এড়িয়ে চলা এবং সবসময় সতর্ক থাকা।</p>
+
+    <div class="ch-summary">
+      <h3>🚨 কখন তাৎক্ষণিক সাহায্য দরকার</h3>
+      <ul>
+        <li>নিজেকে বা অন্যকে ক্ষতি করার চিন্তা আসলে</li>
+        <li>বাস্তবতা থেকে সম্পূর্ণ বিচ্ছিন্ন মনে হলে</li>
+        <li>খাওয়া-ঘুম সম্পূর্ণ বন্ধ হয়ে গেলে</li>
+        <li>দৈনন্দিন কাজ করতে একেবারেই না পারলে</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- CH 4: LIFESTYLE -->
+<div class="chapter ch4">
+  <div class="chapter-header" data-num="০৪">
+    <div class="ch-label">CHAPTER 04</div>
+    <div class="ch-title">🍎 খাদ্য, ঘুম ও ব্যায়ামের ভূমিকা</div>
+    <div class="ch-desc">মানসিক স্বাস্থ্যে জীবনযাপনের তিনটি মূল স্তম্ভ</div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">খাদ্য ও মানসিক স্বাস্থ্য — "Gut-Brain Connection"</h2>
+    <p>আমাদের অন্ত্র (gut) কে "দ্বিতীয় মস্তিষ্ক" বলা হয়। শরীরের ৯৫% Serotonin তৈরি হয় অন্ত্রে। তাই যা খাই তা মস্তিষ্কের রসায়নকে সরাসরি প্রভাবিত করে।</p>
+    <div class="grid2">
+      <div class="card g-card">
+        <h4>✅ মানসিক স্বাস্থ্যের জন্য ভালো খাবার</h4>
+        <ul style="font-size:13px;">
+          <li><strong>ওমেগা-৩:</strong> মাছ, আখরোট, চিয়া সিড — বিষণ্নতা কমায়</li>
+          <li><strong>Probiotic:</strong> দই, কেফির — অন্ত্রের স্বাস্থ্য উন্নত করে</li>
+          <li><strong>সবুজ শাকসবজি:</strong> ফোলেট সমৃদ্ধ — বিষণ্নতার বিরুদ্ধে কার্যকর</li>
+          <li><strong>বেরি জাতীয় ফল:</strong> অ্যান্টিঅক্সিডেন্ট — মস্তিষ্ক রক্ষা করে</li>
+          <li><strong>ডার্ক চকলেট:</strong> মেজাজ উন্নত করে (পরিমিত)</li>
+          <li><strong>পানি:</strong> ডিহাইড্রেশন উদ্বেগ বাড়ায়</li>
+        </ul>
+      </div>
+      <div class="card r-card">
+        <h4>❌ মানসিক স্বাস্থ্যের জন্য ক্ষতিকর খাবার</h4>
+        <ul style="font-size:13px;">
+          <li><strong>চিনি ও মিষ্টি:</strong> রক্তে শর্করার ওঠানামা মেজাজকে অস্থির করে</li>
+          <li><strong>Processed food:</strong> প্রদাহ বাড়ায়, মস্তিষ্কের ক্ষতি করে</li>
+          <li><strong>অতিরিক্ত ক্যাফেইন:</strong> উদ্বেগ ও ঘুমের সমস্যা বাড়ায়</li>
+          <li><strong>Refined carbs:</strong> শক্তির দ্রুত ওঠানামা মেজাজে প্রভাব ফেলে</li>
+          <li><strong>অ্যালকোহল:</strong> সাময়িক স্বস্তি দিলেও দীর্ঘমেয়াদে ক্ষতিকর</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="sec">ঘুম — মানসিক স্বাস্থ্যের ভিত্তি</h2>
+    <div class="box info">
+      <div class="box-t">💤 ঘুমের সময় মস্তিষ্কে কী হয়?</div>
+      <p>ঘুমের সময় মস্তিষ্ক দিনের স্মৃতি প্রক্রিয়া করে, toxic waste পরিষ্কার করে এবং আবেগ নিয়ন্ত্রণের কেন্দ্র (prefrontal cortex) মেরামত হয়। মাত্র একরাতের কম ঘুমেই উদ্বেগ ৩০% বাড়তে পারে।</p>
+    </div>
+    <table>
+      <thead><tr><th>বয়স</th><th>প্রয়োজনীয় ঘুম</th><th>কম ঘুমের প্রভাব</th></tr></thead>
+      <tbody>
+        <tr><td>শিশু (৬-১৩ বছর)</td><td>৯-১১ ঘন্টা</td><td>মনোযোগ, আচরণ সমস্যা</td></tr>
+        <tr><td>কিশোর (১৪-১৭ বছর)</td><td>৮-১০ ঘন্টা</td><td>মেজাজ অস্থির, বিষণ্নতা</td></tr>
+        <tr><td>প্রাপ্তবয়স্ক (১৮-৬৪)</td><td>৭-৯ ঘন্টা</td><td>উদ্বেগ, স্মৃতিভ্রংশ, রোগ প্রতিরোধ কমে</td></tr>
+        <tr><td>বৃদ্ধ (৬৫+)</td><td>৭-৮ ঘন্টা</td><td>স্মৃতিশক্তি হ্রাস</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub">ভালো ঘুমের জন্য করণীয়</h3>
+    <ul>
+      <li>প্রতিদিন একই সময়ে ঘুমানো ও ওঠা</li>
+      <li>ঘুমের ১ ঘন্টা আগে স্ক্রিন বন্ধ করা</li>
+      <li>রুম ঠান্ডা, অন্ধকার ও শান্ত রাখা</li>
+      <li>ঘুমানোর আগে ভারী খাবার না খাওয়া</li>
+      <li>বিছানায় শুয়ে কাজ না করা</li>
+    </ul>
+
+    <h2 class="sec">ব্যায়াম — প্রাকৃতিক Antidepressant</h2>
+    <p>গবেষণায় দেখা গেছে, সপ্তাহে ৩ দিন ৩০ মিনিটের মাঝারি ব্যায়াম বিষণ্নতার চিকিৎসায় ওষুধের মতোই কার্যকর হতে পারে। ব্যায়াম Endorphin, Serotonin ও BDNF নিঃসরণ করে — যা মস্তিষ্কের স্বাস্থ্য উন্নত করে।</p>
+    <div class="grid3">
+      <div class="card g-card">
+        <h4>🚶 হাঁটা ও দৌড়</h4>
+        <p style="font-size:13px;">প্রতিদিন ৩০ মিনিট হাঁটা বিষণ্নতার ঝুঁকি ২৬% কমায়। সূর্যের আলোতে হাঁটলে ভিটামিন ডি পাওয়া যায় যা মেজাজ ভালো রাখে।</p>
+      </div>
+      <div class="card g-card">
+        <h4>🧘 যোগব্যায়াম ও মেডিটেশন</h4>
+        <p style="font-size:13px;">শ্বাস-প্রশ্বাস নিয়ন্ত্রণ সরাসরি স্নায়ুতন্ত্রকে শান্ত করে। উদ্বেগ ও স্ট্রেস কমাতে অত্যন্ত কার্যকর।</p>
+      </div>
+      <div class="card g-card">
+        <h4>🏊 যেকোনো শারীরিক কার্যক্রম</h4>
+        <p style="font-size:13px;">সাঁতার, সাইকেল চালানো, নাচ, খেলাধুলা — যা উপভোগ করো তাই করো। নিয়মিততাই মূল চাবিকাঠি।</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CH 5: RELATIONSHIPS -->
+<div class="chapter ch5">
+  <div class="chapter-header" data-num="০৫">
+    <div class="ch-label">CHAPTER 05</div>
+    <div class="ch-title">💬 সম্পর্ক, সামাজিকতা ও একাকীত্ব</div>
+    <div class="ch-desc">মানুষ সামাজিক প্রাণী — সম্পর্কের মান মানসিক স্বাস্থ্যকে গভীরভাবে প্রভাবিত করে</div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">সম্পর্কের গুরুত্ব</h2>
+    <p>হার্ভার্ড বিশ্ববিদ্যালয়ের ৮০ বছরের একটি গবেষণায় দেখা গেছে — দীর্ঘ ও সুখী জীবনের সবচেয়ে বড় নির্ধারক হলো <strong>ভালো সম্পর্ক</strong>। বন্ধু বা পরিবারের একজন বিশ্বস্ত মানুষ থাকাটা মানসিক স্বাস্থ্যের জন্য যেকোনো ওষুধের চেয়ে বেশি শক্তিশালী।</p>
+
+    <div class="grid2">
+      <div class="card g-card">
+        <h4>✅ সুস্থ সম্পর্কের বৈশিষ্ট্য</h4>
+        <ul style="font-size:13px;">
+          <li>পারস্পরিক শ্রদ্ধা ও বিশ্বাস</li>
+          <li>নিজেকে প্রকাশ করতে পারা</li>
+          <li>সীমানা (boundaries) বোঝা ও মানা</li>
+          <li>কষ্টের সময় পাশে থাকা</li>
+          <li>সুখের মুহূর্ত ভাগ করা</li>
+          <li>মতভেদ সুস্থভাবে সমাধান</li>
+        </ul>
+      </div>
+      <div class="card r-card">
+        <h4>❌ ক্ষতিকর সম্পর্কের লক্ষণ</h4>
+        <ul style="font-size:13px;">
+          <li>নিয়ন্ত্রণ ও কর্তৃত্ব</li>
+          <li>মানসিক বা শারীরিক নির্যাতন</li>
+          <li>সবসময় নিজেকে ছোট মনে করানো</li>
+          <li>অন্য সব সম্পর্ক থেকে আলাদা করা</li>
+          <li>গ্যাসলাইটিং — বাস্তবতা নিয়ে প্রশ্ন তোলা</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="sec">একাকীত্বের বিপদ</h2>
+    <div class="box danger">
+      <div class="box-t">🔴 একাকীত্ব স্বাস্থ্যের জন্য ধূমপানের চেয়েও বেশি ক্ষতিকর</div>
+      <p>গবেষণায় দেখা গেছে দীর্ঘস্থায়ী একাকীত্ব — শারীরিক স্বাস্থ্যে প্রতিদিন ১৫টি সিগারেটের মতো ক্ষতি করে। এটি রোগ প্রতিরোধ শক্তি কমায়, হৃদরোগের ঝুঁকি বাড়ায় এবং বিষণ্নতার সবচেয়ে বড় কারণগুলোর একটি।</p>
+    </div>
+
+    <p>তবে মনে রাখো — <strong>একা থাকা (solitude)</strong> এবং <strong>একাকীত্ব (loneliness)</strong> আলাদা জিনিস। নিজের সাথে সময় কাটানো মানসিক শক্তি দেয়, কিন্তু সংযোগের অনুপস্থিতি ক্ষতি করে।</p>
+
+    <h2 class="sec">পারিবারিক সম্পর্ক ও মানসিক স্বাস্থ্য</h2>
+    <p>পরিবারই হলো মানসিক স্বাস্থ্যের প্রথম ও সবচেয়ে গুরুত্বপূর্ণ আশ্রয়। একটি সহায়ক পরিবার মানসিক সমস্যার বিরুদ্ধে সবচেয়ে শক্তিশালী সুরক্ষা প্রদান করে। পক্ষান্তরে, পারিবারিক কলহ, অবহেলা বা নির্যাতন মানসিক স্বাস্থ্যকে সবচেয়ে বেশি ক্ষতিগ্রস্ত করে।</p>
+
+    <div class="ch-summary">
+      <h3>💡 সম্পর্ক উন্নয়নের ব্যবহারিক পরামর্শ</h3>
+      <ul>
+        <li>প্রতিদিন পরিবারের সাথে মানসম্পন্ন সময় কাটাও (phone ছাড়া)</li>
+        <li>বন্ধুর সাথে নিয়মিত যোগাযোগ রাখো — শুধু social media নয়</li>
+        <li>কারো কথা শোনো মনোযোগ দিয়ে — পরামর্শ না দিয়েও</li>
+        <li>কৃতজ্ঞতা প্রকাশ করতে শেখো</li>
+        <li>ক্ষমা চাইতে ও ক্ষমা করতে পারো</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- CH 6: SOCIAL MEDIA & TECHNOLOGY -->
+<div class="chapter ch6">
+  <div class="chapter-header" data-num="০৬">
+    <div class="ch-label">CHAPTER 06</div>
+    <div class="ch-title">📱 সোশ্যাল মিডিয়া, প্রযুক্তি ও মানসিক স্বাস্থ্য</div>
+    <div class="ch-desc">Digital জীবনে মানসিক সুস্থতা রক্ষার উপায়</div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">সোশ্যাল মিডিয়ার প্রভাব</h2>
+    <div class="grid2">
+      <div class="card r-card">
+        <h4>📉 নেতিবাচক প্রভাব</h4>
+        <ul style="font-size:13px;">
+          <li><strong>তুলনার罠 ফাঁদ:</strong> অন্যের highlight reel দেখে নিজেকে ছোট মনে হওয়া</li>
+          <li><strong>FOMO:</strong> মিস করার ভয় — সবসময় connected থাকার চাপ</li>
+          <li><strong>Cyberbullying:</strong> অনলাইন হয়রানির গভীর মানসিক প্রভাব</li>
+          <li><strong>Dopamine Loop:</strong> Like ও notification-এর আসক্তি</li>
+          <li><strong>ঘুমের ক্ষতি:</strong> রাতে screen দেখলে melatonin কমে যায়</li>
+          <li><strong>মনোযোগ হ্রাস:</strong> গভীরভাবে ভাবার ক্ষমতা কমে</li>
+        </ul>
+      </div>
+      <div class="card g-card">
+        <h4>📈 ইতিবাচক ব্যবহার</h4>
+        <ul style="font-size:13px;">
+          <li>সহায়তা গোষ্ঠীতে সংযোগ</li>
+          <li>দূরের প্রিয়জনের সাথে যোগাযোগ</li>
+          <li>মানসিক স্বাস্থ্য সচেতনতার তথ্য</li>
+          <li>সৃজনশীলতা প্রকাশের মাধ্যম</li>
+          <li>শিক্ষা ও উন্নয়নের সুযোগ</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="sec">Screen Time ও মানসিক স্বাস্থ্য</h2>
+    <table>
+      <thead><tr><th>দৈনিক Screen Time</th><th>প্রভাব</th></tr></thead>
+      <tbody>
+        <tr><td>১ ঘন্টার কম</td><td><span class="badge badge-g">ইতিবাচক</span> — সংযোগ ও তথ্য পাওয়ার সুবিধা</td></tr>
+        <tr><td>১-৩ ঘন্টা</td><td><span class="badge badge-y">নিরপেক্ষ</span> — ব্যবহারের ধরনের উপর নির্ভর করে</td></tr>
+        <tr><td>৩-৫ ঘন্টা</td><td><span class="badge badge-y">সতর্কতা</span> — মনোযোগ ও ঘুমে প্রভাব পড়তে পারে</td></tr>
+        <tr><td>৫+ ঘন্টা</td><td><span class="badge badge-r">ক্ষতিকর</span> — বিষণ্নতা ও উদ্বেগের ঝুঁকি উল্লেখযোগ্যভাবে বাড়ে</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="sec">Digital Detox ও সুস্থ প্রযুক্তি ব্যবহার</h2>
+    <div class="do-dont">
+      <div class="do-col">
+        <div class="do-title">✅ করো</div>
+        <div class="do-item"><span class="do-check">✓</span><span>Phone-free সময় নির্ধারণ করো (খাবার সময়, ঘুমানোর আগে)</span></div>
+        <div class="do-item"><span class="do-check">✓</span><span>Notification বন্ধ করে রাখো বেশিরভাগ সময়</span></div>
+        <div class="do-item"><span class="do-check">✓</span><span>Unfollow করো যারা তোমাকে খারাপ অনুভব করায়</span></div>
+        <div class="do-item"><span class="do-check">✓</span><span>সপ্তাহে একদিন সম্পূর্ণ social media বন্ধ রাখো</span></div>
+        <div class="do-item"><span class="do-check">✓</span><span>Screen time monitor করো এবং সীমা নির্ধারণ করো</span></div>
+      </div>
+      <div class="dont-col">
+        <div class="dont-title">❌ করো না</div>
+        <div class="do-item"><span class="dont-check">✗</span><span>ঘুমানোর আগে বা সকালে উঠেই phone দেখা</span></div>
+        <div class="do-item"><span class="dont-check">✗</span><span>নিজেকে অন্যের সাথে তুলনা করা</span></div>
+        <div class="do-item"><span class="dont-check">✗</span><span>খাবার টেবিলে phone ব্যবহার</span></div>
+        <div class="do-item"><span class="dont-check">✗</span><span>রাতে ঘুমের সময় phone কাছে রাখা</span></div>
+        <div class="do-item"><span class="dont-check">✗</span><span>সব negative news সব সময় পড়া</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CH 7: STRESS MANAGEMENT -->
+<div class="chapter ch7">
+  <div class="chapter-header" data-num="০৭">
+    <div class="ch-label">CHAPTER 07</div>
+    <div class="ch-title">🌊 মানসিক চাপ (Stress) নিয়ন্ত্রণ</div>
+    <div class="ch-desc">স্ট্রেস কী, কোথা থেকে আসে এবং কীভাবে কার্যকরভাবে মোকাবিলা করতে হয়</div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">স্ট্রেস আসলে কী?</h2>
+    <p>স্ট্রেস হলো কোনো চাহিদার সামনে আমাদের শরীর ও মনের স্বাভাবিক প্রতিক্রিয়া। সামান্য স্ট্রেস আসলে আমাদের মনোযোগী ও উৎপাদনশীল করে। সমস্যা হয় যখন এটি দীর্ঘস্থায়ী ও অতিরিক্ত হয়।</p>
+
+    <h2 class="sec">কার্যকর Stress Management কৌশল</h2>
+    <div class="grid2">
+      <div class="card y-card">
+        <h4>🫁 শ্বাস-প্রশ্বাসের কৌশল</h4>
+        <p style="font-size:13px; margin-bottom:8px;"><strong>4-7-8 Breathing:</strong></p>
+        <ul style="font-size:13px;">
+          <li>৪ সেকেন্ড নাক দিয়ে শ্বাস নাও</li>
+          <li>৭ সেকেন্ড ধরে রাখো</li>
+          <li>৮ সেকেন্ড মুখ দিয়ে ছেড়ে দাও</li>
+          <li>৩-৪ বার পুনরাবৃত্তি করো</li>
+        </ul>
+        <p style="font-size:12px; color:var(--text-dim); margin-top:8px;">মাত্র ২ মিনিটে স্নায়ুতন্ত্র শান্ত হয়</p>
+      </div>
+      <div class="card y-card">
+        <h4>✍️ জার্নালিং</h4>
+        <p style="font-size:13px;">প্রতিদিন ১০ মিনিট লিখলে:</p>
+        <ul style="font-size:13px;">
+          <li>অনুভূতি প্রক্রিয়া করতে সাহায্য করে</li>
+          <li>সমস্যার নতুন দৃষ্টিভঙ্গি দেয়</li>
+          <li>কৃতজ্ঞতা অনুভব করতে সাহায্য করে</li>
+          <li>মাথার জট কমায়</li>
+        </ul>
+      </div>
+      <div class="card y-card">
+        <h4>🎯 Mindfulness</h4>
+        <p style="font-size:13px;">বর্তমান মুহূর্তে মনোযোগ দেওয়ার অভ্যাস। প্রতিদিন ৫-১০ মিনিট:</p>
+        <ul style="font-size:13px;">
+          <li>চোখ বন্ধ করে শ্বাসের দিকে মনোযোগ দাও</li>
+          <li>চিন্তা এলে বিচার না করে শুধু দেখো</li>
+          <li>শরীরের অনুভূতিগুলো লক্ষ্য করো</li>
+        </ul>
+      </div>
+      <div class="card y-card">
+        <h4>🏃 শারীরিক কার্যক্রম</h4>
+        <p style="font-size:13px;">স্ট্রেসে শরীরে cortisol জমা হয়। ব্যায়াম এটি দ্রুত ভেঙে দেয়।</p>
+        <ul style="font-size:13px;">
+          <li>দ্রুত হাঁটা বা দৌড়ানো</li>
+          <li>যোগব্যায়াম</li>
+          <li>নাচ বা যেকোনো পছন্দের খেলা</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="sec">সময় ব্যবস্থাপনা ও স্ট্রেস</h2>
+    <div class="box warn">
+      <div class="box-t">⏰ Eisenhower Matrix — কাজের অগ্রাধিকার নির্ধারণ</div>
+      <div class="grid2" style="margin:10px 0 0;">
+        <div style="background:rgba(92,122,94,0.08); border:1px solid rgba(92,122,94,0.2); border-radius:6px; padding:12px;">
+          <strong style="color:var(--accent);">✅ গুরুত্বপূর্ণ + জরুরি</strong><br>
+          <small>এখনই করো</small>
+        </div>
+        <div style="background:rgba(74,127,160,0.08); border:1px solid rgba(74,127,160,0.2); border-radius:6px; padding:12px;">
+          <strong style="color:var(--accent5);">📅 গুরুত্বপূর্ণ + জরুরি নয়</strong><br>
+          <small>পরিকল্পনা করে করো</small>
+        </div>
+        <div style="background:rgba(200,146,58,0.08); border:1px solid rgba(200,146,58,0.2); border-radius:6px; padding:12px;">
+          <strong style="color:var(--accent4);">👤 জরুরি + গুরুত্বপূর্ণ নয়</strong><br>
+          <small>অন্যকে দাও</small>
+        </div>
+        <div style="background:rgba(192,98,74,0.08); border:1px solid rgba(192,98,74,0.2); border-radius:6px; padding:12px;">
+          <strong style="color:var(--accent3);">🗑️ জরুরি নয় + গুরুত্বপূর্ণ নয়</strong><br>
+          <small>বাদ দাও</small>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CH 8: ISLAM & MENTAL HEALTH -->
+<div class="chapter ch8">
+  <div class="chapter-header" data-num="০৮">
+    <div class="ch-label">CHAPTER 08</div>
+    <div class="ch-title">☪️ ইসলামের আলোকে মানসিক স্বাস্থ্য</div>
+    <div class="ch-desc">কুরআন ও হাদিসের নির্দেশনা, আধ্যাত্মিক অনুশীলন এবং মানসিক প্রশান্তির পথ</div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">ইসলামে মানসিক সুস্থতার দৃষ্টিভঙ্গি</h2>
+    <p>ইসলাম মানুষকে একটি সমন্বিত সত্তা হিসেবে দেখে — শরীর, মন এবং আত্মা একে অপরের সাথে গভীরভাবে সংযুক্ত। মানসিক স্বাস্থ্যের যত্ন নেওয়া ইসলামে একটি দায়িত্ব, কারণ আমাদের শরীর ও মন আমানত (trust)।</p>
+
+    <div class="quran-box">
+      <div class="quran-arabic">أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ</div>
+      <div class="quran-bn">"জেনে রাখো, আল্লাহর স্মরণেই হৃদয় প্রশান্ত হয়।"</div>
+      <div class="quran-ref">— সূরা আর-রাদ, আয়াত ২৮</div>
+    </div>
+
+    <h2 class="sec">নামাজ — মানসিক স্বাস্থ্যের অনুশীলন</h2>
+    <div class="grid2">
+      <div class="card p-card">
+        <h4>🕌 নামাজের মানসিক উপকার</h4>
+        <ul style="font-size:13px;">
+          <li><strong>নিয়মিততা:</strong> দিনে ৫ বার নির্দিষ্ট সময়ে routine তৈরি হয়</li>
+          <li><strong>Mindfulness:</strong> প্রতিটি রাকাতে সম্পূর্ণ উপস্থিতি</li>
+          <li><strong>শারীরিক:</strong> সিজদা মস্তিষ্কে রক্ত প্রবাহ বাড়ায়</li>
+          <li><strong>কৃতজ্ঞতা:</strong> আলহামদুলিল্লাহ ইতিবাচক মনোভাব তৈরি করে</li>
+          <li><strong>সংযোগ:</strong> আল্লাহর সাথে ব্যক্তিগত সম্পর্ক</li>
+          <li><strong>জামাআত:</strong> সামাজিক সংযোগ ও সম্প্রদায়বোধ</li>
+        </ul>
+      </div>
+      <div class="card p-card">
+        <h4>🤲 দোয়া ও জিকর</h4>
+        <ul style="font-size:13px; line-height:2.2;">
+          <li>সকাল-সন্ধ্যার আজকার — দিনের সুরক্ষা ও কৃতজ্ঞতা</li>
+          <li><strong>সুবহানাল্লাহ:</strong> পবিত্রতার অনুভূতি</li>
+          <li><strong>আলহামদুলিল্লাহ:</strong> কৃতজ্ঞতা অনুশীলন</li>
+          <li><strong>আস্তাগফিরুল্লাহ:</strong> অনুশোচনা মুক্তি ও হালকা মনের অনুভূতি</li>
+          <li><strong>লা হাওলা ওয়ালা কুওয়াতা:</strong> শক্তির উৎসের স্মরণ</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="quran-box">
+      <div class="quran-arabic">وَلَنَبْلُوَنَّكُم بِشَيْءٍ مِّنَ الْخَوْفِ وَالْجُوعِ</div>
+      <div class="quran-bn">"আমি অবশ্যই তোমাদের পরীক্ষা করব কিছুটা ভয়, ক্ষুধা, ধন-সম্পদের ক্ষতি, জীবনহানি এবং ফসলের ক্ষতির মাধ্যমে। আর তুমি সুসংবাদ দাও ধৈর্যশীলদের।"</div>
+      <div class="quran-ref">— সূরা আল-বাকারা, আয়াত ১৫৫</div>
+    </div>
+
+    <h2 class="sec">তাওয়াক্কুল — নির্ভরতার মানসিক শক্তি</h2>
+    <p><strong>তাওয়াক্কুল</strong> মানে হলো যথাসাধ্য চেষ্টা করার পর ফলাফল আল্লাহর উপর ছেড়ে দেওয়া। এটি মানসিক স্বাস্থ্যে অসাধারণ কার্যকর কারণ এটি নিয়ন্ত্রণের বাইরের বিষয় নিয়ে উদ্বিগ্ন না হওয়ার শিক্ষা দেয়।</p>
+    <div class="box success">
+      <div class="box-t">💚 তাওয়াক্কুলের মানসিক উপকার</div>
+      <ul>
+        <li>ভবিষ্যত নিয়ে অতিরিক্ত উদ্বেগ কমে</li>
+        <li>ব্যর্থতা সহজে মোকাবিলা করা যায়</li>
+        <li>অনিশ্চয়তার মাঝেও মানসিক স্থিরতা থাকে</li>
+        <li>নিজের সীমাবদ্ধতা মেনে নেওয়া সহজ হয়</li>
+      </ul>
+    </div>
+
+    <h2 class="sec">সবর ও শুকর — দুটি মানসিক সুস্থতার স্তম্ভ</h2>
+    <div class="grid2">
+      <div class="card p-card">
+        <h4>🌿 সবর (ধৈর্য)</h4>
+        <p style="font-size:13px;">সবর মানে শুধু চুপ করে থাকা নয় — এটি সক্রিয়ভাবে কষ্ট সহ্য করে সামনে এগিয়ে যাওয়া। ইসলামে সবরকারীদের জন্য বিশেষ পুরস্কারের প্রতিশ্রুতি রয়েছে। গবেষণায় দেখা গেছে resilience বা মানসিক দৃঢ়তা বিকাশে এই ধরনের বিশ্বাস গভীর ভূমিকা রাখে।</p>
+      </div>
+      <div class="card p-card">
+        <h4>🌸 শুকর (কৃতজ্ঞতা)</h4>
+        <p style="font-size:13px;">আধুনিক মনোবিজ্ঞান প্রমাণ করেছে কৃতজ্ঞতা চর্চা সুখ বাড়ায় এবং বিষণ্নতা কমায়। ইসলামে এই কৃতজ্ঞতার চর্চা — আলহামদুলিল্লাহ — হাজার বছর ধরে মানসিক সুস্থতার একটি মূল অনুশীলন।</p>
+      </div>
+    </div>
+
+    <h2 class="sec">ইসলামিক দৃষ্টিকোণে কিছু গুরুত্বপূর্ণ নির্দেশনা</h2>
+    <ul style="line-height:2.4;">
+      <li>🤝 <strong>সম্প্রদায়ের সাথে সংযুক্ত থাকা</strong> — মসজিদ, পরিবার, প্রতিবেশী</li>
+      <li>😄 <strong>হাসি ও রসিকতা</strong> — নবী (সা.) নিজে হাসিখুশি ছিলেন এবং অন্যদের হাসাতেন</li>
+      <li>💤 <strong>পর্যাপ্ত ঘুম ও বিশ্রাম</strong> — শরীর ও মনের যত্ন নেওয়া ইবাদত</li>
+      <li>🚫 <strong>অতিরিক্ততা এড়ানো</strong> — কাজ, খাওয়া, কথা — সব ক্ষেত্রে ভারসাম্য</li>
+      <li>📖 <strong>কুরআন তিলাওয়াত</strong> — গবেষণায় প্রমাণিত মানসিক প্রশান্তির উৎস</li>
+      <li>🤲 <strong>অন্যের জন্য দোয়া করা</strong> — নিজের মানসিক অবস্থার উপর ইতিবাচক প্রভাব ফেলে</li>
+    </ul>
+
+    <div class="quran-box">
+      <div class="quran-arabic">فَإِنَّ مَعَ الْعُسْرِ يُسْرًا ۞ إِنَّ مَعَ الْعُسْرِ يُسْرًا</div>
+      <div class="quran-bn">"নিশ্চয়ই কষ্টের সাথে স্বস্তি আছে। অবশ্যই কষ্টের সাথে স্বস্তি আছে।"</div>
+      <div class="quran-ref">— সূরা আল-ইনশিরাহ, আয়াত ৫-৬</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CH 9: DO & DON'T -->
+<div class="chapter ch9">
+  <div class="chapter-header" data-num="০৯">
+    <div class="ch-label">CHAPTER 09</div>
+    <div class="ch-title">✅ করণীয় ও বর্জনীয় — সম্পূর্ণ গাইড</div>
+    <div class="ch-desc">মানসিক স্বাস্থ্য ভালো রাখতে দৈনন্দিন যা করবে এবং যা এড়াবে</div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">দৈনন্দিন করণীয়</h2>
+    <div class="do-dont">
+      <div class="do-col">
+        <div class="do-title">✅ প্রতিদিন করো</div>
+        <div class="do-item"><span class="do-check">✓</span><span><strong>সকালে উঠে ৫ টি কৃতজ্ঞতা লেখো</strong> — দিনের সুরু ইতিবাচকভাবে হয়</span></div>
+        <div class="do-item"><span class="do-check">✓</span><span><strong>সময়মতো নামাজ পড়ো</strong> — দিনের কাঠামো ও মানসিক শান্তি</span></div>
+        <div class="do-item"><span class="do-check">✓</span><span><strong>৩০ মিনিট হাঁটো বা ব্যায়াম করো</strong> — প্রাকৃতিক antidepressant</span></div>
+        <div class="do-item"><span class="do-check">✓</span><span><strong>পর্যাপ্ত পানি পান করো</strong> — ডিহাইড্রেশন উদ্বেগ বাড়ায়</span></div>
+        <div class="do-item"><span class="do-check">✓</span><span><strong>কারো সাথে সত্যিকার কথা বলো</strong> — call বা সরাসরি</span></div>
+        <div class="do-item"><span class="do-check">✓</span><span><strong>একটি কাজ সম্পন্ন করো</strong> — ছোট হলেও সাফল্যের অনুভূতি দেয়</span></div>
+        <div class="do-item"><span class="do-check">✓</span><span><strong>প্রকৃতিতে সময় কাটাও</strong> — সূর্যালোক ও সবুজ মন ভালো রাখে</span></div>
+        <div class="do-item"><span class="do-check">✓</span><span><strong>রাত ১১টার আগে ঘুমানোর চেষ্টা করো</strong></span></div>
+      </div>
+      <div class="dont-col">
+        <div class="dont-title">❌ এড়িয়ে চলো</div>
+        <div class="do-item"><span class="dont-check">✗</span><span><strong>নেতিবাচক মানুষের সাথে অতিরিক্ত সময়</strong> — শক্তি নিঃশেষ করে</span></div>
+        <div class="do-item"><span class="dont-check">✗</span><span><strong>নিজেকে অন্যের সাথে তুলনা</strong> — তোমার যাত্রা তোমার নিজের</span></div>
+        <div class="do-item"><span class="dont-check">✗</span><span><strong>রাত জেগে screen দেখা</strong> — ঘুমের মান নষ্ট হয়</span></div>
+        <div class="do-item"><span class="dont-check">✗</span><span><strong>সমস্যা চেপে রাখা</strong> — বলো বা লেখো, মনের ভার কমে</span></div>
+        <div class="do-item"><span class="dont-check">✗</span><span><strong>পারফেকশনিজম</strong> — "যথেষ্ট ভালো" যথেষ্ট ভালো</span></div>
+        <div class="do-item"><span class="dont-check">✗</span><span><strong>অতীত নিয়ে অতিরিক্ত আফসোস</strong> — তুমি বদলাতে পারবে না</span></div>
+        <div class="do-item"><span class="dont-check">✗</span><span><strong>ভবিষ্যত নিয়ে অতিরিক্ত দুশ্চিন্তা</strong> — বর্তমানে থাকো</span></div>
+        <div class="do-item"><span class="dont-check">✗</span><span><strong>"না" বলতে না পারা</strong> — নিজের সীমানা রক্ষা করো</span></div>
+      </div>
+    </div>
+
+    <h2 class="sec">মানসিক স্বাস্থ্য রক্ষার দীর্ঘমেয়াদী অভ্যাস</h2>
+    <table>
+      <thead><tr><th>অভ্যাস</th><th>কীভাবে শুরু করবে</th><th>প্রভাব দেখা যায়</th></tr></thead>
+      <tbody>
+        <tr><td>🙏 কৃতজ্ঞতার জার্নাল</td><td>রাতে ঘুমানোর আগে ৩টি ভালো জিনিস লেখো</td><td>২ সপ্তাহে</td></tr>
+        <tr><td>🧘 মেডিটেশন</td><td>প্রতিদিন ৫ মিনিট দিয়ে শুরু করো</td><td>৮ সপ্তাহে</td></tr>
+        <tr><td>📚 পড়ার অভ্যাস</td><td>প্রতিদিন ১৫ মিনিট ভালো বই পড়ো</td><td>১ মাসে</td></tr>
+        <tr><td>🌿 প্রকৃতিতে সময়</td><td>সপ্তাহে ২ বার বাইরে হাঁটতে যাও</td><td>তাৎক্ষণিক</td></tr>
+        <tr><td>🎨 সৃজনশীল কাজ</td><td>আঁকা, লেখা, রান্না — যা ভালো লাগে</td><td>২-৪ সপ্তাহে</td></tr>
+        <tr><td>💤 ঘুমের রুটিন</td><td>একই সময়ে ঘুমানো ও ওঠা</td><td>২ সপ্তাহে</td></tr>
+        <tr><td>🤝 সেবা কার্যক্রম</td><td>মাসে একবার অন্যের জন্য কিছু করো</td><td>তাৎক্ষণিক</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="sec">নেগেটিভ চিন্তা মোকাবিলার কৌশল</h2>
+    <div class="grid2">
+      <div class="card g-card">
+        <h4>🔄 Cognitive Reframing</h4>
+        <p style="font-size:13px; margin-bottom:8px;">নেগেটিভ চিন্তাকে চ্যালেঞ্জ করো:</p>
+        <div class="do-item" style="margin:6px 0;"><span style="color:var(--accent3);">✗</span><span style="font-size:13px;"> "আমি কখনো পারব না"</span></div>
+        <div class="do-item" style="margin:6px 0;"><span style="color:var(--accent);">✓</span><span style="font-size:13px;"> "আমি এখনো শিখছি এবং উন্নতি হচ্ছে"</span></div>
+        <div class="do-item" style="margin:6px 0;"><span style="color:var(--accent3);">✗</span><span style="font-size:13px;"> "সবাই আমাকে অপছন্দ করে"</span></div>
+        <div class="do-item" style="margin:6px 0;"><span style="color:var(--accent);">✓</span><span style="font-size:13px;"> "কিছু মানুষ আমাকে পছন্দ করে এবং সেটা যথেষ্ট"</span></div>
+      </div>
+      <div class="card g-card">
+        <h4>⛔ চিন্তা থামানো</h4>
+        <p style="font-size:13px;">যখন নেগেটিভ চিন্তার চক্রে পড়ো:</p>
+        <ul style="font-size:13px;">
+          <li>হাতে রাবার ব্যান্ড রাখো, টোকা দাও</li>
+          <li>জোরে "থামো!" বলো (মনে মনে)</li>
+          <li>শ্বাস নাও এবং বর্তমান মুহূর্তে ফিরে আসো</li>
+          <li>৫-৪-৩-২-১ কৌশল: ৫টি দেখা জিনিস, ৪টি স্পর্শ করা জিনিস…</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CH 10: GETTING HELP -->
+<div class="chapter ch10">
+  <div class="chapter-header" data-num="১০">
+    <div class="ch-label">CHAPTER 10</div>
+    <div class="ch-title">🆘 সাহায্য চাওয়া ও পুনরুদ্ধার</div>
+    <div class="ch-desc">কখন বিশেষজ্ঞের সাহায্য নেবে, stigma ভাঙা এবং Self-care রুটিন</div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">সাহায্য চাওয়া সাহসের কাজ</h2>
+    <p>সাহায্য চাওয়া দুর্বলতা নয় — এটি সবচেয়ে সাহসী কাজগুলোর একটি। ঠিক যেভাবে জ্বর হলে ডাক্তারের কাছে যাই, মানসিক কষ্ট হলে মনোবিদের কাছে যাওয়াও সমান স্বাভাবিক।</p>
+
+    <h2 class="sec">কখন পেশাদার সাহায্য নেবে?</h2>
+    <div class="box danger">
+      <div class="box-t">🚨 অবিলম্বে সাহায্য নাও যদি:</div>
+      <ul>
+        <li>নিজেকে বা অন্যকে ক্ষতি করার চিন্তা আসে</li>
+        <li>বাস্তব ও কল্পনার পার্থক্য বুঝতে কষ্ট হয়</li>
+        <li>খাওয়া-ঘুম সম্পূর্ণ বন্ধ হয়ে যায়</li>
+      </ul>
+    </div>
+    <div class="box warn">
+      <div class="box-t">⚠️ শীঘ্রই সাহায্য নাও যদি:</div>
+      <ul>
+        <li>দুঃখ বা উদ্বেগ ২ সপ্তাহের বেশি স্থায়ী হয়</li>
+        <li>দৈনন্দিন কাজ করতে পারছো না</li>
+        <li>সম্পর্কগুলো ক্ষতিগ্রস্ত হচ্ছে</li>
+        <li>নিজের যত্ন নিতে পারছো না</li>
+      </ul>
+    </div>
+
+    <h2 class="sec">পেশাদার সাহায্যের ধরন</h2>
+    <div class="grid2">
+      <div class="card b-card">
+        <h4>👨‍⚕️ মনোবিদ (Psychologist)</h4>
+        <p style="font-size:13px;">কথা বলে চিকিৎসা করেন। CBT, DBT, Therapy — কোনো ওষুধ দেন না। হালকা থেকে মাঝারি সমস্যার জন্য।</p>
+      </div>
+      <div class="card b-card">
+        <h4>🏥 মনোরোগ বিশেষজ্ঞ (Psychiatrist)</h4>
+        <p style="font-size:13px;">MBBS ডাক্তার যিনি মানসিক রোগে বিশেষজ্ঞ। ওষুধ দিতে পারেন। গুরুতর মানসিক সমস্যার জন্য।</p>
+      </div>
+      <div class="card b-card">
+        <h4>🤝 কাউন্সেলর</h4>
+        <p style="font-size:13px;">নির্দিষ্ট সমস্যায় (সম্পর্ক, ক্যারিয়ার, শোক) সহায়তা করেন। তুলনামূলক সহজলভ্য।</p>
+      </div>
+      <div class="card b-card">
+        <h4>📞 হেল্পলাইন</h4>
+        <p style="font-size:13px;">কিরণ হেল্পলাইন (ভারত): 1800-599-0019 | বাংলাদেশ জাতীয় মানসিক স্বাস্থ্য হেল্পলাইন: 16789</p>
+      </div>
+    </div>
+
+    <h2 class="sec">Self-Care রুটিন — সকাল থেকে রাত</h2>
+    <table>
+      <thead><tr><th>সময়</th><th>কার্যক্রম</th><th>উদ্দেশ্য</th></tr></thead>
+      <tbody>
+        <tr><td>🌅 সকাল (উঠে)</td><td>ফজর নামাজ, ৫ মিনিট স্থির থাকা, কৃতজ্ঞতা লেখা</td><td>দিনের ইতিবাচক শুরু</td></tr>
+        <tr><td>🌞 সকাল (পরে)</td><td>পুষ্টিকর নাস্তা, ১৫ মিনিট হাঁটা বা ব্যায়াম</td><td>শরীর ও মন সক্রিয় করা</td></tr>
+        <tr><td>☀️ দুপুর</td><td>কাজের মাঝে ছোট বিরতি, বাইরে গেলে সূর্যালোক</td><td>শক্তি পুনরুদ্ধার</td></tr>
+        <tr><td>🌆 বিকেল</td><td>আসর নামাজ, কারো সাথে কথা বলা, হালকা ব্যায়াম</td><td>সামাজিক সংযোগ</td></tr>
+        <tr><td>🌙 রাত</td><td>এশা নামাজ, পরিবারের সাথে সময়, জার্নাল লেখা</td><td>দিনের সমাপ্তি ও প্রতিফলন</td></tr>
+        <tr><td>💤 ঘুমানোর আগে</td><td>screen বন্ধ, কুরআন তিলাওয়াত বা জিকর, কৃতজ্ঞতা</td><td>মন শান্ত করে ঘুমানো</td></tr>
+      </tbody>
+    </table>
+
+    <div class="box success">
+      <div class="box-t">💚 মনে রাখো — সবচেয়ে গুরুত্বপূর্ণ কথা</div>
+      <ul>
+        <li>মানসিক স্বাস্থ্য যাত্রা রৈখিক নয় — ভালো দিন ও খারাপ দিন উভয়ই আসবে</li>
+        <li>ছোট পদক্ষেপই বড় পরিবর্তন আনে — আজ একটি জিনিস করো</li>
+        <li>নিজের প্রতি দয়ালু হও — নিজেকে সেই সহানুভূতি দাও যা বন্ধুকে দিতে</li>
+        <li>সাহায্য চাওয়া সবচেয়ে বুদ্ধিমানের কাজ</li>
+        <li>তুমি একা নও — তোমার মতো অনেকেই এই পথে আছে</li>
+      </ul>
+    </div>
+
+    <div style="text-align:center; margin-top:50px; padding:35px; background:var(--code-bg); border-radius:10px; border-top:3px solid var(--accent);">
+      <div class="quran-arabic" style="font-size:20px; color:#7daa7f; margin-bottom:12px;">وَعَسَىٰ أَن تَكْرَهُوا شَيْئًا وَهُوَ خَيْرٌ لَّكُمْ</div>
+      <div style="font-size:14px; color:rgba(200,185,165,0.7); margin-bottom:8px;">"সম্ভবত তোমরা কোনো বিষয় অপছন্দ করো, অথচ তা তোমাদের জন্য কল্যাণকর।"</div>
+      <div style="font-size:12px; color:rgba(150,135,115,0.6); margin-bottom:20px;">— সূরা আল-বাকারা, আয়াত ২১৬</div>
+      <p style="color:rgba(160,145,125,0.5); font-size:13px; max-width:580px; margin:0 auto;">
+        এই গাইডটি শিক্ষামূলক উদ্দেশ্যে। গুরুতর মানসিক সমস্যায় অবশ্যই পেশাদার সাহায্য নিন।
+      </p>
+      <p style="margin-top:12px; font-size:11px; color:rgba(92,122,94,0.35);">
+        মানসিক স্বাস্থ্য সম্পূর্ণ গাইড | ১০ অধ্যায় | বাংলা
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const body = document.body;
+body.classList.add('light-mode');
+
+function toggleTheme() {
+  const btn = document.getElementById('themeBtn');
+  if (body.classList.contains('light-mode')) {
+    body.classList.replace('light-mode', 'dark-mode');
+    btn.textContent = '☀️ Light';
+    localStorage.setItem('mh_theme', 'dark');
+  } else {
+    body.classList.replace('dark-mode', 'light-mode');
+    btn.textContent = '🌙 Dark';
+    localStorage.setItem('mh_theme', 'light');
+  }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  const t = localStorage.getItem('mh_theme');
+  if (t === 'dark') {
+    body.classList.replace('light-mode', 'dark-mode');
+    const btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = '☀️ Light';
+  }
+});
+</script>
+</body>
+</html>

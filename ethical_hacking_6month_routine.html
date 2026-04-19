@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ethical Hacking — ৬ মাসের Daily Routine</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #0d1b2a;
+    --green: #2dc653;
+    --red: #e63946;
+    --blue: #0077b6;
+    --orange: #f4831f;
+    --purple: #7b2d8b;
+    --cyan: #00b4d8;
+    --yellow: #ffd60a;
+    --text: #1a1a2e;
+    --bg: #f0f2f5;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Hind Siliguri', 'Noto Sans Bengali', sans-serif; background: var(--bg); color: var(--text); font-size: 14.5px; line-height: 2; }
+
+  /* COVER */
+  .cover {
+    background: linear-gradient(135deg, #0d1b2a 0%, #1a3a1a 40%, #0d2818 100%);
+    color: white; min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    padding: 60px 40px; position: relative; overflow: hidden;
+  }
+  .cover::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(45,198,83,0.03) 30px, rgba(45,198,83,0.03) 31px); }
+  .cover::after { content: ''; position: absolute; bottom: -100px; right: -100px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(45,198,83,0.06) 0%, transparent 70%); }
+  .cover-badge { background: rgba(45,198,83,0.15); border: 1px solid rgba(45,198,83,0.4); padding: 6px 20px; border-radius: 20px; font-size: 12px; color: #2dc653; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; position: relative; }
+  .cover-icon { font-size: 90px; margin-bottom: 15px; position: relative; }
+  .cover h1 { font-size: 42px; font-weight: 700; color: #fff; line-height: 1.2; position: relative; }
+  .cover h1 span { color: #2dc653; text-shadow: 0 0 30px rgba(45,198,83,0.5); }
+  .cover h2 { font-size: 18px; font-weight: 400; opacity: 0.7; margin: 12px 0 20px; position: relative; }
+  .cover .divider { width: 100px; height: 3px; background: linear-gradient(90deg, #2dc653, #00b4d8); margin: 20px auto; border-radius: 2px; }
+  .cover .desc { font-size: 15px; opacity: 0.65; max-width: 650px; line-height: 2; position: relative; }
+  .cover .terminal { background: rgba(0,0,0,0.6); border: 1px solid rgba(45,198,83,0.3); border-radius: 10px; padding: 18px 28px; margin-top: 28px; font-family: 'Courier New', monospace; font-size: 13px; color: #2dc653; text-align: left; max-width: 540px; position: relative; }
+  .cover .terminal .dot-row { display: flex; gap: 6px; margin-bottom: 14px; }
+  .cover .terminal .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .cover .terminal .dot.r { background: #e63946; } .cover .terminal .dot.y { background: #ffd60a; } .cover .terminal .dot.g { background: #2dc653; }
+  .cover .terminal .prompt { color: #89b4fa; }
+  .cover-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 25px; justify-content: center; position: relative; }
+  .cover-tag { background: rgba(45,198,83,0.12); border: 1px solid rgba(45,198,83,0.25); padding: 5px 14px; border-radius: 15px; font-size: 12px; color: #a8dadc; }
+
+  /* TOC */
+  .toc { background: white; padding: 50px 60px; }
+  .toc-header { font-size: 28px; color: var(--primary); border-bottom: 4px solid var(--green); padding-bottom: 15px; margin-bottom: 35px; }
+  .toc-main { display: flex; justify-content: space-between; padding: 10px 0; font-weight: 700; font-size: 15px; color: var(--primary); border-bottom: 1px solid #eee; margin-top: 12px; }
+  .toc-main .num { color: var(--green); margin-right: 10px; font-family: 'Courier New', monospace; }
+  .toc-sub { padding: 4px 0 4px 30px; color: #666; font-size: 13px; border-bottom: 1px dotted #f0f0f0; }
+
+  /* CHAPTERS */
+  .chapter { background: white; margin: 0; page-break-before: always; }
+  .chapter-header { padding: 40px 55px; position: relative; overflow: hidden; }
+  .ch0 .chapter-header { background: linear-gradient(135deg, #0d1b2a, #1b3a4b); }
+  .ch1 .chapter-header { background: linear-gradient(135deg, #0d2818, #1a4731); }
+  .ch2 .chapter-header { background: linear-gradient(135deg, #1a3a00, #2d5a00); }
+  .ch3 .chapter-header { background: linear-gradient(135deg, #0a2840, #0d4060); }
+  .ch4 .chapter-header { background: linear-gradient(135deg, #2d1500, #4a2800); }
+  .ch5 .chapter-header { background: linear-gradient(135deg, #1a0030, #2d0050); }
+  .ch6 .chapter-header { background: linear-gradient(135deg, #1a0000, #3d0000); }
+  .ch7 .chapter-header { background: linear-gradient(135deg, #0d1b2a, #1a3a4b); }
+  .ch8 .chapter-header { background: linear-gradient(135deg, #001a1a, #003d3d); }
+  .chapter-header::after { content: ''; position: absolute; top: -40px; right: -40px; width: 180px; height: 180px; border-radius: 50%; background: rgba(255,255,255,0.03); }
+  .chapter-label { font-size: 11px; letter-spacing: 4px; color: #2dc653; text-transform: uppercase; margin-bottom: 8px; font-family: 'Courier New', monospace; }
+  .chapter-title { font-size: 28px; color: white; font-weight: 700; }
+  .chapter-desc { font-size: 13.5px; color: rgba(255,255,255,0.55); margin-top: 8px; }
+  .chapter-body { padding: 40px 55px; }
+
+  h2.sec { font-size: 21px; color: var(--primary); margin: 35px 0 15px; padding-left: 16px; border-left: 5px solid var(--green); }
+  h3.sub { font-size: 17px; color: #0d2818; margin: 25px 0 12px; padding-bottom: 6px; border-bottom: 2px dashed #e0e0e0; }
+  p { margin-bottom: 14px; text-align: justify; }
+
+  /* CODE */
+  .code { background: #0d1117; color: #c9d1d9; padding: 16px 20px; border-radius: 10px; font-family: 'Courier New', monospace; font-size: 12.5px; margin: 14px 0; line-height: 1.9; overflow-x: auto; border: 1px solid #30363d; border-left: 4px solid var(--green); }
+  .code .c { color: #6e7681; } .code .g { color: #2dc653; } .code .y { color: #e3b341; } .code .p { color: #89b4fa; } .code .r { color: #ff7b72; }
+  code { background: #1b2838; color: #2dc653; padding: 2px 8px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 12.5px; }
+
+  /* BOXES */
+  .box { padding: 16px 20px; border-radius: 10px; margin: 18px 0; border-left: 5px solid; }
+  .info { background: #e8f4fd; border-color: #0077b6; color: #023e8a; }
+  .warn { background: #fff8e6; border-color: #f4831f; color: #7b3f00; }
+  .danger { background: #fde8ea; border-color: #e63946; color: #9b1d20; }
+  .success { background: #e8f8ed; border-color: #2dc653; color: #1a4731; }
+  .purple-box { background: #f3e8ff; border-color: #7b2d8b; color: #4a0072; }
+  .box-t { font-weight: 700; margin-bottom: 8px; font-size: 14px; }
+
+  /* TABLES */
+  table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 13.5px; }
+  thead tr { background: #0d1b2a; color: white; }
+  th { padding: 11px 14px; text-align: left; font-weight: 600; }
+  td { padding: 10px 14px; border-bottom: 1px solid #eee; vertical-align: top; }
+  tr:nth-child(even) { background: #f0fff4; }
+  tr:hover { background: #e8f8ed; }
+
+  /* BADGE */
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 11.5px; font-weight: 600; margin: 2px; }
+  .badge-g { background: #d1e7dd; color: #0f5132; }
+  .badge-r { background: #fde8ea; color: #c1121f; }
+  .badge-y { background: #fff3cd; color: #856404; }
+  .badge-b { background: #cfe2ff; color: #084298; }
+  .badge-p { background: #f3e8ff; color: #4a0072; }
+  .badge-c { background: #e0f7fa; color: #005f73; }
+
+  /* GRID */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 18px 0; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin: 16px 0; }
+  .card { background: #f0fff4; border: 1px solid #c3e6cb; border-radius: 10px; padding: 16px; }
+  .card h4 { color: var(--primary); margin-bottom: 10px; font-size: 14px; border-bottom: 2px solid var(--green); padding-bottom: 5px; }
+  .card.red-card { background: #fde8ea; border-color: #e63946; }
+  .card.red-card h4 { color: #9b1d20; border-color: #e63946; }
+  .card.blue-card { background: #e8f4fd; border-color: #0077b6; }
+  .card.blue-card h4 { color: #023e8a; border-color: #0077b6; }
+  .card.orange-card { background: #fff3e0; border-color: #f4831f; }
+  .card.orange-card h4 { color: #7b3f00; border-color: #f4831f; }
+  .card.purple-card { background: #f3e8ff; border-color: #7b2d8b; }
+  .card.purple-card h4 { color: #4a0072; border-color: #7b2d8b; }
+  .card.dark-card { background: #0d1b2a; border-color: #1b3a4b; }
+  .card.dark-card h4 { color: #2dc653; border-bottom-color: #2dc653; }
+  .card.dark-card p, .card.dark-card li { color: rgba(255,255,255,0.75); }
+
+  /* MONTH CARD */
+  .month-header { padding: 20px 24px; border-radius: 14px 14px 0 0; color: white; font-size: 20px; font-weight: 700; display: flex; align-items: center; gap: 12px; }
+  .month-body { border: 2px solid; border-top: none; border-radius: 0 0 14px 14px; padding: 0; overflow: hidden; }
+  .month-week { padding: 16px 20px; border-bottom: 1px solid rgba(0,0,0,0.08); }
+  .month-week:last-child { border-bottom: none; }
+  .week-title { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+  .week-tasks { font-size: 13px; }
+  .week-tasks li { margin-bottom: 4px; }
+
+  /* DAILY SCHEDULE */
+  .daily-schedule { border: 2px solid #2dc653; border-radius: 12px; overflow: hidden; margin: 18px 0; }
+  .ds-header { background: #0d1b2a; color: white; padding: 14px 20px; font-weight: 700; font-size: 15px; display: flex; align-items: center; gap: 10px; }
+  .ds-row { display: flex; padding: 10px 20px; border-bottom: 1px solid #e8f8ed; align-items: flex-start; gap: 16px; }
+  .ds-row:last-child { border-bottom: none; }
+  .ds-row:nth-child(even) { background: #f0fff4; }
+  .ds-time { min-width: 100px; font-family: 'Courier New', monospace; font-size: 12.5px; color: #2dc653; font-weight: 600; padding-top: 2px; }
+  .ds-task { font-size: 13.5px; flex: 1; }
+  .ds-task strong { color: #0d1b2a; display: block; margin-bottom: 2px; }
+  .ds-duration { min-width: 70px; text-align: right; }
+
+  /* RESOURCE CARD */
+  .resource-card { background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 16px 20px; margin: 10px 0; }
+  .resource-name { color: #2dc653; font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+  .resource-type { color: #e3b341; font-size: 11.5px; font-family: 'Courier New', monospace; }
+  .resource-desc { color: #c9d1d9; font-size: 13px; margin-top: 6px; }
+  .resource-link { color: #79c0ff; font-size: 12px; font-family: 'Courier New', monospace; }
+
+  /* STEP BOX */
+  .step-box { display: flex; gap: 16px; align-items: flex-start; margin: 14px 0; padding: 16px 20px; background: #f0fff4; border-radius: 10px; border: 1px solid #c3e6cb; }
+  .step-num { min-width: 44px; height: 44px; border-radius: 50%; background: #2dc653; color: #0d1b2a; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; flex-shrink: 0; }
+  .step-content h4 { font-size: 15px; color: #0d1b2a; margin-bottom: 5px; font-weight: 700; }
+  .step-content p { font-size: 13.5px; color: #444; margin: 0; }
+
+  /* RECOVERY BOX */
+  .recovery { background: linear-gradient(135deg, #0d1b2a, #1a3a4b); border-radius: 12px; padding: 22px 26px; margin: 18px 0; color: white; }
+  .recovery h4 { color: #ffd60a; margin-bottom: 14px; font-size: 16px; }
+  .recovery li { color: rgba(255,255,255,0.82); margin-bottom: 6px; font-size: 13.5px; }
+
+  /* PROGRESS BAR */
+  .progress-bar-wrap { margin: 10px 0; }
+  .progress-label { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 5px; }
+  .progress-bar { height: 10px; background: #e0e0e0; border-radius: 5px; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 5px; }
+
+  .hl { background: linear-gradient(135deg, #e8f8ed, #f0fff4); border: 1px solid #2dc653; padding: 14px 18px; border-radius: 8px; margin: 16px 0; }
+  .chapter-summary { background: linear-gradient(135deg, #0d1b2a, #1a4731); color: white; border-radius: 12px; padding: 24px 28px; margin-top: 40px; }
+  .chapter-summary h3 { color: #2dc653; margin-bottom: 14px; font-size: 17px; }
+  .chapter-summary li { color: rgba(255,255,255,0.82); margin-bottom: 6px; }
+
+  ul, ol { margin: 10px 0 10px 24px; line-height: 2.1; }
+  li { margin-bottom: 4px; }
+
+  /* DARK MODE */
+  body.light-mode { --bg: #f0f2f5; --text: #1a1a2e; }
+  body.dark-mode { --bg: #0a0f1a; --text: #e2e8f0; }
+  body { background: var(--bg); color: var(--text); transition: background 0.3s, color 0.3s; }
+  body.dark-mode .toc { background: #111827; color: var(--text); }
+  body.dark-mode .chapter { background: #111827; }
+  body.dark-mode .chapter-body { background: #111827; }
+  body.dark-mode h2.sec { color: #2dc653; }
+  body.dark-mode h3.sub { color: #2dc653; border-color: #2d3748; }
+  body.dark-mode p { color: var(--text); }
+  body.dark-mode .toc-main { color: #e2e8f0; border-color: #2d3748; }
+  body.dark-mode .toc-header { color: #e2e8f0; }
+  body.dark-mode .toc-sub { color: #94a3b8; }
+  body.dark-mode table { color: var(--text); }
+  body.dark-mode td { border-color: #2d3748; color: var(--text); }
+  body.dark-mode tr:nth-child(even) { background: #0a2a15; }
+  body.dark-mode tr:hover { background: #0a2a15; }
+  body.dark-mode thead tr { background: #0a2a15; }
+  body.dark-mode .card { background: #0a2a15; border-color: #1a4731; color: var(--text); }
+  body.dark-mode .card h4 { color: #2dc653; }
+  body.dark-mode .card.red-card { background: #2a0a0a; border-color: #e63946; }
+  body.dark-mode .card.red-card h4 { color: #fca5a5; }
+  body.dark-mode .card.blue-card { background: #0c2340; border-color: #0077b6; }
+  body.dark-mode .card.blue-card h4 { color: #90cdf4; }
+  body.dark-mode .card.orange-card { background: #2a1500; border-color: #f4831f; }
+  body.dark-mode .card.orange-card h4 { color: #fdba74; }
+  body.dark-mode .card.purple-card { background: #1a0a2a; border-color: #7b2d8b; }
+  body.dark-mode .card.purple-card h4 { color: #d8b4fe; }
+  body.dark-mode .info { background: #0c2340; color: #90cdf4; }
+  body.dark-mode .warn { background: #2a1500; color: #fdba74; }
+  body.dark-mode .danger { background: #2a0a0a; color: #fca5a5; }
+  body.dark-mode .success { background: #0a2a15; color: #6ee7b7; }
+  body.dark-mode .purple-box { background: #1a0a2a; color: #d8b4fe; }
+  body.dark-mode .hl { background: #0a2a15; border-color: #2dc653; color: #6ee7b7; }
+  body.dark-mode .step-box { background: #0a2a15; border-color: #1a4731; }
+  body.dark-mode .step-content h4 { color: #e2e8f0; }
+  body.dark-mode .step-content p { color: #94a3b8; }
+  body.dark-mode .ds-row:nth-child(even) { background: #0a2a15; }
+  body.dark-mode .ds-row { border-color: #1a4731; }
+  body.dark-mode .ds-task strong { color: #e2e8f0; }
+  body.dark-mode .month-week { border-color: rgba(255,255,255,0.08); }
+  body.dark-mode .progress-bar { background: #2d3748; }
+
+  /* BILINGUAL */
+  .en-text { display: none; } .bn-text { display: inline; }
+  body.lang-en .bn-text { display: none; } body.lang-en .en-text { display: inline; }
+
+  .top-controls { position: fixed; top: 18px; right: 18px; display: flex; gap: 8px; z-index: 9999; }
+  .ctrl-btn { border: none; padding: 9px 16px; border-radius: 8px; font-size: 13px; font-family: inherit; cursor: pointer; transition: all 0.3s; font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+  .lang-btn { background: #0077b6; color: white; }
+  .theme-btn { background: #2dc653; color: #0d1b2a; }
+  .print-btn { background: #e63946; color: white; }
+  .ctrl-btn:hover { transform: translateY(-2px); opacity: 0.9; }
+
+  @media print { .top-controls { display: none; } body { background: white; } .cover, .chapter-header, thead tr { -webkit-print-color-adjust: exact; print-color-adjust: exact; } .code, .daily-schedule { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+  @media (max-width: 768px) { .grid2, .grid3 { grid-template-columns: 1fr; } .chapter-body { padding: 24px 20px; } .toc { padding: 30px 24px; } .ds-row { flex-direction: column; gap: 4px; } }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+</style>
+</head>
+<body class="light-mode">
+
+<div class="top-controls">
+  <button class="print-btn ctrl-btn" onclick="window.print()">🖨️ PDF</button>
+  <button class="theme-btn ctrl-btn" onclick="toggleTheme()" id="themeBtn">🌙 Dark Mode</button>
+  <button class="lang-btn ctrl-btn" onclick="toggleLang()" id="langBtn">🇬🇧 English</button>
+</div>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-badge">Ethical Hacking — ৬ মাসের Roadmap</div>
+  <div class="cover-icon">🐧</div>
+  <h1>Ethical Hacking <span>শেখার</span> সম্পূর্ণ গাইড</h1>
+  <h2><span class="bn-text">৬ মাসের Daily Routine — প্রতিদিন কী করব, কীভাবে করব, কোনো দিন বাদ গেলে কী করব</span><span class="en-text">6-Month Daily Routine — What to do each day, how to do it, what if a day is missed</span></h2>
+  <div class="divider"></div>
+  <div class="terminal">
+    <div class="dot-row"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div>
+    <div><span class="prompt">Month 1:</span> <span style="color:#fff">Linux + Networking Basics</span></div>
+    <div><span class="prompt">Month 2:</span> <span style="color:#fff">Web Hacking + Recon</span></div>
+    <div><span class="prompt">Month 3:</span> <span style="color:#fff">Exploitation + CTF</span></div>
+    <div><span class="prompt">Month 4:</span> <span style="color:#fff">Advanced + Bug Bounty</span></div>
+    <div><span class="prompt">Month 5-6:</span> <span style="color:#fff">Specialization + Real Labs</span></div>
+    <div style="animation: blink 1s infinite; color: #2dc653;">█</div>
+  </div>
+  <div class="cover-tags">
+    <span class="cover-tag">📅 Daily Schedule</span>
+    <span class="cover-tag">🗺️ Month-by-Month Plan</span>
+    <span class="cover-tag">🔄 Recovery Plan</span>
+    <span class="cover-tag">📚 Resources</span>
+    <span class="cover-tag">🏋️ Labs & Practice</span>
+    <span class="cover-tag">🎯 CTF Guide</span>
+    <span class="cover-tag">💰 Bug Bounty</span>
+    <span class="cover-tag">🛡️ Certification</span>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <div class="toc-header">📋 <span class="bn-text">বিষয়সূচি</span><span class="en-text">Table of Contents</span></div>
+  <div class="toc-chapter"><div class="toc-main"><span><span class="num">00</span> <span class="bn-text">শুরু করার আগে — Mindset ও Setup</span><span class="en-text">Before Starting — Mindset & Setup</span></span></div><div class="toc-sub"><span class="bn-text">কী কী লাগবে, কীভাবে environment setup করব, আইনি বিষয়</span></div></div>
+  <div class="toc-chapter"><div class="toc-main"><span><span class="num">01</span> <span class="bn-text">Month 1 — Foundation (Linux + Networking + Python Basic)</span></span></div><div class="toc-sub"><span class="bn-text">Week-by-week plan, Daily 3-4 ঘণ্টার schedule, Resources</span></div></div>
+  <div class="toc-chapter"><div class="toc-main"><span><span class="num">02</span> <span class="bn-text">Month 2 — Web Hacking + Recon + Basic Tools</span></span></div><div class="toc-sub"><span class="bn-text">OWASP Top 10, Burp Suite, Nmap, SQLmap — Daily practice plan</span></div></div>
+  <div class="toc-chapter"><div class="toc-main"><span><span class="num">03</span> <span class="bn-text">Month 3 — Exploitation + CTF + Metasploit</span></span></div><div class="toc-sub"><span class="bn-text">Metasploit, PrivEsc, CTF শুরু করো, TryHackMe/HackTheBox</span></div></div>
+  <div class="toc-chapter"><div class="toc-main"><span><span class="num">04</span> <span class="bn-text">Month 4 — Advanced Web + Active Directory + Bug Bounty Start</span></span></div><div class="toc-sub"><span class="bn-text">Advanced attacks, AD basics, Bug Bounty methodology শুরু</span></div></div>
+  <div class="toc-chapter"><div class="toc-main"><span><span class="num">05</span> <span class="bn-text">Month 5 & 6 — Specialization + Real World Practice</span></span></div><div class="toc-sub"><span class="bn-text">OSCP prep অথবা Bug Bounty focus, Portfolio তৈরি</span></div></div>
+  <div class="toc-chapter"><div class="toc-main"><span><span class="num">06</span> <span class="bn-text">Daily Routine — সম্পূর্ণ Schedule</span><span class="en-text">Daily Routine — Complete Schedule</span></span></div><div class="toc-sub"><span class="bn-text">Weekday ও Weekend schedule, Time management, Work/Study balance</span></div></div>
+  <div class="toc-chapter"><div class="toc-main"><span><span class="num">07</span> <span class="bn-text">দিন বাদ গেলে কী করবে — Recovery Plan</span><span class="en-text">When a Day is Missed — Recovery Plan</span></span></div><div class="toc-sub"><span class="bn-text">১ দিন, ১ সপ্তাহ, ১ মাস বাদ গেলে কীভাবে ফিরবে</span></div></div>
+  <div class="toc-chapter"><div class="toc-main"><span><span class="num">08</span> <span class="bn-text">Resources — সেরা Free ও Paid Platform</span><span class="en-text">Resources — Best Free & Paid Platforms</span></span></div><div class="toc-sub"><span class="bn-text">TryHackMe, HackTheBox, PortSwigger, YouTube channels, Books</span></div></div>
+</div>
+
+<!-- CH0: BEFORE STARTING -->
+<div class="chapter ch0">
+  <div class="chapter-header">
+    <div class="chapter-label">CHAPTER 00</div>
+    <div class="chapter-title">🛠️ <span class="bn-text">শুরু করার আগে — Mindset, Setup ও Legal</span><span class="en-text">Before Starting — Mindset, Setup & Legal</span></div>
+    <div class="chapter-desc"><span class="bn-text">এই জিনিসগুলো না জানলে শেখা শুরু করো না</span><span class="en-text">Don't start learning without knowing these things</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">⚖️ <span class="bn-text">আইনি বিষয় — সবার আগে</span><span class="en-text">Legal Matters — First of All</span></h2>
+    <div class="box danger">
+      <div class="box-t">⚠️ <span class="bn-text">এটা না মানলে জেল হতে পারে</span><span class="en-text">Ignoring this can lead to jail</span></div>
+      <ul>
+        <li><span class="bn-text"><strong>Permission ছাড়া কোনো system attack করা Bangladesh Digital Security Act 2018-এর অধীনে অপরাধ।</strong></span><span class="en-text"><strong>Attacking any system without permission is a crime under the Bangladesh Digital Security Act 2018.</strong></span></li>
+        <li><span class="bn-text">শুধু নিজের machine, বা <strong>legally authorized</strong> lab environment-এ practice করো।</span><span class="en-text">Only practice on your own machine or in <strong>legally authorized</strong> lab environments.</span></li>
+        <li><span class="bn-text">TryHackMe, HackTheBox, DVWA — এগুলো legal practice environment।</span></li>
+        <li><span class="bn-text">Real website-এ test করতে হলে সেই company-র <strong>written permission</strong> লাগবে।</span></li>
+      </ul>
+    </div>
+
+    <h2 class="sec">💻 <span class="bn-text">যা যা লাগবে — Setup</span><span class="en-text">What You'll Need — Setup</span></h2>
+    <div class="grid2">
+      <div class="card">
+        <h4>🖥️ <span class="bn-text">Hardware (Minimum)</span></h4>
+        <ul>
+          <li><span class="bn-text">RAM: ৮GB (১৬GB হলে ভালো)</span><span class="en-text">RAM: 8GB (16GB preferred)</span></li>
+          <li><span class="bn-text">CPU: 4 core minimum</span></li>
+          <li><span class="bn-text">Storage: ১০০GB free</span></li>
+          <li><span class="bn-text">Internet: Stable connection</span></li>
+          <li><span class="bn-text">Laptop/Desktop যেকোনোটা চলবে</span></li>
+        </ul>
+      </div>
+      <div class="card blue-card">
+        <h4>⚙️ <span class="bn-text">Software Setup</span></h4>
+        <ul>
+          <li><span class="bn-text"><strong>VirtualBox</strong> (free) install করো</span></li>
+          <li><span class="bn-text"><strong>Kali Linux</strong> VM install করো</span></li>
+          <li><span class="bn-text"><strong>TryHackMe</strong> account তৈরি করো (free)</span></li>
+          <li><span class="bn-text"><strong>HackTheBox</strong> account তৈরি করো</span></li>
+          <li><span class="bn-text"><strong>GitHub</strong> account — notes রাখো</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="sec">🧠 <span class="bn-text">Mindset — এটা ছাড়া ৬ মাস টিকবে না</span><span class="en-text">Mindset — Without This You Won't Last 6 Months</span></h2>
+    <table>
+      <thead><tr><th>❌ <span class="bn-text">ভুল Mindset</span><span class="en-text">Wrong Mindset</span></th><th>✅ <span class="bn-text">সঠিক Mindset</span><span class="en-text">Right Mindset</span></th></tr></thead>
+      <tbody>
+        <tr><td><span class="bn-text">"আমি hacker হতে চাই মানুষকে hack করতে"</span></td><td><span class="bn-text">"আমি systems বুঝতে চাই এবং সেগুলো রক্ষা করতে চাই"</span></td></tr>
+        <tr><td><span class="bn-text">"Tools চালালেই hacker হওয়া যায়"</span></td><td><span class="bn-text">"Tools কীভাবে কাজ করে সেটা বুঝতে হবে"</span></td></tr>
+        <tr><td><span class="bn-text">"কোনো দিন বাদ গেলে সব শেষ"</span></td><td><span class="bn-text">"Consistent progress, not perfection"</span></td></tr>
+        <tr><td><span class="bn-text">"সব মুখস্থ করতে হবে"</span></td><td><span class="bn-text">"Concept বুঝতে হবে, Google করে খোঁজা শিখতে হবে"</span></td></tr>
+        <tr><td><span class="bn-text">"১ মাসেই সব শিখব"</span></td><td><span class="bn-text">"৬ মাস consistently করলে solid foundation হবে"</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="box success">
+      <div class="box-t">✅ <span class="bn-text">Success Formula</span></div>
+      <p><strong><span class="bn-text">প্রতিদিন ৩-৪ ঘণ্টা × ৬ মাস = ৫৪০-৭২০ ঘণ্টা।</span></strong> <span class="bn-text">এই সময়ে যে consistently কাজ করবে সে অনেক দূর এগিয়ে যাবে। Speed নয়, consistency-ই key।</span><span class="en-text">This much time invested consistently will take you very far. Consistency, not speed, is the key.</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- CH1: MONTH 1 -->
+<div class="chapter ch1">
+  <div class="chapter-header">
+    <div class="chapter-label">CHAPTER 01 — MONTH 1</div>
+    <div class="chapter-title">🐧 <span class="bn-text">মাস ১ — Foundation: Linux + Networking + Python</span><span class="en-text">Month 1 — Foundation: Linux + Networking + Python</span></div>
+    <div class="chapter-desc"><span class="bn-text">ভিত্তি ছাড়া উপরে উঠা যায় না — এই মাসটা সবচেয়ে গুরুত্বপূর্ণ</span><span class="en-text">Can't rise without a foundation — this month is the most important</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <div class="box info">
+      <div class="box-t">🎯 <span class="bn-text">Month 1-এর লক্ষ্য</span><span class="en-text">Month 1 Goals</span></div>
+      <ul>
+        <li><span class="bn-text">Linux terminal-এ comfortable হওয়া — সব basic command জানা</span><span class="en-text">Get comfortable with Linux terminal — know all basic commands</span></li>
+        <li><span class="bn-text">Networking basics জানা (TCP/IP, DNS, HTTP, Ports)</span></li>
+        <li><span class="bn-text">Python দিয়ে simple script লিখতে পারা</span><span class="en-text">Write simple scripts with Python</span></li>
+        <li><span class="bn-text">TryHackMe-তে Pre-Security path শেষ করা</span></li>
+      </ul>
+    </div>
+
+    <h2 class="sec">📅 <span class="bn-text">Week 1 — Linux Mastery</span></h2>
+    <div class="daily-schedule">
+      <div class="ds-header">🐧 Week 1: Linux Command Line (Day 1-7)</div>
+      <div class="ds-row">
+        <div class="ds-time">Day 1-2</div>
+        <div class="ds-task"><strong><span class="bn-text">Navigation ও File System</span></strong><span class="bn-text">: ls, cd, pwd, mkdir, rm, cp, mv, find, cat, less, head, tail, grep — সব practice করো। TryHackMe-এর "Linux Fundamentals Part 1" করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 3-4</div>
+        <div class="ds-task"><strong><span class="bn-text">Permissions ও Users</span></strong><span class="bn-text">: chmod, chown, sudo, useradd, passwd, /etc/passwd, /etc/shadow। TryHackMe "Linux Fundamentals Part 2" করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 5-6</div>
+        <div class="ds-task"><strong><span class="bn-text">Process ও Network Commands</span></strong><span class="bn-text">: ps, kill, top, netstat, ss, curl, wget, nc। TryHackMe "Linux Fundamentals Part 3" করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 7</div>
+        <div class="ds-task"><strong>🔄 Review Day</strong><span class="bn-text">: সপ্তাহের সব শেখা নিজে নিজে practice করো। একটি Bash script লেখো যা directory তৈরি করে ফাইল copy করে।</span></div>
+        <div class="ds-duration"><span class="badge badge-y">2h</span></div>
+      </div>
+    </div>
+
+    <h2 class="sec">📅 <span class="bn-text">Week 2 — Networking Basics</span></h2>
+    <div class="daily-schedule">
+      <div class="ds-header">🌐 Week 2: Networking Fundamentals (Day 8-14)</div>
+      <div class="ds-row">
+        <div class="ds-time">Day 8-9</div>
+        <div class="ds-task"><strong>TCP/IP, OSI Model, IP Addressing</strong><span class="bn-text">: Professor Messer-এর CompTIA Network+ videos দেখো। TryHackMe "Pre-Security" → "Network Fundamentals" করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 10-11</div>
+        <div class="ds-task"><strong>DNS, HTTP/HTTPS, Ports</strong><span class="bn-text">: কীভাবে website request কাজ করে — সম্পূর্ণ flow বোঝো। Wireshark দিয়ে traffic capture করে দেখো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 12-13</div>
+        <div class="ds-task"><strong>Subnetting, Firewall, VPN</strong><span class="bn-text">: Subnet calculator দিয়ে practice করো। TryHackMe "How The Web Works" path করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 14</div>
+        <div class="ds-task"><strong>🔄 Review + Lab</strong><span class="bn-text">: Wireshark দিয়ে নিজের traffic analyze করো। HTTP request manually বুঝো।</span></div>
+        <div class="ds-duration"><span class="badge badge-y">2h</span></div>
+      </div>
+    </div>
+
+    <h2 class="sec">📅 <span class="bn-text">Week 3 — Python Basics for Hacking</span></h2>
+    <div class="daily-schedule">
+      <div class="ds-header">🐍 Week 3: Python for Security (Day 15-21)</div>
+      <div class="ds-row">
+        <div class="ds-time">Day 15-16</div>
+        <div class="ds-task"><strong>Python Basics</strong><span class="bn-text">: Variables, loops, functions, file I/O। Automate the Boring Stuff with Python-এর Chapter 1-5 পড়ো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 17-18</div>
+        <div class="ds-task"><strong>Python + Networking</strong><span class="bn-text">: socket module দিয়ে port scanner বানাও। requests module দিয়ে HTTP request করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 19-20</div>
+        <div class="ds-task"><strong>Python Scripting</strong><span class="bn-text">: File reader script, simple brute forcer script, banner grabber লেখো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 21</div>
+        <div class="ds-task"><strong>🔄 Mini Project</strong><span class="bn-text">: Python দিয়ে একটি নিজের port scanner বানাও যা open ports দেখাবে।</span></div>
+        <div class="ds-duration"><span class="badge badge-y">3h</span></div>
+      </div>
+    </div>
+
+    <h2 class="sec">📅 <span class="bn-text">Week 4 — Recap ও First Hack</span></h2>
+    <div class="daily-schedule">
+      <div class="ds-header">🎯 Week 4: First Real Hacking Practice (Day 22-30)</div>
+      <div class="ds-row">
+        <div class="ds-time">Day 22-24</div>
+        <div class="ds-task"><strong>TryHackMe — "Complete Beginner" Path</strong><span class="bn-text">: Linux challenges করো, easy rooms করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 25-27</div>
+        <div class="ds-task"><strong>Nmap Introduction</strong><span class="bn-text">: TryHackMe "Nmap" room করো। নিজের local network-এ Nmap scan করো। সব flags বোঝো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 28-29</div>
+        <div class="ds-task"><strong>First CTF Attempt</strong><span class="bn-text">: TryHackMe-এর "Basic Pentesting" room করো। Guided walkthrough দেখে হলেও করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 30</div>
+        <div class="ds-task"><strong>📝 Month Review</strong><span class="bn-text">: কী শিখলাম লিখে রাখো। কোথায় weak সেটা identify করো। Month 2-এর plan করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-y">2h</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CH2: MONTH 2 -->
+<div class="chapter ch2">
+  <div class="chapter-header">
+    <div class="chapter-label">CHAPTER 02 — MONTH 2</div>
+    <div class="chapter-title">🌐 <span class="bn-text">মাস ২ — Web Hacking + Recon + Basic Tools</span><span class="en-text">Month 2 — Web Hacking + Recon + Basic Tools</span></div>
+    <div class="chapter-desc"><span class="bn-text">OWASP Top 10, Burp Suite, SQLmap, Gobuster — Web hacking-এর ভিত্তি</span><span class="en-text">OWASP Top 10, Burp Suite, SQLmap, Gobuster — foundation of web hacking</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <div class="box info">
+      <div class="box-t">🎯 Month 2 Goals</div>
+      <ul>
+        <li><span class="bn-text">OWASP Top 10 সব vulnerability বোঝা ও manually exploit করতে পারা</span></li>
+        <li><span class="bn-text">Burp Suite দিয়ে web traffic intercept ও modify করতে পারা</span></li>
+        <li><span class="bn-text">SQLmap, Gobuster, Nikto — confident ব্যবহার</span></li>
+        <li><span class="bn-text">TryHackMe "Jr Penetration Tester" path-এর ৫০% শেষ করা</span></li>
+      </ul>
+    </div>
+
+    <h2 class="sec">📅 Week 5-6 — OWASP Top 10 Deep Dive</h2>
+    <div class="daily-schedule">
+      <div class="ds-header">🔥 Week 5-6: OWASP Top 10 (Day 31-44)</div>
+      <div class="ds-row">
+        <div class="ds-time">Day 31-33</div>
+        <div class="ds-task"><strong>SQL Injection (SQLi)</strong><span class="bn-text">: Manual SQLi — UNION attack, Error-based, Blind SQLi। DVWA-তে SQLi practice করো। TryHackMe "SQL Injection" room করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 34-35</div>
+        <div class="ds-task"><strong>XSS (Cross-Site Scripting)</strong><span class="bn-text">: Reflected, Stored, DOM-based XSS। DVWA-তে XSS practice করো। বাস্তব impact বোঝো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 36-37</div>
+        <div class="ds-task"><strong>IDOR + SSRF + File Upload</strong><span class="bn-text">: Insecure Direct Object Reference, Server-Side Request Forgery। PortSwigger Web Security Academy-তে labs করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 38-40</div>
+        <div class="ds-task"><strong>Command Injection + Path Traversal + Authentication Bypass</strong><span class="bn-text">: DVWA ও TryHackMe rooms। PortSwigger labs করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 41-44</div>
+        <div class="ds-task"><strong>Burp Suite Mastery</strong><span class="bn-text">: Proxy setup, Repeater, Intruder, Scanner। TryHackMe "Burp Suite" module সম্পূর্ণ করো। প্রতিটি OWASP vulnerability Burp দিয়ে test করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">4h</span></div>
+      </div>
+    </div>
+
+    <h2 class="sec">📅 Week 7-8 — Recon ও Tools</h2>
+    <div class="daily-schedule">
+      <div class="ds-header">🔍 Week 7-8: Recon + Web Tools (Day 45-60)</div>
+      <div class="ds-row">
+        <div class="ds-time">Day 45-47</div>
+        <div class="ds-task"><strong>Reconnaissance Tools</strong><span class="bn-text">: theHarvester, Shodan, WHOIS, Subfinder, Amass — passive recon করো। TryHackMe "Passive Reconnaissance" করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 48-50</div>
+        <div class="ds-task"><strong>Gobuster + Dirb + Nikto</strong><span class="bn-text">: Directory brute force, web server scanning। TryHackMe vulnerable machines-এ practice করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 51-53</div>
+        <div class="ds-task"><strong>SQLmap Deep Dive</strong><span class="bn-text">: সব flags বোঝো। Database dump, OS shell, WAF bypass। DVWA ও TryHackMe-তে practice করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 54-57</div>
+        <div class="ds-task"><strong>PortSwigger Web Security Academy</strong><span class="bn-text">: প্রতিদিন ২-৩টি lab করো। SQL Injection, XSS, CSRF, XXE — সব sections করো। এটা সবচেয়ে ভালো free resource।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">4h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 58-60</div>
+        <div class="ds-task"><strong>TryHackMe Web Rooms</strong><span class="bn-text">: "OWASP Top 10", "Web Fundamentals", "Pickle Rick" — এই rooms করো। Writeup লেখো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CH3: MONTH 3 -->
+<div class="chapter ch3">
+  <div class="chapter-header">
+    <div class="chapter-label">CHAPTER 03 — MONTH 3</div>
+    <div class="chapter-title">💥 <span class="bn-text">মাস ৩ — Exploitation + CTF + Metasploit</span><span class="en-text">Month 3 — Exploitation + CTF + Metasploit</span></div>
+    <div class="chapter-desc"><span class="bn-text">এখন real hacking শুরু হয় — Metasploit, Privilege Escalation, CTF challenges</span><span class="en-text">Now real hacking begins — Metasploit, Privilege Escalation, CTF challenges</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <div class="box info">
+      <div class="box-t">🎯 Month 3 Goals</div>
+      <ul>
+        <li><span class="bn-text">Metasploit Framework confident ব্যবহার করতে পারা</span></li>
+        <li><span class="bn-text">Linux ও Windows Privilege Escalation জানা</span></li>
+        <li><span class="bn-text">TryHackMe-তে প্রতি সপ্তাহে ৩-৫টি room করা</span></li>
+        <li><span class="bn-text">HackTheBox-এর Retired Easy machines করা শুরু করা</span></li>
+        <li><span class="bn-text">নিজের writeup লেখা শুরু করা</span></li>
+      </ul>
+    </div>
+
+    <h2 class="sec">📅 Week 9-10 — Metasploit ও Exploitation</h2>
+    <div class="daily-schedule">
+      <div class="ds-header">💥 Week 9-10: Metasploit + Exploitation (Day 61-74)</div>
+      <div class="ds-row">
+        <div class="ds-time">Day 61-63</div>
+        <div class="ds-task"><strong>Metasploit Framework Basics</strong><span class="bn-text">: msfconsole, search, use, set options, run। TryHackMe "Metasploit" module করো। EternalBlue exploit practice করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 64-65</div>
+        <div class="ds-task"><strong>Meterpreter ও Post Exploitation</strong><span class="bn-text">: hashdump, screenshot, sysinfo, persistence। গুরুত্বপূর্ণ Meterpreter commands সব practice করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 66-68</div>
+        <div class="ds-task"><strong>msfvenom — Payload Generation</strong><span class="bn-text">: Windows, Linux, Android payload তৈরি। Multi/handler listener setup। TryHackMe "msfvenom" room করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 69-71</div>
+        <div class="ds-task"><strong>Reverse Shells</strong><span class="bn-text">: Bash, Python, PHP, Netcat reverse shell। Shell upgrade করা শেখো। TryHackMe "What the Shell?" করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 72-74</div>
+        <div class="ds-task"><strong>Searchsploit ও Manual Exploit</strong><span class="bn-text">: Exploit-DB ব্যবহার করো। একটি CVE দেখো এবং manually exploit করার চেষ্টা করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+    </div>
+
+    <h2 class="sec">📅 Week 11-12 — Privilege Escalation ও CTF</h2>
+    <div class="daily-schedule">
+      <div class="ds-header">⬆️ Week 11-12: PrivEsc + CTF (Day 75-90)</div>
+      <div class="ds-row">
+        <div class="ds-time">Day 75-77</div>
+        <div class="ds-task"><strong>Linux PrivEsc</strong><span class="bn-text">: SUID, Sudo, Cron jobs, PATH injection। LinPEAS চালাও। TryHackMe "Linux PrivEsc" করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 78-80</div>
+        <div class="ds-task"><strong>Windows PrivEsc</strong><span class="bn-text">: Token impersonation, Service misconfiguration। WinPEAS চালাও। TryHackMe "Windows PrivEsc" করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 81-84</div>
+        <div class="ds-task"><strong>TryHackMe — CTF Rooms</strong><span class="bn-text">: "Mr Robot", "Blue", "Ice", "Blaster" — এই rooms করো। প্রতিটির writeup লেখো GitHub-এ।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">4h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 85-87</div>
+        <div class="ds-task"><strong>HackTheBox — First Machine</strong><span class="bn-text">: Retired Easy machine করো (writeup দেখে হলেও)। "Lame", "Legacy", "Blue" দিয়ে শুরু করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">4h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 88-90</div>
+        <div class="ds-task"><strong>📝 Month Review + Writeups</strong><span class="bn-text">: এখন পর্যন্ত যা করেছ সব লিখে রাখো। GitHub-এ writeup publish করো। কোথায় weak সেটা চিহ্নিত করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-y">3h</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CH4: MONTH 4 -->
+<div class="chapter ch4">
+  <div class="chapter-header">
+    <div class="chapter-label">CHAPTER 04 — MONTH 4</div>
+    <div class="chapter-title">🎯 <span class="bn-text">মাস ৪ — Advanced Web + AD + Bug Bounty শুরু</span><span class="en-text">Month 4 — Advanced Web + AD + Bug Bounty Start</span></div>
+    <div class="chapter-desc"><span class="bn-text">এখন real money earn শুরু হতে পারে — Bug Bounty methodology শিখো</span><span class="en-text">Real money can start being earned now — learn Bug Bounty methodology</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <div class="box info">
+      <div class="box-t">🎯 Month 4 Goals</div>
+      <ul>
+        <li><span class="bn-text">Advanced web vulnerabilities — SSRF, XXE, Deserialization, JWT attacks</span></li>
+        <li><span class="bn-text">Active Directory basics — Kerberoasting, Pass-the-Hash</span></li>
+        <li><span class="bn-text">Bug Bounty platform-এ sign up করা এবং methodology শেখা</span></li>
+        <li><span class="bn-text">প্রথম Bug Bounty report submit করার চেষ্টা করা</span></li>
+      </ul>
+    </div>
+
+    <h2 class="sec">📅 Week 13-14 — Advanced Web Attacks</h2>
+    <div class="daily-schedule">
+      <div class="ds-header">🔥 Week 13-14: Advanced Web (Day 91-104)</div>
+      <div class="ds-row">
+        <div class="ds-time">Day 91-93</div>
+        <div class="ds-task"><strong>SSRF + XXE</strong><span class="bn-text">: Server-Side Request Forgery, XML External Entity injection। PortSwigger labs করো। Real-world impact বোঝো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 94-96</div>
+        <div class="ds-task"><strong>JWT Attacks + OAuth Misconfig</strong><span class="bn-text">: JWT token manipulation, None algorithm attack। PortSwigger JWT labs করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 97-99</div>
+        <div class="ds-task"><strong>Business Logic Vulnerabilities</strong><span class="bn-text">: Price manipulation, Race conditions, Workflow bypass। PortSwigger labs করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 100-104</div>
+        <div class="ds-task"><strong>HackTheBox Web Challenges</strong><span class="bn-text">: Easy web challenges করো। প্রতিটির writeup লেখো। অন্যদের writeup পড়ো নতুন technique শিখতে।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">4h</span></div>
+      </div>
+    </div>
+
+    <h2 class="sec">📅 Week 15-16 — Bug Bounty Methodology</h2>
+    <div class="daily-schedule">
+      <div class="ds-header">💰 Week 15-16: Bug Bounty Start (Day 105-120)</div>
+      <div class="ds-row">
+        <div class="ds-time">Day 105-107</div>
+        <div class="ds-task"><strong>Bug Bounty Platforms</strong><span class="bn-text">: HackerOne, Bugcrowd, Intigriti — account তৈরি করো। Program পড়তে শেখো। Scope বোঝো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">2h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 108-111</div>
+        <div class="ds-task"><strong>Recon for Bug Bounty</strong><span class="bn-text">: Subdomain enumeration, Port scanning, Technology fingerprinting। Amass, Subfinder, Nuclei শিখো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">4h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 112-115</div>
+        <div class="ds-task"><strong>Report Writing</strong><span class="bn-text">: ভালো Bug Bounty report কেমন হয়। CVSS score calculate করো। HackerOne-এর accepted reports পড়ো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">Day 116-120</div>
+        <div class="ds-task"><strong>First Bug Hunt</strong><span class="bn-text">: একটি VDP (Vulnerability Disclosure Program) বেছে নাও। Recon করো, vulnerability খোঁজো। পেলে report করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">4h</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CH5: MONTH 5-6 -->
+<div class="chapter ch5">
+  <div class="chapter-header">
+    <div class="chapter-label">CHAPTER 05 — MONTH 5 & 6</div>
+    <div class="chapter-title">🏆 <span class="bn-text">মাস ৫ ও ৬ — Specialization ও Real World</span><span class="en-text">Month 5 & 6 — Specialization & Real World</span></div>
+    <div class="chapter-desc"><span class="bn-text">এখন path বেছে নাও — OSCP নাকি Bug Bounty Hunter?</span><span class="en-text">Now choose your path — OSCP or Bug Bounty Hunter?</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">🔀 <span class="bn-text">দুটো Path — কোনটা তোমার জন্য?</span><span class="en-text">Two Paths — Which is for You?</span></h2>
+    <div class="grid2">
+      <div class="card">
+        <h4>🎓 Path A: OSCP Preparation</h4>
+        <ul>
+          <li><span class="bn-text">লক্ষ্য: Penetration Testing career</span></li>
+          <li><span class="bn-text">Daily: HackTheBox Machines + TryHackMe</span></li>
+          <li><span class="bn-text">Focus: Full pentest methodology</span></li>
+          <li><span class="bn-text">Cost: Exam $1499 (একটু বেশি)</span></li>
+          <li><span class="bn-text">Timeline: Month 5-6 prep করো</span></li>
+        </ul>
+      </div>
+      <div class="card blue-card">
+        <h4>💰 Path B: Bug Bounty Hunter</h4>
+        <ul>
+          <li><span class="bn-text">লক্ষ্য: Freelance income + recognition</span></li>
+          <li><span class="bn-text">Daily: Live programs hunt করো</span></li>
+          <li><span class="bn-text">Focus: Web vulnerability specialization</span></li>
+          <li><span class="bn-text">Cost: Free (platform বিনামূল্যে)</span></li>
+          <li><span class="bn-text">Timeline: Month 5-6-এ প্রতিদিন hunt</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="sec">📅 Month 5-6 — Daily Schedule (উভয় path-এর জন্য)</h2>
+    <div class="daily-schedule">
+      <div class="ds-header">🏆 Month 5-6 Daily Plan (Day 121-180)</div>
+      <div class="ds-row">
+        <div class="ds-time">Morning<br>৩০ মিনিট</div>
+        <div class="ds-task"><strong><span class="bn-text">News ও Research পড়ো</span></strong><span class="bn-text">: নতুন CVE, Bug Bounty writeup, Security blog — প্রতিদিন কিছু না কিছু পড়ো। Twitter/X-এ security researchers follow করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-y">30m</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">দুপুর<br>১-২ ঘণ্টা</div>
+        <div class="ds-task"><strong><span class="bn-text">CTF / Machine / Lab</span></strong><span class="bn-text">: Path A: HackTheBox machine করো। Path B: Live program-এ recon ও testing করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">2h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">বিকেল<br>১-২ ঘণ্টা</div>
+        <div class="ds-task"><strong><span class="bn-text">Theory ও New Techniques</span></strong><span class="bn-text">: নতুন attack technique শেখো। YouTube, Blog, Course — যা দরকার।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">2h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">রাত<br>৩০ মিনিট</div>
+        <div class="ds-task"><strong><span class="bn-text">Writeup লেখো</span></strong><span class="bn-text">: আজকে কী করলে সেটা লেখো। GitHub-এ push করো। এটা portfolio হবে।</span></div>
+        <div class="ds-duration"><span class="badge badge-y">30m</span></div>
+      </div>
+    </div>
+
+    <h2 class="sec">📊 <span class="bn-text">৬ মাস শেষে তুমি কোথায় থাকবে</span><span class="en-text">Where You'll Be After 6 Months</span></h2>
+    <table>
+      <thead><tr><th><span class="bn-text">Skill</span></th><th>Month 0</th><th>Month 3</th><th>Month 6</th></tr></thead>
+      <tbody>
+        <tr><td>Linux</td><td><span class="badge badge-r">Beginner</span></td><td><span class="badge badge-y">Comfortable</span></td><td><span class="badge badge-g">Proficient</span></td></tr>
+        <tr><td>Networking</td><td><span class="badge badge-r">Beginner</span></td><td><span class="badge badge-y">Basic</span></td><td><span class="badge badge-g">Solid</span></td></tr>
+        <tr><td>Web Hacking</td><td><span class="badge badge-r">None</span></td><td><span class="badge badge-y">Intermediate</span></td><td><span class="badge badge-g">Advanced</span></td></tr>
+        <tr><td>Metasploit</td><td><span class="badge badge-r">None</span></td><td><span class="badge badge-y">Basic</span></td><td><span class="badge badge-g">Comfortable</span></td></tr>
+        <tr><td>CTF</td><td><span class="badge badge-r">None</span></td><td><span class="badge badge-y">Easy rooms</span></td><td><span class="badge badge-g">Medium rooms</span></td></tr>
+        <tr><td>Bug Bounty</td><td><span class="badge badge-r">None</span></td><td><span class="badge badge-r">Setup only</span></td><td><span class="badge badge-y">Active hunter</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- CH6: DAILY ROUTINE -->
+<div class="chapter ch6">
+  <div class="chapter-header">
+    <div class="chapter-label">CHAPTER 06</div>
+    <div class="chapter-title">📅 <span class="bn-text">Daily Routine — সম্পূর্ণ Schedule</span><span class="en-text">Daily Routine — Complete Schedule</span></div>
+    <div class="chapter-desc"><span class="bn-text">Weekday ও Weekend-এর exact time schedule — কোনো কাজ বা পড়া থাকলেও মিলিয়ে নাও</span><span class="en-text">Exact time schedule for weekdays and weekends</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">⏰ <span class="bn-text">Weekday Daily Schedule (৩-৪ ঘণ্টা)</span></h2>
+    <div class="daily-schedule">
+      <div class="ds-header">📅 Weekday Schedule — ৩.৫ ঘণ্টা</div>
+      <div class="ds-row">
+        <div class="ds-time">সকাল<br>৭:০০-৭:৩০</div>
+        <div class="ds-task"><strong>📰 Morning Read (৩০ মিনিট)</strong><span class="bn-text">: Security news, Twitter, নতুন CVE, Bug Bounty writeup পড়ো। এটা habit করো — জগতে কী হচ্ছে জানো।</span></div>
+        <div class="ds-duration"><span class="badge badge-y">30m</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">দুপুর<br>১২:০০-১:০০</div>
+        <div class="ds-task"><strong>📚 Theory ও Video (১ ঘণ্টা)</strong><span class="bn-text">: সেদিনের topic-এর video দেখো বা বই পড়ো। Notes নাও। টপিক বোঝার দিকে focus করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-b">1h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">বিকেল<br>৫:০০-৭:০০</div>
+        <div class="ds-task"><strong>💻 Hands-on Practice (২ ঘণ্টা)</strong><span class="bn-text">: TryHackMe/HackTheBox machine করো, PortSwigger lab করো, বা Python script লেখো। <strong>এটাই সবচেয়ে গুরুত্বপূর্ণ সময়।</strong></span></div>
+        <div class="ds-duration"><span class="badge badge-g">2h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">রাত<br>৯:৩০-১০:০০</div>
+        <div class="ds-task"><strong>📝 Daily Log (৩০ মিনিট)</strong><span class="bn-text">: আজকে কী শিখলাম? কোথায় stuck হলাম? কাল কী করব? GitHub-এ notes push করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-y">30m</span></div>
+      </div>
+    </div>
+
+    <h2 class="sec">⏰ <span class="bn-text">Weekend Schedule (৫-৬ ঘণ্টা)</span></h2>
+    <div class="daily-schedule">
+      <div class="ds-header">📅 Weekend Schedule — ৫-৬ ঘণ্টা (Deep Work Day)</div>
+      <div class="ds-row">
+        <div class="ds-time">সকাল<br>৯:০০-১১:০০</div>
+        <div class="ds-task"><strong>🔄 Week Review + Weak Points</strong><span class="bn-text">: এই সপ্তাহে কোথায় কোথায় stuck হয়েছ সেগুলো আবার করো। Notes review করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-b">2h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">দুপুর<br>১১:০০-২:০০</div>
+        <div class="ds-task"><strong>💻 CTF / Big Lab (৩ ঘণ্টা)</strong><span class="bn-text">: Weekend-এ বড় machine বা CTF challenge করো। একটা পুরো HackTheBox machine শেষ করো।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">3h</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time">বিকেল<br>৩:০০-৪:০০</div>
+        <div class="ds-task"><strong>📝 Writeup লেখো</strong><span class="bn-text">: আজকে যা করেছ তার writeup লেখো। GitHub বা Medium-এ publish করো। এটা তোমার portfolio।</span></div>
+        <div class="ds-duration"><span class="badge badge-y">1h</span></div>
+      </div>
+    </div>
+
+    <div class="box warn">
+      <div class="box-t">⚠️ <span class="bn-text">সময় না থাকলে Minimum করো</span><span class="en-text">If No Time, Do the Minimum</span></div>
+      <p><span class="bn-text">যেদিন সময় কম, অন্তত <strong>৩০ মিনিট করো।</strong> TryHackMe-এর একটা ছোট room, একটা PortSwigger lab, বা একটা Python function লেখো। কিছু না করার চেয়ে অল্প করাও ভালো।</span><span class="en-text">On days with less time, do at least <strong>30 minutes.</strong> A small TryHackMe room, one PortSwigger lab, or write one Python function. Something is always better than nothing.</span></p>
+    </div>
+
+    <h2 class="sec">📋 <span class="bn-text">Weekly Checklist</span></h2>
+    <table>
+      <thead><tr><th><span class="bn-text">দিন</span><span class="en-text">Day</span></th><th><span class="bn-text">Primary Focus</span></th><th><span class="bn-text">Minimum (ব্যস্ত থাকলে)</span><span class="en-text">Minimum (if busy)</span></th></tr></thead>
+      <tbody>
+        <tr><td>Saturday</td><td><span class="bn-text">Deep Lab Work — CTF/Machine</span></td><td><span class="bn-text">৩০ মিনিট TryHackMe</span></td></tr>
+        <tr><td>Sunday</td><td><span class="bn-text">Writeup + Week Planning</span></td><td><span class="bn-text">Notes review</span></td></tr>
+        <tr><td>Monday</td><td><span class="bn-text">New Topic শুরু করো</span></td><td><span class="bn-text">১টি video দেখো</span></td></tr>
+        <tr><td>Tuesday</td><td><span class="bn-text">Lab Practice</span></td><td><span class="bn-text">১টি PortSwigger lab</span></td></tr>
+        <tr><td>Wednesday</td><td><span class="bn-text">Deep Practice</span></td><td><span class="bn-text">Python code লেখো</span></td></tr>
+        <tr><td>Thursday</td><td><span class="bn-text">New Technique</span></td><td><span class="bn-text">Blog পড়ো</span></td></tr>
+        <tr><td>Friday</td><td><span class="bn-text">Review + CTF</span></td><td><span class="bn-text">Weekly notes দেখো</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- CH7: RECOVERY PLAN -->
+<div class="chapter ch7">
+  <div class="chapter-header">
+    <div class="chapter-label">CHAPTER 07</div>
+    <div class="chapter-title">🔄 <span class="bn-text">দিন বাদ গেলে কী করবে — Recovery Plan</span><span class="en-text">When a Day is Missed — Recovery Plan</span></div>
+    <div class="chapter-desc"><span class="bn-text">Perfectionism-এর চেষ্টা করো না — কীভাবে ফিরে আসতে হয় সেটা জানো</span><span class="en-text">Don't try for perfection — know how to bounce back</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <div class="box success">
+      <div class="box-t">✅ <span class="bn-text">সবচেয়ে গুরুত্বপূর্ণ কথা</span></div>
+      <p><span class="bn-text"><strong>"দিন বাদ গেলে ব্যর্থ নয়। দিন বাদ যাওয়ার পরে ফিরে না আসলে ব্যর্থতা।"</strong> প্রতিটি great হacker কোনো না কোনো সময় বিরতি নিয়েছে। গুরুত্বপূর্ণ হলো — consistent হওয়া, perfect নয়।</span></p>
+    </div>
+
+    <h2 class="sec">📅 <span class="bn-text">১ দিন বাদ গেলে</span><span class="en-text">If 1 Day is Missed</span></h2>
+    <div class="recovery">
+      <h4>⚡ 1 Day Gap — Simple Recovery</h4>
+      <ul>
+        <li><span class="bn-text">Panic করো না। এটা completely normal।</span><span class="en-text">Don't panic. This is completely normal.</span></li>
+        <li><span class="bn-text">পরের দিন সেই দিনের topic-ই করো — skip করো না।</span><span class="en-text">The next day, do that day's topic — don't skip it.</span></li>
+        <li><span class="bn-text">Schedule ১ দিন shift করো — কোনো সমস্যা নেই।</span><span class="en-text">Shift the schedule by 1 day — no problem.</span></li>
+        <li><span class="bn-text">Weekend-এর একটি session দিয়ে catch up করো।</span><span class="en-text">Use one weekend session to catch up.</span></li>
+        <li><span class="bn-text"><strong>Rule: পর পর ২ দিন বাদ দিও না।</strong></span><span class="en-text"><strong>Rule: Never miss 2 consecutive days.</strong></span></li>
+      </ul>
+    </div>
+
+    <h2 class="sec">📅 <span class="bn-text">১ সপ্তাহ বাদ গেলে</span><span class="en-text">If 1 Week is Missed</span></h2>
+    <div class="recovery">
+      <h4>⚡ 1 Week Gap — Structured Recovery</h4>
+      <ul>
+        <li><span class="bn-text"><strong>Day 1:</strong> নিজেকে দোষারোপ করো না। Fresh start নাও।</span><span class="en-text"><strong>Day 1:</strong> Don't blame yourself. Take a fresh start.</span></li>
+        <li><span class="bn-text"><strong>Day 2-3:</strong> সেই সপ্তাহের সবচেয়ে গুরুত্বপূর্ণ topics-এর summary পড়ো।</span><span class="en-text"><strong>Day 2-3:</strong> Read summaries of that week's most important topics.</span></li>
+        <li><span class="bn-text"><strong>Day 4-5:</strong> Missed labs এর মধ্যে সবচেয়ে important ২-৩টি করো।</span><span class="en-text"><strong>Day 4-5:</strong> Do the 2-3 most important of the missed labs.</span></li>
+        <li><span class="bn-text"><strong>Day 6-7:</strong> পরের সপ্তাহের plan অনুযায়ী চলো — সব backfill করার চেষ্টা করো না।</span></li>
+        <li><span class="bn-text"><strong>Compromise:</strong> ১ সপ্তাহ বাদ গেলে timeline ১ সপ্তাহ বাড়িয়ে নাও।</span></li>
+      </ul>
+    </div>
+
+    <h2 class="sec">📅 <span class="bn-text">১ মাস বাদ গেলে</span><span class="en-text">If 1 Month is Missed</span></h2>
+    <div class="recovery">
+      <h4>⚡ 1 Month Gap — Full Reset</h4>
+      <ul>
+        <li><span class="bn-text"><strong>Week 1:</strong> কেন বাদ গেল সেটা honestly বিশ্লেষণ করো। Same কারণ যাতে repeat না হয় plan করো।</span></li>
+        <li><span class="bn-text"><strong>Week 2:</strong> যেখানে ছিলে সেখান থেকে শুরু করো — শুরু থেকে নয়। ২ সপ্তাহ আগের জায়গা থেকে।</span></li>
+        <li><span class="bn-text"><strong>Week 3-4:</strong> Normal pace-এ ফিরে আসো। Daily minimum করো।</span></li>
+        <li><span class="bn-text"><strong>বড় কথা:</strong> ৬ মাস → ৭-৮ মাস করতে হলে করো। Learning থামানো ঠিক নয়।</span><span class="en-text"><strong>Important:</strong> If 6 months becomes 7-8, that's okay. Don't stop learning.</span></li>
+      </ul>
+    </div>
+
+    <h2 class="sec">🛡️ <span class="bn-text">Burnout এড়ানোর Strategies</span><span class="en-text">Strategies to Avoid Burnout</span></h2>
+    <div class="grid3">
+      <div class="card">
+        <h4>😴 <span class="bn-text">Rest নাও</span><span class="en-text">Take Rest</span></h4>
+        <p><span class="bn-text">মাসে ১-২ দিন সম্পূর্ণ বিশ্রাম নাও। Computer বন্ধ রাখো। Brain refresh হওয়া দরকার।</span></p>
+      </div>
+      <div class="card blue-card">
+        <h4>🎮 <span class="bn-text">Fun CTF করো</span><span class="en-text">Do Fun CTFs</span></h4>
+        <p><span class="bn-text">কঠিন কাজের পাশে মাঝে মাঝে fun CTF করো। এটা learning-কে enjoyable রাখে।</span></p>
+      </div>
+      <div class="card orange-card">
+        <h4>👥 <span class="bn-text">Community-তে যোগ দাও</span><span class="en-text">Join a Community</span></h4>
+        <p><span class="bn-text">Discord server, Reddit r/netsec, Twitter security community। একা শেখা কঠিন।</span></p>
+      </div>
+    </div>
+
+    <h2 class="sec">📈 <span class="bn-text">Progress Track করার পদ্ধতি</span><span class="en-text">How to Track Progress</span></h2>
+    <div class="step-box">
+      <div class="step-num">📓</div>
+      <div class="step-content">
+        <h4><span class="bn-text">Daily Learning Log রাখো</span><span class="en-text">Keep a Daily Learning Log</span></h4>
+        <p><span class="bn-text">GitHub-এ একটি repository তৈরি করো। প্রতিদিন সেখানে লেখো: "আজকে কী শিখলাম, কী করলাম, কোথায় stuck হলাম।" ৩ মাস পরে পেছনে তাকালে দেখবে কতটা এগিয়েছ।</span></p>
+      </div>
+    </div>
+    <div class="step-box">
+      <div class="step-num">🏆</div>
+      <div class="step-content">
+        <h4>TryHackMe Streak ও Rank</h4>
+        <p><span class="bn-text">TryHackMe-এ daily streak maintain করো। Rank বাড়ানো motivating। Top 5% হওয়া লক্ষ্য করো।</span><span class="en-text">Maintain daily streak on TryHackMe. Increasing rank is motivating. Aim for Top 5%.</span></p>
+      </div>
+    </div>
+    <div class="step-box">
+      <div class="step-num">📝</div>
+      <div class="step-content">
+        <h4><span class="bn-text">Monthly Self-Assessment</span></h4>
+        <p><span class="bn-text">প্রতি মাসের শেষে নিজেকে test করো: "আমি কি এই concept টা কাউকে explain করতে পারব? আমি কি এই lab টা নিজে করতে পারব?" যদি না পারো — সেটা আবার করো।</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CH8: RESOURCES -->
+<div class="chapter ch8">
+  <div class="chapter-header">
+    <div class="chapter-label">CHAPTER 08</div>
+    <div class="chapter-title">📚 <span class="bn-text">Resources — সেরা Free ও Paid Platform</span><span class="en-text">Resources — Best Free & Paid Platforms</span></div>
+    <div class="chapter-desc"><span class="bn-text">টাকা নষ্ট করার দরকার নেই — এই free resources-ই যথেষ্ট শুরু করার জন্য</span><span class="en-text">No need to waste money — these free resources are enough to get started</span></div>
+  </div>
+  <div class="chapter-body">
+
+    <h2 class="sec">🆓 <span class="bn-text">সেরা Free Resources</span><span class="en-text">Best Free Resources</span></h2>
+
+    <div class="resource-card">
+      <div class="resource-name">🏠 TryHackMe</div>
+      <div class="resource-type">FREE tier আছে | tryhackme.com</div>
+      <div class="resource-desc"><span class="bn-text">Beginner-এর জন্য সেরা। Guided paths, browser-based labs। "Pre-Security", "Jr Penetration Tester", "Complete Beginner" path করো।</span><span class="en-text">Best for beginners. Guided paths, browser-based labs. Do the "Pre-Security", "Jr Penetration Tester", "Complete Beginner" paths.</span></div>
+    </div>
+
+    <div class="resource-card">
+      <div class="resource-name">💀 HackTheBox</div>
+      <div class="resource-type">FREE Machines আছে | hackthebox.com</div>
+      <div class="resource-desc"><span class="bn-text">Intermediate থেকে Advanced। Retired machines-এ writeup আছে। Starting Point-এর machines দিয়ে শুরু করো।</span></div>
+    </div>
+
+    <div class="resource-card">
+      <div class="resource-name">🕷️ PortSwigger Web Security Academy</div>
+      <div class="resource-type">সম্পূর্ণ FREE | portswigger.net/web-security</div>
+      <div class="resource-desc"><span class="bn-text">Web security-র জন্য পৃথিবীর সেরা free resource। Burp Suite-এর makers-দের তৈরি। সব OWASP vulnerabilities-এর labs আছে।</span><span class="en-text">Best free resource in the world for web security. Made by Burp Suite's creators. Labs for all OWASP vulnerabilities.</span></div>
+    </div>
+
+    <div class="resource-card">
+      <div class="resource-name">🐉 DVWA (Damn Vulnerable Web App)</div>
+      <div class="resource-type">সম্পূর্ণ FREE | local install</div>
+      <div class="resource-desc"><span class="bn-text">নিজের machine-এ install করো। SQLi, XSS, Command Injection সব practice করো। Beginner-এর best practice ground।</span></div>
+    </div>
+
+    <div class="resource-card">
+      <div class="resource-name">📺 YouTube Channels</div>
+      <div class="resource-type">FREE</div>
+      <div class="resource-desc">
+        <ul style="margin-top:8px;">
+          <li><strong>IppSec</strong> — HackTheBox walkthroughs (<span class="bn-text">সবচেয়ে ভালো</span>)</li>
+          <li><strong>John Hammond</strong> — CTF, malware analysis, tutorials</li>
+          <li><strong>NetworkChuck</strong> — Networking, hacking basics</li>
+          <li><strong>LiveOverflow</strong> — Binary exploitation, CTF</li>
+          <li><strong>TCM Security (Heath Adams)</strong> — Ethical hacking courses</li>
+          <li><strong>David Bombal</strong> — Networking, Python, ethical hacking</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="resource-card">
+      <div class="resource-name">📖 Free Books ও Courses</div>
+      <div class="resource-type">FREE</div>
+      <div class="resource-desc">
+        <ul style="margin-top:8px;">
+          <li><strong>Automate the Boring Stuff with Python</strong> — automatetheboringstuff.com (Free)</li>
+          <li><strong>The Web Application Hacker's Handbook</strong> — PDF available online</li>
+          <li><strong>Cybrary.it</strong> — Free cybersecurity courses</li>
+          <li><strong>OWASP Testing Guide</strong> — owasp.org (Free PDF)</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="sec">💰 <span class="bn-text">দরকারী Paid Resources (পরে কিনো)</span><span class="en-text">Useful Paid Resources (Buy Later)</span></h2>
+    <table>
+      <thead><tr><th>Resource</th><th><span class="bn-text">কী পাবে</span><span class="en-text">What You Get</span></th><th><span class="bn-text">কখন কিনবে</span><span class="en-text">When to Buy</span></th><th>Price</th></tr></thead>
+      <tbody>
+        <tr><td><strong>TCM Security Courses</strong></td><td><span class="bn-text">Practical Ethical Hacking course</span></td><td><span class="bn-text">Month 2-3-এ</span></td><td>$30</td></tr>
+        <tr><td><strong>TryHackMe Premium</strong></td><td><span class="bn-text">সব rooms, certificates</span></td><td><span class="bn-text">Month 1 শেষে</span></td><td>$14/mo</td></tr>
+        <tr><td><strong>HackTheBox VIP</strong></td><td><span class="bn-text">Retired machines, more labs</span></td><td><span class="bn-text">Month 3-এ</span></td><td>$14/mo</td></tr>
+        <tr><td><strong>Udemy: eJPT course</strong></td><td><span class="bn-text">Entry-level certification prep</span></td><td><span class="bn-text">Month 4-এ</span></td><td>$15</td></tr>
+        <tr><td><strong>OSCP (OffSec)</strong></td><td><span class="bn-text">Gold standard certification</span></td><td><span class="bn-text">Month 6+ পরে</span></td><td>$1499</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="sec">🏆 <span class="bn-text">Certification Roadmap</span></h2>
+    <div class="daily-schedule">
+      <div class="ds-header">📜 Certification Path — Beginner to Advanced</div>
+      <div class="ds-row">
+        <div class="ds-time"><span class="badge badge-b">Month 3-4</span></div>
+        <div class="ds-task"><strong>eJPT (eLearnSecurity Junior Penetration Tester)</strong><span class="bn-text">: Beginner-friendly, affordable ($200)। Entry-level pentest certification। ভালো starting point।</span></div>
+        <div class="ds-duration"><span class="badge badge-g">Entry</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time"><span class="badge badge-y">Month 6-9</span></div>
+        <div class="ds-task"><strong>CEH (Certified Ethical Hacker)</strong><span class="bn-text">: Recognized in Bangladesh-এ। Corporate jobs-এর জন্য ভালো। Theory-heavy।</span></div>
+        <div class="ds-duration"><span class="badge badge-y">Intermediate</span></div>
+      </div>
+      <div class="ds-row">
+        <div class="ds-time"><span class="badge badge-r">Month 12+</span></div>
+        <div class="ds-task"><strong>OSCP (Offensive Security Certified Professional)</strong><span class="bn-text">: Gold standard। Real-world practical exam। 24 ঘণ্টা lab exam। এটা পেলে career set।</span></div>
+        <div class="ds-duration"><span class="badge badge-r">Advanced</span></div>
+      </div>
+    </div>
+
+    <h2 class="sec">🌐 <span class="bn-text">Bangladeshi Hacker Community</span></h2>
+    <div class="grid2">
+      <div class="card dark-card">
+        <h4>📱 Discord Servers</h4>
+        <ul>
+          <li>TryHackMe Discord</li>
+          <li>HackTheBox Discord</li>
+          <li>TCM Security Discord</li>
+          <li><span class="bn-text">BD Cyber Community groups</span></li>
+        </ul>
+      </div>
+      <div class="card dark-card">
+        <h4>🐦 Follow করো</h4>
+        <ul>
+          <li>@TomNomNom (Bug Bounty)</li>
+          <li>@jhaddix (Bug Bounty Hunter)</li>
+          <li>@NahamSec (Web Hacking)</li>
+          <li>@LiveOverflow (CTF)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="chapter-summary">
+      <h3>🐧 <span class="bn-text">৬ মাসের Journey — মূল কথা</span><span class="en-text">6-Month Journey — Key Points</span></h3>
+      <ul>
+        <li>📅 <span class="bn-text"><strong>Consistency > Intensity:</strong> প্রতিদিন ৩ ঘণ্টা > সপ্তাহান্তে ১২ ঘণ্টা</span><span class="en-text"><strong>Consistency > Intensity:</strong> 3 hours daily > 12 hours on weekends</span></li>
+        <li>🔄 <span class="bn-text"><strong>Hands-on > Theory:</strong> Video দেখার চেয়ে lab করা ১০ গুণ বেশি শেখায়</span><span class="en-text"><strong>Hands-on > Theory:</strong> Doing labs teaches 10x more than watching videos</span></li>
+        <li>📝 <span class="bn-text"><strong>Writeup লেখো:</strong> এটা portfolio এবং নিজের শেখার সেরা পদ্ধতি</span></li>
+        <li>🔄 <span class="bn-text"><strong>Recovery:</strong> দিন বাদ গেলে সমস্যা নেই — ফিরে আসো, সেখান থেকেই শুরু করো</span></li>
+        <li>⚖️ <span class="bn-text"><strong>Legal থাকো:</strong> শুধু authorized environment-এ practice করো — সবসময়</span></li>
+        <li>🆓 <span class="bn-text"><strong>Free resources যথেষ্ট:</strong> TryHackMe + PortSwigger + YouTube = ৬ মাসের শেখা</span></li>
+        <li>🏆 <span class="bn-text"><strong>Community-তে থাকো:</strong> একা শেখা কঠিন — Discord-এ যোগ দাও</span></li>
+      </ul>
+    </div>
+
+    <div style="text-align:center; margin-top:50px; padding:35px; background: linear-gradient(135deg, #0d1b2a, #1a4731); border-radius:16px; color:rgba(255,255,255,0.8);">
+      <p style="font-size:22px; color:#2dc653; margin-bottom:12px; font-weight:700;">🐧 <span class="bn-text">শুরু করো আজই</span><span class="en-text">Start Today</span></p>
+      <p style="font-size:15px; line-height:2; color:rgba(255,255,255,0.7);">
+        <span class="bn-text">"সবচেয়ে ভালো সময় ছিল ১ বছর আগে শুরু করা।<br>দ্বিতীয় সবচেয়ে ভালো সময় হলো আজ।"</span>
+        <span class="en-text">"The best time to start was 1 year ago.<br>The second best time is today."</span>
+      </p>
+      <div style="margin-top:20px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+        <span style="background:rgba(45,198,83,0.2); border:1px solid rgba(45,198,83,0.4); padding:6px 16px; border-radius:20px; font-size:13px; color:#2dc653;">Step 1: VirtualBox install করো</span>
+        <span style="background:rgba(45,198,83,0.2); border:1px solid rgba(45,198,83,0.4); padding:6px 16px; border-radius:20px; font-size:13px; color:#2dc653;">Step 2: Kali Linux install করো</span>
+        <span style="background:rgba(45,198,83,0.2); border:1px solid rgba(45,198,83,0.4); padding:6px 16px; border-radius:20px; font-size:13px; color:#2dc653;">Step 3: TryHackMe account তৈরি করো</span>
+        <span style="background:rgba(45,198,83,0.2); border:1px solid rgba(45,198,83,0.4); padding:6px 16px; border-radius:20px; font-size:13px; color:#2dc653;">Step 4: প্রথম room শুরু করো</span>
+      </div>
+      <p style="margin-top:20px; font-size:12px; color:rgba(255,255,255,0.4);">Ethical Hacking — ৬ মাসের Daily Routine | v1.0</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const body = document.body;
+body.classList.add('light-mode');
+function toggleTheme() {
+  const btn = document.getElementById('themeBtn');
+  if (body.classList.contains('light-mode')) {
+    body.classList.replace('light-mode', 'dark-mode');
+    btn.textContent = '☀️ Light Mode'; btn.style.background = '#ffd60a'; btn.style.color = '#0d1b2a';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    body.classList.replace('dark-mode', 'light-mode');
+    btn.textContent = '🌙 Dark Mode'; btn.style.background = '#2dc653'; btn.style.color = '#0d1b2a';
+    localStorage.setItem('theme', 'light');
+  }
+}
+function toggleLang() {
+  const btn = document.getElementById('langBtn');
+  if (body.classList.contains('lang-en')) {
+    body.classList.remove('lang-en');
+    btn.textContent = '🇬🇧 English'; btn.style.background = '#0077b6';
+    localStorage.setItem('lang', 'bn');
+  } else {
+    body.classList.add('lang-en');
+    btn.textContent = '🇧🇩 বাংলা'; btn.style.background = '#e63946';
+    localStorage.setItem('lang', 'en');
+  }
+}
+window.addEventListener('DOMContentLoaded', () => {
+  const t = localStorage.getItem('theme'), l = localStorage.getItem('lang');
+  if (t === 'dark') { body.classList.replace('light-mode', 'dark-mode'); const b = document.getElementById('themeBtn'); if (b) { b.textContent = '☀️ Light Mode'; b.style.background = '#ffd60a'; b.style.color = '#0d1b2a'; } }
+  if (l === 'en') { body.classList.add('lang-en'); const b = document.getElementById('langBtn'); if (b) { b.textContent = '🇧🇩 বাংলা'; b.style.background = '#e63946'; } }
+});
+</script>
+</body>
+</html>
