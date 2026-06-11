@@ -7,6 +7,7 @@
 > [!WARNING]
 
 - [IPTV ](https://saimum10.github.io/document/iptv-saimum.html)
+- [IPTV 2](https://saimum10.github.io/document/iptv_player-2.html)
 - [Promodoro ](https://saimum10.github.io/document/pomodoro_timer.html)
 - [Bangladesh cyber law](https://saimum10.github.io/document/bangladesh_cyber_law.html)
 - [Critical Thinking](https://saimum10.github.io/document/critical_thinking_genius_mindset.html)
